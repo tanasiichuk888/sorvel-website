@@ -13,7 +13,8 @@
     "not_found_handling": "404-page",
     "run_worker_first": true
   },
-  // lead events: re-enable once Analytics Engine is active on the account
-  // "analytics_engine_datasets": [{ "binding": "EVENTS", "dataset": "sorvel_events" }],
+  // lead events live in one small SQLite-backed Durable Object (free plan, no setup)
+  "durable_objects": { "bindings": [{ "name": "LEADS", "class_name": "LeadStore" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["LeadStore"] }],
   "observability": { "enabled": true }
 }

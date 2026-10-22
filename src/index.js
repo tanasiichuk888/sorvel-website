@@ -1,6 +1,6 @@
 // Sorvel site worker
 // 1. www.sorvel.agency -> sorvel.agency (301)
-// 2. POST /api/e        -> anonymous lead events (brief started / sent, Telegram and email clicks) into Analytics Engine
+// 2. POST /api/e        -> anonymous lead events (brief started / sent, Telegram and email clicks) into a Durable Object
 // 3. /scoreboard        -> private growth dashboard (behind Cloudflare Access), data from /scoreboard/api
 // 4. everything else    -> the static site in ./website
 //
@@ -11,11 +11,11 @@
 //   ACCESS_AUD      Access application audience (AUD) tag for /scoreboard
 //   GSC_KEY         Google service account JSON key (Search Console read access), optional
 
+import { DurableObject } from "cloudflare:workers";
 import DASHBOARD from "./scoreboard.html";
 
 const HOST = "sorvel.agency";
 const EVENT_TYPES = new Set(["brief_start", "brief", "telegram", "email"]);
-const DATASET = "sorvel_events";
 const TARGET = new Set(["United States", "United Kingdom", "Canada", "Australia", "Ireland", "Germany", "Netherlands", "Switzerland",
   "Sweden", "Norway", "Denmark", "France", "Belgium", "Austria", "Finland", "Spain", "Italy", "Israel", "United Arab Emirates", "Singapore", "New Zealand"]);
 
@@ -41,14 +41,30 @@ async function collect(request, env) {
   if (/bot|crawl|spider|headless|lighthouse/i.test(ua) || (request.cf && request.cf.botManagement && request.cf.botManagement.verifiedBot)) return ok;
   let b;
   try { b = JSON.parse((await request.text()).slice(0, 2000)); } catch { return ok; }
-  if (!b || !EVENT_TYPES.has(b.t) || !env.EVENTS) return ok;
+  if (!b || !EVENT_TYPES.has(b.t) || !env.LEADS) return ok;
   const clip = (v, n = 120) => String(v || "").replace(/[^\w\-./:@ ]/g, "").slice(0, n);
-  env.EVENTS.writeDataPoint({
-    indexes: [b.t],
-    blobs: [b.t, clip(b.p) || "/", clip(b.s, 60) || "direct", (request.cf && request.cf.country) || "", clip(b.l) || "/"],
-    doubles: [1],
-  });
+  await leadStore(env).add({ t: b.t, p: clip(b.p) || "/", s: clip(b.s, 60) || "direct", c: (request.cf && request.cf.country) || "", l: clip(b.l) || "/" });
   return ok;
+}
+const leadStore = (env) => env.LEADS.get(env.LEADS.idFromName("leads"));
+
+/* One SQLite-backed Durable Object keeps every lead event (a few per day, tiny). */
+export class LeadStore extends DurableObject {
+  constructor(ctx, env) {
+    super(ctx, env);
+    this.sql = ctx.storage.sql;
+    this.sql.exec(`CREATE TABLE IF NOT EXISTS ev (ts INTEGER NOT NULL, t TEXT NOT NULL, p TEXT, s TEXT, c TEXT, l TEXT)`);
+    this.sql.exec(`CREATE INDEX IF NOT EXISTS ev_ts ON ev (ts)`);
+  }
+  add(e) {
+    this.sql.exec(`INSERT INTO ev (ts, t, p, s, c, l) VALUES (?, ?, ?, ?, ?, ?)`, Date.now(), e.t, e.p, e.s, e.c, e.l);
+  }
+  report(a, b, withGroups) {
+    const rows = this.sql.exec(`SELECT t, strftime('%Y-%m-%d', ts / 1000, 'unixepoch') AS d, COUNT(*) AS n FROM ev WHERE ts >= ? AND ts < ? GROUP BY t, d ORDER BY d`, a, b).toArray();
+    if (!withGroups) return { rows };
+    const grp = (col) => this.sql.exec(`SELECT ${col} AS k, COUNT(*) AS v FROM ev WHERE ts >= ? AND ts < ? AND t IN ('brief','telegram','email') GROUP BY k ORDER BY v DESC LIMIT 10`, a, b).toArray();
+    return { rows, src: grp("s"), land: grp("l") };
+  }
 }
 
 /* ------------------------------------------------------------- scoreboard */
@@ -115,20 +131,20 @@ async function stats(env, days) {
   const r = ranges(days);
   if (env.DEV_MOCK === "1") return mock(r, days);
   const errors = [];
-  const safe = (name, p) => p.catch((e) => { errors.push(name + ": " + String(e.message || e).slice(0, 300)); return null; });
+  const safe = (name, p) => p.catch((e) => { if (!/not connected/.test(e.message)) errors.push(name + ": " + String(e.message || e).slice(0, 300)); return null; });
   const [rumCur, rumPrev, leadsCur, leadsPrev, leadSrc, leadLand, gsc] = await Promise.all([
     safe("Web Analytics", rum(env, r.cur, true)),
     safe("Web Analytics (previous)", rum(env, r.prev, false)),
-    safe("Leads", aeLeads(env, r.cur)),
-    safe("Leads (previous)", aeLeads(env, r.prev)),
-    safe("Lead sources", aeGroup(env, r.cur, "blob3")),
-    safe("Lead pages", aeGroup(env, r.cur, "blob5")),
+    safe("Leads", leadReport(env, r.cur, true)),
+    safe("Leads (previous)", leadReport(env, r.prev, false)),
+    Promise.resolve(null), Promise.resolve(null),
     env.GSC_KEY ? safe("Search Console", searchConsole(env, r)) : Promise.resolve(null),
   ]);
   return {
     days, list: r.days, start: day(r.cur[0]), end: day(new Date(r.cur[1] - 864e5)),
-    rum: rumCur, rumPrev, leads: leadsCur, leadsPrev, leadSrc, leadLand, gsc,
-    connected: { analytics: !!(env.CF_API_TOKEN && env.CF_ACCOUNT_ID), events: !!env.EVENTS, gsc: !!env.GSC_KEY },
+    rum: rumCur, rumPrev, leads: leadsCur && leadsCur.rows, leadsPrev: leadsPrev && leadsPrev.rows,
+    leadSrc: leadsCur && leadsCur.src, leadLand: leadsCur && leadsCur.land, gsc,
+    connected: { analytics: !!(env.CF_API_TOKEN && env.CF_ACCOUNT_ID), events: !!env.LEADS, gsc: !!env.GSC_KEY },
     errors, at: new Date().toISOString(),
   };
 }
@@ -178,28 +194,12 @@ async function rum(env, [a, b], full) {
   return out;
 }
 
-/* Lead events in Workers Analytics Engine (SQL API) */
-async function aeSql(env, sql) {
-  if (!env.CF_API_TOKEN || !env.CF_ACCOUNT_ID) throw new Error("not connected");
-  const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${env.CF_ACCOUNT_ID}/analytics_engine/sql`, {
-    method: "POST", headers: { authorization: "Bearer " + env.CF_API_TOKEN }, body: sql,
-  });
-  const text = await res.text();
-  if (!res.ok) {
-    if (/unknown table|does not exist|not found/i.test(text)) return [];         // no events written yet
-    throw new Error(text.slice(0, 200));
-  }
-  return JSON.parse(text).data || [];
-}
-const ts = (d) => d.toISOString().slice(0, 19).replace("T", " ");
-const win = ([a, b]) => `timestamp >= toDateTime('${ts(a)}') AND timestamp < toDateTime('${ts(b)}')`;
-async function aeLeads(env, r) {
-  const rows = await aeSql(env, `SELECT blob1 AS t, formatDateTime(timestamp, '%Y-%m-%d') AS d, SUM(_sample_interval) AS n FROM ${DATASET} WHERE ${win(r)} GROUP BY t, d ORDER BY d`);
-  return rows.map((x) => ({ t: x.t, d: x.d, n: Number(x.n) }));
-}
-async function aeGroup(env, r, col) {
-  const rows = await aeSql(env, `SELECT ${col} AS k, SUM(_sample_interval) AS n FROM ${DATASET} WHERE ${win(r)} AND blob1 IN ('brief','telegram','email') GROUP BY k ORDER BY n DESC LIMIT 10`);
-  return rows.map((x) => ({ k: x.k || "direct", v: Number(x.n) }));
+/* Lead events from the LeadStore Durable Object */
+async function leadReport(env, [a, b], withGroups) {
+  if (!env.LEADS) throw new Error("not connected");
+  const r = await leadStore(env).report(a.getTime(), b.getTime(), withGroups);
+  const num = (rows) => (rows || []).map((x) => ({ ...x, n: x.n != null ? Number(x.n) : undefined, v: x.v != null ? Number(x.v) : undefined }));
+  return { rows: num(r.rows), src: num(r.src), land: num(r.land) };
 }
 
 /* Google Search Console (service account, read-only) */
