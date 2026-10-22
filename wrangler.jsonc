@@ -13,6 +13,7 @@
     "not_found_handling": "404-page",
     "run_worker_first": true
   },
-  "analytics_engine_datasets": [{ "binding": "EVENTS", "dataset": "sorvel_events" }],
+  // lead events: re-enable once Analytics Engine is active on the account
+  // "analytics_engine_datasets": [{ "binding": "EVENTS", "dataset": "sorvel_events" }],
   "observability": { "enabled": true }
 }
