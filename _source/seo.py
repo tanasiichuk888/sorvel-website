@@ -50,7 +50,7 @@ def clean_url(rel):
 
 def text(s): return html.unescape(re.sub(r"<[^>]+>", " ", s)).replace("  ", " ").strip()
 
-ORG = {"@type": "Organization", "@id": SITE + "/#org", "name": BRAND, "url": SITE + "/",
+ORG = {"@type": "Organization", "@id": SITE + "/#org", "name": BRAND, "alternateName": ["Sorvel", "Sorvel Agency", "sorvel.agency"], "url": SITE + "/",
        "logo": {"@type": "ImageObject", "url": SITE + "/img/brand/logo-512.png", "width": 512, "height": 512},
        "image": SITE + "/img/og/default.jpg",
        "description": "Design and development studio for SaaS, fintech, AI and B2B companies. Websites, product UI and brand identity, built in Webflow, Framer, WordPress and Shopify.",
@@ -58,7 +58,8 @@ ORG = {"@type": "Organization", "@id": SITE + "/#org", "name": BRAND, "url": SIT
        "knowsAbout": ["Web design", "UI/UX design", "Product design", "Brand identity", "Webflow", "Framer", "WordPress", "Shopify", "Figma"],
        "areaServed": "Worldwide"}
 PERSON = {"@type": "Person", "@id": SITE + "/#founder", "name": "Mykola Tanasiichuk", "jobTitle": "Founder, Design Lead",
-          "image": SITE + "/img/team/mykola.webp", "worksFor": {"@id": SITE + "/#org"}}
+          "image": SITE + "/img/team/mykola.webp", "worksFor": {"@id": SITE + "/#org"},
+          "sameAs": ["https://www.behance.net/tanasiichuk8", "https://dribbble.com/koliafree11"]}
 WEBSITE = {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": BRAND, "publisher": {"@id": SITE + "/#org"}, "inLanguage": "en"}
 
 def section_name(rel):
