@@ -116,36 +116,23 @@
   document.querySelectorAll("[data-count]:not([data-dec])").forEach((c) => io.observe(c));
 
   /* ---------- services: list drives the preview ---------- */
-  const items = [...document.querySelectorAll(".svc__item")], vis = [...document.querySelectorAll(".svc__stage .vis")];
-  const svcStage = document.querySelector(".svc .svc__stage"), stageHome = svcStage && svcStage.parentNode, stageNext = svcStage && svcStage.nextSibling;
+  const items = [...document.querySelectorAll(".svc__item")], vis = [...document.querySelectorAll(".svc > .svc__stage .vis")];
   const narrowMQ = matchMedia("(max-width: 1000px)");
-  /* keep the tapped row still while the rows above it fold and unfold */
-  const holdStill = (el, ms = 720) => {
-    const y0 = el.getBoundingClientRect().top, t0 = performance.now();
-    const f = (t) => { const d = el.getBoundingClientRect().top - y0; if (Math.abs(d) > .5) scrollBy({ top: d, behavior: "instant" }); if (t - t0 < ms) requestAnimationFrame(f); };
-    requestAnimationFrame(f);
-  };
-  /* phones: the preview lives inside the open row, so you see what you tapped */
-  const placeStage = (n) => {
-    if (!svcStage) return;
-    if (narrowMQ.matches && n >= 0) items[n].querySelector(".svc__body > div").prepend(svcStage);
-    else if (!narrowMQ.matches && svcStage.parentNode !== stageHome) stageHome.insertBefore(svcStage, stageNext);
-  };
-  let curSvc = items.findIndex((it) => it.classList.contains("is-active"));
-  const setSvc = (n, btn) => {
-    if (btn && narrowMQ.matches) holdStill(btn);
-    curSvc = n;
+  /* desktop: one open row drives the big preview. phones: rows open and close on their own,
+     each with its own preview inside, so nothing above the tapped row ever moves */
+  const setSvc = (n) => {
     items.forEach((it, i) => { it.classList.toggle("is-active", i === n); it.querySelector(".svc__btn").setAttribute("aria-expanded", String(i === n)); });
     vis.forEach((v, i) => v.classList.toggle("is-on", i === n));
-    if (n >= 0) placeStage(n);
     setTimeout(measure, 50);
   };
   items.forEach((it, i) => {
     const b = it.querySelector(".svc__btn");
-    b.addEventListener("click", () => setSvc(narrowMQ.matches && curSvc === i ? -1 : i, b));
+    b.addEventListener("click", () => {
+      if (narrowMQ.matches) { const open = !it.classList.contains("is-active"); it.classList.toggle("is-active", open); b.setAttribute("aria-expanded", String(open)); }
+      else setSvc(i);
+    });
     if (matchMedia("(hover: hover) and (min-width: 1001px)").matches) it.addEventListener("pointerenter", () => setSvc(i));
   });
-  if (svcStage) { placeStage(Math.max(0, curSvc)); narrowMQ.addEventListener("change", () => placeStage(Math.max(0, curSvc))); }
 
   /* ---------- FAQ: smooth open and close ---------- */
   document.querySelectorAll(".acc__item").forEach((d) => {

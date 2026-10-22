@@ -944,9 +944,14 @@ main > section.sec, main > section.cs-more, main > section.cs-numbers { isolatio
 /* FAQ: arrow turns as soon as a row starts closing */
 .acc__item.is-closing summary::after { transform: rotate(45deg) translate(-3px, -3px); border-color: var(--muted); }
 /* services on phones: the preview sits inside the open row */
+.svc__stage--m { display: none; }
 @media (max-width: 1000px) {
-  .svc__body .svc__stage { order: 0; margin: 2px 0 20px; aspect-ratio: 1 / .82; }
+  .svc > .svc__stage { display: none; }
+  .svc__stage.svc__stage--m { display: block; position: relative; top: 0; margin: 2px 0 20px; aspect-ratio: 1 / .82; }
   .svc__item.is-active .svc__title { transform: none; }
+  .svc__body { transition: grid-template-rows .55s cubic-bezier(.32,.72,0,1); }
+  .svc__body > div { opacity: 0; transition: opacity .3s; }
+  .svc__item.is-active .svc__body > div { opacity: 1; transition: opacity .45s .08s; }
 }
 @media (max-width: 760px) {
   .fx-amb { animation: none !important; }

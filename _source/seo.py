@@ -20,10 +20,10 @@ NOINDEX = {"404.html"}
 START, END = "<!-- seo -->", "<!-- /seo -->"
 GLASS_V = 5  # bump after editing css/glass.css or js/glass.js
 CASE_V = 16  # bump after editing css/case.css
-PAGES_V = 27  # bump after editing css/pages.css
+PAGES_V = 28  # bump after editing css/pages.css
 BRAND_V = 2  # bump after replacing logo / favicon files
 # other assets that change: bump the number after editing the file
-ASSET_V = {"css/style.css": 6, "js/main.js": 19, "css/xp.css": 6, "js/scenes.js": 19, "js/xp.js": 5, "js/dots.js": 2, "css/hero.css": 2, "js/case.js": 13, "js/fx.js": 17, "js/svc.js": 17}
+ASSET_V = {"css/style.css": 6, "js/main.js": 20, "css/xp.css": 6, "js/scenes.js": 19, "js/xp.js": 5, "js/dots.js": 2, "css/hero.css": 2, "js/case.js": 13, "js/fx.js": 17, "js/svc.js": 17}
 
 # Search titles (aim for under ~60 characters). Case studies are generated from the page.
 TITLES = {
@@ -61,6 +61,35 @@ def section_name(rel):
     if rel.startswith("work/"): return ("Work", SITE + "/work")
     if rel.startswith("services/"): return ("Services", SITE + "/#services")
     return None
+
+def _div_block(s, start):
+    """Return the end index of the <div> that opens at `start` (simple depth count)."""
+    depth, i = 0, start
+    for m in re.finditer(r'<div\b|</div>', s[start:]):
+        depth += 1 if m.group(0) != "</div>" else -1
+        if depth == 0:
+            return start + m.end()
+    raise ValueError("unclosed div")
+
+def _svc_mobile(s):
+    st = s.index('<div class="svc__stage" aria-hidden="true">')
+    stage = s[st:_div_block(s, st)]
+    vis = []
+    for m in re.finditer(r'<div class="vis[ "]', stage):
+        vis.append(stage[m.start():_div_block(stage, m.start())])
+    def clone(i):
+        v = vis[i]
+        if "is-on" not in v.split(">", 1)[0]:
+            v = v.replace('class="vis ', 'class="vis is-on ', 1)
+        v = re.sub(r'id="([^"]+)"', lambda m: f'id="{m.group(1)}-m{i}"', v)
+        v = re.sub(r'url\(#([^)]+)\)', lambda m: f'url(#{m.group(1)}-m{i})', v)
+        v = re.sub(r'href="#([^"]+)"', lambda m: f'href="#{m.group(1)}-m{i}"', v)
+        return f'<div class="svc__stage svc__stage--m" aria-hidden="true">{v}</div>'
+    n = [0]
+    def put(m):
+        i = n[0]; n[0] += 1
+        return m.group(0) + (clone(i) if i < len(vis) else "")
+    return re.sub(r'<div class="svc__body"><div>', put, s)
 
 def process(path):
     rel = os.path.relpath(path, W).replace(os.sep, "/")
@@ -153,6 +182,10 @@ def process(path):
     if 'id="mnav"' not in s and 'class="nav__burger"' in s:
         act = "work" if rel.startswith("work/") else ""
         s = s.replace("  </header>\n", "  </header>\n" + _mnav(pre, act), 1)
+
+    # services list on phones: each row carries its own copy of its preview, so opening a row never moves the rows above it
+    if 'class="svc__list"' in s and "svc__stage--m" not in s:
+        s = _svc_mobile(s)
 
     # liquid-glass layer on every page (css + ambient background + pointer highlight)
     if "css/glass.css" not in s:
