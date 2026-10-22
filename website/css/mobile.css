@@ -34,3 +34,15 @@
 
 /* globe: no grey tap flash or text selection when touched */
 .sx-globe, .sx-globe canvas { -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+
+/* footer: "Popular" row with links to the niche service pages */
+.foot__pop { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-top: clamp(40px, 5vw, 64px); padding-top: 22px; border-top: 1px solid var(--line); font-size: 13.5px; }
+.foot__pop span { font-size: 11.5px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.foot__pop a { color: #B4B3B0; transition: color .3s; }
+.foot__pop a:hover { color: var(--text); }
+.foot__pop + .foot__bottom { margin-top: 22px; }
+@media (max-width: 760px) {
+  .foot__pop { gap: 10px 16px; margin-top: 36px; }
+  .foot__pop span { flex-basis: 100%; }
+  .foot__pop + .foot__bottom { margin-top: 18px; }
+}

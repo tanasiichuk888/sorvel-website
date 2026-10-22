@@ -21,12 +21,15 @@ START, END = "<!-- seo -->", "<!-- /seo -->"
 GLASS_V = 5  # bump after editing css/glass.css or js/glass.js
 CASE_V = 16  # bump after editing css/case.css
 PAGES_V = 30
-MOBILE_V = 4  # bump after editing css/mobile.css  # bump after editing css/pages.css
+MOBILE_V = 5  # bump after editing css/mobile.css
 BRAND_V = 2  # bump after replacing logo / favicon files
 # other assets that change: bump the number after editing the file
 ASSET_V = {"css/style.css": 6, "js/main.js": 21, "css/xp.css": 6, "js/scenes.js": 20, "js/xp.js": 5, "js/dots.js": 2, "css/hero.css": 2, "js/case.js": 13, "js/fx.js": 17, "js/svc.js": 17}
 
 # Search titles (aim for under ~60 characters). Case studies are generated from the page.
+POPULAR = [("saas-website-design", "SaaS website design"), ("fintech-website-design", "Fintech website design"),
+           ("webflow-agency", "Webflow agency"), ("wordpress-to-webflow-migration", "WordPress to Webflow migration")]
+
 TITLES = {
     "about.html": "About Sorvel | Senior design and development studio",
     "contact.html": "Start a project | Fixed quote in 24 hours | Sorvel",
@@ -187,6 +190,11 @@ def process(path):
     # services list on phones: each row carries its own copy of its preview, so opening a row never moves the rows above it
     if 'class="svc__list"' in s and "svc__stage--m" not in s:
         s = _svc_mobile(s)
+
+    # footer "Popular" row: links to the niche service pages on every page (helps them get found and indexed)
+    if 'class="foot__pop"' not in s and '<div class="foot__bottom">' in s:
+        pop = "".join(f'<a href="{pre}services/{a}.html">{b}</a>' for a, b in POPULAR)
+        s = s.replace('<div class="foot__bottom">', f'<nav class="foot__pop" aria-label="Popular"><span>Popular</span>{pop}</nav>\n      <div class="foot__bottom">', 1)
 
     # liquid-glass layer on every page (css + ambient background + pointer highlight)
     if "css/glass.css" not in s:
