@@ -20,7 +20,8 @@ NOINDEX = {"404.html"}
 START, END = "<!-- seo -->", "<!-- /seo -->"
 GLASS_V = 5  # bump after editing css/glass.css or js/glass.js
 CASE_V = 16  # bump after editing css/case.css
-PAGES_V = 29  # bump after editing css/pages.css
+PAGES_V = 29
+MOBILE_V = 2  # bump after editing css/mobile.css  # bump after editing css/pages.css
 BRAND_V = 2  # bump after replacing logo / favicon files
 # other assets that change: bump the number after editing the file
 ASSET_V = {"css/style.css": 6, "js/main.js": 20, "css/xp.css": 6, "js/scenes.js": 19, "js/xp.js": 5, "js/dots.js": 2, "css/hero.css": 2, "js/case.js": 13, "js/fx.js": 17, "js/svc.js": 17}
@@ -193,6 +194,10 @@ def process(path):
         k = links[-1].end()
         s = s[:k] + f'  <link rel="stylesheet" href="{pre}css/glass.css?v={GLASS_V}" />\n' + s[k:]
     s = re.sub(r'css/glass\.css\?v=\d+', f'css/glass.css?v={GLASS_V}', s)
+    # phone typography pass, always the last stylesheet
+    s = re.sub(r'[ \t]*<link rel="stylesheet" href="[^"]*css/mobile\.css[^"]*" />\n', '', s)
+    k = s.index("</head>")
+    s = s[:k] + f'  <link rel="stylesheet" href="{pre}css/mobile.css?v={MOBILE_V}" />\n' + s[k:]
     if 'class="amb"' not in s:
         s = re.sub(r"(<body[^>]*>)", r'\1\n  <div class="amb" aria-hidden="true"><i></i><i></i><i></i></div>', s, count=1)
     if "js/glass.js" not in s:

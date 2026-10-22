@@ -1,0 +1,30 @@
+/* =====================================================================
+   Phone typography and layout pass (loaded last on every page).
+   One scale for headings, comfortable line heights, full-width buttons.
+   ===================================================================== */
+@media (max-width: 760px) {
+  /* page headings */
+  .hero__title, .cs-title, .cs .cs-title, .pg-hero .cs-title {
+    font-size: clamp(38px, 11vw, 46px) !important; line-height: 1.04 !important; letter-spacing: -.038em !important; max-width: none !important; text-wrap: balance; }
+  .pg-hero { padding-top: 108px; padding-bottom: 56px; }
+  .cs-crumbs { margin-bottom: 22px; font-size: 13px; gap: 8px; flex-wrap: wrap; }
+  .eyebrow { font-size: 12px; letter-spacing: .14em; }
+
+  /* section headings */
+  .h2, .cs .h2, .cs .sec__head--row .h2, .cs .cs-split .h2, .cta__title, .letter__title, .sprice__title, .nf__title {
+    font-size: clamp(30px, 8.6vw, 36px) !important; line-height: 1.1 !important; letter-spacing: -.03em !important; text-wrap: balance; }
+  main h3 { line-height: 1.18 !important; text-wrap: balance; }
+  main h3[class=""], main h3:not([class]) { letter-spacing: -.02em; }
+  .case__name { line-height: 1.12; }
+
+  /* body copy */
+  .cs-lead, .cs-hero .cs-lead, .hero__lead, .sec__lead { font-size: 17px !important; line-height: 1.6 !important; max-width: none; }
+  main p { text-wrap: pretty; }
+
+  /* buttons: one per row, full width */
+  .hero__actions, .pg-hero__actions, .pg-cta__btns, .sprice__btns, .sec__more, .nf__links, .cta__actions {
+    display: flex !important; flex-direction: column; align-items: stretch; width: 100%; max-width: none; justify-self: stretch !important; gap: 12px; }
+  .hero__actions > .btn, .pg-hero__actions > .btn, .pg-cta__btns > .btn, .sprice__btns > .btn, .sec__more > .btn, .nf__links > .btn, .cta__actions > .btn {
+    width: 100%; flex: none; justify-content: center; }
+  .pg-hero__grid { gap: 32px; }
+}
