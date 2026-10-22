@@ -181,9 +181,10 @@ async function rum(env, [a, b], full) {
   const n = (x) => (x && x[0] ? x[0] : null);
   const tot = n(d.total);
   const visits = tot ? tot.sum.visits : 0, views = tot ? tot.count : 0;
-  const countries = (d.countries || []).map((x) => ({ k: x.dimensions.countryName || "Unknown", v: x.sum.visits }));
+  // Web Analytics returns ISO country codes ("US"); show full names
+  const countries = (d.countries || []).map((x) => ({ k: countryName(x.dimensions.countryName), v: x.sum.visits }));
   const target = countries.filter((c) => TARGET.has(c.k)).reduce((s, c) => s + c.v, 0);
-  const vit = {}; (d.vitals || []).forEach((x) => { vit[(x.dimensions.deviceType || "other").toLowerCase()] = { p75: Math.round(x.quantiles.largestContentfulPaintP75 || 0), n: x.count }; });
+  const vit = {}; (d.vitals || []).forEach((x) => { vit[(x.dimensions.deviceType || "other").toLowerCase()] = { p75: lcpMs(x.quantiles.largestContentfulPaintP75), n: x.count }; });
   const out = { visits, views, countries, target, targetShare: visits ? target / visits : 0, lcp: vit };
   if (full) {
     out.byDay = (d.byDay || []).map((x) => ({ d: x.dimensions.date, visits: x.sum.visits, views: x.count }));
@@ -193,6 +194,17 @@ async function rum(env, [a, b], full) {
   }
   return out;
 }
+
+let regionNames = null;
+function countryName(v) {
+  if (!v) return "Unknown";
+  if (/^[A-Z]{2}$/.test(v)) {
+    try { regionNames = regionNames || new Intl.DisplayNames(["en"], { type: "region" }); return regionNames.of(v) || v; } catch { return v; }
+  }
+  return v;
+}
+/* LCP comes back in microseconds; keep milliseconds */
+const lcpMs = (v) => Math.round((Number(v) || 0) / 1000);
 
 /* Lead events from the LeadStore Durable Object */
 async function leadReport(env, [a, b], withGroups) {
