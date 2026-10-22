@@ -178,8 +178,8 @@
      FORM_ENDPOINT: paste a form service URL here to receive briefs straight to your inbox
      (e.g. Web3Forms "https://api.web3forms.com/submit" + FORM_KEY, or a Formspree URL).
      While it's empty, submitting opens the visitor's email app with the brief already written. */
-  const FORM_ENDPOINT = "";
-  const FORM_KEY = "";
+  const FORM_ENDPOINT = "https://api.web3forms.com/submit";
+  const FORM_KEY = "7235f83a-d867-455b-9959-4e51983e0b64";
   const TO_EMAIL = "hello@sorvel.agency";
   const form = document.getElementById("brief");
   if (form) {

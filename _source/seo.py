@@ -21,7 +21,7 @@ CASE_V = 16  # bump after editing css/case.css
 PAGES_V = 26  # bump after editing css/pages.css
 BRAND_V = 2  # bump after replacing logo / favicon files
 # other assets that change: bump the number after editing the file
-ASSET_V = {"css/style.css": 5, "js/main.js": 17, "css/xp.css": 6, "js/scenes.js": 18, "js/xp.js": 5, "js/dots.js": 2, "css/hero.css": 2, "js/case.js": 13}
+ASSET_V = {"css/style.css": 5, "js/main.js": 18, "css/xp.css": 6, "js/scenes.js": 18, "js/xp.js": 5, "js/dots.js": 2, "css/hero.css": 2, "js/case.js": 13}
 
 # Search titles (aim for under ~60 characters). Case studies are generated from the page.
 TITLES = {
