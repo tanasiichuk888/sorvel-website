@@ -1,0 +1,97 @@
+/* =====================================================================
+   Liquid glass (iOS-style) — translucent surfaces, light-catching edges,
+   a specular highlight that follows the pointer. Home page first.
+   ===================================================================== */
+:root {
+  --lg-fill: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.018) 60%, rgba(255,255,255,.03));
+  --lg-blur: blur(24px) saturate(165%);
+  --lg-shadow: inset 0 1px 1px rgba(255,255,255,.07), inset 0 -10px 30px -18px rgba(169,190,255,.12), 0 30px 70px -36px rgba(0,0,0,.95);
+}
+
+/* ambient colour behind the glass, so the blur has something to bend */
+body { background: transparent; }
+.amb { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.amb i { position: absolute; border-radius: 50%; opacity: .5; will-change: transform; }
+.amb i:nth-child(1) { width: 46vw; height: 46vw; left: -12vw; top: 18vh; background: radial-gradient(circle, rgba(59,107,255,.45), rgba(59,107,255,.12) 40%, transparent 70%); animation: ambA 26s ease-in-out infinite alternate; }
+.amb i:nth-child(2) { width: 40vw; height: 40vw; right: -10vw; top: -8vh; background: radial-gradient(circle, rgba(118,92,255,.35), rgba(118,92,255,.1) 40%, transparent 70%); animation: ambB 32s ease-in-out infinite alternate; }
+.amb i:nth-child(3) { width: 34vw; height: 34vw; right: 8vw; bottom: -14vh; background: radial-gradient(circle, rgba(56,190,255,.22), rgba(56,190,255,.06) 40%, transparent 70%); animation: ambC 28s ease-in-out infinite alternate; }
+@keyframes ambA { to { transform: translate(18vw, 22vh) scale(1.15); } }
+@keyframes ambB { to { transform: translate(-16vw, 30vh) scale(.9); } }
+@keyframes ambC { to { transform: translate(-24vw, -18vh) scale(1.2); } }
+
+/* ---------- glass surfaces ---------- */
+:is(.rcard, .ask, .crew__tile, .crew__lead, .letter, .brief, .case, .svc__stage,
+     .pcard, .pnote, .cbox, .rbig, .legal__meta, .px__box, .px__panel, .px__promo, .sprice, .sx, .fl-card,
+     .cs-cover, .cs-stage, .ccp, .cip, .wvs, .plat > div, .trust > div, .step li) { border-color: transparent !important; box-shadow: var(--lg-shadow); }
+:is(.pcard, .pnote, .cbox, .rbig, .legal__meta, .px__box, .px__panel) { position: relative; }
+:is(.pnote, .cbox, .legal__meta) { border-style: solid !important; }
+:is(.rcard, .ask, .crew__tile, .pnote, .cbox, .legal__meta, .px__box, .fl-card, .plat > div, .trust > div, .step li) { position: relative; background: var(--lg-fill); -webkit-backdrop-filter: var(--lg-blur); backdrop-filter: var(--lg-blur); }
+.rcard:hover { background: linear-gradient(180deg, rgba(255,255,255,.085), rgba(255,255,255,.03)); }
+.crew__lead { background: radial-gradient(120% 70% at 0% 0%, rgba(59,107,255,.26), transparent 60%), var(--lg-fill); -webkit-backdrop-filter: var(--lg-blur); backdrop-filter: var(--lg-blur); }
+.crew__tile:hover { box-shadow: var(--lg-shadow), 0 30px 60px -30px rgba(59,107,255,.5); }
+.crew__vis { background: radial-gradient(80% 90% at 50% 100%, rgba(59,107,255,.18), transparent 70%), linear-gradient(rgba(169,190,255,.05) 1px, transparent 1px) 0 0 / 100% 18px, rgba(8,9,13,.35); border-bottom-color: rgba(255,255,255,.06); }
+.letter { background: radial-gradient(60% 80% at 100% 0%, rgba(59,107,255,.22), transparent 60%), radial-gradient(40% 60% at 0% 100%, rgba(59,107,255,.1), transparent 70%), var(--lg-fill);
+  -webkit-backdrop-filter: var(--lg-blur); backdrop-filter: var(--lg-blur); }
+.brief { background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02)), rgba(14,15,20,.55); }
+.px__panel { background: radial-gradient(90% 40% at 100% 0%, rgba(59,107,255,.16), transparent 70%), var(--lg-fill); -webkit-backdrop-filter: var(--lg-blur); backdrop-filter: var(--lg-blur); }
+.pcard { background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.015)), rgba(13,14,18,.6); -webkit-backdrop-filter: var(--lg-blur); backdrop-filter: var(--lg-blur); }
+.pcard:hover { box-shadow: var(--lg-shadow), 0 40px 80px -40px color-mix(in srgb, var(--tint) 70%, transparent); }
+.cbox:hover { background: linear-gradient(180deg, rgba(255,255,255,.085), rgba(255,255,255,.03)); }
+/* stacked case cards stay nearly opaque so the card underneath doesn't show through */
+.case { background: radial-gradient(70% 60% at 0% 0%, rgba(255,255,255,.05), transparent 60%), linear-gradient(160deg, #191A21, #0E0F13 70%);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.07), 0 -14px 24px -20px rgba(0,0,0,.9) !important; }
+.svc__stage { box-shadow: var(--lg-shadow); }
+
+/* light-catching edge + pointer highlight (only on the 1px rim) */
+:is(.rcard, .ask, .crew__tile, .crew__lead, .letter, .brief, .case, .svc__stage,
+     .pcard, .pnote, .cbox, .rbig, .legal__meta, .px__box, .px__panel, .sx, .fl-card, .ccp, .cip, .wvs, .plat > div, .trust > div, .step li)::after,
+:is(.sprice, .cs-cover, .cs-stage)::before {
+  content: ""; position: absolute; inset: 0; z-index: 5; border-radius: inherit; padding: 1px; pointer-events: none;
+  background:
+    radial-gradient(220px circle at var(--gx, 50%) var(--gy, -60%), rgba(255,255,255,.75), rgba(169,190,255,.25) 35%, transparent 70%),
+    linear-gradient(150deg, rgba(255,255,255,.38), rgba(255,255,255,.1) 18%, rgba(255,255,255,.03) 45%, rgba(169,190,255,.08) 75%, rgba(255,255,255,.24));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+.crew__lead::after { background:
+    radial-gradient(220px circle at var(--gx, 50%) var(--gy, -60%), rgba(255,255,255,.8), rgba(169,190,255,.3) 35%, transparent 70%),
+    linear-gradient(150deg, rgba(169,190,255,.7), rgba(59,107,255,.35) 25%, rgba(255,255,255,.04) 55%, rgba(255,255,255,.22)); }
+
+/* soft interior sheen that follows the pointer */
+:is(.rcard, .ask, .crew__tile, .brief, .cbox, .pnote, .px__box, .plat > div, .trust > div) { background-image: radial-gradient(420px circle at var(--gx, 50%) var(--gy, -80%), rgba(169,190,255,.07), transparent 60%), var(--lg-fill); }
+
+/* the About globe floats free: no frame */
+.sx.sx-globe { box-shadow: none !important; }
+.sx.sx-globe::after { display: none; }
+
+/* .px__promo already uses both pseudo-elements: rim via inset shadow */
+.px__promo { box-shadow: inset 0 0 0 1px rgba(255,255,255,.1), inset 0 1px 0 rgba(255,255,255,.22), var(--lg-shadow); }
+.cs-cover { box-shadow: inset 0 1px 0 rgba(255,255,255,.08); }
+
+/* ---------- glass pills & buttons ---------- */
+.btn--ghost { background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03)); border-color: transparent;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.13), inset 0 1px 0 rgba(255,255,255,.28), 0 10px 30px -14px rgba(0,0,0,.8);
+  -webkit-backdrop-filter: blur(16px) saturate(160%); backdrop-filter: blur(16px) saturate(160%); }
+.btn--primary { box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -1px 0 rgba(0,0,0,.2), 0 0 0 1px rgba(160,185,255,.25) inset, 0 12px 30px -14px rgba(59,107,255,.9); }
+:is(.crew__tools span, .rcard__src, .svc__tags li, .crew__badge, .cv-badge, .sv-chip) { background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.025)) !important; border-color: transparent !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.1), inset 0 1px 0 rgba(255,255,255,.2); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+:where(.pcard__go, .cs-more__go, .px__more, .ptabs, .ib-clock):not(:hover) { background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); border-color: transparent;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.1), inset 0 1px 0 rgba(255,255,255,.2); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.xp__chip:not(.xp__chip--b) { background: linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.03)), rgba(14,15,19,.45); border-color: transparent;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.12), inset 0 1px 0 rgba(255,255,255,.25), 0 20px 40px -18px rgba(0,0,0,.9); -webkit-backdrop-filter: blur(18px) saturate(170%); backdrop-filter: blur(18px) saturate(170%); }
+
+@media (prefers-reduced-motion: reduce) { .amb i { animation: none; } }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :is(.rcard, .ask, .crew__tile, .crew__lead, .letter, .pcard, .cbox, .px__box, .px__panel, .pnote) { background-color: #13141A; }
+}
+
+/* phones: keep it light — no live blur or drifting orbs */
+@media (max-width: 760px), (hover: none) {
+  * { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+  .amb i { animation: none; }
+  :is(.rcard, .ask, .crew__tile, .pnote, .cbox, .legal__meta, .px__box, .fl-card, .plat > div, .trust > div, .step li, .crew__lead, .letter, .px__panel, .pcard) { background-color: rgba(16,17,22,.72); }
+  .nav { background: rgba(11,12,15,.92); }
+}
+
+/* deferred decorative images fade in */
+.sx-wall img { transition: opacity .7s; }
+.sx-wall img[data-src] { opacity: 0; }

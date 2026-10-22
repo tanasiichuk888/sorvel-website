@@ -1,0 +1,103 @@
+          <div class="svc__stage" aria-hidden="true">
+            <!-- 0 websites: one layout reflowing desktop → tablet → mobile, then publish -->
+            <div class="vis vis--web is-on" data-loop="9000">
+              <div class="sw-bps"><span class="b1">Desktop · 1440</span><span class="b2">Tablet · 768</span><span class="b3">Mobile · 390</span></div>
+              <div class="sw-dev">
+                <div class="sw-bar"><i></i><i></i><i></i><span>yourcompany.com</span></div>
+                <div class="sw-page">
+                  <div class="sw-nav"><b></b><span><i></i><i></i><i></i></span><u></u><em><i></i><i></i></em></div>
+                  <div class="sw-hero"><div class="sw-copy"><s></s><s></s><p></p><p></p><u></u></div><div class="sw-img"></div></div>
+                  <div class="sw-cards"><div><i></i><p></p></div><div><i></i><p></p></div><div><i></i><p></p></div></div>
+                </div>
+              </div>
+              <div class="sv-chip sw-pub"><b class="dot"></b>Published to Webflow</div>
+              <div class="sv-chip sw-cms"><span class="sv-plus">+</span>CMS · New case study</div>
+            </div>
+
+            <!-- 1 product: live dashboard, counters, chart, then the theme flips -->
+            <div class="vis vis--app" data-loop="10000">
+              <div class="sp-dash">
+                <aside><b></b><i class="on"></i><i></i><i></i><i></i><i></i></aside>
+                <div class="sp-main">
+                  <div class="sp-top"><b>Overview</b><span class="sp-toggle"><i></i></span></div>
+                  <div class="sp-kpis">
+                    <div><small>Revenue</small><b>$<span data-to="48.2" data-dec="1">0</span>k</b><em>+12%</em></div>
+                    <div><small>Active users</small><b data-to="2341">0</b><em>+8%</em></div>
+                    <div><small>Retention</small><b><span data-to="94.6" data-dec="1">0</span>%</b><em>+3%</em></div>
+                  </div>
+                  <div class="sp-chart">
+                    <svg viewBox="0 0 300 110" preserveAspectRatio="none">
+                      <path class="ar" d="M0 92 C30 86 45 60 75 64 S120 88 150 66 195 22 225 30 270 12 300 8 V110 H0Z"/>
+                      <path class="ln" id="sp-line" d="M0 92 C30 86 45 60 75 64 S120 88 150 66 195 22 225 30 270 12 300 8"/>
+                    </svg>
+                    <span class="sp-tip">$48.2k</span>
+                    <div class="sp-bars"><i style="--h:40%"></i><i style="--h:62%"></i><i style="--h:48%"></i><i style="--h:80%"></i><i style="--h:66%"></i><i style="--h:92%"></i><i style="--h:74%"></i></div>
+                  </div>
+                  <div class="sp-rows"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+              <div class="sv-cur sp-cur"><svg viewBox="0 0 20 20"><path d="M3 2l13 6.5-5.6 1.6L8 16 3 2z"/></svg><span>Mykola</span></div>
+              <div class="sv-chip sp-chip"><span class="sv-sq"></span>Design tokens synced · light + dark</div>
+            </div>
+
+            <!-- 2 brand: logo built on a grid, then applied -->
+            <div class="vis vis--brand" data-loop="9500">
+              <div class="sb">
+                <div class="sb-art">
+                  <svg viewBox="0 0 120 120">
+                    <g class="sb-grid"><circle cx="60" cy="60" r="44"/><circle cx="60" cy="60" r="22"/><path d="M16 60H104M60 16V104M29 29 91 91M91 29 29 91"/></g>
+                    <path class="sb-m1" d="M28 92 60 26 92 92"/>
+                    <path class="sb-m2" d="M44 70H76"/>
+                    <circle class="sb-dot" cx="60" cy="26" r="7"/>
+                  </svg>
+                  <span class="sb-k k1">Construction grid</span>
+                  <span class="sb-k k2">Stroke 10 · Radius 22</span>
+                </div>
+                <div class="sb-word"><span>O</span><span>r</span><span>b</span><span>i</span><span>t</span><span>r</span><span>a</span></div>
+                <div class="sb-sw"><i style="--c:#3B6BFF"><em>#3B6BFF</em></i><i style="--c:#F2EFEA"><em>#F2EFEA</em></i><i style="--c:#16181F"><em>#16181F</em></i><i style="--c:#A9BEFF"><em>#A9BEFF</em></i></div>
+                <div class="sb-apps">
+                  <div class="sb-icon"><svg viewBox="0 0 120 120"><path d="M28 92 60 26 92 92M44 70H76" fill="none" stroke="#fff" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+                  <div class="sb-card"><svg viewBox="0 0 120 120"><path d="M28 92 60 26 92 92M44 70H76" fill="none" stroke="#3B6BFF" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/></svg><b></b><i></i><i></i></div>
+                  <div class="sb-post"><b>Launching<br>soon.</b><i></i></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 landing pages & CRO: live A/B test -->
+            <div class="vis vis--cro" data-loop="9000">
+              <div class="sc">
+                <div class="sc-src"><b class="dot"></b>Live traffic · <span data-to="2480">0</span> visitors</div>
+                <div class="sc-flow"><i style="--x:-1;--t:0s"></i><i style="--x:1;--t:.3s"></i><i style="--x:-1;--t:.6s"></i><i style="--x:1;--t:.9s"></i><i style="--x:1;--t:1.2s"></i><i style="--x:-1;--t:1.5s"></i><i style="--x:1;--t:1.8s"></i><i style="--x:-1;--t:2.1s"></i><i style="--x:1;--t:2.4s"></i><i style="--x:-1;--t:2.7s"></i><i style="--x:1;--t:3s"></i><i style="--x:-1;--t:3.3s"></i></div>
+                <div class="sc-grid">
+                  <div class="sc-card sc-a"><span class="sc-tag">Variant A</span>
+                    <div class="sc-pg"><b></b><i></i><i></i><u></u></div>
+                    <div class="sc-num"><b><span data-to="2.1" data-dec="1">0</span>%</b><small>conversion</small></div>
+                    <div class="sc-bar"><i style="--w:34%"></i></div></div>
+                  <div class="sc-card sc-b"><span class="sc-tag">Variant B</span>
+                    <div class="sc-pg"><b></b><i></i><u></u><s></s></div>
+                    <div class="sc-num"><b><span data-to="4.8" data-dec="1">0</span>%</b><small>conversion</small></div>
+                    <div class="sc-bar"><i style="--w:78%"></i></div>
+                    <span class="sc-win">Winner</span></div>
+                </div>
+                <div class="sv-chip sc-up"><span class="sc-arrow">↑</span>+128% more sign-ups</div>
+              </div>
+            </div>
+
+            <!-- 4 migration: pages travel to the new platform, nothing lost -->
+            <div class="vis vis--mig" data-loop="9000">
+              <div class="sm">
+                <div class="sm-row">
+                  <div class="sm-node">WordPress<small>old site</small></div>
+                  <div class="sm-lane"><span style="--t:0s">/</span><span style="--t:.45s">/about</span><span style="--t:.9s">/pricing</span><span style="--t:1.35s">/blog/…</span><span style="--t:1.8s">/cases</span><span style="--t:2.25s">/contact</span></div>
+                  <div class="sm-node sm-node--to">Webflow<small>new site</small></div>
+                </div>
+                <div class="sm-stats">
+                  <div><b data-to="148">0</b><small>pages moved</small></div>
+                  <div><b data-to="312">0</b><small>301 redirects</small></div>
+                  <div><b>0</b><small>broken links</small></div>
+                </div>
+                <div class="sm-prog"><i></i></div>
+                <ul class="sm-list"><li>Pages and CMS moved</li><li>Every old URL redirected</li><li>Meta and schema kept</li><li>Rankings held after launch</li></ul>
+              </div>
+            </div>
+          </div>
