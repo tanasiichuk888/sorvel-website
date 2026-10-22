@@ -21,10 +21,10 @@ START, END = "<!-- seo -->", "<!-- /seo -->"
 GLASS_V = 5  # bump after editing css/glass.css or js/glass.js
 CASE_V = 16  # bump after editing css/case.css
 PAGES_V = 29
-MOBILE_V = 3  # bump after editing css/mobile.css  # bump after editing css/pages.css
+MOBILE_V = 4  # bump after editing css/mobile.css  # bump after editing css/pages.css
 BRAND_V = 2  # bump after replacing logo / favicon files
 # other assets that change: bump the number after editing the file
-ASSET_V = {"css/style.css": 6, "js/main.js": 20, "css/xp.css": 6, "js/scenes.js": 19, "js/xp.js": 5, "js/dots.js": 2, "css/hero.css": 2, "js/case.js": 13, "js/fx.js": 17, "js/svc.js": 17}
+ASSET_V = {"css/style.css": 6, "js/main.js": 20, "css/xp.css": 6, "js/scenes.js": 20, "js/xp.js": 5, "js/dots.js": 2, "css/hero.css": 2, "js/case.js": 13, "js/fx.js": 17, "js/svc.js": 17}
 
 # Search titles (aim for under ~60 characters). Case studies are generated from the page.
 TITLES = {

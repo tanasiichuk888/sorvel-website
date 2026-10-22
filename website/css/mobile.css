@@ -31,3 +31,6 @@
 
 /* the scrolling work wall must not stretch the page past the footer */
 .sx-wall { overflow: hidden; overflow: clip; }
+
+/* globe: no grey tap flash or text selection when touched */
+.sx-globe, .sx-globe canvas { -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }

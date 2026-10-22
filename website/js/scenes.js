@@ -77,8 +77,8 @@
       const cv = root.querySelector("canvas"), ctx = cv.getContext("2d"), G = window.GEO;
       if (!G) return;
       const LITE = matchMedia("(hover: none), (max-width: 760px)").matches;
-      const DPR = Math.min(LITE ? 1.25 : 2, devicePixelRatio || 1), D2R = Math.PI / 180;
-      let lastDraw = 0;
+      const DPR = Math.min(2, devicePixelRatio || 1), D2R = Math.PI / 180;
+      let lastDraw = 0, started = false;
       const v3 = (lat, lon) => { const a = lat * D2R, b = lon * D2R; return [Math.cos(a) * Math.sin(b), Math.sin(a), Math.cos(a) * Math.cos(b)]; };
       const land = []; for (let i = 0; i < G.p.length; i += LITE ? 6 : 3) land.push([v3(G.p[i] / 10, G.p[i + 1] / 10), G.p[i + 2]]);
       const CO = G.c.map(([n, la, lo, rings, area]) => ({ n, v: v3(la, lo), rings: rings.map((r) => r.map(([a, b]) => v3(a, b))), area, home: n === "Spain" }));
@@ -90,7 +90,9 @@
       let fires = 0, pi = 0;
       let rot = 0.2, tilt = 0.42, ph = -.42, base = .35, userTilt = 0, vel = 0.0022, drag = null, hover = 0, live = [], nextFire = 0, last = performance.now();
       const autoTilt = () => { const a = Math.atan2(Math.sin(rot), Math.cos(rot)), k = Math.max(0, Math.min(1, 1 - Math.abs(a - 2.3) / 1.1)); return .42 - .5 * k * k * (3 - 2 * k); };
-      const resize = () => { const r = cv.getBoundingClientRect(); cv.width = r.width * DPR; cv.height = r.height * DPR; };
+      const resize = () => { const r = cv.getBoundingClientRect(), w = Math.round(r.width * DPR), h = Math.round(r.height * DPR);
+        if (!w || (w === cv.width && h === cv.height)) return;   // phones fire resize while scrolling; resetting the canvas would blank it
+        cv.width = w; cv.height = h; if (started && !raf) start(); };
       resize(); addEventListener("resize", resize);
       cv.style.cursor = "grab"; cv.style.touchAction = "pan-y";
       cv.addEventListener("pointerdown", (e) => { drag = { x: e.clientX, y: e.clientY, r: rot, t: tilt }; cv.setPointerCapture(e.pointerId); cv.style.cursor = "grabbing"; });
@@ -184,7 +186,7 @@
       let onScreen = true;
       const start = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); };
       new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; if (onScreen && started) { last = performance.now(); start(); } }, { rootMargin: "80px 0px" }).observe(root);
-      let started = false; const begin = () => { started = true; start(); };
+      const begin = () => { started = true; start(); };
       if (LITE && document.readyState !== "complete") addEventListener("load", () => setTimeout(begin, 400), { once: true });
       else begin();
     }
