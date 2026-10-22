@@ -117,15 +117,64 @@
 
   /* ---------- services: list drives the preview ---------- */
   const items = [...document.querySelectorAll(".svc__item")], vis = [...document.querySelectorAll(".svc__stage .vis")];
-  const setSvc = (n) => {
-    items.forEach((it, i) => { it.classList.toggle("is-active", i === n); it.querySelector(".svc__btn").setAttribute("aria-selected", String(i === n)); });
+  const svcStage = document.querySelector(".svc .svc__stage"), stageHome = svcStage && svcStage.parentNode, stageNext = svcStage && svcStage.nextSibling;
+  const narrowMQ = matchMedia("(max-width: 1000px)");
+  /* keep the tapped row still while the rows above it fold and unfold */
+  const holdStill = (el, ms = 720) => {
+    const y0 = el.getBoundingClientRect().top, t0 = performance.now();
+    const f = (t) => { const d = el.getBoundingClientRect().top - y0; if (Math.abs(d) > .5) scrollBy({ top: d, behavior: "instant" }); if (t - t0 < ms) requestAnimationFrame(f); };
+    requestAnimationFrame(f);
+  };
+  /* phones: the preview lives inside the open row, so you see what you tapped */
+  const placeStage = (n) => {
+    if (!svcStage) return;
+    if (narrowMQ.matches && n >= 0) items[n].querySelector(".svc__body > div").prepend(svcStage);
+    else if (!narrowMQ.matches && svcStage.parentNode !== stageHome) stageHome.insertBefore(svcStage, stageNext);
+  };
+  let curSvc = items.findIndex((it) => it.classList.contains("is-active"));
+  const setSvc = (n, btn) => {
+    if (btn && narrowMQ.matches) holdStill(btn);
+    curSvc = n;
+    items.forEach((it, i) => { it.classList.toggle("is-active", i === n); it.querySelector(".svc__btn").setAttribute("aria-expanded", String(i === n)); });
     vis.forEach((v, i) => v.classList.toggle("is-on", i === n));
+    if (n >= 0) placeStage(n);
     setTimeout(measure, 50);
   };
   items.forEach((it, i) => {
-    it.querySelector(".svc__btn").addEventListener("click", () => setSvc(i));
+    const b = it.querySelector(".svc__btn");
+    b.addEventListener("click", () => setSvc(narrowMQ.matches && curSvc === i ? -1 : i, b));
     if (matchMedia("(hover: hover) and (min-width: 1001px)").matches) it.addEventListener("pointerenter", () => setSvc(i));
   });
+  if (svcStage) { placeStage(Math.max(0, curSvc)); narrowMQ.addEventListener("change", () => placeStage(Math.max(0, curSvc))); }
+
+  /* ---------- FAQ: smooth open and close ---------- */
+  document.querySelectorAll(".acc__item").forEach((d) => {
+    const sum = d.querySelector("summary"), body = d.querySelector(".acc__a");
+    if (!sum || !body || REDUCED) return;
+    let anim = null;
+    sum.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (anim) anim.cancel();
+      if (!d.open) {
+        d.open = true;
+        const h = body.scrollHeight;
+        anim = body.animate([{ height: "0px", opacity: 0 }, { height: h + "px", opacity: 1 }], { duration: 480, easing: "cubic-bezier(.16,1,.3,1)" });
+        anim.onfinish = () => { anim = null; };
+      } else {
+        d.classList.add("is-closing");
+        const h = body.offsetHeight;
+        anim = body.animate([{ height: h + "px", opacity: 1 }, { height: "0px", opacity: 0 }], { duration: 340, easing: "cubic-bezier(.4,0,.2,1)" });
+        anim.onfinish = () => { d.open = false; d.classList.remove("is-closing"); anim = null; };
+        anim.oncancel = () => d.classList.remove("is-closing");
+      }
+    });
+  });
+
+  /* ---------- pause looping animations while their section is off screen ---------- */
+  if ("IntersectionObserver" in window) {
+    const offIO = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle("is-off", !e.isIntersecting)), { rootMargin: "120px 0px" });
+    document.querySelectorAll("main > section, main > div, .foot").forEach((el) => offIO.observe(el));
+  }
 
   /* ---------- reviews marquee ----------
      Real client reviews, quoted word for word. Sentences naming a person or a platform are cut and marked with "…".
@@ -163,8 +212,12 @@
   }
 
   /* ---------- reveal on scroll ---------- */
-  const rio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); rio.unobserve(e.target); } }), { threshold: .15, rootMargin: "0px 0px -8% 0px" });
+  const rio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); rio.unobserve(e.target); } }), { threshold: 0, rootMargin: "0px 0px -10% 0px" });
   document.querySelectorAll("[data-reveal]").forEach((el) => rio.observe(el));
+  /* safety net for fast flicks: anything already scrolled past is shown */
+  let revT = 0;
+  const sweep = () => { revT = 0; document.querySelectorAll("[data-reveal]:not(.in)").forEach((el) => { if (el.getBoundingClientRect().top < innerHeight * .9) { el.classList.add("in"); rio.unobserve(el); } }); };
+  addEventListener("scroll", () => { if (!revT) revT = setTimeout(sweep, 200); }, { passive: true });
 
   /* ---------- footer clock (studio time) ---------- */
   const clock = document.querySelector(".clock");
@@ -285,6 +338,26 @@
   }
 
   /* ---------- mobile menu ---------- */
-  const nav = document.querySelector(".nav"), burger = document.querySelector(".nav__burger");
-  burger && burger.addEventListener("click", () => burger.setAttribute("aria-expanded", String(nav.classList.toggle("is-open"))));
+  const burger = document.querySelector(".nav__burger"), mnav = document.getElementById("mnav");
+  if (burger && mnav) {
+    const root = document.documentElement;
+    const isOpen = () => root.classList.contains("menu-open");
+    const set = (open) => {
+      root.classList.toggle("menu-open", open);
+      burger.setAttribute("aria-expanded", String(open));
+      burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      if (open) mnav.removeAttribute("inert"); else mnav.setAttribute("inert", "");
+    };
+    burger.addEventListener("click", () => set(!isOpen()));
+    mnav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => set(false)));
+    addEventListener("keydown", (e) => { if (e.key === "Escape" && isOpen()) { set(false); burger.focus(); } });
+    matchMedia("(min-width: 761px)").addEventListener("change", (e) => { if (e.matches) set(false); });
+    addEventListener("pageshow", (e) => { if (e.persisted) set(false); });
+    const acc = mnav.querySelector(".mnav__acc");
+    acc && acc.addEventListener("click", () => {
+      const open = acc.getAttribute("aria-expanded") !== "true";
+      acc.setAttribute("aria-expanded", String(open));
+      acc.closest("li").classList.toggle("is-open", open);
+    });
+  }
 })();

@@ -90,6 +90,28 @@ def head(title, desc, p, extra_fonts=""):
 </head>
 '''
 
+def mnav(p, active=""):
+    def cur(k): return ' aria-current="page"' if k == active else ""
+    svc = "".join(f'<a href="{p}services/{s}.html"><i><svg viewBox="0 0 24 24">{ICON[ic]}</svg></i><b>{t.replace("&", "&amp;")}</b><small>{d}</small></a>' for s, t, d, ic in SERVICES)
+    links = [("work", "work.html", "Work"), ("pricing", "pricing.html", "Pricing"), ("process", "process.html", "Process"), ("about", "about.html", "About"), ("reviews", "reviews.html", "Reviews")]
+    rows = "".join(f'<li style="--i:{n + 2}"><a class="mnav__link" href="{p}{h}"{cur(k)}><span class="mnav__n">0{n + 2}</span><span class="mnav__t">{t}</span></a></li>' for n, (k, h, t) in enumerate(links))
+    return f'''  <div class="mnav" id="mnav" aria-label="Menu" inert>
+    <div class="mnav__bg" aria-hidden="true"></div>
+    <div class="mnav__in">
+      <ul class="mnav__list">
+        <li style="--i:1"><button class="mnav__link mnav__acc" type="button" aria-expanded="false" aria-controls="mnav-svc"><span class="mnav__n">01</span><span class="mnav__t">Services</span><span class="mnav__pm" aria-hidden="true"></span></button>
+          <div class="mnav__sub" id="mnav-svc"><div><div class="mnav__svc">{svc}</div></div></div></li>
+        {rows}
+      </ul>
+      <div class="mnav__foot" style="--i:8">
+        <p class="mnav__status"><span class="status__dot" aria-hidden="true"></span> Replies within 24 hours</p>
+        <a class="btn btn--primary btn--lg mnav__cta" href="{p}contact.html"><span class="btn__roll"><span data-text="Start a project">Start a project</span></span><span class="btn__arrow" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><svg viewBox="0 0 20 20"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a>
+        <div class="mnav__contact"><a href="https://t.me/tanasiychuk8" target="_blank" rel="noopener">Telegram</a><a href="mailto:hello@sorvel.agency">hello@sorvel.agency</a></div>
+      </div>
+    </div>
+  </div>
+'''
+
 def nav(p, active=""):
     def cur(k): return ' class="is-current"' if k == active else ""
     menu = "".join(f'<a href="{p}services/{s}.html"><i><svg viewBox="0 0 24 24">{ICON[ic]}</svg></i><b>{t.replace("&", "&amp;")}</b><small>{d}</small></a>' for s, t, d, ic in SERVICES)
@@ -108,11 +130,10 @@ def nav(p, active=""):
       <a class="btn btn--primary btn--small nav__cta" href="{p}contact.html">
         <span class="btn__roll"><span data-text="Start a project">Start a project</span></span>
       </a>
-      <button class="nav__burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
-      <a class="btn btn--primary nav__mcta" href="{p}contact.html"><span class="btn__roll"><span data-text="Start a project">Start a project</span></span></a>
+      <button class="nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span class="nav__bl" aria-hidden="true"><b>Menu</b><b>Close</b></span><span class="nav__ic" aria-hidden="true"><i></i><i></i></span></button>
     </div>
   </header>
-'''
+{mnav(p, active)}'''
 
 def footer(p):
     svc = "".join(f'<a href="{p}services/{s}.html">{t.replace("&", "&amp;")}</a>' for s, t, d, ic in SERVICES)

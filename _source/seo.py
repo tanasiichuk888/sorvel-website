@@ -6,7 +6,9 @@ Writes sitemap.xml, robots.txt and _headers (Cloudflare Pages cache rules).
 
 When the domain is final, change SITE below and run build.py again.
 """
-import os, re, json, glob, html, datetime
+import os, re, json, glob, html, datetime, sys
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "site"))
+from common import mnav as _mnav  # full-screen phone menu
 
 SITE = "https://sorvel.agency"          # <- final domain, no trailing slash
 BRAND = "Sorvel Studio"
@@ -18,10 +20,10 @@ NOINDEX = {"404.html"}
 START, END = "<!-- seo -->", "<!-- /seo -->"
 GLASS_V = 5  # bump after editing css/glass.css or js/glass.js
 CASE_V = 16  # bump after editing css/case.css
-PAGES_V = 26  # bump after editing css/pages.css
+PAGES_V = 27  # bump after editing css/pages.css
 BRAND_V = 2  # bump after replacing logo / favicon files
 # other assets that change: bump the number after editing the file
-ASSET_V = {"css/style.css": 5, "js/main.js": 18, "css/xp.css": 6, "js/scenes.js": 18, "js/xp.js": 5, "js/dots.js": 2, "css/hero.css": 2, "js/case.js": 13}
+ASSET_V = {"css/style.css": 6, "js/main.js": 19, "css/xp.css": 6, "js/scenes.js": 19, "js/xp.js": 5, "js/dots.js": 2, "css/hero.css": 2, "js/case.js": 13, "js/fx.js": 17, "js/svc.js": 17}
 
 # Search titles (aim for under ~60 characters). Case studies are generated from the page.
 TITLES = {
@@ -144,6 +146,13 @@ def process(path):
         s = s[:k] + (f'<link rel="preload" href="{pre}fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />\n'
                      f'  <link rel="preload" href="{pre}fonts/hanken-grotesk-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />\n'
                      f'  <link rel="stylesheet" href="{pre}css/fonts.css?v=1" />\n  ') + s[k:]
+
+    # phone menu: new button + full-screen panel on every page (index and case pages have hand-built headers)
+    NEW_BURGER = '<button class="nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span class="nav__bl" aria-hidden="true"><b>Menu</b><b>Close</b></span><span class="nav__ic" aria-hidden="true"><i></i><i></i></span></button>'
+    s = re.sub(r'<button class="nav__burger"[^>]*><span></span><span></span></button>\s*<a class="btn btn--primary nav__mcta"[^>]*>.*?</a>(?:</span>)*', NEW_BURGER, s, flags=re.S)
+    if 'id="mnav"' not in s and 'class="nav__burger"' in s:
+        act = "work" if rel.startswith("work/") else ""
+        s = s.replace("  </header>\n", "  </header>\n" + _mnav(pre, act), 1)
 
     # liquid-glass layer on every page (css + ambient background + pointer highlight)
     if "css/glass.css" not in s:

@@ -77,7 +77,7 @@
       const cv = root.querySelector("canvas"), ctx = cv.getContext("2d"), G = window.GEO;
       if (!G) return;
       const LITE = matchMedia("(hover: none), (max-width: 760px)").matches;
-      const DPR = Math.min(LITE ? 1.5 : 2, devicePixelRatio || 1), D2R = Math.PI / 180;
+      const DPR = Math.min(LITE ? 1.25 : 2, devicePixelRatio || 1), D2R = Math.PI / 180;
       let lastDraw = 0;
       const v3 = (lat, lon) => { const a = lat * D2R, b = lon * D2R; return [Math.cos(a) * Math.sin(b), Math.sin(a), Math.cos(a) * Math.cos(b)]; };
       const land = []; for (let i = 0; i < G.p.length; i += LITE ? 6 : 3) land.push([v3(G.p[i] / 10, G.p[i + 1] / 10), G.p[i + 2]]);
@@ -118,7 +118,8 @@
           feedT.textContent = c.n; feedS.textContent = "New brief · " + TYPES[Math.floor(Math.random() * TYPES.length)]; }
       };
       const draw = (now) => {
-        if (LITE && now - lastDraw < 33 && !drag) { raf = requestAnimationFrame(draw); return; }
+        if (!onScreen && !drag) { raf = 0; return; }
+        if (LITE && now - lastDraw < 40 && !drag) { raf = requestAnimationFrame(draw); return; }
         lastDraw = now;
         const dt = Math.min(50, now - last); last = now;
         W = cv.width; H = cv.height; R = Math.min(W, H) * .265; cx = W / 2; cy = H * .5;
@@ -178,11 +179,14 @@
           placed.push(r); ctx.globalAlpha = l.a; pill(l.x, l.y, l.txt, l.g); ctx.globalAlpha = 1; });
         if (!REDUCED && now > nextFire) { fire(now); nextFire = now + 650 + Math.random() * 500; }
         if (!drag && !REDUCED) { rot -= .00011 * (hover ? .45 : 1) * dt; userTilt *= .995; tilt = autoTilt() + userTilt; }
-        if (!REDUCED || drag) raf = requestAnimationFrame(draw);
+        if ((!REDUCED || drag) && onScreen) raf = requestAnimationFrame(draw); else raf = 0;
       };
-      const start = () => { raf = requestAnimationFrame(draw); };
-      if (LITE && document.readyState !== "complete") addEventListener("load", () => setTimeout(start, 400), { once: true });
-      else start();
+      let onScreen = true;
+      const start = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); };
+      new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; if (onScreen && started) { last = performance.now(); start(); } }, { rootMargin: "80px 0px" }).observe(root);
+      let started = false; const begin = () => { started = true; start(); };
+      if (LITE && document.readyState !== "complete") addEventListener("load", () => setTimeout(begin, 400), { once: true });
+      else begin();
     }
   });
 })();

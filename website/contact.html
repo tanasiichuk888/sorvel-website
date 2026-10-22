@@ -33,9 +33,9 @@
   <link rel="preload" href="fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/hanken-grotesk-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/fonts.css?v=1" />
-  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="stylesheet" href="css/style.css?v=6" />
   <link rel="stylesheet" href="css/case.css?v=16" />
-  <link rel="stylesheet" href="css/pages.css?v=26" />
+  <link rel="stylesheet" href="css/pages.css?v=27" />
   <link rel="stylesheet" href="css/svc.css?v=3" />
   <link rel="stylesheet" href="css/scenes.css?v=9" />
   <link rel="stylesheet" href="css/glass.css?v=5" />
@@ -57,10 +57,24 @@
       <a class="btn btn--primary btn--small nav__cta" href="contact.html">
         <span class="btn__roll"><span data-text="Start a project">Start a project</span></span>
       </a>
-      <button class="nav__burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
-      <a class="btn btn--primary nav__mcta" href="contact.html"><span class="btn__roll"><span data-text="Start a project">Start a project</span></span></a>
+      <button class="nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span class="nav__bl" aria-hidden="true"><b>Menu</b><b>Close</b></span><span class="nav__ic" aria-hidden="true"><i></i><i></i></span></button>
     </div>
   </header>
+  <div class="mnav" id="mnav" aria-label="Menu" inert>
+    <div class="mnav__bg" aria-hidden="true"></div>
+    <div class="mnav__in">
+      <ul class="mnav__list">
+        <li style="--i:1"><button class="mnav__link mnav__acc" type="button" aria-expanded="false" aria-controls="mnav-svc"><span class="mnav__n">01</span><span class="mnav__t">Services</span><span class="mnav__pm" aria-hidden="true"></span></button>
+          <div class="mnav__sub" id="mnav-svc"><div><div class="mnav__svc"><a href="services/websites.html"><i><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></i><b>Websites</b><small>Webflow, Framer, WordPress</small></a><a href="services/landing-pages.html"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><path d="M12 12l6-6m0 0h-3m3 0v3"/></svg></i><b>Landing pages &amp; CRO</b><small>One page, one goal</small></a><a href="services/product-design.html"><i><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="18" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="14" width="8" height="7" rx="1.5"/></svg></i><b>Product design</b><small>SaaS, dashboards, apps</small></a><a href="services/brand-identity.html"><i><svg viewBox="0 0 24 24"><path d="M5 19 12 4l7 15"/><circle cx="12" cy="14.5" r="2"/></svg></i><b>Brand identity</b><small>Logo, system, guidelines</small></a><a href="services/migrations.html"><i><svg viewBox="0 0 24 24"><path d="M4 8h12m0 0-3-3m3 3-3 3M20 16H8m0 0 3-3m-3 3 3 3"/></svg></i><b>Website migrations</b><small>Move without losing SEO</small></a></div></div></div></li>
+        <li style="--i:2"><a class="mnav__link" href="work.html"><span class="mnav__n">02</span><span class="mnav__t">Work</span></a></li><li style="--i:3"><a class="mnav__link" href="pricing.html"><span class="mnav__n">03</span><span class="mnav__t">Pricing</span></a></li><li style="--i:4"><a class="mnav__link" href="process.html"><span class="mnav__n">04</span><span class="mnav__t">Process</span></a></li><li style="--i:5"><a class="mnav__link" href="about.html"><span class="mnav__n">05</span><span class="mnav__t">About</span></a></li><li style="--i:6"><a class="mnav__link" href="reviews.html"><span class="mnav__n">06</span><span class="mnav__t">Reviews</span></a></li>
+      </ul>
+      <div class="mnav__foot" style="--i:8">
+        <p class="mnav__status"><span class="status__dot" aria-hidden="true"></span> Replies within 24 hours</p>
+        <a class="btn btn--primary btn--lg mnav__cta" href="contact.html"><span class="btn__roll"><span data-text="Start a project">Start a project</span></span><span class="btn__arrow" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><svg viewBox="0 0 20 20"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a>
+        <div class="mnav__contact"><a href="https://t.me/tanasiychuk8" target="_blank" rel="noopener">Telegram</a><a href="mailto:hello@sorvel.agency">hello@sorvel.agency</a></div>
+      </div>
+    </div>
+  </div>
   <main class="cs inner">
     <div class="cs-progress" aria-hidden="true"><i></i></div>
     <section class="pg-hero pg-hero--vis" id="top">
@@ -203,12 +217,12 @@
   </footer>
 
   <script defer src="js/dots.js?v=2"></script>
-  <script defer src="js/main.js?v=18"></script>
+  <script defer src="js/main.js?v=19"></script>
   <script defer src="js/case.js?v=13"></script>
   <script defer src="js/pages.js?v=16"></script>
-  <script defer src="js/fx.js?v=16"></script>
-  <script defer src="js/svc.js?v=16"></script>
-  <script defer src="js/scenes.js?v=18"></script>
+  <script defer src="js/fx.js?v=17"></script>
+  <script defer src="js/svc.js?v=17"></script>
+  <script defer src="js/scenes.js?v=19"></script>
   <script defer src="js/glass.js?v=5"></script>
 </body>
 </html>
