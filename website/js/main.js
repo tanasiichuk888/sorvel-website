@@ -1,6 +1,34 @@
 (function () {
   const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- anonymous lead counting (no cookies, no personal data) ----------
+     Remembers for this tab where the visit came from and which page it started on,
+     then counts: brief started, brief sent, Telegram click, email click. */
+  const SRC = (() => {
+    try {
+      let v = JSON.parse(sessionStorage.getItem("sv_src") || "null");
+      if (!v) {
+        const q = new URLSearchParams(location.search), ref = document.referrer ? new URL(document.referrer).hostname : "";
+        v = { s: q.get("utm_source") || (ref && ref !== location.hostname ? ref : "direct"), l: location.pathname };
+        sessionStorage.setItem("sv_src", JSON.stringify(v));
+      }
+      return v;
+    } catch (e) { return { s: "direct", l: location.pathname }; }
+  })();
+  const track = (t) => {
+    try {
+      const body = JSON.stringify({ t, p: location.pathname, s: SRC.s, l: SRC.l });
+      if (!(navigator.sendBeacon && navigator.sendBeacon("/api/e", body))) fetch("/api/e", { method: "POST", body, keepalive: true }).catch(() => {});
+    } catch (e) {}
+  };
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest && e.target.closest("a[href]");
+    if (!a) return;
+    const h = a.getAttribute("href");
+    if (/^https:\/\/t\.me\//.test(h)) track("telegram");
+    else if (/^mailto:/.test(h)) track("email");
+  }, { capture: true });
+
   /* ---------- intro ---------- */
   const go = () => requestAnimationFrame(() => document.documentElement.classList.add("is-loaded"));
   (document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 900))]) : Promise.resolve()).then(go);
@@ -275,6 +303,7 @@
         if (!okEmail(f("email").value)) bad.push(f("email"));
         bad.forEach((el) => fieldOf(el).classList.add("is-bad"));
         if (bad.length) { msg.textContent = "Please add your name and a valid email."; bad[0].focus(); return; }
+        if (!partialSent) track("brief_start");
         if (FORM_ENDPOINT && !partialSent) {
           partialSent = true;
           fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -317,6 +346,7 @@
         const res = await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify({ access_key: FORM_KEY || undefined, subject: (data.plan ? "[" + data.plan.split(" (")[0] + "] " : "") + "New project brief from " + data.name, from_name: "Sorvel website", ...data }) });
         if (!res.ok) throw new Error(res.status);
+        track("brief");
         showDone();
       } catch (err) {
         msg.innerHTML = `Something went wrong. Please email <a href="mailto:${TO_EMAIL}">${TO_EMAIL}</a> or write on Telegram.`;
