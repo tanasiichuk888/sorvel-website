@@ -28,3 +28,6 @@
     width: 100%; flex: none; justify-content: center; }
   .pg-hero__grid { gap: 32px; }
 }
+
+/* the scrolling work wall must not stretch the page past the footer */
+.sx-wall { overflow: hidden; overflow: clip; }
