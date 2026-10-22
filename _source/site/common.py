@@ -149,7 +149,7 @@ def footer(p):
           <div><h4>Services</h4>{svc}</div>
           <div><h4>Studio</h4><a href="{p}work.html">Work</a><a href="{p}pricing.html">Pricing</a><a href="{p}process.html">Process</a><a href="{p}about.html">About</a><a href="{p}reviews.html">Reviews</a></div>
           <div><h4>Contact</h4><a href="mailto:hello@sorvel.agency">hello@sorvel.agency</a><a href="https://t.me/tanasiychuk8" target="_blank" rel="noopener">Telegram</a><a href="{p}contact.html">Start a project</a></div>
-          <div><h4>Follow</h4><a href="https://www.linkedin.com/company/altcreativestudio" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.behance.net/tanasiichuk8" target="_blank" rel="noopener">Behance</a><a href="https://dribbble.com/koliafree11" target="_blank" rel="noopener">Dribbble</a></div>
+          <div><h4>Follow</h4><a href="https://www.linkedin.com/company/sorvel" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.behance.net/tanasiichuk8" target="_blank" rel="noopener">Behance</a><a href="https://dribbble.com/koliafree11" target="_blank" rel="noopener">Dribbble</a></div>
         </nav>
       </div>
       <div class="foot__bottom"><span>© <span class="year">2026</span> Sorvel Studio</span><span class="foot__legal"><a href="{p}privacy.html">Privacy</a><a href="{p}terms.html">Terms</a></span><a href="#top">Back to top ↑</a></div>

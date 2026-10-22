@@ -12,7 +12,7 @@ from common import mnav as _mnav  # full-screen phone menu
 
 SITE = "https://sorvel.agency"          # <- final domain, no trailing slash
 BRAND = "Sorvel Studio"
-LINKEDIN = "https://www.linkedin.com/company/altcreativestudio"
+LINKEDIN = "https://www.linkedin.com/company/sorvel"
 HERE = os.path.dirname(os.path.abspath(__file__))
 W = os.path.abspath(os.path.join(HERE, "..", "website"))
 TODAY = datetime.date.today().isoformat()
