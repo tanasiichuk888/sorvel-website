@@ -20,7 +20,7 @@ NOINDEX = {"404.html"}
 START, END = "<!-- seo -->", "<!-- /seo -->"
 GLASS_V = 5  # bump after editing css/glass.css or js/glass.js
 CASE_V = 16  # bump after editing css/case.css
-PAGES_V = 29
+PAGES_V = 30
 MOBILE_V = 4  # bump after editing css/mobile.css  # bump after editing css/pages.css
 BRAND_V = 2  # bump after replacing logo / favicon files
 # other assets that change: bump the number after editing the file

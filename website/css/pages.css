@@ -1008,3 +1008,14 @@ main > section.sec, main > section.cs-more, main > section.cs-numbers { isolatio
   .foot__bottom > a[href="#top"] { grid-area: top; display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px; border-radius: 999px; color: var(--text);
     background: rgba(255,255,255,.05); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); }
 }
+
+/* hover outline: give blocks whose text sits on the edge some room around it */
+.cs-got > .fx-spot { inset: 14px -32px -32px; border-radius: 20px; }
+.cs-dec__row > .fx-spot, .vals > div > .fx-spot { inset: 4px -24px; border-radius: 16px; }
+.incl > div:nth-child(3n+1) > .fx-spot, .moves > div:first-child > .fx-spot { left: -24px; border-radius: 16px; }
+.incl > div > .fx-spot, .moves > div > .fx-spot { top: 4px; bottom: 4px; border-radius: 16px; }
+@media (max-width: 1000px) {
+  .incl > div:nth-child(3n+1) > .fx-spot { left: 0; }
+  .incl > div:nth-child(2n+1) > .fx-spot { left: -22px; }
+}
+@media (max-width: 900px) { .moves > div:nth-child(3) > .fx-spot { left: -24px; } }
