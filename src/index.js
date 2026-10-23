@@ -64,6 +64,8 @@ export class LeadStore extends DurableObject {
     for (const [c, ty] of [["i", "TEXT"], ["k", "TEXT"], ["v", "INTEGER"]]) if (!cols.includes(c)) this.sql.exec(`ALTER TABLE ev ADD COLUMN ${c} ${ty}`);
   }
   add(e) {
+    // keep 13 months of statistics (privacy policy promise); prune now and then
+    if (Math.random() < 0.02) this.sql.exec(`DELETE FROM ev WHERE ts < ?`, Date.now() - 396 * 864e5);
     this.sql.exec(`INSERT INTO ev (ts, t, p, s, c, l, i, k, v) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`, Date.now(), e.t, e.p, e.s, e.c, e.l, e.i || "", e.k || "", e.v);
   }
   /* What people do on the site: funnel, pages (time, scroll), clicks, exits, recent visits */
