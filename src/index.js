@@ -1,6 +1,6 @@
 // Sorvel site worker
 // 1. www.sorvel.agency -> sorvel.agency (301)
-// 2. POST /api/e        -> anonymous lead events (brief started / sent, Telegram and email clicks) into a Durable Object
+// 2. POST /api/e        -> anonymous visit events (page views, scroll, time, clicks, lead actions) into a Durable Object
 // 3. /scoreboard        -> private growth dashboard (behind Cloudflare Access), data from /scoreboard/api
 // 4. everything else    -> the static site in ./website
 //
@@ -15,7 +15,7 @@ import { DurableObject } from "cloudflare:workers";
 import DASHBOARD from "./scoreboard.html";
 
 const HOST = "sorvel.agency";
-const EVENT_TYPES = new Set(["brief_start", "brief", "telegram", "email"]);
+const EVENT_TYPES = new Set(["brief_start", "brief", "telegram", "email", "view", "scroll", "click", "time"]);
 const TARGET = new Set(["United States", "United Kingdom", "Canada", "Australia", "Ireland", "Germany", "Netherlands", "Switzerland",
   "Sweden", "Norway", "Denmark", "France", "Belgium", "Austria", "Finland", "Spain", "Italy", "Israel", "United Arab Emirates", "Singapore", "New Zealand"]);
 
@@ -43,7 +43,11 @@ async function collect(request, env) {
   try { b = JSON.parse((await request.text()).slice(0, 2000)); } catch { return ok; }
   if (!b || !EVENT_TYPES.has(b.t) || !env.LEADS) return ok;
   const clip = (v, n = 120) => String(v || "").replace(/[^\w\-./:@ ]/g, "").slice(0, n);
-  await leadStore(env).add({ t: b.t, p: clip(b.p) || "/", s: clip(b.s, 60) || "direct", c: (request.cf && request.cf.country) || "", l: clip(b.l) || "/" });
+  const v = Number.isFinite(+b.v) ? Math.max(0, Math.min(1800, Math.round(+b.v))) : null;
+  const k = b.t === "click" ? String(b.k || "").replace(/[<>\u0000-\u001f]/g, "").slice(0, 110) : b.t === "scroll" ? clip(b.k, 3) : "";
+  const path = (x) => (clip(x).replace(/\.html$/, "").replace(/\/index$/, "/") || "/");
+  await leadStore(env).add({ t: b.t, p: path(b.p), s: clip(b.s, 60) || "direct", c: (request.cf && request.cf.country) || "", l: path(b.l),
+    i: String(b.i || "").replace(/[^a-z0-9]/g, "").slice(0, 16), k, v: b.t === "time" ? v : null });
   return ok;
 }
 const leadStore = (env) => env.LEADS.get(env.LEADS.idFromName("leads"));
@@ -55,14 +59,66 @@ export class LeadStore extends DurableObject {
     this.sql = ctx.storage.sql;
     this.sql.exec(`CREATE TABLE IF NOT EXISTS ev (ts INTEGER NOT NULL, t TEXT NOT NULL, p TEXT, s TEXT, c TEXT, l TEXT)`);
     this.sql.exec(`CREATE INDEX IF NOT EXISTS ev_ts ON ev (ts)`);
+    // v2: visit id (i), detail (k: click label or scroll mark), number (v: seconds on page)
+    const cols = this.sql.exec(`PRAGMA table_info(ev)`).toArray().map((r) => r.name);
+    for (const [c, ty] of [["i", "TEXT"], ["k", "TEXT"], ["v", "INTEGER"]]) if (!cols.includes(c)) this.sql.exec(`ALTER TABLE ev ADD COLUMN ${c} ${ty}`);
   }
   add(e) {
-    this.sql.exec(`INSERT INTO ev (ts, t, p, s, c, l) VALUES (?, ?, ?, ?, ?, ?)`, Date.now(), e.t, e.p, e.s, e.c, e.l);
+    this.sql.exec(`INSERT INTO ev (ts, t, p, s, c, l, i, k, v) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`, Date.now(), e.t, e.p, e.s, e.c, e.l, e.i || "", e.k || "", e.v);
+  }
+  /* What people do on the site: funnel, pages (time, scroll), clicks, exits, recent visits */
+  behavior(a, b) {
+    const ev = this.sql.exec(`SELECT ts, t, p, s, c, i, k, v FROM ev WHERE ts >= ? AND ts < ? AND i != '' ORDER BY ts LIMIT 60000`, a, b).toArray();
+    const S = new Map();
+    for (const e of ev) {
+      let x = S.get(e.i);
+      if (!x) S.set(e.i, x = { i: e.i, start: e.ts, end: e.ts, s: e.s, c: e.c, pages: [], secs: 0, brief: 0, start_b: 0, contact: 0, clicks: [] });
+      x.end = e.ts;
+      if (e.t === "view") { x.pages.push({ p: e.p, ts: e.ts, secs: 0, depth: 0 }); }
+      const cur = x.pages[x.pages.length - 1];
+      if (e.t === "time") { x.secs += e.v || 0; const pg = [...x.pages].reverse().find((q) => q.p === e.p); if (pg) pg.secs += e.v || 0; }
+      if (e.t === "scroll") { const pg = [...x.pages].reverse().find((q) => q.p === e.p); if (pg) pg.depth = Math.max(pg.depth, +e.k || 0); }
+      if (e.t === "brief") x.brief = 1;
+      if (e.t === "brief_start") x.start_b = 1;
+      if (e.t === "telegram" || e.t === "email") x.contact = 1;
+      if (e.t === "click" && x.clicks.length < 12) x.clicks.push(e.k);
+      void cur;
+    }
+    const sess = [...S.values()].filter((x) => x.pages.length);
+    const isCase = (p) => /^\/work\/[^/]+/.test(p);
+    const f = (fn) => sess.filter(fn).length;
+    const funnel = [
+      ["Visited the site", sess.length],
+      ["Opened a case study", f((x) => x.pages.some((q) => isCase(q.p)))],
+      ["Opened pricing", f((x) => x.pages.some((q) => /^\/pricing/.test(q.p)))],
+      ["Started a brief", f((x) => x.start_b)],
+      ["Sent a brief", f((x) => x.brief)],
+      ["Clicked Telegram or email", f((x) => x.contact)],
+    ].map(([k, v]) => ({ k, v }));
+    const P = new Map();
+    for (const x of sess) for (const q of x.pages) {
+      let r = P.get(q.p); if (!r) P.set(q.p, r = { k: q.p, views: 0, secs: 0, timed: 0, deep: 0, depthSum: 0 });
+      r.views++; r.secs += q.secs; if (q.secs) r.timed++; if (q.depth >= 75) r.deep++; r.depthSum += q.depth;
+    }
+    const pages = [...P.values()].sort((x, y) => y.views - x.views).slice(0, 20)
+      .map((r) => ({ k: r.k, views: r.views, avg: r.timed ? Math.round(r.secs / r.timed) : null, deep: r.views ? r.deep / r.views : 0, depth: r.views ? Math.round(r.depthSum / r.views) : 0 }));
+    const C = new Map(); for (const e of ev) if (e.t === "click" && e.k) C.set(e.k, (C.get(e.k) || 0) + 1);
+    const clicks = [...C].sort((x, y) => y[1] - x[1]).slice(0, 15).map(([k, v]) => ({ k, v }));
+    const X = new Map(); for (const x of sess) { const last = x.pages[x.pages.length - 1].p; X.set(last, (X.get(last) || 0) + 1); }
+    const exits = [...X].sort((x, y) => y[1] - x[1]).slice(0, 10).map(([k, v]) => ({ k, v }));
+    const single = f((x) => x.pages.length === 1 && x.secs < 10);
+    const secsAll = sess.map((x) => x.secs).sort((m, n) => m - n);
+    const median = secsAll.length ? secsAll[Math.floor(secsAll.length / 2)] : 0;
+    const recent = sess.slice().sort((x, y) => y.start - x.start).slice(0, 40)
+      .map((x) => ({ at: x.start, s: x.s, c: x.c, secs: x.secs, brief: x.brief, started: x.start_b, contact: x.contact, pages: x.pages.slice(0, 30).map((q) => ({ p: q.p, secs: q.secs, depth: q.depth })), clicks: x.clicks }));
+    return { sessions: sess.length, bounce: sess.length ? single / sess.length : 0, median, funnel, pages, clicks, exits, recent };
   }
   report(a, b, withGroups) {
     const rows = this.sql.exec(`SELECT t, strftime('%Y-%m-%d', ts / 1000, 'unixepoch') AS d, COUNT(*) AS n FROM ev WHERE ts >= ? AND ts < ? GROUP BY t, d ORDER BY d`, a, b).toArray();
-    if (!withGroups) return { rows };
+    if (!withGroups) return { rows: rows.filter((r) => ["brief", "brief_start", "telegram", "email"].includes(r.t)) };
     const grp = (col) => this.sql.exec(`SELECT ${col} AS k, COUNT(*) AS v FROM ev WHERE ts >= ? AND ts < ? AND t IN ('brief','telegram','email') GROUP BY k ORDER BY v DESC LIMIT 10`, a, b).toArray();
+    // lead chart keeps to lead actions only
+    rows.splice(0, rows.length, ...rows.filter((r) => ["brief", "brief_start", "telegram", "email"].includes(r.t)));
     return { rows, src: grp("s"), land: grp("l") };
   }
 }
@@ -132,18 +188,19 @@ async function stats(env, days) {
   if (env.DEV_MOCK === "1") return mock(r, days);
   const errors = [];
   const safe = (name, p) => p.catch((e) => { if (!/not connected/.test(e.message)) errors.push(name + ": " + String(e.message || e).slice(0, 300)); return null; });
-  const [rumCur, rumPrev, leadsCur, leadsPrev, leadSrc, leadLand, gsc] = await Promise.all([
+  const [rumCur, rumPrev, leadsCur, leadsPrev, behavior, behaviorPrev, gsc] = await Promise.all([
     safe("Web Analytics", rum(env, r.cur, true)),
     safe("Web Analytics (previous)", rum(env, r.prev, false)),
     safe("Leads", leadReport(env, r.cur, true)),
     safe("Leads (previous)", leadReport(env, r.prev, false)),
-    Promise.resolve(null), Promise.resolve(null),
+    safe("Behaviour", env.LEADS ? leadStore(env).behavior(r.cur[0].getTime(), r.cur[1].getTime()) : Promise.reject(new Error("not connected"))),
+    safe("Behaviour (previous)", env.LEADS ? leadStore(env).behavior(r.prev[0].getTime(), r.prev[1].getTime()).then((x) => ({ sessions: x.sessions, bounce: x.bounce, median: x.median, funnel: x.funnel })) : Promise.reject(new Error("not connected"))),
     env.GSC_KEY ? safe("Search Console", searchConsole(env, r)) : Promise.resolve(null),
   ]);
   return {
     days, list: r.days, start: day(r.cur[0]), end: day(new Date(r.cur[1] - 864e5)),
     rum: rumCur, rumPrev, leads: leadsCur && leadsCur.rows, leadsPrev: leadsPrev && leadsPrev.rows,
-    leadSrc: leadsCur && leadsCur.src, leadLand: leadsCur && leadsCur.land, gsc,
+    leadSrc: leadsCur && leadsCur.src, leadLand: leadsCur && leadsCur.land, gsc, behavior, behaviorPrev,
     connected: { analytics: !!(env.CF_API_TOKEN && env.CF_ACCOUNT_ID), events: !!env.LEADS, gsc: !!env.GSC_KEY },
     errors, at: new Date().toISOString(),
   };
@@ -276,5 +333,22 @@ function mock(r, days) {
       byDay: r.days.map((d) => ({ d, clicks: rnd(0, 6), impressions: rnd(80, 400) })),
       queries: [{ k: "sorvel agency", clicks: 22, impressions: 60, pos: 1.1, brand: true }, { k: "webflow agency for saas", clicks: 3, impressions: 820, pos: 18.4, brand: false }, { k: "fintech website design", clicks: 2, impressions: 610, pos: 22.7, brand: false }],
       pages: [{ k: "/", clicks: 30, impressions: 2100 }, { k: "/services/websites", clicks: 6, impressions: 900 }] },
+    behavior: mockBehavior(r), behaviorPrev: { sessions: 61, bounce: .48, median: 41, funnel: [] },
     connected: { analytics: true, events: true, gsc: true }, errors: [], at: new Date().toISOString() };
+}
+
+function mockBehavior(r) {
+  const now = Date.now(), m = (min) => now - min * 60e3;
+  return { sessions: 74, bounce: .41, median: 52,
+    funnel: [{ k: "Visited the site", v: 74 }, { k: "Opened a case study", v: 29 }, { k: "Opened pricing", v: 17 }, { k: "Started a brief", v: 4 }, { k: "Sent a brief", v: 2 }, { k: "Clicked Telegram or email", v: 5 }],
+    pages: [{ k: "/", views: 70, avg: 48, deep: .38, depth: 61 }, { k: "/work", views: 31, avg: 35, deep: .52, depth: 70 }, { k: "/pricing", views: 19, avg: 64, deep: .63, depth: 78 },
+      { k: "/work/valhalla-capital", views: 14, avg: 92, deep: .57, depth: 72 }, { k: "/services/saas-website-design", views: 9, avg: 41, deep: .33, depth: 55 }, { k: "/contact", views: 8, avg: 71, deep: .75, depth: 88 }],
+    clicks: [{ k: "Start a project → /contact", v: 21 }, { k: "Work → /work", v: 18 }, { k: "Valhalla Capital → /work/valhalla-capital", v: 11 }, { k: "Pricing → /pricing", v: 9 }, { k: "Telegram → t.me", v: 3 }],
+    exits: [{ k: "/", v: 33 }, { k: "/work", v: 12 }, { k: "/pricing", v: 9 }, { k: "/contact", v: 6 }],
+    recent: [
+      { at: m(12), s: "www.linkedin.com", c: "GB", secs: 214, brief: 1, started: 1, contact: 0, pages: [{ p: "/", secs: 40, depth: 75 }, { p: "/work/valhalla-capital", secs: 96, depth: 100 }, { p: "/pricing", secs: 38, depth: 75 }, { p: "/contact", secs: 40, depth: 100 }], clicks: ["Valhalla Capital → /work/valhalla-capital", "Pricing → /pricing", "Start a project → /contact"] },
+      { at: m(47), s: "www.google.com", c: "US", secs: 58, brief: 0, started: 0, contact: 0, pages: [{ p: "/services/saas-website-design", secs: 41, depth: 50 }, { p: "/work", secs: 17, depth: 25 }], clicks: ["Work → /work"] },
+      { at: m(130), s: "direct", c: "DE", secs: 6, brief: 0, started: 0, contact: 0, pages: [{ p: "/", secs: 6, depth: 25 }], clicks: [] },
+      { at: m(300), s: "www.behance.net", c: "CA", secs: 133, brief: 0, started: 0, contact: 1, pages: [{ p: "/", secs: 70, depth: 100 }, { p: "/about", secs: 63, depth: 75 }], clicks: ["Telegram → t.me"] },
+    ] };
 }

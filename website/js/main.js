@@ -1,33 +1,98 @@
 (function () {
   const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- anonymous lead counting (no cookies, no personal data) ----------
-     Remembers for this tab where the visit came from and which page it started on,
-     then counts: brief started, brief sent, Telegram click, email click. */
+  /* ---------- anonymous visit stats (no cookies, no personal data) ----------
+     For this tab only (session storage, gone when the tab closes): a random visit id,
+     where the visit came from and the page it started on. Counts page views, how far
+     each page is scrolled, time with the page open, button clicks, and the lead
+     actions (brief started / sent, Telegram, email).
+     The site owner's own browser is left out: opening /scoreboard or any page with
+     ?me=1 marks it (localStorage sv_me), ?me=0 undoes that. */
+  const ME = (() => {
+    try {
+      const q = new URLSearchParams(location.search).get("me");
+      if (q === "1") localStorage.setItem("sv_me", "1");
+      if (q === "0") localStorage.removeItem("sv_me");
+      if (q === "1" || q === "0") {
+        const n = document.createElement("div");
+        n.setAttribute("role", "status");
+        n.textContent = q === "1" ? "This browser is now left out of the site stats" : "This browser is counted in the site stats again";
+        n.style.cssText = "position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;padding:10px 16px;border-radius:10px;background:#111;color:#fff;font:14px/1.4 system-ui,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.35)";
+        document.body.appendChild(n); setTimeout(() => n.remove(), 3500);
+      }
+      return localStorage.getItem("sv_me") === "1";
+    } catch (e) { return false; }
+  })();
+  if (ME) {
+    // keep Cloudflare Web Analytics from counting the owner's own visits too
+    const rum = (u) => /cdn-cgi\/rum|cloudflareinsights/.test(String((u && u.url) || u));
+    try {
+      const sb = navigator.sendBeacon && navigator.sendBeacon.bind(navigator);
+      if (sb) navigator.sendBeacon = (u, d) => (rum(u) ? true : sb(u, d));
+      const f = window.fetch && window.fetch.bind(window);
+      if (f) window.fetch = (u, o) => (rum(u) ? Promise.resolve(new Response(null, { status: 204 })) : f(u, o));
+      const op = XMLHttpRequest.prototype.open, sd = XMLHttpRequest.prototype.send;
+      XMLHttpRequest.prototype.open = function (m, u) { this._svSkip = rum(u); return op.apply(this, arguments); };
+      XMLHttpRequest.prototype.send = function () { if (!this._svSkip) return sd.apply(this, arguments); };
+    } catch (e) {}
+  }
   const SRC = (() => {
     try {
       let v = JSON.parse(sessionStorage.getItem("sv_src") || "null");
-      if (!v) {
+      if (!v || !v.id) {
         const q = new URLSearchParams(location.search), ref = document.referrer ? new URL(document.referrer).hostname : "";
-        v = { s: q.get("utm_source") || (ref && ref !== location.hostname ? ref : "direct"), l: location.pathname };
+        v = Object.assign({ s: q.get("utm_source") || (ref && ref !== location.hostname ? ref : "direct"), l: location.pathname }, v || {});
+        v.id = Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
         sessionStorage.setItem("sv_src", JSON.stringify(v));
       }
       return v;
-    } catch (e) { return { s: "direct", l: location.pathname }; }
+    } catch (e) { return { s: "direct", l: location.pathname, id: "" }; }
   })();
-  const track = (t) => {
+  const track = (t, k, v) => {
+    if (ME) return;
     try {
-      const body = JSON.stringify({ t, p: location.pathname, s: SRC.s, l: SRC.l });
+      const body = JSON.stringify({ t, p: location.pathname, s: SRC.s, l: SRC.l, i: SRC.id, k, v });
       if (!(navigator.sendBeacon && navigator.sendBeacon("/api/e", body))) fetch("/api/e", { method: "POST", body, keepalive: true }).catch(() => {});
     } catch (e) {}
   };
+  track("view");
+  // clicks: the lead actions, plus any link or button, labelled by its visible text
   document.addEventListener("click", (e) => {
-    const a = e.target.closest && e.target.closest("a[href]");
+    const a = e.target.closest && e.target.closest("a[href], button, [data-track]");
     if (!a) return;
-    const h = a.getAttribute("href");
+    const h = a.getAttribute("href") || "";
     if (/^https:\/\/t\.me\//.test(h)) track("telegram");
     else if (/^mailto:/.test(h)) track("email");
+    let label = a.getAttribute("data-track") || a.getAttribute("aria-label") || (a.innerText || a.textContent || "").replace(/\s+/g, " ").trim();
+    if (!label && a.querySelector("img[alt]")) label = a.querySelector("img[alt]").alt;
+    if (!label) return;
+    let to = "";
+    try { if (h && !/^(mailto:|tel:|#)/.test(h)) { const u = new URL(h, location.href); to = u.host === location.host ? (u.pathname.replace(/\.html$/, "").replace(/\/index$/, "/") || "/") : u.host.replace(/^www\./, ""); } } catch (er) {}
+    track("click", (label.slice(0, 48) + (to ? " → " + to : "")).slice(0, 110));
   }, { capture: true });
+  // how far down the page people get (each mark once per page view)
+  (() => {
+    const hit = new Set();
+    const check = () => {
+      const full = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+      const pct = full <= innerHeight + 4 ? 100 : (scrollY + innerHeight) / full * 100;
+      [25, 50, 75, 100].forEach((m) => { if (pct >= m - 2 && !hit.has(m)) { hit.add(m); track("scroll", String(m)); } });
+    };
+    let tm = 0;
+    addEventListener("scroll", () => { if (!tm) tm = setTimeout(() => { tm = 0; check(); }, 400); }, { passive: true });
+    addEventListener("load", () => setTimeout(check, 1500));
+  })();
+  // time with the page visible, sent in pieces when the tab is hidden or closed
+  (() => {
+    let since = document.visibilityState === "visible" ? Date.now() : 0, acc = 0;
+    const flush = () => {
+      if (since) { acc += Date.now() - since; since = 0; }
+      const s = Math.round(acc / 1000); acc = 0;
+      if (s >= 1) track("time", "", Math.min(s, 1800));
+    };
+    document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") flush(); else since = Date.now(); });
+    addEventListener("pagehide", flush);
+  })();
 
   /* ---------- intro ---------- */
   const go = () => requestAnimationFrame(() => document.documentElement.classList.add("is-loaded"));

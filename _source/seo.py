@@ -24,7 +24,7 @@ PAGES_V = 30
 MOBILE_V = 5  # bump after editing css/mobile.css
 BRAND_V = 2  # bump after replacing logo / favicon files
 # other assets that change: bump the number after editing the file
-ASSET_V = {"css/style.css": 6, "js/main.js": 21, "css/xp.css": 6, "js/scenes.js": 20, "js/xp.js": 5, "js/dots.js": 2, "css/hero.css": 2, "js/case.js": 13, "js/fx.js": 17, "js/svc.js": 17}
+ASSET_V = {"css/style.css": 6, "js/main.js": 22, "css/xp.css": 6, "js/scenes.js": 20, "js/xp.js": 5, "js/dots.js": 2, "css/hero.css": 2, "js/case.js": 13, "js/fx.js": 17, "js/svc.js": 17}
 
 # Search titles (aim for under ~60 characters). Case studies are generated from the page.
 POPULAR = [("saas-website-design", "SaaS website design"), ("fintech-website-design", "Fintech website design"),

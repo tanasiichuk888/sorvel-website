@@ -120,6 +120,37 @@ tr.isbrand td:first-child::after { content: "brand"; margin-left: 8px; padding: 
 .how p { margin: 0; padding: 10px 0; border-bottom: 1px solid var(--line); color: var(--text-2); font-size: 13px; }
 .how b { color: var(--text); font-weight: 600; }
 .diag { margin-top: 14px; padding: 12px 14px; border-radius: 10px; background: rgba(208,59,59,.08); box-shadow: inset 0 0 0 1px rgba(208,59,59,.3); color: var(--bad-ink); font: 12px/1.6 ui-monospace, monospace; white-space: pre-wrap; }
+/* behaviour */
+.bstats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 22px; }
+.bstats > div { padding: 14px 16px; border-radius: 12px; background: var(--panel-2); box-shadow: inset 0 0 0 1px var(--line); }
+.bstats h4 { margin: 0 0 8px; font-size: 12px; font-weight: 500; color: var(--text-2); }
+.bstats b { font: 600 24px/1 var(--head); font-variant-numeric: tabular-nums; margin-right: 8px; }
+.bstats small { display: block; margin-top: 8px; color: var(--muted); font-size: 11.5px; }
+.fun .row { grid-template-columns: minmax(0, 1fr) auto 70px; }
+.fun .row .p { width: auto; }
+.pt td:first-child { max-width: 0; width: 46%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
+.mini { display: inline-block; width: 46px; height: 4px; margin-left: 8px; border-radius: 3px; background: rgba(242,239,234,.08); vertical-align: middle; overflow: hidden; }
+.mini i { display: block; height: 100%; background: var(--s1); }
+.visits { display: grid; gap: 8px; }
+.visit { display: grid; grid-template-columns: 150px minmax(0, 1fr) auto; gap: 16px; align-items: start; padding: 12px 14px; border-radius: 10px; background: var(--panel-2); box-shadow: inset 0 0 0 1px var(--line); }
+.visit.lead { box-shadow: inset 0 0 0 1px rgba(59,107,255,.45); background: linear-gradient(90deg, rgba(59,107,255,.08), transparent 60%), var(--panel-2); }
+.visit .meta { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.visit .meta b { display: block; color: var(--text); font-weight: 500; font-size: 12.5px; }
+.path { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12.5px; }
+.path span { display: inline-flex; align-items: baseline; gap: 6px; padding: 3px 8px; border-radius: 6px; background: rgba(242,239,234,.06); color: var(--text); }
+.path span small { color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.path i { color: var(--faint); font-style: normal; }
+.visit .clk { margin-top: 6px; color: var(--muted); font-size: 11.5px; overflow-wrap: anywhere; }
+.out { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; font-size: 11.5px; white-space: nowrap; }
+.out .tg { padding: 2px 8px; border-radius: 5px; }
+.out .tg.b { color: #9DB5FF; background: rgba(59,107,255,.16); }
+.out .tg.c { color: #FFB08F; background: rgba(217,89,38,.16); }
+.out .tg.q { color: var(--muted); background: rgba(242,239,234,.05); }
+.out em { font-style: normal; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.vf { display: flex; gap: 8px; margin: 0 0 12px; }
+.vf button { all: unset; cursor: pointer; padding: 5px 10px; border-radius: 7px; font-size: 12.5px; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line-2); }
+.vf button.on { color: var(--text); background: rgba(242,239,234,.07); }
+.vf button:focus-visible { outline: 2px solid var(--s1); }
 /* responsive */
 @media (max-width: 1180px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } .grid3 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 900px) {
@@ -131,6 +162,7 @@ tr.isbrand td:first-child::after { content: "brand"; margin-left: 8px; padding: 
   .top { position: static; margin-top: 0; }
   .grid2, .grid3, .how { grid-template-columns: 1fr; }
 }
+@media (max-width: 760px) { .bstats { grid-template-columns: 1fr; } .mini { display: none; } .pt td:first-child { width: 52%; } .visit { grid-template-columns: minmax(0, 1fr); gap: 8px; } .out { flex-direction: row; flex-wrap: wrap; align-items: center; } }
 @media (max-width: 560px) { .kpis { grid-template-columns: 1fr 1fr; } .kpi { min-height: 132px; padding: 14px; } .kpi .v b { font-size: 24px; } .vit { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
 </style>
@@ -143,6 +175,7 @@ tr.isbrand td:first-child::after { content: "brand"; margin-left: 8px; padding: 
     <nav id="nav">
       <a href="#overview" class="on"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Overview</a>
       <a href="#leads"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>Leads</a>
+      <a href="#behavior"><svg viewBox="0 0 24 24"><path d="M9 4v10l3-3 2 5 2-1-2-5h4z"/></svg>Behaviour</a>
       <a href="#traffic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Traffic</a>
       <a href="#markets"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Buyer markets</a>
       <a href="#search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>Google search</a>
@@ -173,6 +206,11 @@ tr.isbrand td:first-child::after { content: "brand"; margin-left: 8px; padding: 
         <div class="list" id="leadLand"></div>
         <div class="list" id="funnel"></div>
       </div>
+    </section>
+
+    <section id="behavior" class="panel">
+      <h2>Behaviour</h2><p class="sub">What visitors do once they are on the site: pages, how far they scroll, how long they stay and what they click. Counted without cookies; your own browser is left out.</p>
+      <div id="bh"></div>
     </section>
 
     <section id="traffic" class="panel">
@@ -215,7 +253,10 @@ tr.isbrand td:first-child::after { content: "brand"; margin-left: 8px; padding: 
         <p><b>From buyer markets</b> is the share of visits from countries you sell to. Higher means better-fit traffic.</p>
         <p><b>Non-brand Google clicks</b> leave out searches for "sorvel", so they show people who found you without knowing the name.</p>
         <p><b>Mobile LCP</b> is how long the biggest element takes to appear on phones. Green under 2.5 s, red over 4 s.</p>
-        <p>Your own visits are counted too. Small numbers in the first weeks move a lot; read trends over 28 days.</p>
+        <p><b>Behaviour</b> follows one visit at a time: the pages in order, time on each, and whether it ended in a brief or a contact click. Blue cards are visits that became leads.</p>
+        <p><b>Read to 75%</b> is the share of page views that scrolled at least three quarters down. Low numbers on long pages mean people stop early.</p>
+        <p><b>Left within 10 s</b> is visits that saw one page for under ten seconds. Watch it by source: a high share means the ad, post or link promised something the page doesn't show.</p>
+        <p>Opening this dashboard leaves your browser out of all stats from then on (or open sorvel.agency/?me=1 on a phone; ?me=0 undoes it). Visits before that were counted.</p>
       </div>
       <div id="diag"></div>
     </section>
@@ -410,10 +451,62 @@ function render(D) {
     list($("#gscPages"), "Pages getting Google clicks", [], { empty: "Connect Search Console" });
   }
 
+  behavior(D.behavior, D.behaviorPrev, D.connected.events);
   $("#diag").innerHTML = D.errors && D.errors.length ? `<div class="diag">${D.errors.map(esc).join("\n")}</div>` : "";
 }
+/* ---------- behaviour ---------- */
+const dur = (s) => s == null ? "—" : s < 60 ? Math.round(s) + " s" : Math.floor(s / 60) + "m " + String(Math.round(s % 60)).padStart(2, "0") + "s";
+const pageName = (p) => p === "/" ? "Home" : p.replace(/^\/(work|services)\//, "").replace(/^\//, "").replace(/[-/]/g, " ").replace(/^\w/, (c) => c.toUpperCase());
+const ago = (t) => { const m = Math.round((Date.now() - t) / 60e3); return m < 1 ? "just now" : m < 60 ? m + " min ago" : m < 1440 ? Math.round(m / 60) + " h ago" : new Date(t).toLocaleDateString("en-GB", { day: "numeric", month: "short" }) + ", " + new Date(t).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }); };
+let regionNames; const country = (c) => { if (!c) return "Unknown"; try { regionNames = regionNames || new Intl.DisplayNames(["en"], { type: "region" }); return regionNames.of(c); } catch (e) { return c; } };
+let VFILTER = "all";
+function behavior(B, BP, on) {
+  const el = $("#bh");
+  if (!on) { el.innerHTML = notConnected("Visit tracking is off."); return; }
+  if (!B || !B.sessions) { el.innerHTML = `<div class="empty"><b>Collecting</b>Behaviour tracking started on 23 Oct 2026. Visits will show up here as people browse.</div>`; return; }
+  const pct = (x) => Math.round(x * 100) + "%";
+  const stat = (t, v, d, foot) => `<div><h4>${t}</h4><b>${v}</b>${d || ""}<small>${foot}</small></div>`;
+  const vis = B.sessions, top = B.funnel[0].v || 1;
+  el.innerHTML = `<div class="bstats">
+      ${stat("Visits followed", fmt(vis), BP ? delta(vis, BP.sessions) : "", "Each one is a single browser tab")}
+      ${stat("Median time on site", dur(B.median), BP ? delta(B.median, BP.median) : "", "Half the visits stay longer than this")}
+      ${stat("Left within 10 s", pct(B.bounce), BP && BP.sessions ? ptsDelta(B.bounce, BP.bounce, true) : "", "One page, under ten seconds")}
+    </div>
+    <div class="grid2">
+      <div class="list fun"><h4>Path to a lead</h4>${B.funnel.map((r, i) => `<div class="row"><span class="k">${esc(r.k)}</span><span class="v">${fmt(r.v)}</span><span class="p">${i ? pct(r.v / top) : ""}</span><span class="bar"><i style="width:${(r.v / top * 100).toFixed(1)}%;${i >= 3 ? "--c:var(--s2)" : ""}"></i></span></div>`).join("")}
+        <p class="sub" style="margin:10px 0 0">Share of all visits that reached each step.</p></div>
+      <div class="list" id="bClicks"></div>
+    </div>
+    <div class="grid2" style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)">
+      <div><h4 style="margin:0 0 6px;font-size:12px;font-weight:500;color:var(--text-2)">Pages: time and scroll</h4>
+        <table class="pt"><tr><th>Page</th><th class="n">Views</th><th class="n">Avg. time</th><th class="n">Read to 75%</th></tr>
+        ${B.pages.map((r) => `<tr><td title="${esc(r.k)}">${esc(r.k === "/" ? "/ (home)" : r.k)}</td><td class="n">${fmt(r.views)}</td><td class="n">${dur(r.avg)}</td><td class="n">${pct(r.deep)}<span class="mini"><i style="width:${r.deep * 100}%"></i></span></td></tr>`).join("")}</table></div>
+      <div class="list" id="bExits"></div>
+    </div>
+    <div style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)">
+      <div class="ph"><h4 style="margin:0 0 10px;font-size:12px;font-weight:500;color:var(--text-2)">Recent visits, newest first</h4>
+      <div class="vf" role="group" aria-label="Filter visits"><button data-f="all">All</button><button data-f="lead">Leads only</button><button data-f="long">Over 1 min</button></div></div>
+      <div class="visits" id="bVisits"></div>
+    </div>`;
+  list($("#bClicks"), "Most clicked", B.clicks, { n: 10, empty: "No clicks yet" });
+  list($("#bExits"), "Last page before leaving", B.exits.map((r) => ({ ...r, c: "var(--faint)" })), { label: (k) => k === "/" ? "/ (home)" : k, n: 8 });
+  const draw = () => {
+    el.querySelectorAll(".vf button").forEach((b) => b.classList.toggle("on", b.dataset.f === VFILTER));
+    const rows = B.recent.filter((v) => VFILTER === "lead" ? v.brief || v.contact || v.started : VFILTER === "long" ? v.secs >= 60 : true);
+    $("#bVisits").innerHTML = rows.length ? rows.map((v) => {
+      const lead = v.brief || v.contact;
+      const tags = [v.brief ? '<span class="tg b">Sent a brief</span>' : v.started ? '<span class="tg q">Started a brief</span>' : "", v.contact ? '<span class="tg c">Contact click</span>' : ""].filter(Boolean).join("");
+      return `<div class="visit${lead ? " lead" : ""}"><div class="meta"><b>${esc(ago(v.at))}</b>${esc(country(v.c))} · ${esc(srcLabel(v.s))}</div>
+        <div><div class="path">${v.pages.map((q) => `<span title="${esc(q.p)} · scrolled ${q.depth || 0}%">${esc(pageName(q.p))}${q.secs ? `<small>${dur(q.secs)}</small>` : ""}</span>`).join("<i>→</i>")}</div>
+        ${v.clicks.length ? `<div class="clk">Clicked: ${v.clicks.map(esc).join(" · ")}</div>` : ""}</div>
+        <div class="out">${tags}<em>${dur(v.secs)} total</em></div></div>`;
+    }).join("") : '<div class="empty">No visits match this filter</div>';
+  };
+  el.querySelectorAll(".vf button").forEach((b) => b.addEventListener("click", () => { VFILTER = b.dataset.f; draw(); }));
+  draw();
+}
 const TGT = new Set(["United States", "United Kingdom", "Canada", "Australia", "Ireland", "Germany", "Netherlands", "Switzerland", "Sweden", "Norway", "Denmark", "France", "Belgium", "Austria", "Finland", "Spain", "Italy", "Israel", "United Arab Emirates", "Singapore", "New Zealand"]);
-function ptsDelta(cur, prev) { const d = (cur - prev) * 100; if (Math.abs(d) < .05) return '<span class="d flat">→ 0 pts</span>'; return `<span class="d ${d > 0 ? "up" : "down"}">${d > 0 ? "↑" : "↓"} ${Math.abs(d).toFixed(1)} pts</span>`; }
+function ptsDelta(cur, prev, low) { const d = (cur - prev) * 100; if (Math.abs(d) < .05) return '<span class="d flat">→ 0 pts</span>'; return `<span class="d ${(d > 0) !== !!low ? "up" : "down"}">${d > 0 ? "↑" : "↓"} ${Math.abs(d).toFixed(1)} pts</span>`; }
 
 async function load() {
   $("#upd").className = "badge load"; $("#upd").textContent = "Loading";
@@ -433,6 +526,7 @@ document.querySelectorAll(".seg button").forEach((b) => b.addEventListener("clic
 const links = [...document.querySelectorAll("#nav a")];
 const secIO = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) links.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id)); }), { rootMargin: "-40% 0px -55% 0px" });
 document.querySelectorAll("main section").forEach((s) => secIO.observe(s));
+try { localStorage.setItem("sv_me", "1"); } catch (e) {}  // this browser is the owner's: leave it out of the site stats
 load();
 })();
 </script>
