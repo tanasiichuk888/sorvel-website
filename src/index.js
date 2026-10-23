@@ -242,9 +242,12 @@ async function rum(env, [a, b], full) {
   const visits = tot ? tot.sum.visits : 0, views = tot ? tot.count : 0;
   // Web Analytics returns ISO country codes ("US"); show full names
   const countries = (d.countries || []).map((x) => ({ k: countryName(x.dimensions.countryName), v: x.sum.visits }));
+  // country rows are counted separately from the total and can add up to a little more; share is out of the country sum
+  const ctotal = countries.reduce((s, c) => s + c.v, 0);
   const target = countries.filter((c) => TARGET.has(c.k)).reduce((s, c) => s + c.v, 0);
+  const share = Math.min(1, ctotal ? target / ctotal : 0);
   const vit = {}; (d.vitals || []).forEach((x) => { vit[(x.dimensions.deviceType || "other").toLowerCase()] = { p75: lcpMs(x.quantiles.largestContentfulPaintP75), n: x.count }; });
-  const out = { visits, views, countries, target, targetShare: visits ? target / visits : 0, lcp: vit };
+  const out = { visits, views, countries, target: Math.min(target, visits || target), targetShare: share, lcp: vit };
   if (full) {
     out.byDay = (d.byDay || []).map((x) => ({ d: x.dimensions.date, visits: x.sum.visits, views: x.count }));
     out.refs = (d.refs || []).map((x) => ({ k: x.dimensions.refererHost || "Direct", v: x.sum.visits }));
