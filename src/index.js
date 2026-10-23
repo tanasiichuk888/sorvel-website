@@ -291,10 +291,18 @@ async function googleToken(env) {
   gToken = { tok: j.access_token, at: Date.now() + 3000e3 };
   return gToken.tok;
 }
+let gscSite = null;   // "sc-domain:sorvel.agency" (Domain property) or "https://sorvel.agency/" (URL-prefix property)
 async function searchConsole(env, r) {
   const tok = await googleToken(env);
+  if (!gscSite) {
+    const res = await fetch("https://www.googleapis.com/webmasters/v3/sites", { headers: { authorization: "Bearer " + tok } });
+    const j = await res.json();
+    const sites = (j.siteEntry || []).map((x) => x.siteUrl);
+    gscSite = ["sc-domain:" + HOST, `https://${HOST}/`, `https://www.${HOST}/`].find((x) => sites.includes(x));
+    if (!gscSite) throw new Error("The service account can't see sorvel.agency yet. Add its email as a user in Search Console (Settings, Users and permissions).");
+  }
   const q = async ([a, b], dims, limit = 1000) => {
-    const res = await fetch(`https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent("sc-domain:" + HOST)}/searchAnalytics/query`, {
+    const res = await fetch(`https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(gscSite)}/searchAnalytics/query`, {
       method: "POST", headers: { authorization: "Bearer " + tok, "content-type": "application/json" },
       body: JSON.stringify({ startDate: day(a), endDate: day(new Date(b - 864e5)), dimensions: dims, rowLimit: limit, dataState: "all" }) });
     const j = await res.json();
