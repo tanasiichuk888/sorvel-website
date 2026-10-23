@@ -221,8 +221,9 @@ async function cfgql(env, query) {
 }
 
 async function rum(env, [a, b], full) {
-  const run = async (withBot) => {
-    const f = `{AND:[{datetime_geq:"${a.toISOString()}"},{datetime_lt:"${b.toISOString()}"},{requestHost_in:["${HOST}","www.${HOST}"]}${withBot ? ",{bot:0}" : ""}]}`;
+  const run = async (withBot, noDash = true) => {
+    // leave the private dashboard itself out of the site numbers
+    const f = `{AND:[{datetime_geq:"${a.toISOString()}"},{datetime_lt:"${b.toISOString()}"},{requestHost_in:["${HOST}","www.${HOST}"]}${noDash ? ',{requestPath_notlike:"/scoreboard%"}' : ""}${withBot ? ",{bot:0}" : ""}]}`;
     const g = (alias, dim, n, order = "count_DESC") => `${alias}: rumPageloadEventsAdaptiveGroups(filter:${f},limit:${n},orderBy:[${order}]){count sum{visits} dimensions{${dim}}}`;
     const q = `{viewer{accounts(filter:{accountTag:"${env.CF_ACCOUNT_ID}"}){
       total: rumPageloadEventsAdaptiveGroups(filter:${f},limit:1){count sum{visits}}
@@ -236,7 +237,12 @@ async function rum(env, [a, b], full) {
     return cfgql(env, q);
   };
   let d;
-  try { d = await run(true); } catch (e) { if (/bot/i.test(e.message)) d = await run(false); else throw e; }
+  try { d = await run(true); } catch (e) {
+    if (/bot/i.test(e.message)) { try { d = await run(false); } catch (e2) { if (/requestPath/i.test(e2.message)) d = await run(false, false); else throw e2; } }
+    else if (/requestPath/i.test(e.message)) d = await run(true, false);
+    else throw e;
+  }
+  if (d.paths) d.paths = d.paths.filter((x) => !String(x.dimensions.requestPath || "").startsWith("/scoreboard"));
   const n = (x) => (x && x[0] ? x[0] : null);
   const tot = n(d.total);
   const visits = tot ? tot.sum.visits : 0, views = tot ? tot.count : 0;

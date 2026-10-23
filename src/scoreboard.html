@@ -4,6 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
+<script>
+// this page is private: keep Cloudflare Web Analytics (injected automatically) from counting it
+(() => { const rum = (u) => /cdn-cgi\/rum|cloudflareinsights/.test(String((u && u.url) || u));
+  try { const sb = navigator.sendBeacon && navigator.sendBeacon.bind(navigator); if (sb) navigator.sendBeacon = (u, d) => (rum(u) ? true : sb(u, d));
+    const f = window.fetch.bind(window); window.fetch = (u, o) => (rum(u) ? Promise.resolve(new Response(null, { status: 204 })) : f(u, o));
+    const op = XMLHttpRequest.prototype.open, sd = XMLHttpRequest.prototype.send;
+    XMLHttpRequest.prototype.open = function (m, u) { this._svSkip = rum(u); return op.apply(this, arguments); };
+    XMLHttpRequest.prototype.send = function () { if (!this._svSkip) return sd.apply(this, arguments); };
+    localStorage.setItem("sv_me", "1"); } catch (e) {} })();
+</script>
 <title>Growth scoreboard · Sorvel</title>
 <link rel="icon" href="/img/brand/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/css/fonts.css?v=1">
