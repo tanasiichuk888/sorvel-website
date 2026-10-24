@@ -13,14 +13,14 @@ def about():
     vals = [("eye", "Taste over trends", "We design what fits your business and your buyers, not what's popular on Dribbble this month."),
             ("doc", "Written, not spoken", "Plans, updates and decisions arrive in writing. You review on your own schedule and nothing gets lost in a call."),
             ("users", "Seniors only", "The people you meet in the plan are the people who design and build. No juniors learning on your budget."),
-            ("clock", "Small number of projects", "We take on a few projects at a time, so each one gets real attention and a fast pace."),
+            ("clock", "A dedicated team per project", "Every project has its own designer and developer from start to finish, so it moves fast and nothing slips."),
             ("check", "Fixed scope, fixed price", "You know what you get and what it costs before we start. No surprise invoices."),
             ("heart", "Built to be handed over", "Clean files, a tidy CMS and a short video guide. You should never feel locked in.")]
     v = "\n".join(f'          <div data-reveal style="--d:{(i%2)*.06:.2f}s">{ico(ic)}<h3>{t}</h3><p>{x}</p></div>' for i, (ic, t, x) in enumerate(vals))
     people = [("Mykola Tanasiichuk", "Founder, Design Lead", True), ("Team member", "Senior Product Designer", False), ("Team member", "Webflow Developer", False),
               ("Team member", "Framer Developer", False), ("Team member", "WordPress Developer", False), ("Team member", "Brand Designer", False)]
     pp = "\n".join(f'          <article class="person{" person--lead" if lead else ""}" data-reveal style="--d:{i*.05:.2f}s"><div class="person__ph">{"<span>MT</span>" if lead else ""}</div><h3>{n}</h3><p>{r}</p></article>' for i, (n, r, lead) in enumerate(people))
-    body = hero('<span>About</span>', "About the studio", ["A small senior team", 'with <span class="accent">a lot of reps</span>.'],
+    body = hero('<span>About</span>', "About the studio", ["A senior team", 'with <span class="accent">a lot of reps</span>.'],
                 "Sorvel is a design and development studio for startups and growing businesses, mostly in SaaS, fintech and AI. We started as one designer taking on projects from around the world, and grew into a team that covers design and build end to end.",
                 btn_primary("contact.html", "Start a project") + btn_ghost("work.html", "See our work"), p=p, visual=scenes.globe())
     body += f'''
@@ -32,7 +32,7 @@ def about():
         </div>
         <div class="pg-prose" data-reveal>
           <p>It began with Mykola designing websites for clients he never met in person, in time zones he had to look up. Teams from all over the world kept coming back, and kept sending their friends.</p>
-          <p>Over the years the projects grew, from single landing pages to full websites, product interfaces and brand systems. To keep up without lowering the bar, we built a small team of senior designers and developers who share the same standards.</p>
+          <p>Over the years the projects grew, from single landing pages to full websites, product interfaces and brand systems. To keep up without lowering the bar, we built a team of senior designers and developers who share the same standards.</p>
           <p>Today we design in Figma and build in Webflow, Framer and WordPress. The way we work has stayed the same: a clear plan in writing, fast progress you can see, and a result you're proud to send to customers.</p>
         </div>
       </div>
@@ -74,7 +74,7 @@ def about():
 {note_html}
 '''
     body += cta(p)
-    page("about.html", "About | Sorvel Studio", "Sorvel is a small senior design and development studio for startups and growing businesses, mostly in SaaS, fintech and AI. 11 years, 600+ projects.", "about", body, p)
+    page("about.html", "About | Sorvel Studio", "Sorvel is a senior design and development studio for startups and growing businesses, mostly in SaaS, fintech and AI. 11 years, 600+ projects.", "about", body, p)
 
 # ---------------- REVIEWS ----------------
 def reviews():
