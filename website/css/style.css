@@ -692,6 +692,13 @@ html { scroll-behavior: smooth; }
   .rvx__bars.run .is-on i::after { animation: none; }
 }
 
+.rvx__tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.rvx__tag--src { display: inline-flex; align-items: center; gap: 5px; color: #9FE2B4; background: rgba(40,180,99,.1); border-color: rgba(40,180,99,.3); }
+.rvx__tag--src svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.rvx__q small { display: block; margin-top: 14px; font-size: 12.5px; color: var(--muted); }
+.rvx__mt b em { margin-left: 8px; font-style: normal; font-size: 11px; font-weight: 500; color: #9FE2B4; }
+.rvx__by { flex-wrap: wrap; row-gap: 10px; }
+
 /* ---------- reviews: vertical marquee (3 columns, alternating directions) ---------- */
 .rv { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; height: 620px; overflow: hidden;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 22%, #000 78%, transparent 100%);
@@ -709,7 +716,10 @@ html { scroll-behavior: smooth; }
 .rcard__who { display: flex; flex-direction: column; line-height: 1.3; }
 .rcard__who b { font-size: 14.5px; font-weight: 500; }
 .rcard__who span { font-size: 12.5px; color: var(--muted); }
-.rcard__src { margin-left: auto; padding: 3px 8px; border-radius: 6px; font-size: 11.5px; color: var(--muted); border: 1px solid var(--line); }
+.rcard__tags { margin-left: auto; display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.rcard__src--ok { color: #9FE2B4; border-color: rgba(40,180,99,.3); background: rgba(40,180,99,.08); }
+.rcard__tr { display: block; margin-top: 10px; font-size: 12.5px; color: var(--muted); }
+.rcard__src { padding: 3px 8px; border-radius: 6px; font-size: 11.5px; color: var(--muted); border: 1px solid var(--line); }
 .rcard__stars { display: flex; gap: 2px; margin: 14px 0 10px; }
 .rcard__stars i { width: 13px; height: 13px; background: var(--accent); clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
 .rcard p { margin: 0; font-size: 15px; line-height: 1.6; color: #D6D3CE; }

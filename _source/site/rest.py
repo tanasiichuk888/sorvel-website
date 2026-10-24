@@ -78,26 +78,34 @@ def about():
 
 # ---------------- REVIEWS ----------------
 def reviews():
+    import json
     p = ""
     src = open(ROOT + "js/main.js").read()
-    block = src[src.index("const reviews = ["):src.index("];", src.index("const reviews = ["))]
-    items = re.findall(r'\{ name: "(.*?)", ini: "(.*?)", who: "(.*?)", meta: "(.*?)",( repeat: true,)? text: "(.*?)" \}', block)
-    items = [(ini, (name or who), ((re.sub(r"^Client from (the )?", "", who) + " · ") if name else "") + meta, rep, text) for name, ini, who, meta, rep, text in items]
+    data = json.loads(src[src.index("/*REVIEWS*/") + 11:src.index("/*/REVIEWS*/")])
+    def nm(r):
+        if r.get("n"):
+            return r["n"]
+        c = r.get("c", "")
+        return "Client from " + ("the " if c.startswith(("United", "Netherlands")) else "") + c
     cards = []
-    for ini, who, meta, rep, text in items:
-        cards.append(f'''          <figure class="rcard" data-reveal><div class="rcard__top"><span class="rcard__ava">{ini}</span><span class="rcard__who"><b>{who}</b><span>{meta}</span></span>{'<span class="rcard__src">Repeat client</span>' if rep else ""}</div><div class="rcard__stars" aria-label="5 out of 5"><i></i><i></i><i></i><i></i><i></i></div><p>{H.escape(text, quote=False)}</p></figure>''')
-    reps = sum(1 for x in items if x[3])
+    items = data
+    for r in data:
+        sub = " · ".join(x for x in [r.get("role", ""), r.get("c", "") if r.get("n") else "", r.get("d", "")] if x)
+        tags = (f'<span class="rcard__src rcard__src--ok">✓ {r["src"]}</span>' if r.get("src") else "") + ('<span class="rcard__src">Repeat client</span>' if r.get("rep") else "")
+        tr = f'<small class="rcard__tr">Translated from {r["tr"]}</small>' if r.get("tr") else ""
+        cards.append(f'''          <figure class="rcard" data-reveal><div class="rcard__top"><span class="rcard__ava">{H.escape(r["ini"])}</span><span class="rcard__who"><b>{H.escape(nm(r))}</b><span>{H.escape(sub)}</span></span><span class="rcard__tags">{tags}</span></div><div class="rcard__stars" aria-label="5 out of 5"><i></i><i></i><i></i><i></i><i></i></div><p>{H.escape(r["t"], quote=False)}</p>{tr}</figure>''')
+    reps = len({nm(r) for r in data if r.get("rep") and r.get("n")}) or sum(1 for r in data if r.get("rep"))
     body = hero('<span>Reviews</span>', "Client reviews", ["What it's like", 'to <span class="accent">work with us</span>.'],
-                "Real reviews from real clients, quoted word for word. Names are hidden for privacy, and anything that named a person or a platform has been cut and marked with an ellipsis.",
-                btn_primary("contact.html", "Start a project") + btn_ghost("work.html", "See the work"), p=p, visual=scenes.rate([("Listened carefully, moved fast, and delivered a beautiful design that truly reflects our brand.","Client from Canada · Repeat client"),("Extremely responsive and moved quickly. The website was exactly what I was looking for.","Client from the United States"),("It took very few rounds of feedback to get exactly what we were looking for.","Client from the United States · Repeat client"),("Great outcome, quick and exactly what I wanted.","Client from Saudi Arabia · Repeat client")]))
+                "Real reviews from Upwork and Fiverr projects, quoted word for word under the name each client uses on the platform. Every one of them is five stars.",
+                btn_primary("contact.html", "Start a project") + btn_ghost("work.html", "See the work"), p=p, visual=scenes.rate([("Our agency has hired him for 20+ different projects… We continue to work with Mykola on a monthly basis.","Mark R. · Agency owner · Upwork"),("The biggest reason I would recommend working with Mykola, is that the design process with him feels just right.","Andrei B. · Owner · Upwork"),("He even recorded personalized video tutorials so we could manage our site ourselves — that was a game-changer!","alexandrzakiyan · United States · Fiverr"),("I worked with great designers before, and highly recommend Mykola.","theborodin · United States · Fiverr")]))
     body += f'''
     <section class="sec" data-chapter="Score" style="padding-top:0;border-top:0">
       <div class="wrap">
         <div class="rbig" data-reveal>
           <div class="rbig__score"><b>5.0</b><div class="score__stars" aria-label="5 out of 5"><i></i><i></i><i></i><i></i><i></i></div></div>
           <div class="rbig__stats">
-            <div><b>{len(items)}</b><span>client reviews quoted</span></div>
-            <div><b>{reps}</b><span>from repeat clients</span></div>
+            <div><b>{len(items)}</b><span>verified client reviews</span></div>
+            <div><b>{reps}</b><span>clients who came back</span></div>
             <div><b><span data-count="600">0</span>+</b><span>projects shipped</span></div>
           </div>
         </div>

@@ -274,73 +274,469 @@
     document.querySelectorAll("main > section, main > div, .foot").forEach((el) => offIO.observe(el));
   }
 
-  /* ---------- reviews marquee ----------
-     Real client reviews, quoted word for word. Sentences naming a person or a platform are cut and marked with "…".
+  /* ---------- reviews ----------
+     Real client reviews from Upwork and Fiverr, quoted word for word (x = a shorter verbatim excerpt, marked with "…").
      Fields: ini (avatar letter), who, meta (project type and length), repeat (shows a "Repeat client" chip), text. */
-  const reviews = [
-    { name: "", ini: "V", who: "Client from the United States", meta: "2-week project", text: "Extremely responsive and moved quickly. The website was exactly what I was looking for." },
-    { name: "", ini: "R", who: "Client from Austria", meta: "4-week project", text: "Excellent work and great communication! I am very happy with the final result. … Communication was very good throughout the whole process. The final website turned out exactly the way I had imagined it." },
-    { name: "", ini: "S", who: "Client from Saudi Arabia", meta: "6-day project", repeat: true, text: "Great outcome, quick and exactly what I wanted." },
-    { name: "", ini: "B", who: "Client from Uruguay", meta: "9-day project", text: "The final product was great, but what really stood out was the excellent communication throughout the project as well as the willingness to adjust the product as we were working. Thanks!" },
-    { name: "", ini: "A", who: "Client from Hong Kong", meta: "13-day project", repeat: true, text: "Very reliable, easy to communicate with, and always responded quickly when we had questions or wanted to make changes. … The final result turned out very well." },
-    { name: "", ini: "M", who: "Client from the United States", meta: "3-week project", repeat: true, text: "… an amazing job with our website. … It took very few rounds of feedback to get exactly what we were looking for." },
-    { name: "", ini: "P", who: "Client from Zimbabwe", meta: "7-day project", repeat: true, text: "We going to work on many more projects. … the great work, great turn around time and highest quality work." },
-    { name: "", ini: "S", who: "Client from Iceland", meta: "7-day project", text: "Very quick response time, and professional answers. … will 100% come back." },
-    { name: "", ini: "B", who: "Client from the United States", meta: "2-week project", repeat: true, text: "Efficient, polite, and understanding. … Understood the vision and executed our project perfectly." },
-    { name: "", ini: "J", who: "Client from the United States", meta: "3-week project", repeat: true, text: "There's few people that take pride in their work … I really love my new website." },
-    { name: "", ini: "M", who: "Client from Canada", meta: "4-day project", repeat: true, text: "Listened carefully, moved fast, and delivered a beautiful design that truly reflects our brand. Highly recommend!" },
-    { name: "", ini: "S", who: "Client from Saudi Arabia", meta: "1-day project", repeat: true, text: "Very professional and achieved exactly as promised." },
-    { name: "", ini: "P", who: "Client from Zimbabwe", meta: "3-week project", repeat: true, text: "Great experience 10/10" },
-  ];
+  const reviews = /*REVIEWS*/[
+   {
+    "n": "Mark R.",
+    "ini": "M",
+    "role": "Agency owner",
+    "d": "20+ projects",
+    "src": "Upwork",
+    "rep": true,
+    "top": true,
+    "t": "Mykola is a fantastic web designer. Our agency has hired him for 20+ different projects to design websites in Figma for a range of clients. The projects range from designs for small local businesses all the way through to international ecommerce brands. Mykola always sticks to the brief and will suggest any ideas he may have. He always takes feedback on board and makes any amendments swiftly. At the forefront of all of Mykola's designs are conversion rate optimisation techniques, to help drive enquiries and sales. These have been a game changer for our business and clients. We continue to work with Mykola on a monthly basis. I would highly recommend Mykola and his services to anyone looking for a professional designer.",
+    "x": "Mykola is a fantastic web designer. Our agency has hired him for 20+ different projects… We continue to work with Mykola on a monthly basis."
+   },
+   {
+    "n": "Andrei B.",
+    "ini": "A",
+    "role": "Owner",
+    "d": "UX/UI design",
+    "src": "Upwork",
+    "rep": true,
+    "top": true,
+    "t": "We have contracted Mykola to redesign our company's website, and the result was fantastic! First and foremost, the website design looks incredibly modern, from the colors to the layout. We requested 5 pages initially, and Mykola delivered that with layout variation for both Mobile and Desktop, but also one of our pages had several tabs with different type of content, and Mykola went through and provided updated designs for each of those tabs. Overall I am very happy with his work, and continue using him today for further iteration and other projects. The biggest reason I would recommend working with Mykola, is that the design process with him feels just right. There is a great balance between his designer thinking and input/guidance provided by us when it comes to making updates.",
+    "x": "We have contracted Mykola to redesign our company's website, and the result was fantastic! … The biggest reason I would recommend working with Mykola, is that the design process with him feels just right."
+   },
+   {
+    "n": "mmmwyld",
+    "ini": "M",
+    "c": "Canada",
+    "d": "2 weeks",
+    "src": "Fiverr",
+    "top": true,
+    "t": "Working with our website designer was one of the best decisions we made this year. They didn't just “build a site” — they truly understood our business, our brand, and what we were trying to accomplish. The design is clean, modern, fast, and actually converts leads, which is something we struggled with before. Communication was excellent throughout the entire process. Deadlines were met, revisions were handled quickly, and every detail was thought through — from mobile usability to SEO basics and lead flow. If you're looking for someone who treats your business like their own and delivers real results, I would recommend them without hesitation.",
+    "x": "Working with our website designer was one of the best decisions we made this year. … The design is clean, modern, fast, and actually converts leads, which is something we struggled with before."
+   },
+   {
+    "n": "alexandrzakiyan",
+    "ini": "A",
+    "c": "United States",
+    "d": "3 weeks · Webflow",
+    "src": "Fiverr",
+    "top": true,
+    "t": "Outstanding work and communication! Mykola did an amazing job developing our website. He was always responsive, detail-oriented, and very patient throughout the entire process. He even recorded personalized video tutorials so we could manage our site ourselves — that was a game-changer! Highly recommend him to anyone looking for a professional and reliable web developer. Will definitely work with him again!",
+    "x": "Mykola did an amazing job developing our website. … He even recorded personalized video tutorials so we could manage our site ourselves — that was a game-changer!"
+   },
+   {
+    "n": "theborodin",
+    "ini": "T",
+    "c": "United States",
+    "d": "4 weeks",
+    "src": "Fiverr",
+    "top": true,
+    "t": "Mykola has delivered a highly professional, creative, and modern Website Design with 5 pages. This design was done in modern style, and many small bits from buttons, textboxes, product cards, etc, was custom designed by Mykola to match the overall theme. I worked with great designers before, and highly recommend Mykola.",
+    "x": "Mykola has delivered a highly professional, creative, and modern Website Design with 5 pages. … I worked with great designers before, and highly recommend Mykola."
+   },
+   {
+    "n": "raderin",
+    "ini": "R",
+    "c": "United States",
+    "d": "4 weeks · Webflow",
+    "src": "Fiverr",
+    "top": true,
+    "t": "Attentive, responsive, and patient as we had to work through some design changes. Appreciate the thoroughness, professionalism, and flexibility, coupled with great design skills and strong ability to get our site done. Thank you!! Worth it and you won't be disappointed."
+   },
+   {
+    "n": "comladesas",
+    "ini": "C",
+    "c": "France",
+    "d": "3 weeks",
+    "src": "Fiverr",
+    "top": true,
+    "t": "I want to express my gratitude to Mykola for his excellent work. He showed great professionalism and listened to every one of our comments and requests. On some projects it's hard to make decisions and we need to try different options. Mykola handled this efficiently, professionally and quickly. Thank you very much for your commitment, and we won't hesitate to work with you again on future projects.",
+    "x": "He showed great professionalism and listened to every one of our comments and requests. … we won't hesitate to work with you again on future projects.",
+    "tr": "French"
+   },
+   {
+    "n": "jacob_skyline",
+    "ini": "J",
+    "c": "United States",
+    "d": "2 weeks · Webflow",
+    "src": "Fiverr",
+    "rep": true,
+    "top": true,
+    "t": "Mykola was exceptional to work with on this project. He is advanced in his coding knowledge and was able to complete the website from design in Figma all the way through to coding and completion."
+   },
+   {
+    "n": "bob_lux",
+    "ini": "B",
+    "c": "Italy",
+    "d": "8 days",
+    "src": "Fiverr",
+    "top": true,
+    "t": "Happy with the work done by Mykola. He works fast, communicates well, and will continue working until you are satisfied with the result. He did a great job of incorporating my brand colors into the new website design, and I myself did not find them the easiest colors to work with. Visually appealing work. Well done Mykola, thank you.",
+    "x": "He works fast, communicates well, and will continue working until you are satisfied with the result. He did a great job of incorporating my brand colors into the new website design…"
+   },
+   {
+    "n": "mehrconsulting",
+    "ini": "M",
+    "c": "Austria",
+    "d": "2 weeks",
+    "src": "Fiverr",
+    "rep": true,
+    "top": true,
+    "t": "This was not the first project with this seller and will not be in the last period. He has a very good eye for clean and modern design, and is very responsive, as well as clear and direct in his communications, which makes it a breeze to work together."
+   },
+   {
+    "n": "samanthamgray",
+    "ini": "S",
+    "c": "United States",
+    "d": "7 days",
+    "src": "Fiverr",
+    "top": true,
+    "t": "Great project results! I'm really happy with how it turned out. Delivery was fast, and the creator is extremely professional and easy to work with. Will absolutely be hiring him for more opportunities and projects soon! Wouldn't hire anyone else for the job!"
+   },
+   {
+    "n": "wojciech_farmer",
+    "ini": "W",
+    "c": "Canada",
+    "d": "5 days",
+    "src": "Fiverr",
+    "top": true,
+    "t": "Delivered super fast with a visually appealing design that clearly shows great experience and skill. Extremely responsive — revisions were done quickly until I was fully satisfied. Understood my requests perfectly and implemented them without any delay. Highly recommended for anyone needing quality work fast.",
+    "x": "Delivered super fast with a visually appealing design that clearly shows great experience and skill. … Highly recommended for anyone needing quality work fast."
+   },
+   {
+    "n": "markbarrettdev",
+    "ini": "M",
+    "c": "Ireland",
+    "d": "6 days",
+    "src": "Fiverr",
+    "top": true,
+    "t": "Mykola is great! He followed the brand guidelines very well and when I had a some things that I needed changing in terms of layout and content after I saw the first revision, he had no problem doing it until it was perfect!"
+   },
+   {
+    "n": "jacob_skyline",
+    "ini": "J",
+    "c": "United States",
+    "d": "3 weeks",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Exceptional work! Our site design looks great, very well branded with the flexibility for us to add and change small things later on as the business evolves."
+   },
+   {
+    "n": "aura_printing",
+    "ini": "A",
+    "c": "United States",
+    "d": "6 weeks",
+    "src": "Fiverr",
+    "t": "Mykola T truly stood out in WEBSITE DESIGN with impeccable professionalism, an impressive level of creativity, and keen attention to detail. Working with him was a breeze. His politeness, cooperative nature, and timely delivery made the process SMOOTH and enjoyable!"
+   },
+   {
+    "n": "Client on Upwork",
+    "ini": "U",
+    "d": "Figma, desktop & mobile",
+    "src": "Upwork",
+    "t": "Very good (western) design understanding, super quick in changes and revision! Definetly recommend working with Mykola."
+   },
+   {
+    "n": "millerhawkins_p",
+    "ini": "M",
+    "c": "United States",
+    "d": "5 weeks",
+    "src": "Fiverr",
+    "t": "He really did an incredible job on my site design. He was creative, but also gave me ample space to provide feedback and revisions. I would recommend him, and will be working with him again."
+   },
+   {
+    "n": "willie6969",
+    "ini": "W",
+    "c": "United States",
+    "d": "7 days",
+    "src": "Fiverr",
+    "t": "I would highly recommend using the services for Figma and other UX web design. his understanding of what elements are important is great. His design ability is awesome and his responsiveness is perfect."
+   },
+   {
+    "n": "mvbeers",
+    "ini": "M",
+    "c": "Netherlands",
+    "d": "8 days",
+    "src": "Fiverr",
+    "t": "I'm very happy with the website mockup. The seller was fast and flexible. He understood what I wanted and made a great design. He also made changes quickly when I asked. Thank you for the good work! I will order again."
+   },
+   {
+    "n": "nicti1111",
+    "ini": "N",
+    "c": "Netherlands",
+    "d": "3 days",
+    "src": "Fiverr",
+    "t": "Mykola was exceptionally nice to work with. Polite, professional and fast. Also, things went very smooth even though I am not tech savy at all. Will definitely return to him for more work. English very good. Highly recommended."
+   },
+   {
+    "n": "jompeterson",
+    "ini": "J",
+    "c": "United States",
+    "d": "3 days",
+    "src": "Fiverr",
+    "t": "Really great to work with. Even with confusion, he was patient with me and worked through any problems during the process. Very professional. I liked the end result too. Will definitely go through him again for future designs."
+   },
+   {
+    "n": "karlyoungmedia",
+    "ini": "K",
+    "c": "United States",
+    "d": "6 days",
+    "src": "Fiverr",
+    "t": "Mykola T truly IMPRESSED with his website design skills, going beyond what I imagined while emphasizing visual appeal and attention to detail. Working with him was seamless due to his deep understanding and proactive communication, ensuring everything was completed right on time."
+   },
+   {
+    "n": "roll82",
+    "ini": "R",
+    "c": "Australia",
+    "d": "3 weeks",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Mykola T has A TRUE TALENT for website design! His creativity and visual appeal perfectly aligned with our brand, making the final product outstanding. Working with him was a delight, as his politeness and deep understanding meant he went above and beyond our expectations."
+   },
+   {
+    "n": "roll82",
+    "ini": "R",
+    "c": "Australia",
+    "d": "1 day",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Mykola T delivered a visually stunning and creative website that perfectly aligned with our brand—truly impressive work! His proactive communication, quick turnaround, and seamless collaboration made the entire process a breeze. Highly recommend working with him!"
+   },
+   {
+    "n": "jakubsj1",
+    "ini": "J",
+    "c": "United States",
+    "d": "7 days",
+    "src": "Fiverr",
+    "t": "Mykola T truly always impresses with his website design skills, delivering work that is visually stunning and uniquely creative. Highly recommend his services!"
+   },
+   {
+    "n": "thrive2024",
+    "ini": "T",
+    "c": "Canada",
+    "d": "3 days",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Always a pleasure to work with. The quality of work speaks for itself. Will be in touch for future projects! Thank you."
+   },
+   {
+    "n": "audreymtn",
+    "ini": "A",
+    "c": "United States",
+    "d": "5 days",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "very happy to have found a real partner to help design our new website"
+   },
+   {
+    "n": "claudia_orr",
+    "ini": "C",
+    "c": "United Kingdom",
+    "d": "1 day",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "I can never fault working with Mykola - he is beyond excellent!"
+   },
+   {
+    "n": "markroberts721",
+    "ini": "M",
+    "c": "United Kingdom",
+    "d": "5 days",
+    "src": "Fiverr",
+    "t": "Great service from Mykola. Highly recommended to anyone looking for a talented web designer."
+   },
+   {
+    "n": "karstenj",
+    "ini": "K",
+    "c": "Germany",
+    "d": "2 days",
+    "src": "Fiverr",
+    "t": "Thanks for the fine-tuned update to the site. Very quick turnaround, exactly what I had in mind, thanks!"
+   },
+   {
+    "n": "synoagmbh",
+    "ini": "S",
+    "c": "Germany",
+    "d": "1 day",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Another project we did together. Again very happy with the result."
+   },
+   {
+    "n": "maluve2462",
+    "ini": "M",
+    "c": "United States",
+    "d": "1 day",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Thanks for the quick delivery and your responsiveness looking forward to work on the next pages"
+   },
+   {
+    "n": "steindlconsult",
+    "ini": "S",
+    "c": "Austria",
+    "d": "5 days",
+    "src": "Fiverr",
+    "t": "I'm really very happy with the result. Thank you so much!"
+   },
+   {
+    "n": "aamer_1986",
+    "ini": "A",
+    "c": "Saudi Arabia",
+    "d": "4 days",
+    "src": "Fiverr",
+    "t": "Very good. Exceeded my expectation."
+   },
+   {
+    "n": "vamvanderburg",
+    "ini": "V",
+    "c": "Netherlands",
+    "d": "1 day",
+    "src": "Fiverr",
+    "t": "Perfect cooperation, recommended"
+   },
+   {
+    "n": "audreymtn",
+    "ini": "A",
+    "c": "United States",
+    "d": "11 days",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Great collaboration! Definitely recommend"
+   },
+   {
+    "ini": "V",
+    "c": "United States",
+    "d": "2-week project",
+    "t": "Extremely responsive and moved quickly. The website was exactly what I was looking for."
+   },
+   {
+    "ini": "R",
+    "c": "Austria",
+    "d": "4-week project",
+    "t": "Excellent work and great communication! I am very happy with the final result. … Communication was very good throughout the whole process. The final website turned out exactly the way I had imagined it."
+   },
+   {
+    "ini": "S",
+    "c": "Saudi Arabia",
+    "d": "6-day project",
+    "rep": true,
+    "t": "Great outcome, quick and exactly what I wanted."
+   },
+   {
+    "ini": "B",
+    "c": "Uruguay",
+    "d": "9-day project",
+    "t": "The final product was great, but what really stood out was the excellent communication throughout the project as well as the willingness to adjust the product as we were working. Thanks!"
+   },
+   {
+    "ini": "A",
+    "c": "Hong Kong",
+    "d": "13-day project",
+    "rep": true,
+    "t": "Very reliable, easy to communicate with, and always responded quickly when we had questions or wanted to make changes. … The final result turned out very well."
+   },
+   {
+    "ini": "M",
+    "c": "United States",
+    "d": "3-week project",
+    "rep": true,
+    "t": "… an amazing job with our website. … It took very few rounds of feedback to get exactly what we were looking for."
+   },
+   {
+    "ini": "P",
+    "c": "Zimbabwe",
+    "d": "7-day project",
+    "rep": true,
+    "t": "We going to work on many more projects. … the great work, great turn around time and highest quality work."
+   },
+   {
+    "ini": "S",
+    "c": "Iceland",
+    "d": "7-day project",
+    "t": "Very quick response time, and professional answers. … will 100% come back."
+   },
+   {
+    "ini": "B",
+    "c": "United States",
+    "d": "2-week project",
+    "rep": true,
+    "t": "Efficient, polite, and understanding. … Understood the vision and executed our project perfectly."
+   },
+   {
+    "ini": "J",
+    "c": "United States",
+    "d": "3-week project",
+    "rep": true,
+    "t": "There's few people that take pride in their work … I really love my new website."
+   },
+   {
+    "ini": "M",
+    "c": "Canada",
+    "d": "4-day project",
+    "rep": true,
+    "t": "Listened carefully, moved fast, and delivered a beautiful design that truly reflects our brand. Highly recommend!"
+   },
+   {
+    "ini": "S",
+    "c": "Saudi Arabia",
+    "d": "1-day project",
+    "rep": true,
+    "t": "Very professional and achieved exactly as promised."
+   },
+   {
+    "ini": "P",
+    "c": "Zimbabwe",
+    "d": "3-week project",
+    "rep": true,
+    "t": "Great experience 10/10"
+   }
+  ]/*/REVIEWS*/;
   const initials = (n) => n.split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
   const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const country = (r) => r.who.replace(/^Client from (the )?/, "");
-  const rvName = (r) => r.name || r.who;            // a real name once the client agrees, otherwise "Client from …"
-  const rvSub = (r) => (r.name ? country(r) + " · " : "") + r.meta;
+  const rvName = (r) => r.n || ("Client from " + (/^(United|Netherlands)/.test(r.c) ? "the " : "") + r.c);
+  const rvSub = (r) => [r.role, r.n ? r.c : "", r.d].filter(Boolean).join(" · ");
+  const rvTags = (r) => (r.src ? `<span class="rvx__tag rvx__tag--src" title="Verified ${esc(r.src)} review"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.3l2.8 2.7L12.5 5"/></svg>${esc(r.src)}</span>` : "") + (r.rep ? '<span class="rvx__tag">Repeat client</span>' : "");
   const rvx = document.querySelector(".rvx");
   if (rvx) {
+    const NAMED = reviews.filter((r) => r.n), F = NAMED.map((r, k) => (r.top ? k : -1)).filter((k) => k >= 0);
     const stage = rvx.querySelector(".rvx__stage"), by = rvx.querySelector(".rvx__by"), bars = rvx.querySelector(".rvx__bars");
     const count = rvx.querySelector(".rvx__count b"), strip = document.querySelector(".rvx__strip");
     // every quote sits in the same grid cell, so the card is as tall as the longest one and never jumps
-    stage.innerHTML = reviews.map((r, k) => `<blockquote class="rvx__q" data-k="${k}"><p>${esc(r.text)}</p></blockquote>`).join("");
-    bars.innerHTML = reviews.map((_, k) => `<button type="button" aria-label="Review ${k + 1}" data-k="${k}"><i></i></button>`).join("");
-    const card = (r, k) => `<button type="button" class="rvx__mini" data-k="${k}"><span class="rvx__ava">${esc(r.ini)}</span><span class="rvx__mt"><b>${esc(rvName(r))}</b><span>${esc(r.text.replace(/^… /, "").replace(/ … /g, " "))}</span></span></button>`;
-    const minis = reviews.map(card).join("");
+    stage.innerHTML = NAMED.map((r, k) => `<blockquote class="rvx__q" data-k="${k}"><p>${esc(r.x || r.t)}</p>${r.tr ? `<small>Translated from ${esc(r.tr)}</small>` : ""}</blockquote>`).join("");
+    bars.innerHTML = F.map((_, n) => `<button type="button" aria-label="Review ${n + 1}" data-f="${n}"><i></i></button>`).join("");
+    const card = (r, k) => `<button type="button" class="rvx__mini" data-k="${k}"><span class="rvx__ava">${esc(r.ini)}</span><span class="rvx__mt"><b>${esc(rvName(r))}${r.src ? `<em>${esc(r.src)}</em>` : ""}</b><span>${esc(r.t)}</span></span></button>`;
+    const minis = NAMED.map(card).join("");
     strip.innerHTML = `<div class="rvx__track">${minis}<div aria-hidden="true" style="display:contents">${minis.replace(/<button /g, '<button tabindex="-1" ')}</div></div>`;
     const qs = [...stage.children], bs = [...bars.children];
-    let cur = -1, timer = 0, paused = false;
-    const DUR = 7000;
+    let cur = -1, pos = -1, timer = 0, paused = false;
+    const DUR = 8000;
     const show = (k) => {
-      k = (k + reviews.length) % reviews.length;
       if (k === cur) return;
-      const r = reviews[k];
+      const r = NAMED[k], f = F.indexOf(k);
+      if (f >= 0) pos = f;
       qs.forEach((q, n) => q.classList.toggle("is-on", n === k));
-      bs.forEach((x, n) => { x.classList.toggle("is-on", n === k); x.classList.toggle("is-done", n < k); });
-      by.innerHTML = `<span class="rvx__ava rvx__ava--lg">${esc(r.ini)}</span><span class="rvx__who"><b>${esc(rvName(r))}</b><span>${esc(rvSub(r))}</span></span>${r.repeat ? '<span class="rvx__tag">Repeat client</span>' : ""}`;
-      count.textContent = String(k + 1).padStart(2, "0");
+      bs.forEach((x, n) => { x.classList.toggle("is-on", n === f); x.classList.toggle("is-done", n < pos && f >= 0); });
+      by.innerHTML = `<span class="rvx__ava rvx__ava--lg">${esc(r.ini)}</span><span class="rvx__who"><b>${esc(rvName(r))}</b><span>${esc(rvSub(r))}</span></span><span class="rvx__tags">${rvTags(r)}</span>`;
+      count.textContent = String(pos + 1).padStart(2, "0");
       cur = k; restart();
     };
+    const step = (d) => { pos = (pos + d + F.length) % F.length; show(F[pos]); };
     const restart = () => {
       clearTimeout(timer);
       rvx.style.setProperty("--rvx-dur", DUR + "ms");
       bars.classList.remove("run"); void bars.offsetWidth; bars.classList.add("run");
-      if (!REDUCED && !paused) timer = setTimeout(() => show(cur + 1), DUR);
+      if (!REDUCED && !paused) timer = setTimeout(() => step(1), DUR);
     };
     const pause = (on) => { paused = on; rvx.classList.toggle("is-paused", on); if (on) clearTimeout(timer); else restart(); };
-    rvx.querySelectorAll("[data-dir]").forEach((b) => b.addEventListener("click", () => show(cur + +b.dataset.dir)));
-    bars.addEventListener("click", (e) => { const b = e.target.closest("[data-k]"); if (b) show(+b.dataset.k); });
+    rvx.querySelectorAll("[data-dir]").forEach((b) => b.addEventListener("click", () => step(+b.dataset.dir)));
+    bars.addEventListener("click", (e) => { const b = e.target.closest("[data-f]"); if (b) { pos = +b.dataset.f; show(F[pos]); } });
     strip.addEventListener("click", (e) => { const b = e.target.closest("[data-k]"); if (b) { show(+b.dataset.k); rvx.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "center" }); } });
     const main = rvx.querySelector(".rvx__main");
     main.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") pause(true); });
     main.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") pause(false); });
     main.addEventListener("focusin", () => pause(true)); main.addEventListener("focusout", () => pause(false));
-    main.addEventListener("keydown", (e) => { if (e.key === "ArrowRight") show(cur + 1); if (e.key === "ArrowLeft") show(cur - 1); });
-    // swipe on phones
+    main.addEventListener("keydown", (e) => { if (e.key === "ArrowRight") step(1); if (e.key === "ArrowLeft") step(-1); });
     let sx = 0;
     main.addEventListener("touchstart", (e) => { sx = e.touches[0].clientX; }, { passive: true });
-    main.addEventListener("touchend", (e) => { const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1)); }, { passive: true });
-    // only run while on screen
-    new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { if (cur < 0) show(0); else if (!paused) restart(); } else clearTimeout(timer); })).observe(rvx);
+    main.addEventListener("touchend", (e) => { const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1); }, { passive: true });
+    new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { if (cur < 0) { pos = 0; show(F[0]); } else if (!paused) restart(); } else clearTimeout(timer); })).observe(rvx);
   }
 
   /* ---------- reveal on scroll ---------- */
