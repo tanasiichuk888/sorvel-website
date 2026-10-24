@@ -96,7 +96,7 @@ def reviews():
         cards.append(f'''          <figure class="rcard" data-reveal><div class="rcard__top"><span class="rcard__ava">{H.escape(r["ini"])}</span><span class="rcard__who"><b>{H.escape(nm(r))}</b><span>{H.escape(sub)}</span></span><span class="rcard__tags">{tags}</span></div><div class="rcard__stars" aria-label="5 out of 5"><i></i><i></i><i></i><i></i><i></i></div><p>{H.escape(r["t"], quote=False)}</p>{tr}</figure>''')
     reps = len({nm(r) for r in data if r.get("rep") and r.get("n")}) or sum(1 for r in data if r.get("rep"))
     body = hero('<span>Reviews</span>', "Client reviews", ["What it's like", 'to <span class="accent">work with us</span>.'],
-                "Real reviews from Upwork and Fiverr Pro projects, quoted word for word under the name each client uses on the platform. Every one of them is five stars.",
+                "Real reviews from Upwork and Fiverr Pro projects, quoted word for word under the name each client uses on the platform. A selection from more than 600 five-star reviews.",
                 btn_primary("contact.html", "Start a project") + btn_ghost("work.html", "See the work"), p=p, visual=scenes.rate([("Our agency has hired him for 20+ different projects… We continue to work with Mykola on a monthly basis.","Mark R. · Agency owner · Upwork"),("The biggest reason I would recommend working with Mykola, is that the design process with him feels just right.","Andrei B. · Owner · Upwork"),("He even recorded personalized video tutorials so we could manage our site ourselves — that was a game-changer!","alexandrzakiyan · United States · Fiverr Pro"),("I worked with great designers before, and highly recommend Mykola.","theborodin · United States · Fiverr Pro")]))
     body += f'''
     <section class="sec" data-chapter="Score" style="padding-top:0;border-top:0">
@@ -104,7 +104,7 @@ def reviews():
         <div class="rbig" data-reveal>
           <div class="rbig__score"><b>5.0</b><div class="score__stars" aria-label="5 out of 5"><i></i><i></i><i></i><i></i><i></i></div></div>
           <div class="rbig__stats">
-            <div><b>{len(items)}</b><span>verified client reviews</span></div>
+            <div><b>600+</b><span>five-star client reviews</span></div>
             <div><b>100%</b><span>Job Success on Upwork</span></div>
             <div><b><span data-count="600">0</span>+</b><span>projects shipped</span></div>
           </div>
