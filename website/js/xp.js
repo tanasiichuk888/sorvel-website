@@ -21,7 +21,7 @@
   const nameEl = $(".bld__name"), tagsEl = $(".bld__tags"), link = $(".bld__link");
   const steps = $$(".bld__steps li");
 
-  const DUR = { wire: 1900, design: 3000, build: 3200, live: 3400, out: 800 };
+  const DUR = { wire: 1100, design: 1700, build: 1900, live: 3200, out: 500 };
   const STEP = { wire: 0, design: 1, build: 2, live: 3 };
   const TEXT = {
     wire: ["Wireframe", "Structure and content first"],
@@ -71,8 +71,8 @@
   if (REDUCED) { load(CASES[0]); phase("live"); return; }
   stage.dataset.phase = "out";
   nameEl.textContent = CASES[0].name; tagsEl.textContent = CASES[0].tags; link.href = `work/${CASES[0].slug}.html`;
-  const begin = () => setTimeout(() => run(0), 300);
-  if (document.readyState === "complete") begin(); else addEventListener("load", begin, { once: true });
+  const begin = () => setTimeout(() => run(0), 120);
+  if (document.readyState !== "loading") begin(); else addEventListener("DOMContentLoaded", begin, { once: true });
 
   // pause when off-screen
   new IntersectionObserver(([e]) => { const was = visible; visible = e.isIntersecting; if (visible && !was && !timer) run(0); }, { threshold: 0.1 }).observe(stage);

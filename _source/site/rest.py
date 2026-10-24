@@ -115,7 +115,7 @@ def reviews():
     <section class="sec" data-chapter="Reviews">
       <div class="wrap">
 {sec_head("In their words", 'Fast, clear, <span class="dim">and on point.</span>', "The same three things come up again and again: quick replies, few revision rounds and a result that matches what they had in mind.")}
-        <div class="rgrid">
+        <div class="rgrid" data-cols>
 {chr(10).join(cards)}
         </div>
       </div>

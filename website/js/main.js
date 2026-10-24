@@ -988,7 +988,7 @@
     bars.innerHTML = F.map((_, n) => `<button type="button" aria-label="Review ${n + 1}" data-f="${n}"><i></i></button>`).join("");
     const card = (r, k) => `<button type="button" class="rvx__mini" data-k="${k}"><span class="rvx__ava">${esc(r.ini)}</span><span class="rvx__mt"><b>${esc(rvName(r))}${r.src ? `<em>${esc(r.src)}</em>` : ""}</b><span>${esc(r.t)}</span></span></button>`;
     const minis = NAMED.map(card).join("");
-    strip.innerHTML = `<div class="rvx__track">${minis}<div aria-hidden="true" style="display:contents">${minis.replace(/<button /g, '<button tabindex="-1" ')}</div></div>`;
+    strip.innerHTML = `<div class="rvx__track" style="animation-duration:${NAMED.length * 7}s">${minis}<div aria-hidden="true" style="display:contents">${minis.replace(/<button /g, '<button tabindex="-1" ')}</div></div>`;
     const qs = [...stage.children], bs = [...bars.children];
     let cur = -1, pos = -1, timer = 0, paused = false;
     const DUR = 8000;
@@ -1022,6 +1022,22 @@
     main.addEventListener("touchstart", (e) => { sx = e.touches[0].clientX; }, { passive: true });
     main.addEventListener("touchend", (e) => { const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1); }, { passive: true });
     new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { if (cur < 0) { pos = 0; show(F[0]); } else if (!paused) restart(); } else clearTimeout(timer); })).observe(rvx);
+  }
+
+  /* ---------- reviews page: balanced columns (cards never split, no masonry jank) ---------- */
+  const rg = document.querySelector(".rgrid[data-cols]");
+  if (rg) {
+    const cards = [...rg.querySelectorAll(".rcard")];
+    let cols = 0;
+    const flow = () => {
+      const n = innerWidth <= 640 ? 1 : innerWidth <= 1000 ? 2 : 3;
+      if (n === cols) return; cols = n;
+      const cs = Array.from({ length: n }, () => { const c = document.createElement("div"); c.className = "rgrid__col"; return c; });
+      const h = new Array(n).fill(0);
+      cards.forEach((c, i) => { const k = h.indexOf(Math.min(...h)); cs[k].appendChild(c); h[k] += 120 + c.textContent.length; c.style.setProperty("--d", (i % n) * 0.06 + "s"); });
+      rg.replaceChildren(...cs);
+    };
+    flow(); addEventListener("resize", () => requestAnimationFrame(flow));
   }
 
   /* ---------- reveal on scroll ---------- */
