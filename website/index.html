@@ -34,7 +34,7 @@
   <link rel="preload" href="fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/hanken-grotesk-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/fonts.css?v=1" />
-  <link rel="stylesheet" href="css/style.css?v=6" />
+  <link rel="stylesheet" href="css/style.css?v=8" />
   <link rel="stylesheet" href="css/pages.css?v=30" />
   <link rel="stylesheet" href="css/hero.css?v=2" />
   <link rel="stylesheet" href="css/xp.css?v=6" />
@@ -519,22 +519,40 @@
     <!-- ============ TESTIMONIALS ============ -->
     <section class="sec reviews" id="reviews">
       <div class="wrap">
-        <header class="sec__head sec__head--row" data-reveal>
-          <div>
-            <p class="eyebrow">Client reviews</p>
-            <h2 class="h2">Words from the teams we've worked with</h2>
-          </div>
-          <div class="score">
-            <div class="score__stars" role="img" aria-label="5 out of 5"><i></i><i></i><i></i><i></i><i></i></div>
-            <p><b>5.0 from every client below</b><br>Teams from all over the world</p>
-          </div>
+        <header class="sec__head" data-reveal>
+          <p class="eyebrow">Client reviews</p>
+          <h2 class="h2">Words from the teams we've worked with</h2>
         </header>
 
-        <div class="rv" data-reveal aria-label="Client reviews">
-          <div class="rv__col" data-col="0"></div>
-          <div class="rv__col rv__col--rev" data-col="1"></div>
-          <div class="rv__col" data-col="2"></div>
+        <div class="rvx" data-reveal>
+          <div class="rvx__main" tabindex="0" aria-roledescription="carousel" aria-label="Client reviews">
+            <span class="rvx__mark" aria-hidden="true"></span>
+            <div class="rvx__stars" role="img" aria-label="5 out of 5"><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="rvx__stage" aria-live="polite"></div>
+            <div class="rvx__foot">
+              <div class="rvx__by"></div>
+              <div class="rvx__nav">
+                <button type="button" class="rvx__btn" data-dir="-1" aria-label="Previous review"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+                <span class="rvx__count"><b>01</b> / 13</span>
+                <button type="button" class="rvx__btn" data-dir="1" aria-label="Next review"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+              </div>
+            </div>
+            <div class="rvx__bars"></div>
+          </div>
+          <aside class="rvx__side">
+            <div class="rvx__score">
+              <b>5.0</b>
+              <div><div class="score__stars" role="img" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><p>Every review, five stars</p></div>
+            </div>
+            <dl class="rvx__stats">
+              <div><dt>Repeat clients</dt><dd>9 <small>of 13</small></dd></div>
+              <div><dt>Countries</dt><dd>8</dd></div>
+              <div><dt>Projects shipped</dt><dd>600+</dd></div>
+            </dl>
+            <div class="rvx__where"><p>Reviews from</p><div class="rvx__chips"><span>United States</span><span>Austria</span><span>Saudi Arabia</span><span>Uruguay</span><span>Hong Kong</span><span>Zimbabwe</span><span>Iceland</span><span>Canada</span></div></div>
+          </aside>
         </div>
+        <div class="rvx__strip" data-reveal aria-label="All reviews"></div>
         <div class="sec__more" data-reveal><a class="btn btn--ghost" href="reviews.html"><span class="btn__fill" aria-hidden="true"></span><span class="btn__roll"><span data-text="Read all reviews">Read all reviews</span></span></a></div>
       </div>
     </section>
@@ -713,7 +731,7 @@
   </footer>
 
   <script defer src="js/dots.js?v=2"></script>
-  <script defer src="js/main.js?v=23"></script>
+  <script defer src="js/main.js?v=25"></script>
   <script defer src="js/fx.js?v=17"></script>
   <script defer src="js/xp.js?v=5"></script>
   <script defer src="js/glass.js?v=5"></script>

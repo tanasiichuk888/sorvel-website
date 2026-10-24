@@ -278,35 +278,69 @@
      Real client reviews, quoted word for word. Sentences naming a person or a platform are cut and marked with "…".
      Fields: ini (avatar letter), who, meta (project type and length), repeat (shows a "Repeat client" chip), text. */
   const reviews = [
-    { ini: "V", who: "Client from the United States", meta: "2-week project", text: "Extremely responsive and moved quickly. The website was exactly what I was looking for." },
-    { ini: "R", who: "Client from Austria", meta: "4-week project", text: "Excellent work and great communication! I am very happy with the final result. … Communication was very good throughout the whole process. The final website turned out exactly the way I had imagined it." },
-    { ini: "S", who: "Client from Saudi Arabia", meta: "6-day project", repeat: true, text: "Great outcome, quick and exactly what I wanted." },
-    { ini: "B", who: "Client from Uruguay", meta: "9-day project", text: "The final product was great, but what really stood out was the excellent communication throughout the project as well as the willingness to adjust the product as we were working. Thanks!" },
-    { ini: "A", who: "Client from Hong Kong", meta: "13-day project", repeat: true, text: "Very reliable, easy to communicate with, and always responded quickly when we had questions or wanted to make changes. … The final result turned out very well." },
-    { ini: "M", who: "Client from the United States", meta: "3-week project", repeat: true, text: "… an amazing job with our website. … It took very few rounds of feedback to get exactly what we were looking for." },
-    { ini: "P", who: "Client from Zimbabwe", meta: "7-day project", repeat: true, text: "We going to work on many more projects. … the great work, great turn around time and highest quality work." },
-    { ini: "S", who: "Client from Iceland", meta: "7-day project", text: "Very quick response time, and professional answers. … will 100% come back." },
-    { ini: "B", who: "Client from the United States", meta: "2-week project", repeat: true, text: "Efficient, polite, and understanding. … Understood the vision and executed our project perfectly." },
-    { ini: "J", who: "Client from the United States", meta: "3-week project", repeat: true, text: "There's few people that take pride in their work … I really love my new website." },
-    { ini: "M", who: "Client from Canada", meta: "4-day project", repeat: true, text: "Listened carefully, moved fast, and delivered a beautiful design that truly reflects our brand. Highly recommend!" },
-    { ini: "S", who: "Client from Saudi Arabia", meta: "1-day project", repeat: true, text: "Very professional and achieved exactly as promised." },
-    { ini: "P", who: "Client from Zimbabwe", meta: "3-week project", repeat: true, text: "Great experience 10/10" },
+    { name: "", ini: "V", who: "Client from the United States", meta: "2-week project", text: "Extremely responsive and moved quickly. The website was exactly what I was looking for." },
+    { name: "", ini: "R", who: "Client from Austria", meta: "4-week project", text: "Excellent work and great communication! I am very happy with the final result. … Communication was very good throughout the whole process. The final website turned out exactly the way I had imagined it." },
+    { name: "", ini: "S", who: "Client from Saudi Arabia", meta: "6-day project", repeat: true, text: "Great outcome, quick and exactly what I wanted." },
+    { name: "", ini: "B", who: "Client from Uruguay", meta: "9-day project", text: "The final product was great, but what really stood out was the excellent communication throughout the project as well as the willingness to adjust the product as we were working. Thanks!" },
+    { name: "", ini: "A", who: "Client from Hong Kong", meta: "13-day project", repeat: true, text: "Very reliable, easy to communicate with, and always responded quickly when we had questions or wanted to make changes. … The final result turned out very well." },
+    { name: "", ini: "M", who: "Client from the United States", meta: "3-week project", repeat: true, text: "… an amazing job with our website. … It took very few rounds of feedback to get exactly what we were looking for." },
+    { name: "", ini: "P", who: "Client from Zimbabwe", meta: "7-day project", repeat: true, text: "We going to work on many more projects. … the great work, great turn around time and highest quality work." },
+    { name: "", ini: "S", who: "Client from Iceland", meta: "7-day project", text: "Very quick response time, and professional answers. … will 100% come back." },
+    { name: "", ini: "B", who: "Client from the United States", meta: "2-week project", repeat: true, text: "Efficient, polite, and understanding. … Understood the vision and executed our project perfectly." },
+    { name: "", ini: "J", who: "Client from the United States", meta: "3-week project", repeat: true, text: "There's few people that take pride in their work … I really love my new website." },
+    { name: "", ini: "M", who: "Client from Canada", meta: "4-day project", repeat: true, text: "Listened carefully, moved fast, and delivered a beautiful design that truly reflects our brand. Highly recommend!" },
+    { name: "", ini: "S", who: "Client from Saudi Arabia", meta: "1-day project", repeat: true, text: "Very professional and achieved exactly as promised." },
+    { name: "", ini: "P", who: "Client from Zimbabwe", meta: "3-week project", repeat: true, text: "Great experience 10/10" },
   ];
   const initials = (n) => n.split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
-  const esc = (t) => t.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const rcard = (r) => `<figure class="rcard"><div class="rcard__top"><span class="rcard__ava">${esc(r.ini)}</span>
-      <span class="rcard__who"><b>${esc(r.who)}</b><span>${esc(r.meta)}</span></span>${r.repeat ? '<span class="rcard__src">Repeat client</span>' : ""}</div>
-      <div class="rcard__stars" role="img" aria-label="5 out of 5"><i></i><i></i><i></i><i></i><i></i></div><p>${esc(r.text)}</p></figure>`;
-  const rcols = [...document.querySelectorAll(".rv__col")];
-  if (rcols.length) {
-    const narrow = matchMedia("(max-width: 640px)").matches, mid = matchMedia("(max-width: 1000px)").matches;
-    const n = narrow ? 1 : mid ? 2 : 3;
-    rcols.forEach((col, c) => {
-      const list = reviews.filter((_, i) => i % n === c);
-      if (!list.length) return;
-      const html = list.map(rcard).join("");
-      col.innerHTML = `<div class="rv__track" style="--dur:${30 + c * 6}s"><div style="display:contents">${html}</div><div aria-hidden="true" style="display:contents">${html}</div></div>`;
-    });
+  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const country = (r) => r.who.replace(/^Client from (the )?/, "");
+  const rvName = (r) => r.name || r.who;            // a real name once the client agrees, otherwise "Client from …"
+  const rvSub = (r) => (r.name ? country(r) + " · " : "") + r.meta;
+  const rvx = document.querySelector(".rvx");
+  if (rvx) {
+    const stage = rvx.querySelector(".rvx__stage"), by = rvx.querySelector(".rvx__by"), bars = rvx.querySelector(".rvx__bars");
+    const count = rvx.querySelector(".rvx__count b"), strip = document.querySelector(".rvx__strip");
+    // every quote sits in the same grid cell, so the card is as tall as the longest one and never jumps
+    stage.innerHTML = reviews.map((r, k) => `<blockquote class="rvx__q" data-k="${k}"><p>${esc(r.text)}</p></blockquote>`).join("");
+    bars.innerHTML = reviews.map((_, k) => `<button type="button" aria-label="Review ${k + 1}" data-k="${k}"><i></i></button>`).join("");
+    const card = (r, k) => `<button type="button" class="rvx__mini" data-k="${k}"><span class="rvx__ava">${esc(r.ini)}</span><span class="rvx__mt"><b>${esc(rvName(r))}</b><span>${esc(r.text.replace(/^… /, "").replace(/ … /g, " "))}</span></span></button>`;
+    const minis = reviews.map(card).join("");
+    strip.innerHTML = `<div class="rvx__track">${minis}<div aria-hidden="true" style="display:contents">${minis.replace(/<button /g, '<button tabindex="-1" ')}</div></div>`;
+    const qs = [...stage.children], bs = [...bars.children];
+    let cur = -1, timer = 0, paused = false;
+    const DUR = 7000;
+    const show = (k) => {
+      k = (k + reviews.length) % reviews.length;
+      if (k === cur) return;
+      const r = reviews[k];
+      qs.forEach((q, n) => q.classList.toggle("is-on", n === k));
+      bs.forEach((x, n) => { x.classList.toggle("is-on", n === k); x.classList.toggle("is-done", n < k); });
+      by.innerHTML = `<span class="rvx__ava rvx__ava--lg">${esc(r.ini)}</span><span class="rvx__who"><b>${esc(rvName(r))}</b><span>${esc(rvSub(r))}</span></span>${r.repeat ? '<span class="rvx__tag">Repeat client</span>' : ""}`;
+      count.textContent = String(k + 1).padStart(2, "0");
+      cur = k; restart();
+    };
+    const restart = () => {
+      clearTimeout(timer);
+      rvx.style.setProperty("--rvx-dur", DUR + "ms");
+      bars.classList.remove("run"); void bars.offsetWidth; bars.classList.add("run");
+      if (!REDUCED && !paused) timer = setTimeout(() => show(cur + 1), DUR);
+    };
+    const pause = (on) => { paused = on; rvx.classList.toggle("is-paused", on); if (on) clearTimeout(timer); else restart(); };
+    rvx.querySelectorAll("[data-dir]").forEach((b) => b.addEventListener("click", () => show(cur + +b.dataset.dir)));
+    bars.addEventListener("click", (e) => { const b = e.target.closest("[data-k]"); if (b) show(+b.dataset.k); });
+    strip.addEventListener("click", (e) => { const b = e.target.closest("[data-k]"); if (b) { show(+b.dataset.k); rvx.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "center" }); } });
+    const main = rvx.querySelector(".rvx__main");
+    main.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") pause(true); });
+    main.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") pause(false); });
+    main.addEventListener("focusin", () => pause(true)); main.addEventListener("focusout", () => pause(false));
+    main.addEventListener("keydown", (e) => { if (e.key === "ArrowRight") show(cur + 1); if (e.key === "ArrowLeft") show(cur - 1); });
+    // swipe on phones
+    let sx = 0;
+    main.addEventListener("touchstart", (e) => { sx = e.touches[0].clientX; }, { passive: true });
+    main.addEventListener("touchend", (e) => { const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1)); }, { passive: true });
+    // only run while on screen
+    new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { if (cur < 0) show(0); else if (!paused) restart(); } else clearTimeout(timer); })).observe(rvx);
   }
 
   /* ---------- reveal on scroll ---------- */

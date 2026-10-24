@@ -81,7 +81,8 @@ def reviews():
     p = ""
     src = open(ROOT + "js/main.js").read()
     block = src[src.index("const reviews = ["):src.index("];", src.index("const reviews = ["))]
-    items = re.findall(r'\{ ini: "(.*?)", who: "(.*?)", meta: "(.*?)",( repeat: true,)? text: "(.*?)" \}', block)
+    items = re.findall(r'\{ name: "(.*?)", ini: "(.*?)", who: "(.*?)", meta: "(.*?)",( repeat: true,)? text: "(.*?)" \}', block)
+    items = [(ini, (name or who), ((re.sub(r"^Client from (the )?", "", who) + " · ") if name else "") + meta, rep, text) for name, ini, who, meta, rep, text in items]
     cards = []
     for ini, who, meta, rep, text in items:
         cards.append(f'''          <figure class="rcard" data-reveal><div class="rcard__top"><span class="rcard__ava">{ini}</span><span class="rcard__who"><b>{who}</b><span>{meta}</span></span>{'<span class="rcard__src">Repeat client</span>' if rep else ""}</div><div class="rcard__stars" aria-label="5 out of 5"><i></i><i></i><i></i><i></i><i></i></div><p>{H.escape(text, quote=False)}</p></figure>''')
