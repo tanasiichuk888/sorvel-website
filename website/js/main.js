@@ -40,8 +40,26 @@
     try {
       let v = JSON.parse(sessionStorage.getItem("sv_src") || "null");
       if (!v || !v.id) {
-        const q = new URLSearchParams(location.search), ref = document.referrer ? new URL(document.referrer).hostname : "";
-        v = Object.assign({ s: q.get("utm_source") || (ref && ref !== location.hostname ? ref : "direct"), l: location.pathname }, v || {});
+        const q = new URLSearchParams(location.search);
+        let ref = "";
+        try { ref = document.referrer ? new URL(document.referrer).hostname : ""; } catch (er) {}
+        if (ref === location.hostname) ref = "";
+        // short links and Android apps send their own names; map them to the service
+        const REF = { "lnkd.in": "linkedin.com", "com.linkedin.android": "linkedin.com app", "t.co": "x.com", "com.google.android.gm": "gmail",
+          "org.telegram.messenger": "telegram", "web.telegram.org": "telegram", "l.facebook.com": "facebook.com", "lm.facebook.com": "facebook.com",
+          "l.instagram.com": "instagram.com", "com.slack": "slack", "away.vk.com": "vk.com" };
+        ref = REF[ref] || ref.replace(/^(www|m)\./, "");
+        // in-app browsers (LinkedIn, Instagram, Facebook, X) open links without a referrer; their user agent still says who they are
+        const ua = navigator.userAgent || "";
+        const app = /LinkedInApp/i.test(ua) ? "linkedin.com" : /Instagram/.test(ua) ? "instagram.com" : /FBAN|FBAV|FB_IAB/.test(ua) ? "facebook.com"
+          : /Twitter/i.test(ua) ? "x.com" : /Telegram/i.test(ua) ? "telegram" : "";
+        const utm = (q.get("utm_source") || q.get("ref") || "").toLowerCase().replace(/[^a-z0-9.\-_ ]/g, "").slice(0, 40);
+        v = Object.assign({ s: utm || ref || (app ? app + " app" : "direct"), l: location.pathname }, v || {});
+        // tidy the address bar so a shared link doesn't carry the source along
+        if (q.has("utm_source") || q.has("utm_medium") || q.has("utm_campaign") || q.has("ref")) {
+          ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "ref"].forEach((k) => q.delete(k));
+          try { history.replaceState(history.state, "", location.pathname + (q.toString() ? "?" + q : "") + location.hash); } catch (er) {}
+        }
         v.id = Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
         sessionStorage.setItem("sv_src", JSON.stringify(v));
       }

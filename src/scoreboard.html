@@ -469,7 +469,8 @@ const dur = (s) => s == null ? "—" : s < 60 ? Math.round(s) + " s" : Math.floo
 const pageName = (p) => p === "/" ? "Home" : p.replace(/^\/(work|services)\//, "").replace(/^\//, "").replace(/[-/]/g, " ").replace(/^\w/, (c) => c.toUpperCase());
 const ago = (t) => { const m = Math.round((Date.now() - t) / 60e3); return m < 1 ? "just now" : m < 60 ? m + " min ago" : m < 1440 ? Math.round(m / 60) + " h ago" : new Date(t).toLocaleDateString("en-GB", { day: "numeric", month: "short" }) + ", " + new Date(t).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }); };
 let regionNames; const country = (c) => { if (!c) return "Unknown"; try { regionNames = regionNames || new Intl.DisplayNames(["en"], { type: "region" }); return regionNames.of(c); } catch (e) { return c; } };
-let VFILTER = "all";
+let VFILTER = "active";
+const activeVisit = (v) => v.secs >= 3 || v.pages.length > 1 || v.clicks.length || v.pages.some((q) => q.depth >= 25) || v.brief || v.contact;
 function behavior(B, BP, on) {
   const el = $("#bh");
   if (!on) { el.innerHTML = notConnected("Visit tracking is off."); return; }
@@ -495,14 +496,14 @@ function behavior(B, BP, on) {
     </div>
     <div style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)">
       <div class="ph"><h4 style="margin:0 0 10px;font-size:12px;font-weight:500;color:var(--text-2)">Recent visits, newest first</h4>
-      <div class="vf" role="group" aria-label="Filter visits"><button data-f="all">All</button><button data-f="lead">Leads only</button><button data-f="long">Over 1 min</button></div></div>
+      <div class="vf" role="group" aria-label="Filter visits"><button data-f="active">Real visits</button><button data-f="all">All</button><button data-f="lead">Leads only</button><button data-f="long">Over 1 min</button></div></div>
       <div class="visits" id="bVisits"></div>
     </div>`;
   list($("#bClicks"), "Most clicked", B.clicks, { n: 10, empty: "No clicks yet" });
   list($("#bExits"), "Last page before leaving", B.exits.map((r) => ({ ...r, c: "var(--faint)" })), { label: (k) => k === "/" ? "/ (home)" : k, n: 8 });
   const draw = () => {
     el.querySelectorAll(".vf button").forEach((b) => b.classList.toggle("on", b.dataset.f === VFILTER));
-    const rows = B.recent.filter((v) => VFILTER === "lead" ? v.brief || v.contact || v.started : VFILTER === "long" ? v.secs >= 60 : true);
+    const rows = B.recent.filter((v) => VFILTER === "lead" ? v.brief || v.contact || v.started : VFILTER === "long" ? v.secs >= 60 : VFILTER === "active" ? activeVisit(v) : true);
     $("#bVisits").innerHTML = rows.length ? rows.map((v) => {
       const lead = v.brief || v.contact;
       const tags = [v.brief ? '<span class="tg b">Sent a brief</span>' : v.started ? '<span class="tg q">Started a brief</span>' : "", v.contact ? '<span class="tg c">Contact click</span>' : ""].filter(Boolean).join("");
@@ -510,7 +511,7 @@ function behavior(B, BP, on) {
         <div><div class="path">${v.pages.map((q) => `<span title="${esc(q.p)} · scrolled ${q.depth || 0}%">${esc(pageName(q.p))}${q.secs ? `<small>${dur(q.secs)}</small>` : ""}</span>`).join("<i>→</i>")}</div>
         ${v.clicks.length ? `<div class="clk">Clicked: ${v.clicks.map(esc).join(" · ")}</div>` : ""}</div>
         <div class="out">${tags}<em>${dur(v.secs)} total</em></div></div>`;
-    }).join("") : '<div class="empty">No visits match this filter</div>';
+    }).join("") + (VFILTER === "active" && B.recent.length > rows.length ? `<p class="sub" style="margin:4px 0 0">${B.recent.length - rows.length} more with no activity (one page, under 3 s, no scroll). Usually bots, link previews or instant closes. Tap “All” to see them.</p>` : "") : '<div class="empty">No visits match this filter</div>';
   };
   el.querySelectorAll(".vf button").forEach((b) => b.addEventListener("click", () => { VFILTER = b.dataset.f; draw(); }));
   draw();
