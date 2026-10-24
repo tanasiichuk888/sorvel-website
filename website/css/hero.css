@@ -188,7 +188,7 @@
 .bld__steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 0; padding: 0; list-style: none; }
 .bld__steps li { position: relative; padding-top: 12px; font-size: 13px; color: rgba(242,239,234,.62); transition: color .4s; }
 .bld__steps li::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; border-radius: 2px; background: rgba(242,239,234,.12); }
-.bld__steps li::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--b-acc), #7C9BFF); transform: scaleX(0); transform-origin: left; }
+.bld__steps li::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--b-acc, #3B6BFF), #7C9BFF); box-shadow: 0 0 10px rgba(59,107,255,.55); transform: scaleX(0); transform-origin: left; }
 .bld__steps li.is-done { color: #CFCCC7; } .bld__steps li.is-done::after { transform: scaleX(1); }
 .bld__steps li.is-on { color: var(--text); } .bld__steps li.is-on::after { animation: bldFill var(--dur, 2s) linear forwards; }
 @keyframes bldFill { to { transform: scaleX(1); } }
