@@ -105,7 +105,7 @@ def reviews():
           <div class="rbig__score"><b>5.0</b><div class="score__stars" aria-label="5 out of 5"><i></i><i></i><i></i><i></i><i></i></div></div>
           <div class="rbig__stats">
             <div><b>{len(items)}</b><span>verified client reviews</span></div>
-            <div><b>{reps}</b><span>clients who came back</span></div>
+            <div><b>100%</b><span>Job Success on Upwork</span></div>
             <div><b><span data-count="600">0</span>+</b><span>projects shipped</span></div>
           </div>
         </div>
