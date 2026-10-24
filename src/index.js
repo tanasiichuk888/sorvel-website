@@ -2,6 +2,7 @@
 // 1. www.sorvel.agency -> sorvel.agency (301)
 // 2. POST /api/e        -> anonymous visit events (page views, scroll, time, clicks, lead actions) into a Durable Object
 // 3. /scoreboard        -> private growth dashboard (behind Cloudflare Access), data from /scoreboard/api
+//    /stats             -> same dashboard for the phone: private link sorvel.agency/stats?key=SCOREBOARD_KEY, remembered 90 days
 // 4. everything else    -> the static site in ./website
 //
 // Secrets (Workers > sorvel-website > Settings > Variables and Secrets):
@@ -10,6 +11,7 @@
 //   ACCESS_TEAM     Zero Trust team domain, e.g. sorvel.cloudflareaccess.com
 //   ACCESS_AUD      Access application audience (AUD) tag for /scoreboard
 //   GSC_KEY         Google service account JSON key (Search Console read access), optional
+//   SCOREBOARD_KEY  long random secret for the /stats private link (optional; /stats stays closed without it)
 
 import { DurableObject } from "cloudflare:workers";
 import DASHBOARD from "./scoreboard.html";
@@ -27,7 +29,8 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
     if (url.pathname === "/api/e") return collect(request, env);
-    if (url.pathname === "/scoreboard" || url.pathname.startsWith("/scoreboard/")) return scoreboard(request, env, url);
+    if (url.pathname === "/scoreboard" || url.pathname.startsWith("/scoreboard/")) return scoreboard(request, env, url, "access");
+    if (url.pathname === "/stats" || url.pathname.startsWith("/stats/")) return scoreboard(request, env, url, "key");
     return env.ASSETS.fetch(request);
   },
 };
@@ -127,8 +130,9 @@ export class LeadStore extends DurableObject {
 
 /* ------------------------------------------------------------- scoreboard */
 
-async function scoreboard(request, env, url) {
-  const who = await accessUser(request, env);
+async function scoreboard(request, env, url, mode) {
+  if (mode === "key" && url.searchParams.has("key")) return keyLogin(env, url);
+  const who = mode === "key" ? await keyUser(request, env) : await accessUser(request, env);
   if (!who.ok) {
     return new Response(`<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><title>Private</title>
 <body style="font:16px/1.6 system-ui;background:#0B0C0F;color:#F2EFEA;display:grid;place-items:center;min-height:100vh;margin:0">
@@ -136,12 +140,38 @@ async function scoreboard(request, env, url) {
       { status: 403, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "x-robots-tag": "noindex" } });
   }
   const sec = { "cache-control": "no-store", "x-robots-tag": "noindex, nofollow", "x-frame-options": "DENY", "referrer-policy": "no-referrer" };
-  if (url.pathname === "/scoreboard/api") {
+  if (url.pathname.endsWith("/api")) {
     const days = url.searchParams.get("days") === "28" ? 28 : 7;
     const data = await stats(env, days);
     return new Response(JSON.stringify(data), { headers: { ...sec, "content-type": "application/json" } });
   }
   return new Response(DASHBOARD, { headers: { ...sec, "content-type": "text/html; charset=utf-8" } });
+}
+
+/* Private phone link: /stats?key=SCOREBOARD_KEY once, then an HttpOnly cookie (a hash of the key) for 90 days.
+   Changing SCOREBOARD_KEY in Cloudflare logs every device out. */
+const DASH_COOKIE = "sv_dash";
+async function keyHash(env) {
+  const k = await crypto.subtle.importKey("raw", new TextEncoder().encode(env.SCOREBOARD_KEY), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  return b64url(await crypto.subtle.sign("HMAC", k, new TextEncoder().encode("sorvel-dash-v1")));
+}
+function sameText(a, b) {
+  if (typeof a !== "string" || typeof b !== "string" || a.length !== b.length) return false;
+  let d = 0; for (let i = 0; i < a.length; i++) d |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return d === 0;
+}
+async function keyLogin(env, url) {
+  const ok = env.SCOREBOARD_KEY && env.SCOREBOARD_KEY.length >= 24 && sameText(url.searchParams.get("key") || "", env.SCOREBOARD_KEY);
+  if (!ok) return new Response("Not found", { status: 404, headers: { "cache-control": "no-store", "x-robots-tag": "noindex" } });
+  return new Response(null, { status: 303, headers: { location: "/stats", "cache-control": "no-store", "referrer-policy": "no-referrer",
+    "set-cookie": `${DASH_COOKIE}=${await keyHash(env)}; Path=/stats; Max-Age=7776000; HttpOnly; Secure; SameSite=Lax` } });
+}
+async function keyUser(request, env) {
+  if (env.DEV_OPEN === "1") return { ok: true, email: "dev" };
+  if (!env.SCOREBOARD_KEY || env.SCOREBOARD_KEY.length < 24) return { ok: false, why: "The phone link isn't set up yet (SCOREBOARD_KEY is missing)." };
+  const c = (request.headers.get("cookie") || "").split(/;\s*/).find((x) => x.startsWith(DASH_COOKIE + "="));
+  if (c && sameText(c.slice(DASH_COOKIE.length + 1), await keyHash(env))) return { ok: true, email: "owner" };
+  return { ok: false, why: "Open your private link once on this device to see the dashboard." };
 }
 
 /* Cloudflare Access: verify the signed JWT the Access proxy adds to every request. Fails closed. */
@@ -223,7 +253,7 @@ async function cfgql(env, query) {
 async function rum(env, [a, b], full) {
   const run = async (withBot, noDash = true) => {
     // leave the private dashboard itself out of the site numbers
-    const f = `{AND:[{datetime_geq:"${a.toISOString()}"},{datetime_lt:"${b.toISOString()}"},{requestHost_in:["${HOST}","www.${HOST}"]}${noDash ? ',{requestPath_notlike:"/scoreboard%"}' : ""}${withBot ? ",{bot:0}" : ""}]}`;
+    const f = `{AND:[{datetime_geq:"${a.toISOString()}"},{datetime_lt:"${b.toISOString()}"},{requestHost_in:["${HOST}","www.${HOST}"]}${noDash ? ',{requestPath_notlike:"/scoreboard%"},{requestPath_notlike:"/stats%"}' : ""}${withBot ? ",{bot:0}" : ""}]}`;
     const g = (alias, dim, n, order = "count_DESC") => `${alias}: rumPageloadEventsAdaptiveGroups(filter:${f},limit:${n},orderBy:[${order}]){count sum{visits} dimensions{${dim}}}`;
     const q = `{viewer{accounts(filter:{accountTag:"${env.CF_ACCOUNT_ID}"}){
       total: rumPageloadEventsAdaptiveGroups(filter:${f},limit:1){count sum{visits}}
@@ -242,7 +272,7 @@ async function rum(env, [a, b], full) {
     else if (/requestPath/i.test(e.message)) d = await run(true, false);
     else throw e;
   }
-  if (d.paths) d.paths = d.paths.filter((x) => !String(x.dimensions.requestPath || "").startsWith("/scoreboard"));
+  if (d.paths) d.paths = d.paths.filter((x) => !String(x.dimensions.requestPath || "").startsWith("/scoreboard") && !String(x.dimensions.requestPath || "").startsWith("/stats"));
   const n = (x) => (x && x[0] ? x[0] : null);
   const tot = n(d.total);
   const visits = tot ? tot.sum.visits : 0, views = tot ? tot.count : 0;

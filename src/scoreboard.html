@@ -521,7 +521,7 @@ function ptsDelta(cur, prev, low) { const d = (cur - prev) * 100; if (Math.abs(d
 async function load() {
   $("#upd").className = "badge load"; $("#upd").textContent = "Loading";
   try {
-    const r = await fetch("/scoreboard/api?days=" + DAYS, { credentials: "same-origin" });
+    const r = await fetch(location.pathname.replace(/\/+$/, "") + "/api?days=" + DAYS, { credentials: "same-origin" });
     if (!r.ok) throw new Error("HTTP " + r.status);
     render(await r.json());
   } catch (e) {
