@@ -104,7 +104,7 @@ def mnav(p, active=""):
         {rows}
       </ul>
       <div class="mnav__foot" style="--i:8">
-        <p class="mnav__status"><span class="status__dot" aria-hidden="true"></span> Replies within 24 hours</p>
+        <p class="mnav__status"><span class="status__dot" aria-hidden="true"></span> Replies in about 10 minutes</p>
         <a class="btn btn--primary btn--lg mnav__cta" href="{p}contact.html"><span class="btn__roll"><span data-text="Start a project">Start a project</span></span><span class="btn__arrow" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><svg viewBox="0 0 20 20"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></a>
         <div class="mnav__contact"><a href="https://t.me/tanasiychuk8" target="_blank" rel="noopener">Telegram</a><a href="mailto:hello@sorvel.agency">hello@sorvel.agency</a></div>
       </div>
@@ -143,7 +143,7 @@ def footer(p):
         <div class="foot__brand">
           <a class="foot__logo" href="{p}index.html" aria-label="Sorvel Studio home"><img src="{p}img/brand/logo.svg" alt="Sorvel" width="296" height="94" loading="lazy"></a>
           <p class="foot__tag">Design, build and grow <br>with one senior team.</p>
-          <p class="foot__time"><span class="status__dot" aria-hidden="true"></span> Our time <b class="clock">--:--</b> CET · replies within 24h</p>
+          <p class="foot__time"><span class="status__dot" aria-hidden="true"></span> Our time <b class="clock">--:--</b> CET · replies in ~10 min</p>
         </div>
         <nav class="foot__cols" aria-label="Footer">
           <div><h4>Services</h4>{svc}</div>
@@ -204,7 +204,7 @@ def faq(items, title="Questions, answered", eyebrow="FAQ"):
           <p class="eyebrow">{eyebrow}</p>
           <h2 class="h2">{title}</h2>
           <div class="ask">
-            <p>Something else on your mind? Write to us and get a reply within 24 hours.</p>
+            <p>Something else on your mind? Write to us and get a reply in about 10 minutes.</p>
             <a href="mailto:hello@sorvel.agency">hello@sorvel.agency <span aria-hidden="true">→</span></a>
             <a href="https://t.me/tanasiychuk8" target="_blank" rel="noopener">Telegram: @tanasiychuk8 <span aria-hidden="true">→</span></a>
           </div>

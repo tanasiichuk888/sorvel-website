@@ -254,7 +254,7 @@ def process():
       <div class="wrap">
 {sec_head("Our promises", 'What you can <span class="dim">hold us to.</span>')}
         <div class="vals">
-          <div data-reveal>{ico("clock")}<h3>A reply within 24 hours</h3><p>On working days, every message gets an answer the same or next day.</p></div>
+          <div data-reveal>{ico("clock")}<h3>A reply in about 10 minutes</h3><p>On working days, every message gets an answer the same or next day.</p></div>
           <div data-reveal style="--d:.05s">{ico("shield")}<h3>The price doesn't move</h3><p>The fixed price you approved is the price you pay, unless you add scope.</p></div>
           <div data-reveal>{ico("users")}<h3>Senior people only</h3><p>The designer and developer on your project are the ones who do the work.</p></div>
           <div data-reveal style="--d:.05s">{ico("eye")}<h3>Progress you can see</h3><p>Real updates every 24 to 48 hours, never a silent week.</p></div>
@@ -299,7 +299,7 @@ def contact():
         <aside class="contact-side" data-reveal>
           <a class="cbox cbox--glow" href="mailto:hello@sorvel.agency?subject=New%20project"><small>Email</small><b>hello@sorvel.agency <span>→</span></b><p>Best for longer briefs and attachments.</p></a>
           <a class="cbox" href="https://t.me/tanasiychuk8" target="_blank" rel="noopener"><small>Telegram</small><b>@tanasiychuk8 <span>→</span></b><p>Best for quick questions.</p></a>
-          <div class="cbox"><small>Our time</small><b><span class="clock" style="color:var(--text);font-weight:600">--:--</span> CET</b><p>We reply within 24 hours on working days, usually much sooner.</p></div>
+          <div class="cbox"><small>Our time</small><b><span class="clock" style="color:var(--text);font-weight:600">--:--</span> CET</b><p>We usually reply within 10 minutes during working hours.</p></div>
           <div class="cbox">
             <small>What happens next</small>
             <ol class="next-steps" style="margin-top:14px">
@@ -355,7 +355,7 @@ def contact():
               <span class="btn__roll"><span data-text="Send brief">Send brief</span></span>
               <span class="btn__arrow" aria-hidden="true">{ARROW}{ARROW}</span>
             </button>
-            <p class="brief__note">Reply within 24 hours. No sales calls.</p>
+            <p class="brief__note">Reply in about 10 minutes. No sales calls.</p>
           </div>
           <p class="brief__msg" role="status" aria-live="polite"></p>
 

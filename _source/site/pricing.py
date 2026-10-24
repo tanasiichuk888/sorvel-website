@@ -192,7 +192,7 @@ def panel(o, group, on):
             <div class="px__big">{frm}<b>{o["price"]}</b><span>/ {unit}</span></div>
             <p class="px__note">{o["note"]}</p>
             <a class="btn btn--primary px__cta" href="{href}"><span class="btn__roll"><span data-text="{o["cta"]}">{o["cta"]}</span></span><span class="btn__arrow" aria-hidden="true">{ARROW}{ARROW}</span></a>
-            <p class="px__alt">or <a href="https://t.me/tanasiychuk8" target="_blank" rel="noopener">ask a question on Telegram</a>, reply within 24 hours</p>
+            <p class="px__alt">or <a href="https://t.me/tanasiychuk8" target="_blank" rel="noopener">ask a question on Telegram</a>, reply in about 10 minutes</p>
             </div>
             <div class="px__scroll">
             <p class="px__lbl">What you get</p>

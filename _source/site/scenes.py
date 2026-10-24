@@ -34,7 +34,7 @@ def flow():
 def inbox():
     return '''<div class="sx sx-inbox" data-scene="inbox" data-loop="11000" aria-hidden="true">
   <div class="ib-win">
-    <div class="ib-head"><span class="ib-ava">AC</span><div><b>Sorvel Studio</b><small><i></i>Usually replies within a few hours</small></div></div>
+    <div class="ib-head"><span class="ib-ava">AC</span><div><b>Sorvel Studio</b><small><i></i>Usually replies in 10 minutes</small></div></div>
     <div class="ib-body">
       <div class="ib-msg ib-me"><p class="ib-type" data-text="Hi! We're a fintech startup and need a new marketing site in Webflow. Can you help?">&nbsp;</p><span class="ib-tick">Delivered ✓✓</span></div>
       <div class="ib-typing"><i></i><i></i><i></i></div>
