@@ -21,7 +21,7 @@ def about():
               ("Team member", "Framer Developer", False), ("Team member", "WordPress Developer", False), ("Team member", "Brand Designer", False)]
     pp = "\n".join(f'          <article class="person{" person--lead" if lead else ""}" data-reveal style="--d:{i*.05:.2f}s"><div class="person__ph">{"<span>MT</span>" if lead else ""}</div><h3>{n}</h3><p>{r}</p></article>' for i, (n, r, lead) in enumerate(people))
     body = hero('<span>About</span>', "About the studio", ["A small senior team", 'with <span class="accent">a lot of reps</span>.'],
-                "Sorvel is a design and development studio for SaaS, fintech and B2B companies. We started as one designer taking on projects from around the world, and grew into a team that covers design and build end to end.",
+                "Sorvel is a design and development studio for startups and growing businesses, mostly in SaaS, fintech and AI. We started as one designer taking on projects from around the world, and grew into a team that covers design and build end to end.",
                 btn_primary("contact.html", "Start a project") + btn_ghost("work.html", "See our work"), p=p, visual=scenes.globe())
     body += f'''
     <section class="sec" data-chapter="Story">
@@ -74,7 +74,7 @@ def about():
 {note_html}
 '''
     body += cta(p)
-    page("about.html", "About | Sorvel Studio", "Sorvel is a small senior design and development studio for SaaS, fintech and B2B companies. 11 years, 600+ projects.", "about", body, p)
+    page("about.html", "About | Sorvel Studio", "Sorvel is a small senior design and development studio for startups and growing businesses, mostly in SaaS, fintech and AI. 11 years, 600+ projects.", "about", body, p)
 
 # ---------------- REVIEWS ----------------
 def reviews():

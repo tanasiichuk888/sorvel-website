@@ -53,7 +53,7 @@ def text(s): return html.unescape(re.sub(r"<[^>]+>", " ", s)).replace("  ", " ")
 ORG = {"@type": "Organization", "@id": SITE + "/#org", "name": BRAND, "alternateName": ["Sorvel", "Sorvel Agency", "sorvel.agency"], "url": SITE + "/",
        "logo": {"@type": "ImageObject", "url": SITE + "/img/brand/logo-512.png", "width": 512, "height": 512},
        "image": SITE + "/img/og/default.jpg",
-       "description": "Design and development studio for SaaS, fintech, AI and B2B companies. Websites, product UI and brand identity, built in Webflow, Framer, WordPress and Shopify.",
+       "description": "Design and development studio for startups and growing businesses, with deep experience in SaaS, fintech and AI. Websites, product UI and brand identity, built in Webflow, Framer, WordPress and Shopify.",
        "founder": {"@id": SITE + "/#founder"}, "sameAs": [LINKEDIN],
        "knowsAbout": ["Web design", "UI/UX design", "Product design", "Brand identity", "Webflow", "Framer", "WordPress", "Shopify", "Figma"],
        "areaServed": "Worldwide"}

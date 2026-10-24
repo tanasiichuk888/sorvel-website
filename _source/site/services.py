@@ -4,7 +4,7 @@ import scenes
 
 S = {
 "websites": dict(
-  title="Websites | Sorvel Studio", desc="Marketing websites designed in Figma and built in Webflow, Framer or WordPress for SaaS, fintech and B2B companies.",
+  title="Websites | Sorvel Studio", desc="Marketing websites designed in Figma and built in Webflow, Framer or WordPress for startups and growing businesses, from SaaS and fintech to e-commerce and services.",
   eyebrow="Service · Websites", lines=["Websites that", 'explain fast and <span class="accent">sell</span>.'],
   lead="A marketing site that says what you do in five seconds and makes the next step obvious. Designed in Figma, built in Webflow, Framer or WordPress, and handed over so your team can run it.",
   price="$6,900", price_note="3 to 6 weeks for a typical 5 to 10 page site", need="Website",
