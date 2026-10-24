@@ -581,6 +581,7 @@
     "c": "Saudi Arabia",
     "d": "4 days",
     "src": "Fiverr",
+    "rep": true,
     "t": "Very good. Exceeded my expectation."
    },
    {
@@ -599,6 +600,290 @@
     "src": "Fiverr",
     "rep": true,
     "t": "Great collaboration! Definitely recommend"
+   },
+   {
+    "n": "joe_epx",
+    "ini": "J",
+    "c": "United Kingdom",
+    "d": "10 days",
+    "src": "Fiverr",
+    "top": true,
+    "t": "Mykola was a pleasure to work with. First of all, the work is really good, it's creative, and in line with how our business wants to come across, whilst being different enough to stand out. Mykola was quick, thorough, and amenable to some feedback points, even if one or two of them were things we had missed off the requirements",
+    "x": "First of all, the work is really good, it's creative, and in line with how our business wants to come across, whilst being different enough to stand out."
+   },
+   {
+    "n": "agniusnark",
+    "ini": "A",
+    "c": "Canada",
+    "d": "9 days",
+    "src": "Fiverr",
+    "rep": true,
+    "top": true,
+    "t": "Mykola is an incredible UI/UX designer. We have hired him for the second time and he delivered incredible results in a short period of time. I should mention his quick responding to messages even though we work on different parts of the world. 10/10"
+   },
+   {
+    "n": "imranp88",
+    "ini": "I",
+    "c": "United States",
+    "d": "7 days",
+    "src": "Fiverr",
+    "top": true,
+    "t": "Delivered exactly to requirement and well inside of desired timelines. The work will enable further progress to continue on schedule and we'll be working together again in the future as more design services are needed. A+ partner, would highly recommend!"
+   },
+   {
+    "n": "optident",
+    "ini": "O",
+    "c": "Spain",
+    "d": "10 days",
+    "src": "Fiverr",
+    "top": true,
+    "t": "I had the pleasure of working with Mykola on the redesign of our main marketplace page (optident.es) and I couldn't be more satisfied with the results. From start to finish, Mykola demonstrated exceptional skill, professionalism, and attention to detail."
+   },
+   {
+    "n": "geardiscounter",
+    "ini": "G",
+    "c": "Netherlands",
+    "d": "4 weeks",
+    "src": "Fiverr",
+    "t": "Mykola T delivered an OUTSTANDING website design that was both professional and perfectly aligned with our brand. His fluency and deep understanding made communication effortless, and he exceeded expectations with timely delivery. Highly recommend working with him!"
+   },
+   {
+    "n": "fay_plut",
+    "ini": "F",
+    "c": "United States",
+    "d": "4 weeks",
+    "src": "Fiverr",
+    "t": "Working with Mykola T was a very positive experience! His eagerness to please and patience through my many revisions made it a pleasure to work with him. He created a stunning visually appealing website that was exactly what we wanted. His website design really exceeded my expectations. Plus, his quick responsiveness and proactive communication and flexibility made the process smooth and enjoyable."
+   },
+   {
+    "n": "profjohnk",
+    "ini": "P",
+    "c": "United States",
+    "d": "4 weeks",
+    "src": "Fiverr",
+    "t": "Mykola T delivered an AMAZING design using our branding guidelines, showing exceptional creativity and professionalism. Communication was excellent, and he worked very quickly, ensuring we were satisfied with every element before finalizing. I HIGHLY recommend him and look forward to working with him again."
+   },
+   {
+    "n": "nlagrange",
+    "ini": "N",
+    "c": "United States",
+    "d": "2 weeks",
+    "src": "Fiverr",
+    "t": "Mykola's work is always outstanding! The design is creative and visually appealing, with great attention to detail. Working with him is a pleasure, thanks to his proactive communication and cooperative spirit. Highly recommended!"
+   },
+   {
+    "n": "max_yar",
+    "ini": "M",
+    "c": "Ukraine",
+    "d": "6 days · Webflow",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Great experience working with Mykola again! The work was completed before the agreed deadline. I would like to point out his politeness, proactive communication, and attention to details. I highly recommend him as a high-level specialist. It was a pleasure to work with you!"
+   },
+   {
+    "n": "max_yar",
+    "ini": "M",
+    "c": "Ukraine",
+    "d": "10 days",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Mykola was a pleasure to work with. I recommend him as a highly professional specialist, strong in communication, brand alignment, and design vision. The order was delivered on time, and I would like to compliment his politeness. I can't wait to place my next order. Thank you, Mykola!"
+   },
+   {
+    "n": "f_yousu",
+    "ini": "F",
+    "c": "United States",
+    "d": "5 days",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "He created something very visually appealing especially catered towards social media users coming to our website. Social media platforms are effective at keeping attention of their users but I believe the web page that was designed will engage users in the same way and therefore be effective in delivering the message of our company and lead to very little \"bounce\" rate. Excellent work, couldn't be happier with the result. Thank you."
+   },
+   {
+    "n": "f_yousu",
+    "ini": "F",
+    "c": "United States",
+    "d": "12 days",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Mykola T delivered EXCEPTIONAL work on our website design project, exceeding expectations with their professionalism and meticulous attention to detail! The page is very clean and draws readers in clearly explaining what the business does."
+   },
+   {
+    "n": "f_yousu",
+    "ini": "F",
+    "c": "United States",
+    "d": "9 days",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Mykola T brought true artistry to our web design project, blending creativity, exceeding expectations, and stellar visual appeal seamlessly. Working with them was a breeze, thanks to their proactive communication, lightning-fast responses, and swift delivery."
+   },
+   {
+    "n": "m_kamile",
+    "ini": "M",
+    "c": "United Arab Emirates",
+    "d": "3 weeks",
+    "src": "Fiverr",
+    "t": "Your cooperation was exceptional, truly professional, and deeply aligned with my vision. I am super happy with the work you've produced. Your responsiveness and amiable demeanor made the experience even more enjoyable. I eagerly anticipate the opportunity to collaborate again in the future."
+   },
+   {
+    "n": "agniusnark",
+    "ini": "A",
+    "c": "Canada",
+    "d": "11 days",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "It was my first time here on Fiverr and I am exceptionally happy with Mykola's design. He designed a home page for our website and it is stunning. Mykola is super responsive, extremely skilled and can come up with creative decisions which is impressive. Thank you so much for your time. I will always think of you when I will be in need for a graphic designer."
+   },
+   {
+    "n": "mikekosk",
+    "ini": "M",
+    "c": "United States",
+    "d": "7 days · Webflow",
+    "src": "Fiverr",
+    "t": "Fantastic to work with him. Super good turnaround with every revision, high high quality work, and he really understands what I wanted, but jazzing things up in his own style"
+   },
+   {
+    "n": "julia_vitte_vu",
+    "ini": "J",
+    "c": "Netherlands",
+    "d": "5 weeks",
+    "src": "Fiverr",
+    "t": "It was truly a pleasure to work with Mykola, he supported me so much with all the changes! Especially amazing was when I had limited knowledge on some things and he really helped understand them."
+   },
+   {
+    "n": "divyajyotipatra",
+    "ini": "D",
+    "c": "United Kingdom",
+    "d": "13 days",
+    "src": "Fiverr",
+    "t": "All the feedback was incorporated. The first design was different from expectation, Mykola did the complete design again and we really liked the end result."
+   },
+   {
+    "n": "neoeon",
+    "ini": "N",
+    "c": "Australia",
+    "d": "6 days",
+    "src": "Fiverr",
+    "t": "I had a design in my head and he nailed it on his first try, I will be coming back in the future, don't hesitate to use his services."
+   },
+   {
+    "n": "plondyr",
+    "ini": "P",
+    "c": "Czech Republic",
+    "d": "6 days",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Mykola T is a top-tier website designer! His professionalism and creativity exceeded my expectations, and he nailed it with his language fluency and prompt delivery time. Working with him was a breeze—he went above and beyond!"
+   },
+   {
+    "n": "ericaeym",
+    "ini": "E",
+    "c": "Singapore",
+    "d": "4 days",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Working with Mykola has been a pleasure. He always completes his work on time and responds very quickly to feedback and revisions. Will come back again for future projects."
+   },
+   {
+    "n": "mrtonrsek",
+    "ini": "M",
+    "c": "Hungary",
+    "d": "10 days",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Professional graphics designer, it's our second order from him, we are more than happy with the result. Recommended to anyone who looking for a reliable Designer!"
+   },
+   {
+    "n": "murrum2020",
+    "ini": "M",
+    "c": "United Kingdom",
+    "d": "3 weeks",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Another superb website created. Seller was extremely patient working around my schedules and delivered exactly what was required."
+   },
+   {
+    "n": "jmcalisto",
+    "ini": "J",
+    "c": "Spain",
+    "d": "12 days",
+    "src": "Fiverr",
+    "t": "Working with Mykola was easy. Would definitely recommend if you want a professional and effective designer!"
+   },
+   {
+    "n": "hypescale",
+    "ini": "H",
+    "c": "Germany",
+    "d": "8 days",
+    "src": "Fiverr",
+    "t": "I really enjoyed working with Mykola and I will continue working with him in the future."
+   },
+   {
+    "n": "thiagowehbe",
+    "ini": "T",
+    "c": "Brazil",
+    "d": "2 weeks",
+    "src": "Fiverr",
+    "t": "Very responsive and seller went above and beyond. Highly recommend him!"
+   },
+   {
+    "n": "aamer_1986",
+    "ini": "A",
+    "c": "Saudi Arabia",
+    "d": "11 days · Webflow",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Very good, professional, fast and accommodative. Very happy to have worked with him."
+   },
+   {
+    "n": "kamyabmohager",
+    "ini": "K",
+    "c": "United States",
+    "d": "2 days",
+    "src": "Fiverr",
+    "t": "Very prompt, great quality work, and very creative"
+   },
+   {
+    "n": "mrtonrsek",
+    "ini": "M",
+    "c": "Hungary",
+    "d": "8 days",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Very pleased with the seller, profesionnal design and understanding of the gig!"
+   },
+   {
+    "n": "plondyr",
+    "ini": "P",
+    "c": "Czech Republic",
+    "d": "3 days",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Great designs as always!"
+   },
+   {
+    "n": "synoagmbh",
+    "ini": "S",
+    "c": "Germany",
+    "d": "12 days",
+    "src": "Fiverr",
+    "rep": true,
+    "t": "Great work again."
+   },
+   {
+    "n": "clark_jdc",
+    "ini": "C",
+    "c": "Singapore",
+    "d": "3 weeks",
+    "src": "Fiverr",
+    "t": "Very easy to work with and delivered successfully!"
+   },
+   {
+    "n": "artasca",
+    "ini": "A",
+    "c": "France",
+    "d": "2 weeks",
+    "src": "Fiverr",
+    "t": "Many thanks, a pleasure to work with"
    },
    {
     "ini": "V",
