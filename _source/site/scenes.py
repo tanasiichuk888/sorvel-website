@@ -60,7 +60,7 @@ def rate(quotes):
   <div class="rt-score"><b><span data-to="5" data-dec="1">0</span></b><div class="rt-big"><i></i><i></i><i></i><i></i><i></i></div><small>Average across every client review</small>
     <div class="rt-dist"><span>5★</span><i><u></u></i><em>100%</em></div></div>
   <div class="rt-stack">{q}</div>
-  <div class="rt-foot"><span class="rt-avas"><i>V</i><i>R</i><i>S</i><i>B</i><i>A</i><i>M</i></span><span><b>9 of 13</b> reviewers came back for another project</span></div>
+  <div class="rt-foot"><span class="rt-avas"><i>V</i><i>R</i><i>S</i><i>B</i><i>A</i><i>M</i></span><span><b>600+</b> five-star reviews on Upwork and Fiverr Pro</span></div>
 </div>'''
 
 

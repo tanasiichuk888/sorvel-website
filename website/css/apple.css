@@ -134,3 +134,9 @@
 @media (hover: none), (max-width: 860px) {
   .cs-phase::after, .cs-phase > .fx-spot { display: none !important; }
 }
+
+/* review stack on phones: only the front quote is visible, no text bleeding through */
+@media (max-width: 760px) {
+  .rt-q { opacity: calc(1 - var(--k, 0)); }
+  .rt-q.is-out { opacity: 0; }
+}
