@@ -1240,3 +1240,20 @@
     w.appendChild(b);
   });
 })();
+
+/* ---------- blog: highlight the section you are reading in the table of contents ---------- */
+(function () {
+  const toc = document.querySelector(".post__toc"); if (!toc) return;
+  const links = [...toc.querySelectorAll('a[href^="#"]')];
+  const heads = links.map((a) => document.getElementById(a.getAttribute("href").slice(1))).filter(Boolean);
+  let cur = null;
+  const set = (id) => { if (id === cur) return; cur = id; links.forEach((a) => a.classList.toggle("is-on", a.getAttribute("href") === "#" + id)); };
+  const pick = () => {
+    const line = innerHeight * 0.3; let id = heads[0] && heads[0].id;
+    for (const h of heads) { if (h.getBoundingClientRect().top - line <= 0) id = h.id; else break; }
+    set(id);
+  };
+  let raf = 0;
+  addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; pick(); }); }, { passive: true });
+  addEventListener("resize", pick); pick();
+})();

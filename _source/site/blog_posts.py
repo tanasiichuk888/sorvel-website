@@ -9,6 +9,7 @@ dict(
   card="What a WordPress to Webflow migration really costs, what moves the price, and the hidden costs of doing it cheaply.",
   desc="How much a WordPress to Webflow migration costs in 2026, what drives the price, the running costs after launch, and how to get an exact fixed quote.",
   cat="Migrations", date="2026-10-25", svc=("wordpress-to-webflow-migration", "WordPress to Webflow migration"),
+  cover=("mig-cover", "A web developer working on a website migration at a desk late in the evening"),
   lead="Most quotes for moving a WordPress site to Webflow land somewhere between a few hundred and tens of thousands of dollars. Here is what sits behind those numbers, so you can tell a fair quote from a risky one.",
   sections=[
 ("short", "The short answer", """
@@ -31,6 +32,7 @@ dict(
 ("factors", "Six things that move the price", """
 <h3>1. How many different layouts you have</h3>
 <p>A home page, a services page, a blog post and a case study are four templates. Each one is designed or rebuilt once, then reused. A site with 40 pages on 6 templates is a smaller job than a site with 15 pages where every page was built differently in a page builder.</p>
+[[fig:templates]]
 <h3>2. How much content, and how clean it is</h3>
 <p>A few hundred clean posts import quickly. Posts full of page builder markup, shortcodes, embedded galleries or custom fields take longer, because each pattern has to be cleaned or rebuilt before it fits Webflow's rich text.</p>
 <h3>3. Your URL structure</h3>
@@ -76,6 +78,7 @@ dict(
 <li>Whether you want to keep the current design or refresh it during the move.</li>
 </ol>
 <p>With that, we can send a written plan with scope, timeline and a fixed price within 24 hours. No call needed.</p>
+[[img:mig-plan|A laptop and a notebook with a hand-written migration plan on a desk|A good quote starts with a written plan: every page, template and plugin listed before a price is given.]]
 """),
   ],
   faq=[("Is moving from WordPress to Webflow worth it?", "For marketing sites, usually yes: your team edits pages visually, there are no plugins to update, and the site is easier to keep fast. For complex stores, membership sites or apps built on plugins, WordPress or Shopify can still be the better fit."),
@@ -92,6 +95,7 @@ dict(
   card="A step-by-step checklist for moving to Webflow while keeping your rankings, links and traffic.",
   desc="A step-by-step checklist for moving a site from WordPress to Webflow while keeping your rankings: inventory, CMS model, content import, 301 redirects, meta tags and post-launch checks.",
   cat="Migrations", date="2026-10-25", svc=("wordpress-to-webflow-migration", "WordPress to Webflow migration"),
+  cover=("seo-cover", "A desktop screen showing website traffic and search performance charts"),
   lead="Traffic rarely drops because of Webflow. It drops because URLs, meta tags or images were lost on the way. This is the checklist we follow on every migration, in the order we do it.",
   sections=[
 ("inventory", "1. List everything you have", """
@@ -146,6 +150,7 @@ dict(
 <p>This step decides whether your rankings survive. Every old URL that changes must point to its new address with a permanent 301 redirect. In Webflow, redirects live in the site settings under Publishing, and they support patterns, so a single rule can move a whole folder:</p>
 <pre><code>/2024/05/(.*)   →   /blog/%1
 /category/(.*)  →   /blog/category/%1</code></pre>
+[[fig:redirects]]
 <p>Use your spreadsheet from step 1 as the source. Redirect each URL to the most relevant new page, not to the home page. Google treats mass redirects to the home page much like missing pages.</p>
 <p>After publishing, test the full list: every old URL should answer with one 301 and land on a page that returns 200. Watch for chains, where one redirect leads to another.</p>
 [[cta]]
@@ -177,6 +182,7 @@ dict(
 <li><b>Sitemaps:</b> make sure the new sitemap is read without errors.</li>
 </ul>
 <p>Most issues show up in the first two weeks and take minutes to fix when someone is watching.</p>
+[[img:seo-watch|A laptop on an office desk showing search traffic charts|The first 30 days after launch: watch clicks, 404 errors and the sitemap, and fix gaps as they appear.]]
 """),
 ("mistakes", "The mistakes we see most often", """
 <ul>
@@ -202,6 +208,7 @@ dict(
   card="Realistic price ranges for a SaaS marketing site, what drives the cost, and how to avoid paying for the wrong things.",
   desc="Realistic 2026 price ranges for a SaaS marketing website, from templates to agencies, what drives the cost, which pages you need at launch, and running costs after.",
   cat="SaaS websites", date="2026-10-25", svc=("saas-website-design", "SaaS website design"),
+  cover=("saas-cover", "A startup team reviewing their website design together on a large screen"),
   lead="A SaaS website can cost almost nothing or more than your first engineer. The difference is rarely the number of pages. It is how much thinking goes into what the site says, and how well it shows the product.",
   sections=[
 ("short", "The short answer", """
@@ -222,6 +229,7 @@ dict(
 ("drivers", "What drives the cost", """
 <h3>Unique page layouts</h3>
 <p>A home page, a product page, pricing, a use case, an integration page and a blog post are six layouts. Once each one exists, new pages on the same layout are cheap. Count layouts, not pages.</p>
+[[fig:layouts]]
 <h3>Product visuals</h3>
 <p>Generic illustrations are cheap and forgettable. Clean, simplified scenes of your real interface take more work but explain the product in seconds, which is the main job of a SaaS homepage.</p>
 <h3>Messaging and copy</h3>
@@ -243,6 +251,7 @@ dict(
 <li><b>Demo or sign-up</b>, with as few fields as possible;</li>
 <li><b>Legal pages</b> such as privacy and terms.</li>
 </ul>
+[[img:saas-team|A product team discussing their website pages around a laptop|Start with the pages that sell, then grow the site on the same building blocks.]]
 <p>Blog, comparisons, integrations and customer stories can follow once the core pages work. Built on the same components, they are quick to add.</p>
 [[cta]]
 """),
