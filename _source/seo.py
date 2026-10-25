@@ -216,8 +216,13 @@ def process(path):
     GUIDES = {"services/migrations.html": [0, 1], "services/wordpress-to-webflow-migration.html": [1, 0], "services/webflow-agency.html": [1, 0],
               "services/saas-website-design.html": [2], "services/websites.html": [2, 0], "pricing.html": [2, 0]}
     if rel in GUIDES and 'class="sec blog-rel"' not in s:
-        cards = "".join(f'<a class="bcard" href="{pre}blog/{BLOG[i]["slug"]}.html"><span class="bcard__meta"><span class="bcard__cat">{BLOG[i]["cat"]}</span><span>Guide</span></span>'
-                        f'<h3>{BLOG[i]["h1"]}</h3><p>{BLOG[i]["card"]}</p><span class="bcard__foot"><span>Read the guide</span><span class="bcard__go" aria-hidden="true">→</span></span></a>' for i in GUIDES[rel])
+        def _img(b):
+            n, alt = b["cover"]
+            return (f'<span class="bcard__img"><img src="{pre}img/blog/{n}.webp" srcset="{pre}img/blog/{n}-800.webp 800w, {pre}img/blog/{n}.webp 1600w" '
+                    f'sizes="(max-width: 860px) 100vw, 50vw" alt="{alt}" width="1600" height="900" loading="lazy" decoding="async"></span>')
+        big = " bcard--big" if len(GUIDES[rel]) == 1 else ""
+        cards = "".join(f'<a class="bcard{big}" href="{pre}blog/{BLOG[i]["slug"]}.html">{_img(BLOG[i])}<span class="bcard__in"><span class="bcard__meta"><span class="bcard__cat">{BLOG[i]["cat"]}</span><span>Guide</span></span>'
+                        f'<h3>{BLOG[i]["h1"]}</h3><p>{BLOG[i]["card"]}</p><span class="bcard__foot"><span>Read the guide</span><span class="bcard__go" aria-hidden="true">→</span></span></span></a>' for i in GUIDES[rel])
         blk = (f'    <section class="sec blog-rel" data-chapter="Guides">\n      <div class="wrap">\n        <header class="sec__head"><p class="eyebrow">From the blog</p>'
                f'<h2 class="h2">Read before <span class="dim">you decide.</span></h2></header>\n        <div class="bgrid bgrid--2">{cards}</div>\n      </div>\n    </section>\n')
         for anchor in ('    <section class="sec faq"', '    <section class="cs-next'):
