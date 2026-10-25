@@ -129,3 +129,8 @@
 .px__ic { border: 0 !important; background: rgba(242,239,234,.06); }
 .px__row.is-on .px__ic { background: var(--accent); }
 .step li::before, .plan__list li::before, .px__list li::before { border: 0 !important; box-shadow: none !important; background-color: rgba(59,107,255,.2); }
+
+/* process timeline: the hover card is a desktop-only effect; on phones a tap left it stuck and misaligned */
+@media (hover: none), (max-width: 860px) {
+  .cs-phase::after, .cs-phase > .fx-spot { display: none !important; }
+}
