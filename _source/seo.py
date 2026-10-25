@@ -9,6 +9,8 @@ When the domain is final, change SITE below and run build.py again.
 import os, re, json, glob, html, datetime, sys
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "site"))
 from common import mnav as _mnav  # full-screen phone menu
+from blog_posts import POSTS as BLOG
+BLOG_BY = {b["slug"]: b for b in BLOG}
 
 SITE = "https://sorvel.agency"          # <- final domain, no trailing slash
 BRAND = "Sorvel Studio"
@@ -20,12 +22,12 @@ NOINDEX = {"404.html"}
 START, END = "<!-- seo -->", "<!-- /seo -->"
 GLASS_V = 5  # bump after editing css/glass.css or js/glass.js
 CASE_V = 16  # bump after editing css/case.css
-PAGES_V = 31
+PAGES_V = 33
 APPLE, APPLE_V = True, 2  # Apple-style layer (css/apple.css); False = roll back
 MOBILE_V = 5  # bump after editing css/mobile.css
 BRAND_V = 2  # bump after replacing logo / favicon files
 # other assets that change: bump the number after editing the file
-ASSET_V = {"css/style.css": 10, "js/main.js": 29, "css/xp.css": 6, "js/scenes.js": 20, "js/xp.js": 6, "js/dots.js": 2, "css/hero.css": 3, "js/case.js": 13, "js/fx.js": 18, "js/svc.js": 17}
+ASSET_V = {"css/style.css": 10, "js/main.js": 30, "css/xp.css": 6, "js/scenes.js": 20, "js/xp.js": 7, "js/dots.js": 2, "css/hero.css": 3, "js/case.js": 13, "js/fx.js": 18, "js/svc.js": 17}
 
 # Search titles (aim for under ~60 characters). Case studies are generated from the page.
 POPULAR = [("saas-website-design", "SaaS website design"), ("fintech-website-design", "Fintech website design"),
@@ -66,6 +68,7 @@ WEBSITE = {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "na
 def section_name(rel):
     if rel.startswith("work/"): return ("Work", SITE + "/work")
     if rel.startswith("services/"): return ("Services", SITE + "/#services")
+    if rel.startswith("blog/"): return ("Blog", SITE + "/blog")
     return None
 
 def _div_block(s, start):
@@ -114,9 +117,9 @@ def process(path):
     desc = html.unescape(dm.group(1)) if dm else ""
     h1m = re.search(r"<h1[^>]*>(.*?)</h1>", s, re.S); h1 = text(h1m.group(1)) if h1m else title
     url = clean_url(rel)
-    is_case = rel.startswith("work/"); is_service = rel.startswith("services/")
+    is_case = rel.startswith("work/"); is_service = rel.startswith("services/"); is_post = rel.startswith("blog/")
     slug = os.path.basename(rel)[:-5]
-    og = f"{SITE}/img/og/{slug}.jpg" if is_case and os.path.exists(f"{W}/img/og/{slug}.jpg") else f"{SITE}/img/og/default.jpg"
+    og = f"{SITE}/img/og/{slug}.jpg" if (is_case or is_post) and os.path.exists(f"{W}/img/og/{slug}.jpg") else f"{SITE}/img/og/default.jpg"
     E = lambda v: html.escape(v, quote=True)
 
     tags = []
@@ -128,7 +131,7 @@ def process(path):
     if '<meta name="theme-color"' not in s:
         tags.append('<meta name="theme-color" content="#0B0C0F" />')
     tags += ['<meta name="author" content="Mykola Tanasiichuk" />',
-             f'<meta property="og:type" content="{"article" if is_case else "website"}" />',
+             f'<meta property="og:type" content="{"article" if is_case or is_post else "website"}" />',
              f'<meta property="og:site_name" content="{BRAND}" />', '<meta property="og:locale" content="en_US" />',
              f'<meta property="og:title" content="{E(title)}" />', f'<meta property="og:description" content="{E(desc)}" />',
              f'<meta property="og:url" content="{url}" />', f'<meta property="og:image" content="{og}" />',
@@ -157,6 +160,17 @@ def process(path):
         if is_service:
             graph.append({"@type": "Service", "@id": url + "#service", "name": h1, "serviceType": title.split("|")[0].strip(),
                           "description": desc, "provider": {"@id": SITE + "/#org"}, "areaServed": "Worldwide", "url": url})
+        if is_post and slug in BLOG_BY:
+            b = BLOG_BY[slug]
+            tags.insert(0, f'<meta property="article:published_time" content="{b["date"]}T09:00:00+01:00" />')
+            graph.append(PERSON)
+            graph.append({"@type": "BlogPosting", "@id": url + "#article", "headline": b["h1"], "description": desc, "image": og,
+                          "datePublished": b["date"], "dateModified": b.get("updated", b["date"]), "author": {"@id": SITE + "/#founder"},
+                          "publisher": {"@id": SITE + "/#org"}, "mainEntityOfPage": {"@id": url + "#webpage"}, "articleSection": b["cat"],
+                          "inLanguage": "en", "isPartOf": {"@id": SITE + "/blog#blog"}})
+        if rel == "blog.html":
+            graph.append({"@type": "Blog", "@id": SITE + "/blog#blog", "url": SITE + "/blog", "name": "Sorvel blog", "publisher": {"@id": SITE + "/#org"},
+                          "blogPost": [{"@type": "BlogPosting", "@id": f"{SITE}/blog/{b['slug']}#article", "headline": b["h1"], "url": f"{SITE}/blog/{b['slug']}", "datePublished": b["date"]} for b in BLOG]})
         if is_case:
             graph.append({"@type": "CreativeWork", "@id": url + "#work", "name": h1, "headline": title.split("|")[0].strip(),
                           "description": desc, "image": og, "url": url, "creator": {"@id": SITE + "/#org"},
@@ -188,6 +202,24 @@ def process(path):
     if 'id="mnav"' not in s and 'class="nav__burger"' in s:
         act = "work" if rel.startswith("work/") else ""
         s = s.replace("  </header>\n", "  </header>\n" + _mnav(pre, act), 1)
+
+    # blog: link in the footer "Studio" column and in the phone menu on every page
+    if f'Reviews</a><a href="{pre}blog.html">Blog</a>' not in s:
+        s = s.replace(f'<a href="{pre}reviews.html">Reviews</a></div>', f'<a href="{pre}reviews.html">Reviews</a><a href="{pre}blog.html">Blog</a></div>', 1)
+    if 'mnav__t">Blog<' not in s:
+        s = re.sub(r'(<li style="--i:6"><a class="mnav__link" href="[^"]*reviews\.html"[^>]*>.*?</li>)',
+                   lambda m: m.group(1) + f'\n        <li style="--i:7"><a class="mnav__link" href="{pre}blog.html"><span class="mnav__n">07</span><span class="mnav__t">Blog</span></a></li>', s, count=1)
+    # service pages: "From the blog" cards above the related links
+    GUIDES = {"services/migrations.html": [0, 1], "services/wordpress-to-webflow-migration.html": [1, 0], "services/webflow-agency.html": [1, 0],
+              "services/saas-website-design.html": [2], "services/websites.html": [2, 0], "pricing.html": [2, 0]}
+    if rel in GUIDES and 'class="sec blog-rel"' not in s:
+        cards = "".join(f'<a class="bcard" href="{pre}blog/{BLOG[i]["slug"]}.html"><span class="bcard__meta"><span class="bcard__cat">{BLOG[i]["cat"]}</span><span>Guide</span></span>'
+                        f'<h3>{BLOG[i]["h1"]}</h3><p>{BLOG[i]["card"]}</p><span class="bcard__foot"><span>Read the guide</span><span class="bcard__go" aria-hidden="true">→</span></span></a>' for i in GUIDES[rel])
+        blk = (f'    <section class="sec blog-rel" data-chapter="Guides">\n      <div class="wrap">\n        <header class="sec__head"><p class="eyebrow">From the blog</p>'
+               f'<h2 class="h2">Read before <span class="dim">you decide.</span></h2></header>\n        <div class="bgrid bgrid--2">{cards}</div>\n      </div>\n    </section>\n')
+        for anchor in ('    <section class="sec faq"', '    <section class="cs-next'):
+            if anchor in s:
+                s = s.replace(anchor, blk + anchor, 1); break
 
     # services list on phones: each row carries its own copy of its preview, so opening a row never moves the rows above it
     if 'class="svc__list"' in s and "svc__stage--m" not in s:
