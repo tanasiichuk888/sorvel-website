@@ -209,6 +209,9 @@ def process(path):
     if 'class="nav__links"' in s and f'>Blog</a>\n      </nav>' not in s and 'nav__blog' not in s:
         cur = ' class="nav__blog is-current"' if rel == "blog.html" or rel.startswith("blog/") else ' class="nav__blog"'
         s = re.sub(r'(<nav class="nav__links".*?>About</a>)', lambda m: m.group(1) + f'\n        <a href="{pre}blog.html"{cur}>Blog</a>', s, count=1, flags=re.S)
+    if 'class="nav__links"' in s and 'nav__reviews' not in s:
+        cur = ' class="nav__reviews is-current"' if rel == "reviews.html" else ' class="nav__reviews"'
+        s = re.sub(r'(<nav class="nav__links".*?>About</a>)', lambda m: m.group(1) + f'\n        <a href="{pre}reviews.html"{cur}>Reviews</a>', s, count=1, flags=re.S)
     if 'mnav__t">Blog<' not in s:
         s = re.sub(r'(<li style="--i:6"><a class="mnav__link" href="[^"]*reviews\.html"[^>]*>.*?</li>)',
                    lambda m: m.group(1) + f'\n        <li style="--i:7"><a class="mnav__link" href="{pre}blog.html"><span class="mnav__n">07</span><span class="mnav__t">Blog</span></a></li>', s, count=1)
