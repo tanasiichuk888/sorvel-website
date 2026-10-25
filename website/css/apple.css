@@ -146,3 +146,13 @@
   .rt-q { opacity: calc(1 - var(--k, 0)); }
   .rt-q.is-out { opacity: 0; }
 }
+
+/* home: founder statement, one line instead of a letter */
+.stmt .wrap { display: grid; justify-items: center; text-align: center; }
+.stmt__t { margin: 0; max-width: 16ch; font-family: var(--font-head); font-weight: 600; font-size: clamp(44px, 7vw, 104px); line-height: .98; letter-spacing: -.055em; }
+.stmt__p { margin: 28px 0 0; max-width: 34ch; font-size: clamp(18px, 1.6vw, 21px); line-height: 1.5; color: var(--ap-text-2); }
+.stmt__by { display: inline-flex; align-items: center; gap: 12px; margin: 36px 0 0; padding: 6px 18px 6px 6px; border-radius: 999px; background: rgba(255,255,255,.05); font-size: 15px; color: var(--ap-text-2); }
+.stmt__by img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+.stmt__by b { color: var(--text); font-weight: 600; }
+@media (max-width: 760px) { .stmt__t { font-size: clamp(40px, 11vw, 52px); } }
+.stmt__t .accent { color: var(--accent); }
