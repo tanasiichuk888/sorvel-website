@@ -43,7 +43,7 @@
       b.addEventListener("pointermove", (e) => {
         const r = b.getBoundingClientRect();
         const dx = (e.clientX - r.left - r.width / 2) / r.width, dy = (e.clientY - r.top - r.height / 2) / r.height;
-        b.style.translate = `${dx * 8}px ${dy * 6}px`;
+        b.style.translate = `${(dx * 5).toFixed(1)}px ${(dy * 4).toFixed(1)}px`;
       });
       b.addEventListener("pointerleave", () => { b.style.translate = ""; });
     });

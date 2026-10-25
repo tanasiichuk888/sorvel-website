@@ -23,11 +23,11 @@ START, END = "<!-- seo -->", "<!-- /seo -->"
 GLASS_V = 5  # bump after editing css/glass.css or js/glass.js
 CASE_V = 16  # bump after editing css/case.css
 PAGES_V = 38
-APPLE, APPLE_V = True, 7  # Apple-style layer (css/apple.css); False = roll back
+APPLE, APPLE_V = True, 8  # Apple-style layer (css/apple.css); False = roll back
 MOBILE_V = 5  # bump after editing css/mobile.css
 BRAND_V = 2  # bump after replacing logo / favicon files
 # other assets that change: bump the number after editing the file
-ASSET_V = {"css/style.css": 10, "js/main.js": 31, "css/xp.css": 6, "js/scenes.js": 21, "js/xp.js": 7, "js/dots.js": 2, "css/hero.css": 3, "js/case.js": 13, "js/fx.js": 18, "js/svc.js": 17}
+ASSET_V = {"css/style.css": 10, "js/main.js": 31, "css/xp.css": 6, "js/scenes.js": 21, "js/xp.js": 7, "js/dots.js": 2, "css/hero.css": 3, "js/case.js": 13, "js/fx.js": 19, "js/svc.js": 17}
 
 # Search titles (aim for under ~60 characters). Case studies are generated from the page.
 POPULAR = [("saas-website-design", "SaaS website design"), ("fintech-website-design", "Fintech website design"),

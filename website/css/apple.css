@@ -21,9 +21,15 @@
 .nav__links { font-size: 14px; letter-spacing: -.005em; gap: 32px; }
 
 /* ---------- buttons: pill, instant press, calm hover ---------- */
-.btn { border-radius: 999px; transition: background-color .3s var(--ap-ease), color .3s, box-shadow .4s var(--ap-ease), transform .45s var(--ap-ease); }
-.btn:active { transform: scale(.97); transition-duration: .1s; }
-.btn--primary:hover { transform: none; }
+.btn { border-radius: 999px; will-change: translate;
+  transition: background-color .4s var(--ap-ease), color .4s var(--ap-ease), border-color .4s var(--ap-ease), box-shadow .6s var(--ap-ease),
+              transform .5s var(--ap-ease), translate .7s var(--ap-ease); }
+.btn:active { transform: scale(.97); transition: transform .12s ease-out, translate .7s var(--ap-ease); }
+.btn--primary:hover { transform: none; background: var(--accent-hover, #4C79FF); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 0 0 1px rgba(190,205,255,.4) inset, 0 16px 40px -14px rgba(59,107,255,.9); }
+/* every inner part of a button eases on the same curve */
+.btn__roll > span, .btn__arrow svg, .btn__plane { transition-duration: .6s !important; transition-timing-function: var(--ap-ease) !important; }
+.btn__fill { transition: transform .7s var(--ap-ease) !important; }
+.btn--primary::before { transition: opacity .5s var(--ap-ease) !important; }
 .btn--lg { height: 52px; padding: 0 28px; font-size: 16px; }
 
 /* ---------- typography: size-specific tracking and leading ---------- */
