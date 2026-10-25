@@ -149,6 +149,12 @@
           else { ctx.beginPath(); ctx.arc(X, Y, (.6 + z * .65) * DPR, 0, 6.283); ctx.fill(); } }
         // country borders (all) + live highlights
         ctx.lineWidth = .7 * DPR;
+        if (LITE) { // phones: every country outline in one path, one stroke (cheap)
+          ctx.beginPath();
+          CO.forEach((c) => { if (c.home) return; c.rings.forEach((r) => { const qs = r.map(P); let vis = 0; for (const q of qs) if (q[2] > 0) vis++; if (vis / qs.length < .95) return;
+            qs.forEach((q, i) => { const [X, Y] = S(q); i ? ctx.lineTo(X, Y) : ctx.moveTo(X, Y); }); ctx.closePath(); }); });
+          ctx.strokeStyle = "rgba(170,192,255,.55)"; ctx.lineWidth = .8 * DPR; ctx.stroke(); ctx.lineWidth = .7 * DPR;
+        }
         CO.forEach((c) => { if (LITE && !c.home) return; c.rings.forEach((r) => { if (ring(r, true) < .95) return;
           if (c.home) { ctx.fillStyle = "rgba(61,220,132,.22)"; ctx.fill(); ctx.strokeStyle = "rgba(61,220,132,.9)"; ctx.lineWidth = 1.1 * DPR; ctx.stroke(); ctx.lineWidth = .7 * DPR; }
           else { ctx.strokeStyle = "rgba(170,192,255,.6)"; ctx.lineWidth = .9 * DPR; ctx.stroke(); ctx.lineWidth = .7 * DPR; } }); });
