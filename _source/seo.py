@@ -205,8 +205,11 @@ def process(path):
     s = re.sub(r'css/glass\.css\?v=\d+', f'css/glass.css?v={GLASS_V}', s)
     # phone typography pass, always the last stylesheet
     s = re.sub(r'[ \t]*<link rel="stylesheet" href="[^"]*css/mobile\.css[^"]*" />\n', '', s)
+    s = re.sub(r'[ \t]*<link rel="stylesheet" href="[^"]*css/apple\.css[^"]*" />\n', '', s)
     k = s.index("</head>")
     s = s[:k] + f'  <link rel="stylesheet" href="{pre}css/mobile.css?v={MOBILE_V}" />\n' + s[k:]
+    if rel == "about.html":   # Apple-style trial layer; delete these two lines to roll back
+        s = s.replace("css/mobile.css?v=" + str(MOBILE_V) + '" />\n', "css/mobile.css?v=" + str(MOBILE_V) + '" />\n  <link rel="stylesheet" href="css/apple.css?v=1" />\n', 1)
     if 'class="amb"' not in s:
         s = re.sub(r"(<body[^>]*>)", r'\1\n  <div class="amb" aria-hidden="true"><i></i><i></i><i></i></div>', s, count=1)
     if "js/glass.js" not in s:

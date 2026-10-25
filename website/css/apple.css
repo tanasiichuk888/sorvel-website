@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Apple-style layer (trial, About page only).
+   Remove the <link> to css/apple.css to roll back.
+   Principles: restraint and whitespace over dividers, size-specific tracking,
+   translucent material for chrome, instant press feedback, one calm
+   critically-damped curve for every motion, reduced-motion/transparency support.
+   ========================================================================== */
+:root {
+  --ap-ease: cubic-bezier(.32, .72, 0, 1);      /* critically damped, iOS sheet feel */
+  --ap-ease-out: cubic-bezier(.22, 1, .36, 1);
+  --ap-text-2: #A1A1A6;                         /* Apple secondary label on dark */
+  --ap-card: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+  --ap-edge: rgba(255,255,255,.08);
+  --ap-hi: rgba(255,255,255,.14);
+}
+
+/* ---------- chrome: translucent material, scroll-edge fade instead of a hard divider ---------- */
+.nav { background: rgba(11,12,15,.58); border-bottom: 0; backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); }
+.nav::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 18px; pointer-events: none;
+  background: linear-gradient(180deg, rgba(11,12,15,.45), rgba(11,12,15,0)); }
+.nav__links { font-size: 14px; letter-spacing: -.005em; gap: 32px; }
+
+/* ---------- buttons: pill, instant press, calm hover ---------- */
+.btn { border-radius: 999px; transition: background-color .3s var(--ap-ease), color .3s, box-shadow .4s var(--ap-ease), transform .45s var(--ap-ease); }
+.btn:active { transform: scale(.97); transition-duration: .1s; }
+.btn--primary:hover { transform: none; }
+.btn--lg { height: 52px; padding: 0 28px; font-size: 16px; }
+
+/* ---------- typography: size-specific tracking and leading ---------- */
+.eyebrow { font-size: 12px; letter-spacing: .08em; color: var(--ap-text-2); }
+.eyebrow::before { display: none; }
+.pg-hero .cs-title { font-size: clamp(48px, 7vw, 104px); line-height: .98; letter-spacing: -.05em; max-width: 15ch; }
+.pg-hero .cs-lead { font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; letter-spacing: -.012em; color: var(--ap-text-2); max-width: 34ch; }
+.h2 { font-size: clamp(40px, 5.4vw, 76px); line-height: 1; letter-spacing: -.045em; }
+.h2 .dim, .big-quote .dim { color: #6E6E73; }
+.sec__lead { font-size: 19px; line-height: 1.5; color: var(--ap-text-2); }
+
+/* ---------- space instead of lines ---------- */
+.sec { border-top: 0; padding: clamp(110px, 13vw, 190px) 0; }
+.pg-hero { padding-bottom: clamp(60px, 7vw, 100px); }
+.pg-hero::before { opacity: .7; }
+
+/* story */
+.pg-prose p { color: var(--ap-text-2); font-size: clamp(17px, 1.3vw, 19px); line-height: 1.6; }
+.pg-prose p:first-child { color: var(--text); font-size: clamp(24px, 2.2vw, 32px); line-height: 1.3; letter-spacing: -.022em; }
+
+/* numbers: big, quiet, no grid lines */
+.tstats { border: 0; gap: 16px; }
+.tstats div { border: 0; padding: 36px 32px; border-radius: 28px; background: var(--ap-card); box-shadow: inset 0 0 0 1px var(--ap-edge), inset 0 1px 0 var(--ap-hi); }
+.tstats div:first-child { padding-left: 32px; }
+.tstats b { font-size: clamp(56px, 7vw, 104px); letter-spacing: -.055em;
+  background: linear-gradient(180deg, #fff 30%, rgba(255,255,255,.55)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.tstats div > span { display: block; margin-top: 10px; color: var(--ap-text-2); font-size: 15px; }
+
+/* belief: one statement, centred, lots of air */
+[data-chapter="Belief"] .wrap { text-align: center; }
+[data-chapter="Belief"] .eyebrow { justify-content: center; }
+.big-quote { margin-inline: auto; max-width: 18ch; font-size: clamp(40px, 6.4vw, 96px); line-height: 1; letter-spacing: -.055em; }
+
+/* values: cards on a light material instead of ruled rows */
+.vals { border: 0; gap: 16px; }
+.vals > div { border: 0; padding: 32px; border-radius: 28px; background: var(--ap-card); box-shadow: inset 0 0 0 1px var(--ap-edge), inset 0 1px 0 var(--ap-hi);
+  transition: transform .6s var(--ap-ease), box-shadow .6s var(--ap-ease), background .6s; }
+.vals > div:hover { transform: translateY(-3px); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12), inset 0 1px 0 rgba(255,255,255,.2), 0 30px 60px -30px rgba(0,0,0,.7); }
+.vals h3 { font-size: 22px; letter-spacing: -.025em; }
+.vals p { color: var(--ap-text-2); font-size: 16px; }
+.vals > div > .fx-spot { display: none; }
+
+/* team tiles */
+.crew__tile { border-radius: 26px; border-color: var(--ap-edge); background: #111216; box-shadow: inset 0 1px 0 rgba(255,255,255,.06); transition: transform .6s var(--ap-ease), box-shadow .6s var(--ap-ease), border-color .6s; }
+.crew__tile:hover { transform: translateY(-3px); }
+
+/* founder letter + CTA */
+.note .letter, .note [class*="letter"]:not(.letter__foot):not(.letter__meta) { border-radius: 32px; }
+.pg-cta .cs-title, .pg-cta h2 { letter-spacing: -.05em; }
+
+/* ---------- motion: one curve, short distances, no blur ---------- */
+[data-reveal] { transform: translate3d(0, 24px, 0) scale(.985); transition: opacity .9s var(--ap-ease-out) var(--d, 0s), transform 1s var(--ap-ease) var(--d, 0s); }
+[data-reveal].in { transform: none; }
+
+@media (max-width: 760px) {
+  .tstats { grid-template-columns: 1fr; gap: 12px; }
+  .tstats div, .tstats div:first-child { padding: 26px 24px; border-radius: 22px; }
+  .vals > div { padding: 24px; border-radius: 22px; }
+  .pg-hero .cs-title { font-size: clamp(44px, 12vw, 56px); }
+  .big-quote { font-size: clamp(36px, 10vw, 48px); }
+}
+
+/* ---------- accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { transform: none; transition: opacity .2s ease; }
+  .vals > div:hover, .crew__tile:hover { transform: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .nav { background: #0B0C0F; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .nav::after { display: none; }
+}
+@media (prefers-contrast: more) {
+  .tstats div, .vals > div { background: #15161B; box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); }
+  .eyebrow, .pg-prose p, .vals p { color: #D6D6DA; }
+}
