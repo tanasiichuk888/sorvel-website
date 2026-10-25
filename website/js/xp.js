@@ -49,7 +49,7 @@
     stage.dataset.phase = p;
     let t = TEXT[p];
     if (p === "live" && CASES[idx].wip) t = ["Design approved", "Webflow build in progress"];
-    if (t) { status.textContent = t[0]; statusS.textContent = t[1]; }
+    if (t && status) { status.textContent = t[0]; statusS.textContent = t[1]; }
     stage.classList.toggle("is-wip", !!CASES[idx].wip);
     setStep(p);
   };

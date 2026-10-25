@@ -1192,3 +1192,51 @@
     });
   }
 })();
+
+/* ---------- copy buttons next to the email and Telegram address ---------- */
+(function () {
+  const links = [...document.querySelectorAll('a[href^="mailto:"], a[href*="t.me/"]')]
+    .filter((a) => !a.closest(".foot, .mnav, .btn") && !a.classList.contains("btn") && /@/.test(a.textContent));
+  if (!links.length) return;
+  const css = document.createElement("style");
+  css.textContent = `
+.cpy{display:flex;align-items:center;gap:6px;position:relative}
+.cpy>a{flex:1;min-width:0}
+.ask .cpy,.cta__alt .cpy{border-top:1px solid var(--line)}
+.ask .cpy>a,.cta__alt .cpy>a{border-top:0}
+.cta__alt .cpy:last-child{border-bottom:1px solid var(--line)}
+.cta__alt .cpy>a:last-child{border-bottom:0}
+.cpy--box{display:block}
+.cpy--box>.cpy__b{position:absolute;top:18px;right:18px}
+.cpy__b{flex:none;display:grid;place-items:center;width:34px;height:34px;padding:0;border:0;border-radius:999px;cursor:pointer;color:var(--muted,#9a9a9f);background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);transition:background-color .3s,color .3s,transform .1s}
+.cpy__b:hover{color:var(--text,#fff);background:rgba(255,255,255,.1)}
+.cpy__b:active{transform:scale(.92)}
+.cpy__b svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.cpy__b .ok{display:none}
+.cpy__b.is-ok{color:#5BD08A}.cpy__b.is-ok .ok{display:block}.cpy__b.is-ok .cp{display:none}
+.cpy__b::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;translate:-50% 4px;padding:5px 9px;border-radius:8px;background:#1d1e24;color:#fff;font:500 12px/1 var(--font,system-ui);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s,translate .3s}
+.cpy__b{position:relative}.cpy--box>.cpy__b{position:absolute}
+.cpy__b.is-ok::after{opacity:1;translate:-50% 0}`;
+  document.head.appendChild(css);
+  const copy = async (t) => {
+    try { await navigator.clipboard.writeText(t); return true; } catch (e) {
+      const ta = document.createElement("textarea"); ta.value = t; ta.style.cssText = "position:fixed;opacity:0";
+      document.body.appendChild(ta); ta.select(); let ok = false; try { ok = document.execCommand("copy"); } catch (_) {} ta.remove(); return ok;
+    }
+  };
+  links.forEach((a) => {
+    const mail = a.href.startsWith("mailto:");
+    const val = mail ? decodeURIComponent(a.href.slice(7).split("?")[0]) : "@" + a.href.split("t.me/")[1].split(/[/?#]/)[0];
+    const w = document.createElement("span"); w.className = "cpy" + (a.classList.contains("cbox") ? " cpy--box" : "");
+    a.parentNode.insertBefore(w, a); w.appendChild(a);
+    const b = document.createElement("button"); b.type = "button"; b.className = "cpy__b";
+    b.setAttribute("aria-label", "Copy " + (mail ? "email" : "Telegram") + " " + val); b.dataset.tip = "Copied";
+    b.innerHTML = '<svg class="cp" viewBox="0 0 16 16" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="2"/><path d="M10.5 3.5v-.5a1.5 1.5 0 0 0-1.5-1.5H4A1.5 1.5 0 0 0 2.5 3v5A1.5 1.5 0 0 0 4 9.5h.5"/></svg><svg class="ok" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>';
+    let t = 0;
+    b.addEventListener("click", async (e) => {
+      e.preventDefault(); e.stopPropagation();
+      if (await copy(val)) { b.classList.add("is-ok"); clearTimeout(t); t = setTimeout(() => b.classList.remove("is-ok"), 1600); }
+    });
+    w.appendChild(b);
+  });
+})();
