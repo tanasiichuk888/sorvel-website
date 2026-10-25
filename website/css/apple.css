@@ -121,3 +121,11 @@
     transition: color .25s var(--ap-ease), background-size .45s var(--ap-ease); }
   .foot__cols a:hover, .foot__pop a:hover, .foot__legal a:hover, .foot__bottom > a:hover { color: #fff; background-size: 100% 1px; }
 }
+
+/* ---------- icon tiles: a soft fill, no outline ---------- */
+.cs-ico { border: 0 !important; box-shadow: none !important; }
+.nav__menu i, .cta__steps b { border: 0 !important; box-shadow: none !important; background: rgba(59,107,255,.16); }
+.mnav__svc i { box-shadow: none !important; background: rgba(59,107,255,.16); }
+.px__ic { border: 0 !important; background: rgba(242,239,234,.06); }
+.px__row.is-on .px__ic { background: var(--accent); }
+.step li::before, .plan__list li::before, .px__list li::before { border: 0 !important; box-shadow: none !important; background-color: rgba(59,107,255,.2); }
