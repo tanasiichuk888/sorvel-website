@@ -21,7 +21,7 @@
 
   /* 2. spotlight that tracks the cursor inside cards */
   const CARDS = [".pcard", ".px__box", ".px__panel", ".px__promo", ".cbox", ".trust > div", ".incl > div", ".plat > div", ".rcard",
-    ".moves > div", ".vals > div", ".cs-problems > article", ".sprice", ".brief", ".case", ".step li", ".rbig", ".acc__item",
+    ".moves > div", ".cs-problems > article", ".sprice", ".brief", ".case", ".step li", ".rbig", ".acc__item",
     ".cs-phase", ".cs-got", ".cs-dec__row", ".svc__stage", ".person__ph", ".note__ph", ".ask", ".cs-bento > *", ".cs-out > *"].join(",");
   if (fine) {
     document.querySelectorAll(CARDS).forEach((el) => {

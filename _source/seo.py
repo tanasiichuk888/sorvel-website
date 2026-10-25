@@ -21,10 +21,11 @@ START, END = "<!-- seo -->", "<!-- /seo -->"
 GLASS_V = 5  # bump after editing css/glass.css or js/glass.js
 CASE_V = 16  # bump after editing css/case.css
 PAGES_V = 31
+APPLE, APPLE_V = True, 2  # Apple-style layer (css/apple.css); False = roll back
 MOBILE_V = 5  # bump after editing css/mobile.css
 BRAND_V = 2  # bump after replacing logo / favicon files
 # other assets that change: bump the number after editing the file
-ASSET_V = {"css/style.css": 10, "js/main.js": 29, "css/xp.css": 6, "js/scenes.js": 20, "js/xp.js": 6, "js/dots.js": 2, "css/hero.css": 3, "js/case.js": 13, "js/fx.js": 17, "js/svc.js": 17}
+ASSET_V = {"css/style.css": 10, "js/main.js": 29, "css/xp.css": 6, "js/scenes.js": 20, "js/xp.js": 6, "js/dots.js": 2, "css/hero.css": 3, "js/case.js": 13, "js/fx.js": 18, "js/svc.js": 17}
 
 # Search titles (aim for under ~60 characters). Case studies are generated from the page.
 POPULAR = [("saas-website-design", "SaaS website design"), ("fintech-website-design", "Fintech website design"),
@@ -208,8 +209,9 @@ def process(path):
     s = re.sub(r'[ \t]*<link rel="stylesheet" href="[^"]*css/apple\.css[^"]*" />\n', '', s)
     k = s.index("</head>")
     s = s[:k] + f'  <link rel="stylesheet" href="{pre}css/mobile.css?v={MOBILE_V}" />\n' + s[k:]
-    if rel == "about.html":   # Apple-style trial layer; delete these two lines to roll back
-        s = s.replace("css/mobile.css?v=" + str(MOBILE_V) + '" />\n', "css/mobile.css?v=" + str(MOBILE_V) + '" />\n  <link rel="stylesheet" href="css/apple.css?v=1" />\n', 1)
+    if APPLE:   # Apple-style layer on every page; set APPLE = False to roll back
+        k = s.index("</head>")
+        s = s[:k] + f'  <link rel="stylesheet" href="{pre}css/apple.css?v={APPLE_V}" />\n' + s[k:]
     if 'class="amb"' not in s:
         s = re.sub(r"(<body[^>]*>)", r'\1\n  <div class="amb" aria-hidden="true"><i></i><i></i><i></i></div>', s, count=1)
     if "js/glass.js" not in s:
