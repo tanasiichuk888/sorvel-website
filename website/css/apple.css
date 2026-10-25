@@ -111,3 +111,13 @@
   .tstats div, .vals > div, .moves > div, .incl > div { background: #15161B; box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); }
   .eyebrow, .pg-prose p, .vals p, .moves p, .incl p { color: #D6D6DA; }
 }
+
+/* ---------- footer links: quiet by default, clear on hover ---------- */
+.foot__cols a, .foot__pop a, .foot__legal a, .foot__bottom a { color: var(--ap-text-2); transition: color .25s var(--ap-ease); }
+.foot__cols h4 { color: #6E6E73; }
+@media (hover: hover) and (pointer: fine) {
+  .foot__cols a, .foot__pop a, .foot__legal a, .foot__bottom > a { width: fit-content;
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; padding-bottom: 2px;
+    transition: color .25s var(--ap-ease), background-size .45s var(--ap-ease); }
+  .foot__cols a:hover, .foot__pop a:hover, .foot__legal a:hover, .foot__bottom > a:hover { color: #fff; background-size: 100% 1px; }
+}

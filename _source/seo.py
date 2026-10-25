@@ -23,7 +23,7 @@ START, END = "<!-- seo -->", "<!-- /seo -->"
 GLASS_V = 5  # bump after editing css/glass.css or js/glass.js
 CASE_V = 16  # bump after editing css/case.css
 PAGES_V = 33
-APPLE, APPLE_V = True, 2  # Apple-style layer (css/apple.css); False = roll back
+APPLE, APPLE_V = True, 3  # Apple-style layer (css/apple.css); False = roll back
 MOBILE_V = 5  # bump after editing css/mobile.css
 BRAND_V = 2  # bump after replacing logo / favicon files
 # other assets that change: bump the number after editing the file
@@ -206,6 +206,9 @@ def process(path):
     # blog: link in the footer "Studio" column and in the phone menu on every page
     if f'Reviews</a><a href="{pre}blog.html">Blog</a>' not in s:
         s = s.replace(f'<a href="{pre}reviews.html">Reviews</a></div>', f'<a href="{pre}reviews.html">Reviews</a><a href="{pre}blog.html">Blog</a></div>', 1)
+    if 'class="nav__links"' in s and f'>Blog</a>\n      </nav>' not in s and 'nav__blog' not in s:
+        cur = ' class="nav__blog is-current"' if rel == "blog.html" or rel.startswith("blog/") else ' class="nav__blog"'
+        s = re.sub(r'(<nav class="nav__links".*?>About</a>)', lambda m: m.group(1) + f'\n        <a href="{pre}blog.html"{cur}>Blog</a>', s, count=1, flags=re.S)
     if 'mnav__t">Blog<' not in s:
         s = re.sub(r'(<li style="--i:6"><a class="mnav__link" href="[^"]*reviews\.html"[^>]*>.*?</li>)',
                    lambda m: m.group(1) + f'\n        <li style="--i:7"><a class="mnav__link" href="{pre}blog.html"><span class="mnav__n">07</span><span class="mnav__t">Blog</span></a></li>', s, count=1)
