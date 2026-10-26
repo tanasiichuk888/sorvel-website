@@ -18,7 +18,8 @@ LINKEDIN = "https://www.linkedin.com/company/sorvel"
 HERE = os.path.dirname(os.path.abspath(__file__))
 W = os.path.abspath(os.path.join(HERE, "..", "website"))
 TODAY = datetime.date.today().isoformat()
-NOINDEX = {"404.html", "work/varsity-city.html", "work/arlowe-baxter.html", "work/salinas-defense.html"}  # case pages kept out of Google (client brand searches)
+NOINDEX = {"404.html"}
+NOINDEX_CASES = True  # all case studies (work/*) kept out of Google: they ranked for client brand searches
 START, END = "<!-- seo -->", "<!-- /seo -->"
 GLASS_V = 5  # bump after editing css/glass.css or js/glass.js
 CASE_V = 16  # bump after editing css/case.css
@@ -123,7 +124,7 @@ def process(path):
     E = lambda v: html.escape(v, quote=True)
 
     tags = []
-    if rel in NOINDEX:
+    if rel in NOINDEX or (NOINDEX_CASES and rel.startswith("work/")):
         tags.append('<meta name="robots" content="noindex, follow" />')
     else:
         tags += [f'<link rel="canonical" href="{url}" />',
@@ -302,7 +303,7 @@ def process(path):
         tail = re.sub(r"<img(?![^>]*\bdecoding=)", '<img decoding="async"', tail)
         s = head + tail
     open(path, "w", encoding="utf-8").write(s)
-    return None if rel in NOINDEX else (url, rel)
+    return None if rel in NOINDEX or (NOINDEX_CASES and rel.startswith("work/")) else (url, rel)
 
 pages = [process(p) for p in sorted(glob.glob(W + "/**/*.html", recursive=True))]
 pages = [p for p in pages if p]
