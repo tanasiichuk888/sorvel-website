@@ -12,12 +12,15 @@
 //   ACCESS_AUD      Access application audience (AUD) tag for /scoreboard
 //   GSC_KEY         Google service account JSON key (Search Console read access), optional
 //   SCOREBOARD_KEY  long random secret for the /stats private link (optional; /stats stays closed without it)
+//   TG_BOT_TOKEN    Telegram bot token from @BotFather (optional: hot-visitor alerts)
+//   TG_CHAT_ID      your Telegram chat id, e.g. from @userinfobot (optional)
 
 import { DurableObject } from "cloudflare:workers";
 import DASHBOARD from "./scoreboard.html";
 
 const HOST = "sorvel.agency";
-const EVENT_TYPES = new Set(["brief_start", "brief", "telegram", "email", "view", "scroll", "click", "time"]);
+const EVENT_TYPES = new Set(["brief_start", "brief", "telegram", "email", "view", "scroll", "click", "time", "field", "form_seen"]);
+const HOT = 6;  // visit score that counts as a hot lead (and triggers a Telegram alert)
 const TARGET = new Set(["United States", "United Kingdom", "Canada", "Australia", "Ireland", "Germany", "Netherlands", "Switzerland",
   "Sweden", "Norway", "Denmark", "France", "Belgium", "Austria", "Finland", "Spain", "Italy", "Israel", "United Arab Emirates", "Singapore", "New Zealand"]);
 
@@ -47,13 +50,65 @@ async function collect(request, env) {
   if (!b || !EVENT_TYPES.has(b.t) || !env.LEADS) return ok;
   const clip = (v, n = 120) => String(v || "").replace(/[^\w\-./:@ ]/g, "").slice(0, n);
   const v = Number.isFinite(+b.v) ? Math.max(0, Math.min(1800, Math.round(+b.v))) : null;
-  const k = b.t === "click" ? String(b.k || "").replace(/[<>\u0000-\u001f]/g, "").slice(0, 110) : b.t === "scroll" ? clip(b.k, 3) : "";
+  const k = b.t === "click" ? String(b.k || "").replace(/[<>\u0000-\u001f]/g, "").slice(0, 110) : b.t === "scroll" ? clip(b.k, 3) : b.t === "field" ? clip(b.k, 24) : "";
+  // page views also carry coarse, anonymous context: device type, browser, city and the network's name (never the IP address)
+  const cf = request.cf || {};
+  const ctx = b.t === "view" ? { dv: device(ua), ct: [cf.city, cf.region].filter(Boolean).filter((x, i, a) => a.indexOf(x) === i).join(", ").slice(0, 60), org: String(cf.asOrganization || "").slice(0, 60) } : {};
   const path = (x) => (clip(x).replace(/\.html$/, "").replace(/\/index$/, "/") || "/");
   await leadStore(env).add({ t: b.t, p: path(b.p), s: clip(b.s, 60) || "direct", c: (request.cf && request.cf.country) || "", l: path(b.l),
-    i: String(b.i || "").replace(/[^a-z0-9]/g, "").slice(0, 16), k, v: b.t === "time" ? v : null });
+    i: String(b.i || "").replace(/[^a-z0-9]/g, "").slice(0, 16), k, v: b.t === "time" ? v : null, ...ctx });
   return ok;
 }
 const leadStore = (env) => env.LEADS.get(env.LEADS.idFromName("leads"));
+
+/* "Mobile · iPhone · Safari" from the user-agent string */
+function device(ua) {
+  const type = /iPad|Tablet|PlayBook|Silk|(Android(?!.*Mobile))/i.test(ua) ? "Tablet" : /Mobi|iPhone|iPod|Android.*Mobile|Windows Phone/i.test(ua) ? "Mobile" : "Desktop";
+  const os = /iPhone|iPad|iPod/.test(ua) ? "iOS" : /Android/.test(ua) ? "Android" : /Mac OS X/.test(ua) ? "macOS" : /Windows/.test(ua) ? "Windows" : /CrOS/.test(ua) ? "ChromeOS" : /Linux/.test(ua) ? "Linux" : "";
+  const br = /Edg\//.test(ua) ? "Edge" : /OPR\/|Opera/.test(ua) ? "Opera" : /SamsungBrowser/.test(ua) ? "Samsung" : /Firefox|FxiOS/.test(ua) ? "Firefox"
+    : /LinkedInApp/.test(ua) ? "LinkedIn app" : /Instagram/.test(ua) ? "Instagram app" : /FBAN|FBAV/.test(ua) ? "Facebook app" : /Telegram/.test(ua) ? "Telegram app"
+    : /CriOS|Chrome\//.test(ua) ? "Chrome" : /Safari\//.test(ua) ? "Safari" : "";
+  return [type, os, br].filter(Boolean).join(" · ");
+}
+
+/* group raw events into visits; shared by the dashboard and the hot-visit alert */
+function visits(ev) {
+  const S = new Map();
+  for (const e of ev) {
+    let x = S.get(e.i);
+    if (!x) S.set(e.i, x = { i: e.i, start: e.ts, end: e.ts, s: e.s, c: e.c, l: e.l, dv: "", ct: "", org: "", pages: [], secs: 0, brief: 0, start_b: 0, contact: 0, seen: 0, fields: [], clicks: [] });
+    x.end = e.ts;
+    if (e.t === "view") { x.pages.push({ p: e.p, ts: e.ts, secs: 0, depth: 0 }); if (!x.dv && e.dv) { x.dv = e.dv; x.ct = e.ct || ""; x.org = e.org || ""; } }
+    if (e.t === "time") { x.secs += e.v || 0; const pg = [...x.pages].reverse().find((q) => q.p === e.p); if (pg) pg.secs += e.v || 0; }
+    if (e.t === "scroll") { const pg = [...x.pages].reverse().find((q) => q.p === e.p); if (pg) pg.depth = Math.max(pg.depth, +e.k || 0); }
+    if (e.t === "brief") x.brief = 1;
+    if (e.t === "brief_start") x.start_b = 1;
+    if (e.t === "form_seen") x.seen = 1;
+    if (e.t === "field" && e.k) { x.fields = x.fields.filter((f) => f !== e.k); x.fields.push(e.k); }
+    if (e.t === "telegram" || e.t === "email") x.contact = 1;
+    if (e.t === "click" && x.clicks.length < 12) x.clicks.push(e.k);
+  }
+  for (const x of S.values()) x.score = score(x);
+  return [...S.values()].filter((x) => x.pages.length);
+}
+/* how interested a visit looks: pricing and contact pages, case studies, time, form and contact actions */
+function score(x) {
+  const has = (re) => x.pages.some((q) => re.test(q.p));
+  let n = 0;
+  if (has(/^\/pricing/)) n += 3;
+  if (has(/^\/contact/)) n += 2;
+  n += Math.min(2, new Set(x.pages.filter((q) => /^\/work\/./.test(q.p)).map((q) => q.p)).size);
+  if (has(/^\/(services|solutions)\//)) n += 1;
+  if (has(/^\/blog/)) n += 1;
+  if (x.pages.length >= 3) n += 1;
+  if (x.secs >= 60) n += 1;
+  if (x.secs >= 180) n += 2;
+  if (x.fields.length) n += 2;
+  if (x.start_b) n += 5;
+  if (x.contact) n += 5;
+  if (x.brief) n += 10;
+  return n;
+}
 
 /* One SQLite-backed Durable Object keeps every lead event (a few per day, tiny). */
 export class LeadStore extends DurableObject {
@@ -64,32 +119,34 @@ export class LeadStore extends DurableObject {
     this.sql.exec(`CREATE INDEX IF NOT EXISTS ev_ts ON ev (ts)`);
     // v2: visit id (i), detail (k: click label or scroll mark), number (v: seconds on page)
     const cols = this.sql.exec(`PRAGMA table_info(ev)`).toArray().map((r) => r.name);
-    for (const [c, ty] of [["i", "TEXT"], ["k", "TEXT"], ["v", "INTEGER"]]) if (!cols.includes(c)) this.sql.exec(`ALTER TABLE ev ADD COLUMN ${c} ${ty}`);
+    for (const [c, ty] of [["i", "TEXT"], ["k", "TEXT"], ["v", "INTEGER"], ["dv", "TEXT"], ["ct", "TEXT"], ["org", "TEXT"]]) if (!cols.includes(c)) this.sql.exec(`ALTER TABLE ev ADD COLUMN ${c} ${ty}`);
+    this.sql.exec(`CREATE INDEX IF NOT EXISTS ev_i ON ev (i)`);
+    this.sql.exec(`CREATE TABLE IF NOT EXISTS alerted (i TEXT PRIMARY KEY, ts INTEGER)`);
   }
   add(e) {
     // keep 13 months of statistics (privacy policy promise); prune now and then
     if (Math.random() < 0.02) this.sql.exec(`DELETE FROM ev WHERE ts < ?`, Date.now() - 396 * 864e5);
-    this.sql.exec(`INSERT INTO ev (ts, t, p, s, c, l, i, k, v) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`, Date.now(), e.t, e.p, e.s, e.c, e.l, e.i || "", e.k || "", e.v);
+    this.sql.exec(`INSERT INTO ev (ts, t, p, s, c, l, i, k, v, dv, ct, org) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, Date.now(), e.t, e.p, e.s, e.c, e.l, e.i || "", e.k || "", e.v, e.dv || null, e.ct || null, e.org || null);
+    if (e.i && e.t !== "scroll") return this.hotCheck(e.i);
+  }
+  /* once a visit crosses the hot score, send one Telegram message about it */
+  async hotCheck(i) {
+    if (!this.env.TG_BOT_TOKEN || !this.env.TG_CHAT_ID) return;
+    if (this.sql.exec(`SELECT 1 FROM alerted WHERE i = ?`, i).toArray().length) return;
+    const ev = this.sql.exec(`SELECT ts, t, p, s, c, l, i, k, v, dv, ct, org FROM ev WHERE i = ? ORDER BY ts LIMIT 400`, i).toArray();
+    const x = visits(ev)[0];
+    if (!x || x.score < HOT) return;
+    this.sql.exec(`INSERT OR IGNORE INTO alerted (i, ts) VALUES (?, ?)`, i, Date.now());
+    if (Math.random() < 0.05) this.sql.exec(`DELETE FROM alerted WHERE ts < ?`, Date.now() - 30 * 864e5);
+    await telegram(this.env, hotText(x));
+  }
+  async testAlert() {
+    return telegram(this.env, "✅ <b>Sorvel alerts are on.</b>\nYou will get a message here when a hot visitor is on sorvel.agency.");
   }
   /* What people do on the site: funnel, pages (time, scroll), clicks, exits, recent visits */
   behavior(a, b) {
-    const ev = this.sql.exec(`SELECT ts, t, p, s, c, i, k, v FROM ev WHERE ts >= ? AND ts < ? AND i != '' ORDER BY ts LIMIT 60000`, a, b).toArray();
-    const S = new Map();
-    for (const e of ev) {
-      let x = S.get(e.i);
-      if (!x) S.set(e.i, x = { i: e.i, start: e.ts, end: e.ts, s: e.s, c: e.c, pages: [], secs: 0, brief: 0, start_b: 0, contact: 0, clicks: [] });
-      x.end = e.ts;
-      if (e.t === "view") { x.pages.push({ p: e.p, ts: e.ts, secs: 0, depth: 0 }); }
-      const cur = x.pages[x.pages.length - 1];
-      if (e.t === "time") { x.secs += e.v || 0; const pg = [...x.pages].reverse().find((q) => q.p === e.p); if (pg) pg.secs += e.v || 0; }
-      if (e.t === "scroll") { const pg = [...x.pages].reverse().find((q) => q.p === e.p); if (pg) pg.depth = Math.max(pg.depth, +e.k || 0); }
-      if (e.t === "brief") x.brief = 1;
-      if (e.t === "brief_start") x.start_b = 1;
-      if (e.t === "telegram" || e.t === "email") x.contact = 1;
-      if (e.t === "click" && x.clicks.length < 12) x.clicks.push(e.k);
-      void cur;
-    }
-    const sess = [...S.values()].filter((x) => x.pages.length);
+    const ev = this.sql.exec(`SELECT ts, t, p, s, c, l, i, k, v, dv, ct, org FROM ev WHERE ts >= ? AND ts < ? AND i != '' ORDER BY ts LIMIT 80000`, a, b).toArray();
+    const sess = visits(ev);
     const isCase = (p) => /^\/work\/[^/]+/.test(p);
     const f = (fn) => sess.filter(fn).length;
     const funnel = [
@@ -102,21 +159,49 @@ export class LeadStore extends DurableObject {
     ].map(([k, v]) => ({ k, v }));
     const P = new Map();
     for (const x of sess) for (const q of x.pages) {
-      let r = P.get(q.p); if (!r) P.set(q.p, r = { k: q.p, views: 0, secs: 0, timed: 0, deep: 0, depthSum: 0 });
+      let r = P.get(q.p); if (!r) P.set(q.p, r = { k: q.p, views: 0, secs: 0, timed: 0, deep: 0, depthSum: 0, r25: 0, r50: 0, r75: 0, r100: 0 });
       r.views++; r.secs += q.secs; if (q.secs) r.timed++; if (q.depth >= 75) r.deep++; r.depthSum += q.depth;
+      if (q.depth >= 25) r.r25++; if (q.depth >= 50) r.r50++; if (q.depth >= 75) r.r75++; if (q.depth >= 100) r.r100++;
     }
     const pages = [...P.values()].sort((x, y) => y.views - x.views).slice(0, 20)
-      .map((r) => ({ k: r.k, views: r.views, avg: r.timed ? Math.round(r.secs / r.timed) : null, deep: r.views ? r.deep / r.views : 0, depth: r.views ? Math.round(r.depthSum / r.views) : 0 }));
+      .map((r) => ({ k: r.k, views: r.views, avg: r.timed ? Math.round(r.secs / r.timed) : null, deep: r.views ? r.deep / r.views : 0, depth: r.views ? Math.round(r.depthSum / r.views) : 0,
+        reach: [r.r25, r.r50, r.r75, r.r100].map((n) => (r.views ? n / r.views : 0)) }));
+    const top = (m, n = 10) => [...m].sort((x, y) => y[1] - x[1]).slice(0, n).map(([k, v]) => ({ k, v }));
+    const count = (fn) => { const m = new Map(); for (const x of sess) { const k = fn(x); if (k) m.set(k, (m.get(k) || 0) + 1); } return m; };
     const C = new Map(); for (const e of ev) if (e.t === "click" && e.k) C.set(e.k, (C.get(e.k) || 0) + 1);
-    const clicks = [...C].sort((x, y) => y[1] - x[1]).slice(0, 15).map(([k, v]) => ({ k, v }));
-    const X = new Map(); for (const x of sess) { const last = x.pages[x.pages.length - 1].p; X.set(last, (X.get(last) || 0) + 1); }
-    const exits = [...X].sort((x, y) => y[1] - x[1]).slice(0, 10).map(([k, v]) => ({ k, v }));
+    const clicks = top(C, 15);
+    const exits = top(count((x) => x.pages[x.pages.length - 1].p));
     const single = f((x) => x.pages.length === 1 && x.secs < 10);
     const secsAll = sess.map((x) => x.secs).sort((m, n) => m - n);
     const median = secsAll.length ? secsAll[Math.floor(secsAll.length / 2)] : 0;
-    const recent = sess.slice().sort((x, y) => y.start - x.start).slice(0, 40)
-      .map((x) => ({ at: x.start, s: x.s, c: x.c, secs: x.secs, brief: x.brief, started: x.start_b, contact: x.contact, pages: x.pages.slice(0, 30).map((q) => ({ p: q.p, secs: q.secs, depth: q.depth })), clicks: x.clicks }));
-    return { sessions: sess.length, bounce: sess.length ? single / sess.length : 0, median, funnel, pages, clicks, exits, recent };
+    // who: devices, cities, networks
+    const devType = top(count((x) => (x.dv || "").split(" · ")[0]), 4);
+    const browsers = top(count((x) => (x.dv || "").split(" · ").slice(1).join(" · ")), 8);
+    const cities = top(count((x) => x.ct ? x.ct + (x.c ? " · " + x.c : "") : ""), 10);
+    const orgs = top(count((x) => x.org), 10);
+    // where people drop off: the brief form, step by step
+    const form = { seen: f((x) => x.seen), touched: f((x) => x.fields.length), step1: f((x) => x.start_b), sent: f((x) => x.brief),
+      lastField: top(count((x) => (x.fields.length && !x.brief ? x.fields[x.fields.length - 1] : "")), 8) };
+    // sources and entry pages: which ones bring interested people
+    const qual = (key) => {
+      const m = new Map();
+      for (const x of sess) { const k = key(x); let r = m.get(k); if (!r) m.set(k, r = { k, visits: 0, hot: 0, leads: 0, bounce: 0 });
+        r.visits++; if (x.score >= HOT) r.hot++; if (x.brief || x.contact || x.start_b) r.leads++; if (x.pages.length === 1 && x.secs < 10) r.bounce++; }
+      return [...m.values()].sort((p, q) => q.visits - p.visits).slice(0, 10);
+    };
+    const sources = qual((x) => x.s || "direct");
+    const entries = qual((x) => x.pages[0].p);
+    // when: weekday x hour, in the studio's time zone
+    const fmtW = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Madrid", weekday: "short", hour: "2-digit", hourCycle: "h23" });
+    const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const heat = DAYS.map(() => Array(24).fill(0));
+    for (const x of sess) { const parts = Object.fromEntries(fmtW.formatToParts(new Date(x.start)).map((p) => [p.type, p.value])); const d = DAYS.indexOf(parts.weekday); if (d >= 0) heat[d][+parts.hour % 24]++; }
+    const hot = f((x) => x.score >= HOT), warm = f((x) => x.score >= 3 && x.score < HOT);
+    const recent = sess.slice().sort((x, y) => y.start - x.start).slice(0, 60)
+      .map((x) => ({ at: x.start, s: x.s, c: x.c, ct: x.ct, org: x.org, dv: x.dv, score: x.score, secs: x.secs, brief: x.brief, started: x.start_b, contact: x.contact,
+        pages: x.pages.slice(0, 30).map((q) => ({ p: q.p, secs: q.secs, depth: q.depth })), clicks: x.clicks }));
+    return { sessions: sess.length, bounce: sess.length ? single / sess.length : 0, median, hot, warm, hotAt: HOT, funnel, pages, clicks, exits, recent,
+      devType, browsers, cities, orgs, form, sources, entries, heat };
   }
   report(a, b, withGroups) {
     const rows = this.sql.exec(`SELECT t, strftime('%Y-%m-%d', ts / 1000, 'unixepoch') AS d, COUNT(*) AS n FROM ev WHERE ts >= ? AND ts < ? GROUP BY t, d ORDER BY d`, a, b).toArray();
@@ -140,6 +225,10 @@ async function scoreboard(request, env, url, mode) {
       { status: 403, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "x-robots-tag": "noindex" } });
   }
   const sec = { "cache-control": "no-store", "x-robots-tag": "noindex, nofollow", "x-frame-options": "DENY", "referrer-policy": "no-referrer" };
+  if (url.pathname.endsWith("/api/tgtest") && request.method === "POST") {
+    const ok = env.LEADS && env.TG_BOT_TOKEN && env.TG_CHAT_ID ? await leadStore(env).testAlert() : false;
+    return new Response(JSON.stringify({ ok, configured: !!(env.TG_BOT_TOKEN && env.TG_CHAT_ID) }), { headers: { ...sec, "content-type": "application/json" } });
+  }
   if (url.pathname.endsWith("/api")) {
     const days = url.searchParams.get("days") === "28" ? 28 : 7;
     const data = await stats(env, days);
@@ -233,7 +322,7 @@ async function stats(env, days) {
     days, list: r.days, start: day(r.cur[0]), end: day(new Date(r.cur[1] - 864e5)),
     rum: rumCur, rumPrev, leads: leadsCur && leadsCur.rows, leadsPrev: leadsPrev && leadsPrev.rows,
     leadSrc: leadsCur && leadsCur.src, leadLand: leadsCur && leadsCur.land, gsc, behavior, behaviorPrev,
-    connected: { analytics: !!(env.CF_API_TOKEN && env.CF_ACCOUNT_ID), events: !!env.LEADS, gsc: !!env.GSC_KEY },
+    connected: { analytics: !!(env.CF_API_TOKEN && env.CF_ACCOUNT_ID), events: !!env.LEADS, gsc: !!env.GSC_KEY, telegram: !!(env.TG_BOT_TOKEN && env.TG_CHAT_ID) },
     errors, at: new Date().toISOString(),
   };
 }
@@ -400,4 +489,34 @@ function mockBehavior(r) {
       { at: m(130), s: "direct", c: "DE", secs: 6, brief: 0, started: 0, contact: 0, pages: [{ p: "/", secs: 6, depth: 25 }], clicks: [] },
       { at: m(300), s: "www.behance.net", c: "CA", secs: 133, brief: 0, started: 0, contact: 1, pages: [{ p: "/", secs: 70, depth: 100 }, { p: "/about", secs: 63, depth: 75 }], clicks: ["Telegram → t.me"] },
     ] };
+}
+
+/* ---------------------------------------------------------------- alerts */
+
+const COUNTRY = new Intl.DisplayNames(["en"], { type: "region" });
+const escH = (t) => String(t || "").replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c]);
+const mmss = (s) => (s >= 60 ? Math.floor(s / 60) + "m " + (s % 60) + "s" : s + "s");
+function hotText(x) {
+  let country = x.c; try { country = x.c ? COUNTRY.of(x.c) : ""; } catch (e) {}
+  const where = [x.ct, country].filter(Boolean).join(", ");
+  const name = (p) => (p === "/" ? "Home" : p.replace(/^\/(work|services|solutions|blog)\//, "").replace(/^\//, "").replace(/-/g, " "));
+  const done = [x.brief ? "sent a brief" : x.start_b ? "started a brief" : "", x.contact ? "clicked Telegram/email" : ""].filter(Boolean).join(", ");
+  return [
+    `🔥 <b>Hot visitor on sorvel.agency</b> (score ${x.score})`,
+    where && `📍 ${escH(where)}`,
+    x.org && `🏢 ${escH(x.org)}`,
+    x.dv && `💻 ${escH(x.dv)}`,
+    `↪️ From: ${escH(x.s || "direct")}`,
+    `🧭 ${escH(x.pages.slice(0, 8).map((q) => name(q.p) + (q.secs ? " " + mmss(q.secs) : "")).join(" → "))}`,
+    `⏱ ${mmss(x.secs)} on site` + (done ? ` · ✅ ${escH(done)}` : ""),
+  ].filter(Boolean).join("\n");
+}
+async function telegram(env, text) {
+  try {
+    const r = await fetch(`https://api.telegram.org/bot${env.TG_BOT_TOKEN}/sendMessage`, {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ chat_id: env.TG_CHAT_ID, text, parse_mode: "HTML", disable_web_page_preview: true }),
+    });
+    return r.ok;
+  } catch (e) { return false; }
 }

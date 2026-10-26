@@ -157,7 +157,22 @@ tr.isbrand td:first-child::after { content: "brand"; margin-left: 8px; padding: 
 .out .tg.c { color: #FFB08F; background: rgba(217,89,38,.16); }
 .out .tg.q { color: var(--muted); background: rgba(242,239,234,.05); }
 .out em { font-style: normal; color: var(--text-2); font-variant-numeric: tabular-nums; }
-.vf { display: flex; gap: 8px; margin: 0 0 12px; }
+.vf { display: flex; gap: 8px; margin: 0 0 12px; flex-wrap: wrap; }
+.out .tg.h { color: #FFD08A; background: rgba(255,170,60,.16); }
+.out .tg.w { color: #C9C6C1; background: rgba(242,239,234,.07); }
+.visit.hot { box-shadow: inset 0 0 0 1px rgba(255,170,60,.45); }
+.visit .who { margin-top: 4px; font-size: 11.5px; color: var(--muted); line-height: 1.45; }
+.visit .who span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.heat { display: grid; grid-template-columns: 34px repeat(24, minmax(0, 1fr)); gap: 3px; font-size: 10.5px; color: var(--muted); }
+.heat i { aspect-ratio: 1; border-radius: 3px; background: rgba(59,107,255,var(--a,.04)); }
+.heat span { display: flex; align-items: center; }
+.heat .hh { text-align: center; }
+.reach { display: flex; gap: 2px; width: 120px; }
+.reach i { flex: 1; height: 8px; border-radius: 2px; background: rgba(59,107,255,var(--a,.08)); }
+.tgbtn { all: unset; cursor: pointer; padding: 6px 12px; border-radius: 8px; font-size: 12.5px; color: var(--text); box-shadow: inset 0 0 0 1px var(--line-2); }
+.tgbtn:hover { background: rgba(242,239,234,.06); }
+.tgst { font-size: 12px; color: var(--muted); margin-right: 8px; }
+.hotstat b { color: #FFD08A; }
 .vf button { all: unset; cursor: pointer; padding: 5px 10px; border-radius: 7px; font-size: 12.5px; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line-2); }
 .vf button.on { color: var(--text); background: rgba(242,239,234,.07); }
 .vf button:focus-visible { outline: 2px solid var(--s1); }
@@ -186,6 +201,8 @@ tr.isbrand td:first-child::after { content: "brand"; margin-left: 8px; padding: 
       <a href="#overview" class="on"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Overview</a>
       <a href="#leads"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>Leads</a>
       <a href="#behavior"><svg viewBox="0 0 24 24"><path d="M9 4v10l3-3 2 5 2-1-2-5h4z"/></svg>Behaviour</a>
+      <a href="#people"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.4 3.3-5 6.5-5s5.7 1.6 6.5 5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 15c2 .6 3.1 2.3 3.5 5"/></svg>Who visits</a>
+      <a href="#dropoff"><svg viewBox="0 0 24 24"><path d="M4 4h16l-6 8v6l-4 2v-8z"/></svg>Where we lose people</a>
       <a href="#traffic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Traffic</a>
       <a href="#markets"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Buyer markets</a>
       <a href="#search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>Google search</a>
@@ -221,6 +238,16 @@ tr.isbrand td:first-child::after { content: "brand"; margin-left: 8px; padding: 
     <section id="behavior" class="panel">
       <h2>Behaviour</h2><p class="sub">What visitors do once they are on the site: pages, how far they scroll, how long they stay and what they click. Counted without cookies; your own browser is left out.</p>
       <div id="bh"></div>
+    </section>
+
+    <section id="people" class="panel">
+      <div class="ph"><div><h2>Who visits</h2><p class="sub">Hot visits, devices, cities and the network people browse from. A company name shows up when someone visits from an office network; home visitors show their internet provider.</p></div><div id="tgBox"></div></div>
+      <div id="ppl"></div>
+    </section>
+
+    <section id="dropoff" class="panel">
+      <h2>Where we lose people</h2><p class="sub">The brief form step by step, how far each page is read, which sources and entry pages bring interested visitors, and when people come.</p>
+      <div id="drop"></div>
     </section>
 
     <section id="traffic" class="panel">
@@ -388,7 +415,7 @@ function render(D) {
   $("#upd").className = "badge"; $("#upd").textContent = "Updated " + new Date(D.at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
   $("#rangeTxt").textContent = fmtDay(D.start) + " – " + fmtDay(D.end);
   const days = D.list, R = D.rum, P = D.rumPrev, G = D.gsc;
-  $("#conn").innerHTML = `<span><i class="${D.connected.analytics ? "ok" : ""}"></i>Cloudflare analytics</span><span><i class="${D.connected.events ? "ok" : ""}"></i>Lead tracking</span><span><i class="${D.connected.gsc ? "ok" : ""}"></i>Search Console</span><a href="/cdn-cgi/access/logout">Sign out</a>`;
+  $("#conn").innerHTML = `<span><i class="${D.connected.analytics ? "ok" : ""}"></i>Cloudflare analytics</span><span><i class="${D.connected.events ? "ok" : ""}"></i>Lead tracking</span><span><i class="${D.connected.gsc ? "ok" : ""}"></i>Search Console</span><span><i class="${D.connected.telegram ? "ok" : ""}"></i>Telegram alerts</span><a href="/cdn-cgi/access/logout">Sign out</a>`;
 
   // leads per day
   const per = (rows, types) => days.map((d) => (rows || []).filter((r) => r.d === d && types.includes(r.t)).reduce((s, r) => s + r.n, 0));
@@ -462,6 +489,8 @@ function render(D) {
   }
 
   behavior(D.behavior, D.behaviorPrev, D.connected.events);
+  people(D.behavior, D.connected);
+  dropoff(D.behavior);
   $("#diag").innerHTML = D.errors && D.errors.length ? `<div class="diag">${D.errors.map(esc).join("\n")}</div>` : "";
 }
 /* ---------- behaviour ---------- */
@@ -496,18 +525,20 @@ function behavior(B, BP, on) {
     </div>
     <div style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)">
       <div class="ph"><h4 style="margin:0 0 10px;font-size:12px;font-weight:500;color:var(--text-2)">Recent visits, newest first</h4>
-      <div class="vf" role="group" aria-label="Filter visits"><button data-f="active">Real visits</button><button data-f="all">All</button><button data-f="lead">Leads only</button><button data-f="long">Over 1 min</button></div></div>
+      <div class="vf" role="group" aria-label="Filter visits"><button data-f="active">Real visits</button><button data-f="all">All</button><button data-f="hot">Hot</button><button data-f="lead">Leads only</button><button data-f="long">Over 1 min</button></div></div>
       <div class="visits" id="bVisits"></div>
     </div>`;
   list($("#bClicks"), "Most clicked", B.clicks, { n: 10, empty: "No clicks yet" });
   list($("#bExits"), "Last page before leaving", B.exits.map((r) => ({ ...r, c: "var(--faint)" })), { label: (k) => k === "/" ? "/ (home)" : k, n: 8 });
   const draw = () => {
     el.querySelectorAll(".vf button").forEach((b) => b.classList.toggle("on", b.dataset.f === VFILTER));
-    const rows = B.recent.filter((v) => VFILTER === "lead" ? v.brief || v.contact || v.started : VFILTER === "long" ? v.secs >= 60 : VFILTER === "active" ? activeVisit(v) : true);
+    const rows = B.recent.filter((v) => VFILTER === "hot" ? v.score >= (B.hotAt || 6) : VFILTER === "lead" ? v.brief || v.contact || v.started : VFILTER === "long" ? v.secs >= 60 : VFILTER === "active" ? activeVisit(v) : true);
     $("#bVisits").innerHTML = rows.length ? rows.map((v) => {
       const lead = v.brief || v.contact;
-      const tags = [v.brief ? '<span class="tg b">Sent a brief</span>' : v.started ? '<span class="tg q">Started a brief</span>' : "", v.contact ? '<span class="tg c">Contact click</span>' : ""].filter(Boolean).join("");
-      return `<div class="visit${lead ? " lead" : ""}"><div class="meta"><b>${esc(ago(v.at))}</b>${esc(country(v.c))} · ${esc(srcLabel(v.s))}</div>
+      const hotV = v.score >= (B.hotAt || 6), warmV = !hotV && v.score >= 3;
+      const tags = [hotV ? `<span class="tg h">🔥 Hot · ${v.score}</span>` : warmV ? `<span class="tg w">Warm · ${v.score}</span>` : "", v.brief ? '<span class="tg b">Sent a brief</span>' : v.started ? '<span class="tg q">Started a brief</span>' : "", v.contact ? '<span class="tg c">Contact click</span>' : ""].filter(Boolean).join("");
+      const who = [v.ct ? "📍 " + v.ct : "", v.org ? "🏢 " + v.org : "", v.dv ? "💻 " + v.dv : ""].filter(Boolean).map((t) => `<span title="${esc(t)}">${esc(t)}</span>`).join("");
+      return `<div class="visit${lead ? " lead" : ""}${hotV && !lead ? " hot" : ""}"><div class="meta"><b>${esc(ago(v.at))}</b>${esc(country(v.c))} · ${esc(srcLabel(v.s))}${who ? `<div class="who">${who}</div>` : ""}</div>
         <div><div class="path">${v.pages.map((q) => `<span title="${esc(q.p)} · scrolled ${q.depth || 0}%">${esc(pageName(q.p))}${q.secs ? `<small>${dur(q.secs)}</small>` : ""}</span>`).join("<i>→</i>")}</div>
         ${v.clicks.length ? `<div class="clk">Clicked: ${v.clicks.map(esc).join(" · ")}</div>` : ""}</div>
         <div class="out">${tags}<em>${dur(v.secs)} total</em></div></div>`;
@@ -515,6 +546,63 @@ function behavior(B, BP, on) {
   };
   el.querySelectorAll(".vf button").forEach((b) => b.addEventListener("click", () => { VFILTER = b.dataset.f; draw(); }));
   draw();
+}
+const FIELD = { name: "Name", email: "Email", company: "Company", need: "What they need", timeline: "Start date", platform: "Platform", budget: "Budget", details: "Project details", plan: "Picked plan" };
+const since = '<div class="empty"><b>Collecting</b>This started on 26 Oct 2026. Numbers fill in as people visit.</div>';
+function people(B, conn) {
+  const el = $("#ppl");
+  $("#tgBox").innerHTML = conn.telegram
+    ? `<span class="tgst">Telegram alerts: on</span><button class="tgbtn" id="tgTest">Send a test alert</button>`
+    : `<span class="tgst">Telegram alerts: not set up</span>`;
+  const t = $("#tgTest");
+  if (t) t.addEventListener("click", async () => {
+    t.textContent = "Sending…";
+    try { const r = await (await fetch(location.pathname.replace(/\/+$/, "") + "/api/tgtest", { method: "POST", credentials: "same-origin" })).json(); t.textContent = r.ok ? "Sent ✓ check Telegram" : "Could not send"; }
+    catch (e) { t.textContent = "Could not send"; }
+  });
+  if (!B || !B.sessions) { el.innerHTML = since; return; }
+  const pct = (x) => Math.round(x * 100) + "%";
+  el.innerHTML = `<div class="bstats">
+      <div class="hotstat"><h4>Hot visits</h4><b>${fmt(B.hot)}</b><small>Score ${B.hotAt}+ : pricing, case studies, time, form or contact</small></div>
+      <div><h4>Warm visits</h4><b>${fmt(B.warm)}</b><small>Showed some interest, score 3 to ${B.hotAt - 1}</small></div>
+      <div><h4>Hot share</h4><b>${B.sessions ? pct(B.hot / B.sessions) : "—"}</b><small>Of ${fmt(B.sessions)} visits</small></div>
+    </div>
+    <div class="grid2"><div class="list" id="pDev"></div><div class="list" id="pBr"></div></div>
+    <div class="grid2" style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)"><div class="list" id="pCity"></div><div class="list" id="pOrg"></div></div>`;
+  list($("#pDev"), "Device", B.devType, { empty: "Collecting from 26 Oct" });
+  list($("#pBr"), "System and browser", B.browsers, { empty: "Collecting from 26 Oct" });
+  list($("#pCity"), "Cities", B.cities, { empty: "Collecting from 26 Oct" });
+  list($("#pOrg"), "Network or company", B.orgs, { empty: "Collecting from 26 Oct" });
+}
+function dropoff(B) {
+  const el = $("#drop");
+  if (!B || !B.sessions) { el.innerHTML = since; return; }
+  const pct = (x) => Math.round(x * 100) + "%";
+  const F = B.form || {}, steps = [["Saw the form", F.seen], ["Clicked into a field", F.touched], ["Finished step 1 (name, email)", F.step1], ["Sent the brief", F.sent]], top = F.seen || 1;
+  const q = (rows, label) => `<table class="pt"><tr><th>${label}</th><th class="n">Visits</th><th class="n">Hot</th><th class="n">Leads</th><th class="n">Left in 10 s</th></tr>
+    ${(rows || []).map((r) => `<tr><td title="${esc(r.k)}">${esc(label === "Source" ? srcLabel(r.k) : r.k === "/" ? "/ (home)" : r.k)}</td><td class="n">${fmt(r.visits)}</td><td class="n">${fmt(r.hot)}</td><td class="n">${fmt(r.leads)}</td><td class="n">${r.visits ? pct(r.bounce / r.visits) : "—"}</td></tr>`).join("")}</table>`;
+  const max = Math.max(1, ...B.heat.flat());
+  const D = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const heat = `<div class="heat"><span></span>${Array.from({ length: 24 }, (_, h) => `<span class="hh">${h % 3 ? "" : h}</span>`).join("")}
+    ${B.heat.map((row, d) => `<span>${D[d]}</span>` + row.map((n, h) => `<i title="${D[d]} ${h}:00 · ${n} visits" style="--a:${n ? (.15 + .85 * n / max).toFixed(2) : .04}"></i>`).join("")).join("")}</div>`;
+  el.innerHTML = `<div class="grid2">
+      <div class="list fun"><h4>Brief form, step by step</h4>${steps.map(([k, v], i) => `<div class="row"><span class="k">${k}</span><span class="v">${fmt(v || 0)}</span><span class="p">${i && F.seen ? pct((v || 0) / top) : ""}</span><span class="bar"><i style="width:${F.seen ? ((v || 0) / top * 100).toFixed(1) : 0}%;${i >= 2 ? "--c:var(--s2)" : ""}"></i></span></div>`).join("")}
+        <p class="sub" style="margin:10px 0 0">Share of people who saw the form.</p></div>
+      <div class="list" id="dLast"></div>
+    </div>
+    <div style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)">
+      <h4 style="margin:0 0 6px;font-size:12px;font-weight:500;color:var(--text-2)">How far each page is read</h4>
+      <table class="pt"><tr><th>Page</th><th class="n">Views</th><th class="n">25 · 50 · 75 · 100%</th><th class="n">Read to the end</th></tr>
+      ${B.pages.map((r) => `<tr><td title="${esc(r.k)}">${esc(r.k === "/" ? "/ (home)" : r.k)}</td><td class="n">${fmt(r.views)}</td><td class="n"><span class="reach" title="${(r.reach || []).map(pct).join(" · ")}">${(r.reach || []).map((x) => `<i style="--a:${(.08 + .92 * x).toFixed(2)}"></i>`).join("")}</span></td><td class="n">${r.reach ? pct(r.reach[3]) : "—"}</td></tr>`).join("")}</table>
+    </div>
+    <div class="grid2" style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)">
+      <div><h4 style="margin:0 0 6px;font-size:12px;font-weight:500;color:var(--text-2)">Sources: who brings interested people</h4>${q(B.sources, "Source")}</div>
+      <div><h4 style="margin:0 0 6px;font-size:12px;font-weight:500;color:var(--text-2)">Entry pages</h4>${q(B.entries, "First page")}</div>
+    </div>
+    <div style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)">
+      <h4 style="margin:0 0 10px;font-size:12px;font-weight:500;color:var(--text-2)">When people visit (your time, Madrid)</h4>${heat}
+    </div>`;
+  list($("#dLast"), "Last field before giving up", (F.lastField || []).map((r) => ({ ...r, c: "var(--s2)" })), { label: (k) => FIELD[k] || k, empty: "Nobody gave up on the form yet" });
 }
 const TGT = new Set(["United States", "United Kingdom", "Canada", "Australia", "Ireland", "Germany", "Netherlands", "Switzerland", "Sweden", "Norway", "Denmark", "France", "Belgium", "Austria", "Finland", "Spain", "Italy", "Israel", "United Arab Emirates", "Singapore", "New Zealand"]);
 function ptsDelta(cur, prev, low) { const d = (cur - prev) * 100; if (Math.abs(d) < .05) return '<span class="d flat">→ 0 pts</span>'; return `<span class="d ${(d > 0) !== !!low ? "up" : "down"}">${d > 0 ? "↑" : "↓"} ${Math.abs(d).toFixed(1)} pts</span>`; }

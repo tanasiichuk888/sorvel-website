@@ -1065,6 +1065,13 @@
   const TO_EMAIL = "hello@sorvel.agency";
   const form = document.getElementById("brief");
   if (form) {
+    // anonymous form analytics: the form came into view, and which fields were touched (names only, never what was typed)
+    try {
+      const seenIO = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { track("form_seen"); seenIO.disconnect(); } }, { threshold: .3 });
+      seenIO.observe(form);
+      const touched = new Set();
+      form.addEventListener("focusin", (e) => { const n = e.target && e.target.name; if (n && n !== "botcheck" && !touched.has(n)) { touched.add(n); track("field", n); } });
+    } catch (e) {}
     const msg = form.querySelector(".brief__msg"), done = form.querySelector(".brief__done");
     const fieldOf = (el) => el.closest(".field");
     const f = (n) => form.elements.namedItem(n);
