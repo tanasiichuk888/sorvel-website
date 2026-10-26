@@ -248,7 +248,10 @@ PREVIEW = {
   "waveads": ("#2aa7c9", "advoyage · Miami Beach", None),
 }
 
+HIDDEN = {"serverscamp"}  # case studies hidden from the site for now (pages still exist, just not linked)
+
 def pcard(slug, p, wide=False, kind=None):
+    if slug in HIDDEN: return ""
     c = CASES[slug]
     tint, url, phone = PREVIEW.get(slug, ("#3B6BFF", c["name"], None))
     chips = "".join(f"<span>{x}</span>" for x in c["chips"])

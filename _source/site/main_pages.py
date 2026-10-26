@@ -16,7 +16,7 @@ def work():
     p = ""
     ORDER_W = ["valhalla-capital", "ci-isac", "serverscamp", "arlowe-baxter", "college-classics", "alma-secret",
                "varsity-city", "vibz", "awswrap", "salinas-defense", "waveads"]
-    cards = [pcard(x, p, kind=1) for x in ORDER_W]
+    cards = [pcard(x, p, kind=1) for x in ORDER_W if x not in HIDDEN]
     varsity = f'''          <a class="pcard pcard--cta" href="contact.html" data-kind="all-kinds" data-reveal>
             <div class="pcta">
               <p class="eyebrow">Your project</p>
@@ -28,7 +28,7 @@ def work():
           </a>'''
     body = hero('<span>Work</span>', "Selected work", ["Work that had", 'a <span class="accent">job</span> to do.'],
                 "Every project here started with a business problem: investors who didn't trust the site, engineers who couldn't see the benchmarks, landlords who never reached the form. Here's how each one was solved.",
-                btn_primary("contact.html", "Start a project") + btn_ghost("https://t.me/tanasiychuk8", "Write on Telegram", tg=True), p=p, visual=scenes.wall(p, WALL))
+                btn_primary("contact.html", "Start a project") + btn_ghost("https://t.me/tanasiychuk8", "Write on Telegram", tg=True), p=p, visual=scenes.wall(p, [[t for t in col if t[3] not in HIDDEN] for col in WALL]))
     body += f'''
     <section class="cs-numbers" aria-label="Studio in numbers">
       <div class="wrap">
@@ -60,7 +60,7 @@ def work():
     </section>
 
     <section class="cs-reel" aria-hidden="true">
-      <div class="cs-reel__track">{"".join(f'<img src="img/work/{x}" alt="" loading="lazy" width="1600" height="1000">' for x in ["valhalla/webinar.webp","serverscamp/panel.webp","arlowe-baxter/services.webp","salinas/about.webp","awswrap/work.webp","college-classics/colours.webp","waveads/who.webp","valhalla/fund.webp","serverscamp/storage.webp","arlowe-baxter/dashboard.webp","salinas/why.webp","awswrap/calculator.webp","college-classics/why.webp"]*2)}</div>
+      <div class="cs-reel__track">{"".join(f'<img src="img/work/{x}" alt="" loading="lazy" width="1600" height="1000">' for x in ["valhalla/webinar.webp","arlowe-baxter/services.webp","salinas/about.webp","awswrap/work.webp","college-classics/colours.webp","waveads/who.webp","valhalla/fund.webp","arlowe-baxter/dashboard.webp","salinas/why.webp","awswrap/calculator.webp","college-classics/why.webp"]*2)}</div>
     </section>
 '''
     body += cta(p, "Your project next", "Let's make yours <br>the next case study.")

@@ -6,8 +6,7 @@
   // only the strongest UI/UX work
   const CASES = [
     { name: "Valhalla Capital", tags: "Private credit · Figma + Webflow", dir: "valhalla", url: "valhallacap.com", plat: "Live · Webflow", slug: "valhalla-capital", m: "m-hero" },
-    { name: "CI-ISAC Australia", tags: "Cyber security · Figma + Webflow", dir: "ci-isac", url: "ci-isac.org.au", plat: "Webflow · in build", slug: "ci-isac", m: null, wip: true },
-    { name: "ServersCamp", tags: "Cloud infrastructure · Site + panel UI", dir: "serverscamp", url: "serverscamp.com", plat: "Live · Production", slug: "serverscamp", m: "m-hero" },
+    { name: "CI-ISAC Australia", tags: "Cyber security · Figma + Webflow", dir: "ci-isac", url: "ci-isac.org.au", plat: "Webflow · in build", slug: "ci-isac", m: null, wip: true }, 
     { name: "Arlowe Baxter", tags: "Property tech · Figma + Webflow", dir: "arlowe-baxter", url: "arlowebaxter.com", plat: "Live · Webflow", slug: "arlowe-baxter", m: "m-hero" },
     { name: "College Classics", tags: "Fashion · Shopify design + build", dir: "college-classics", url: "College Classics · Shopify", plat: "Live · Shopify", slug: "college-classics", m: "m-hero" },
   ];

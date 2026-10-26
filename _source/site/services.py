@@ -147,7 +147,7 @@ def service(slug):
         li = "".join(f"<li>{a}</li>" for a in lis)
         ph += f'          <div class="cs-phase" style="--i:{i}"><p class="cs-phase__when">{when}</p><h3>{h}</h3><p>{x}</p><ul>{li}</ul></div>\n'
     plat = "\n".join(f'          <div data-reveal style="--d:{i*.05:.2f}s"><b>{a}</b><span>{b}</span></div>' for i, (a, b) in enumerate(d["plat"]))
-    cs = d["cases"]; cards = "\n".join(pcard(c, p, wide=(len(cs) % 2 == 1 and i == 0)) for i, c in enumerate(cs))
+    cs = [c for c in d["cases"] if c not in HIDDEN] or ["ci-isac", "vibz"]; cards = "\n".join(pcard(c, p, wide=(len(cs) % 2 == 1 and i == 0)) for i, c in enumerate(cs))
     other = "".join(f'<a class="cs-more__row" href="{s}.html" data-reveal style="--d:{i*.05:.2f}s"><span class="cs-more__name">{t.replace("&","&amp;")}</span><span class="cs-more__tag">{dd}</span><span class="cs-more__go" aria-hidden="true">{DIAG}</span></a>'
                     for i, (s, t, dd, ic) in enumerate([x for x in SERVICES if x[0] != slug]))
     body = hero(f'<a href="../index.html#services">Services</a><span>/</span><span>{nm}</span>', d["eyebrow"], d["lines"], d["lead"],

@@ -164,9 +164,12 @@ def remore(slug):
 
 IMGDIR = {"valhalla-capital": "valhalla", "serverscamp": "serverscamp", "arlowe-baxter": "arlowe-baxter", "salinas-defense": "salinas", "awswrap": "awswrap"}
 
+HIDDEN = {"serverscamp"}  # keep in sync with site/common.py
+
 def more_list(slug):
     rows = []
-    for i, s in enumerate([ORDER[(ORDER.index(slug) + n) % len(ORDER)] for n in (1, 2, 3)]):
+    vis = [x for x in ORDER if x not in HIDDEN or x == slug]
+    for i, s in enumerate([vis[(vis.index(slug) + n) % len(vis)] for n in (1, 2, 3)]):
         name, tag, img = CASES[s]
         rows.append(f'''          <a class="cs-more__row" href="{s}.html" data-img="{img}" data-reveal style="--d:{i*.06:.2f}s">
             <span class="cs-more__thumb"><img src="{img}" alt="" loading="lazy" width="800" height="500"></span>

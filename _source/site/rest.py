@@ -126,7 +126,7 @@ def reviews():
 {sec_head("Behind the reviews", 'See the projects <span class="dim">in detail.</span>', "", row=False)}
         <div class="pcards">
 {pcard("valhalla-capital", p)}
-{pcard("serverscamp", p)}
+{pcard("ci-isac", p)}
         </div>
       </div>
     </section>

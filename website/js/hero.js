@@ -4,8 +4,7 @@
   const stage = root.querySelector(".bld__stage");
   const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const CASES = [
-    { name: "Valhalla Capital", tags: "Private credit · Figma + Webflow", dir: "valhalla", url: "valhallacap.com", plat: "Webflow", slug: "valhalla-capital" },
-    { name: "ServersCamp", tags: "Cloud infrastructure · Site + panel UI", dir: "serverscamp", url: "serverscamp.com", plat: "Production", slug: "serverscamp" },
+    { name: "Valhalla Capital", tags: "Private credit · Figma + Webflow", dir: "valhalla", url: "valhallacap.com", plat: "Webflow", slug: "valhalla-capital" }, 
     { name: "AWS Wrap", tags: "Automotive · Design + WordPress", dir: "awswrap", url: "awswrap.com", plat: "WordPress", slug: "awswrap" },
     { name: "Arlowe Baxter", tags: "Property tech · Figma + Webflow", dir: "arlowe-baxter", url: "arlowebaxter.com", plat: "Webflow", slug: "arlowe-baxter" },
     { name: "Salinas Defense", tags: "Legal · Landing page + Webflow", dir: "salinas", url: "salinasdefense.com", plat: "Webflow", slug: "salinas-defense" },
