@@ -11,7 +11,7 @@
     { name: "College Classics", tags: "Fashion · Shopify design + build", dir: "college-classics", url: "College Classics · Shopify", plat: "Live · Shopify", slug: "college-classics", m: "m-hero" },
   ];
   // warm up the other projects' screens only after the page has loaded (keeps the first paint fast)
-  const warm = () => setTimeout(() => CASES.forEach((c) => { new Image().src = `img/work/${c.dir}/hero.webp`; if (c.m) new Image().src = `img/work/${c.dir}/${c.m}.webp`; }), 1500);
+  const warm = () => setTimeout(() => CASES.forEach((c) => { new Image().src = `img/work/${c.dir}/hero-xp.webp`; if (c.m) new Image().src = `img/work/${c.dir}/${c.m}-xp.webp`; }), 1500);
   if (document.readyState === "complete") warm(); else addEventListener("load", warm, { once: true });
 
   const $ = (s) => root.querySelector(s), $$ = (s) => [...root.querySelectorAll(s)];
@@ -38,8 +38,8 @@
     });
   };
   const load = (c) => {
-    imgs.forEach((i) => { i.src = `img/work/${c.dir}/hero.webp`; });
-    if (c.m) mimg.src = `img/work/${c.dir}/${c.m}.webp`;
+    imgs.forEach((i) => { const u = `img/work/${c.dir}/hero-xp.webp`; if (!i.src.endsWith(u)) i.src = u; });
+    if (c.m) { const u = `img/work/${c.dir}/${c.m}-xp.webp`; if (!mimg.src.endsWith(u)) mimg.src = u; }
     stage.classList.toggle("no-phone", !c.m);
     url.textContent = c.url; plat.textContent = c.plat;
     nameEl.textContent = c.name; tagsEl.textContent = c.tags; link.href = `work/${c.slug}.html`;
