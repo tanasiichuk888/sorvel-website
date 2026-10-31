@@ -33,7 +33,7 @@ site = os.path.join(tmp, "site")
 for s in ["main_pages.py", "rest.py", "services.py", "solutions.py", "pricing.py", "blog.py", "glossary.py"]:
     run(s, site)
 # 2. case studies
-for s in ["cc_page.py", "wa_page.py", "vc_page.py", "ci_page.py", "as_page.py", "vb_page.py"]:
+for s in ["cc_page.py", "wa_page.py", "vc_page.py", "ci_page.py", "as_page.py", "vb_page.py", "nc_page.py"]:
     run(s, tmp)
 # 3. "More work" block on every case page
 run("remore_all.py", tmp)

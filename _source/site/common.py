@@ -57,6 +57,14 @@ CASES = {
   "alma-secret": dict(name="Alma Secret Tunisie", tag="Beauty · Shopify design + build", img="alma-secret/hero.webp", kind=["websites", "ecommerce"], chips=["E-commerce", "Shopify", "Cash on delivery"]),
   "ci-isac": dict(name="CI-ISAC Australia", tag="Cyber security · Figma + Webflow", img="ci-isac/hero.webp", kind=["websites"], chips=["Cyber security", "Webflow", "Not-for-profit"]),
   "varsity-city": dict(name="Varsity City", tag="Apparel · Shopify redesign", img="varsity-city/hero.webp", kind=["websites", "ecommerce"], chips=["E-commerce", "Shopify", "Redesign"]),
+  "noir": dict(name="NOIR Properties", tag="Real estate · Website design", img="noir/hero.webp", kind=['websites'], chips=['Real estate', 'Spain', 'Desktop + mobile']),
+  "skyli": dict(name="Skyli", tag="Fintech · AI expense tracker", img="skyli/hero.webp", kind=['websites', 'landing'], chips=['Fintech', 'AI', 'Pre-launch']),
+  "open-select": dict(name="Open Select", tag="Recruitment · B2B website", img="open-select/hero.webp", kind=['websites'], chips=['B2B', 'Recruitment', 'Desktop + mobile']),
+  "copliancy": dict(name="Copliancy", tag="SaaS · Compliance platform", img="copliancy/hero.webp", kind=['websites', 'product'], chips=['SaaS', 'Product UI', 'Marketing site']),
+  "visit-pemba": dict(name="Visit Pemba", tag="Tourism · Figma + WordPress", img="visit-pemba/hero.webp", kind=['websites'], chips=['Tourism', 'WordPress', 'Live site']),
+  "agentur": dict(name="KI-Agentur", tag="AI agency · Website design (DE)", img="agentur/hero.webp", kind=['websites'], chips=['AI', 'German', 'Agency']),
+  "mutmachbuch": dict(name="Mutmachbuch", tag="E-commerce · Shopify store design", img="mutmachbuch/hero.webp", kind=['websites', 'ecommerce'], chips=['E-commerce', 'Shopify', 'Live store']),
+  "wehike": dict(name="WeHike", tag="Travel · Website design", img="wehike/hero.webp", kind=['websites'], chips=['Travel', 'Booking', 'Desktop + mobile']),
   "waveads": dict(name="AdVoyage", tag="Boat advertising · Figma + Framer", img="waveads/hero.webp", kind=["landing"], chips=["Landing page", "Framer", "Miami"]),
 }
 
@@ -245,6 +253,14 @@ PREVIEW = {
   "alma-secret": ("#3f8fa8", "almasecret.tn", "alma-secret/m-product.webp"),
   "ci-isac": ("#e07a1f", "ci-isac.org.au · Figma", None),
   "varsity-city": ("#2f7a4f", "Varsity City · Figma", None),
+  "noir": ("#1c1f4a", "NOIR · Figma", "noir/m-hero.webp"),
+  "skyli": ("#e86a5e", "Skyli · Figma", "skyli/m-hero.webp"),
+  "open-select": ("#0f9480", "Open Select · Figma", "open-select/m-hero.webp"),
+  "copliancy": ("#2e9e5b", "Copliancy · Figma", "copliancy/m-hero.webp"),
+  "visit-pemba": ("#1a8a8a", "visitpemba.tz", "visit-pemba/m-hero.webp"),
+  "agentur": ("#5b5bf0", "KI-Agentur · Figma", "agentur/m-hero.webp"),
+  "mutmachbuch": ("#6d3ad6", "mutmachbuch.com", "mutmachbuch/m-hero.webp"),
+  "wehike": ("#ef5a24", "WeHike · Figma", "wehike/m-hero.webp"),
   "waveads": ("#2aa7c9", "advoyage · Miami Beach", None),
 }
 

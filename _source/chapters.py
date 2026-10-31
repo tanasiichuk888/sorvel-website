@@ -12,9 +12,17 @@ CASES = {
   "alma-secret": ("Alma Secret Tunisie", "Beauty · Shopify design + build", "../img/work/alma-secret/hero.webp"),
   "ci-isac": ("CI-ISAC Australia", "Cyber security · Figma + Webflow", "../img/work/ci-isac/hero.webp"),
   "varsity-city": ("Varsity City", "Apparel · Shopify redesign", "../img/work/varsity-city/hero.webp"),
+  "noir": ("NOIR Properties", "Real estate · Website design", "../img/work/noir/hero.webp"),
+  "skyli": ("Skyli", "Fintech · AI expense tracker", "../img/work/skyli/hero.webp"),
+  "open-select": ("Open Select", "Recruitment · B2B website", "../img/work/open-select/hero.webp"),
+  "copliancy": ("Copliancy", "SaaS · Compliance platform", "../img/work/copliancy/hero.webp"),
+  "visit-pemba": ("Visit Pemba", "Tourism · Figma + WordPress", "../img/work/visit-pemba/hero.webp"),
+  "agentur": ("KI-Agentur", "AI agency · Website design (DE)", "../img/work/agentur/hero.webp"),
+  "mutmachbuch": ("Mutmachbuch", "E-commerce · Shopify store design", "../img/work/mutmachbuch/hero.webp"),
+  "wehike": ("WeHike", "Travel · Website design", "../img/work/wehike/hero.webp"),
   "waveads": ("AdVoyage", "Boat advertising · Figma + Framer", "../img/work/waveads/hero.webp"),
 }
-ORDER = ["vibz", "alma-secret", "ci-isac", "varsity-city", "waveads", "college-classics", "valhalla-capital", "serverscamp", "arlowe-baxter", "salinas-defense", "awswrap"]
+ORDER = ["visit-pemba", "skyli", "open-select", "mutmachbuch", "copliancy", "agentur", "noir", "wehike", "vibz", "alma-secret", "ci-isac", "varsity-city", "waveads", "college-classics", "valhalla-capital", "serverscamp", "arlowe-baxter", "salinas-defense", "awswrap"]
 
 def problems(items):
     cards = "\n".join(f'          <article data-reveal style="--d:{i*.06:.2f}s"><h3>{t}</h3><p>{p}</p></article>' for i, (t, p) in enumerate(items))

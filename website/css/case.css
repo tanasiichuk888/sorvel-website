@@ -744,3 +744,6 @@
 .cs--vb .cs-title .accent { color: var(--cs-accent); }
 .cs--vb .cs-goals li::before { background: var(--cs-accent); box-shadow: 0 0 12px rgba(59,107,255,.6); }
 .cs--vb .cs-numbers { background: radial-gradient(70% 90% at 50% 0%, rgba(59,107,255,.12), transparent 70%); }
+/* design-led cases from the Figma portfolio */
+.figma--solo { grid-template-columns: 1fr; }
+.cs-phones--solo .cs-phone { margin: 0; }

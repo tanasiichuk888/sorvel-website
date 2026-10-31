@@ -22,7 +22,7 @@ NOINDEX = {"404.html"}
 NOINDEX_CASES = True  # all case studies (work/*) kept out of Google: they ranked for client brand searches
 START, END = "<!-- seo -->", "<!-- /seo -->"
 GLASS_V = 5  # bump after editing css/glass.css or js/glass.js
-CASE_V = 16  # bump after editing css/case.css
+CASE_V = 17  # bump after editing css/case.css
 PAGES_V = 38
 APPLE, APPLE_V = True, 10  # Apple-style layer (css/apple.css); False = roll back
 MOBILE_V = 5  # bump after editing css/mobile.css
