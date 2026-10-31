@@ -22,7 +22,9 @@ NOINDEX = {"404.html"}
 NOINDEX_CASES = True  # all case studies (work/*) kept out of Google: they ranked for client brand searches
 START, END = "<!-- seo -->", "<!-- /seo -->"
 GLASS_V = 5  # bump after editing css/glass.css or js/glass.js
-CASE_V = 17  # bump after editing css/case.css
+CASE_V = 17
+IMG_V = 2  # bump after replacing case images (img/ is cached for a week)
+IMG_FRESH = "noir|skyli|open-select|copliancy|visit-pemba|agentur|mutmachbuch|wehike|college-classics"  # bump after editing css/case.css
 PAGES_V = 38
 APPLE, APPLE_V = True, 10  # Apple-style layer (css/apple.css); False = roll back
 MOBILE_V = 5  # bump after editing css/mobile.css
@@ -262,6 +264,7 @@ def process(path):
         s = s.replace("</body>", f'  <script src="{pre}js/glass.js?v={GLASS_V}"></script>\n</body>', 1)
     s = re.sub(r'js/glass\.js\?v=\d+', f'js/glass.js?v={GLASS_V}', s)
     s = re.sub(r'css/case\.css(\?v=\d+)?"', f'css/case.css?v={CASE_V}"', s)
+    s = re.sub(r'(img/work/(?:' + IMG_FRESH + r')/[\w-]+\.webp)(\?v=\d+)?', rf'\1?v={IMG_V}', s)
     s = re.sub(r'css/pages\.css(\?v=\d+)?"', f'css/pages.css?v={PAGES_V}"', s)
     s = re.sub(r'img/brand/(logo\.svg|favicon\.svg|favicon-32\.png|apple-touch-icon\.png)(\?v=\d+)?"', lambda m: f'img/brand/{m.group(1)}?v={BRAND_V}"', s)
 

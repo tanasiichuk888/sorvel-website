@@ -211,7 +211,7 @@ def page(slug, d):
         </dl>
       </div>
       <div class="wrap cs-cover" data-intro>
-        {phone("cs-cover__phone", img + "m-hero.webp", "", "-.1")}
+        {phone("cs-cover__phone", img + "m-card.webp", "", "-.1")}
         {win(img + "hero.webp", d["name"] + " homepage", d["url"], "cs-win", eager=True)}
       </div>
     </section>
@@ -275,7 +275,7 @@ def page(slug, d):
           {win(img + "hero.webp", d["name"] + " desktop homepage")}
         </div>
         <div class="cs-phones cs-phones--solo" data-reveal>
-          {phone("cs-phone", img + "m-hero.webp", d["name"] + " mobile homepage", ".08")}
+          {phone("cs-phone", img + "m-card.webp", d["name"] + " mobile homepage", ".08")}
         </div>
       </div>
     </section>
