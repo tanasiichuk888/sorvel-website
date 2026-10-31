@@ -8,7 +8,7 @@ SVC_KEYS = ["websites", "product-design", "brand-identity", "landing-pages", "mi
 
 
 def svc(slug):
-    html = _CHUNKS[SVC_KEYS.index(slug)].strip().replace("SVCPRE", "../")
+    html = _CHUNKS[SVC_KEYS.index(slug)].strip()
     if "is-on" not in html.split(">", 1)[0]:
         html = html.replace('class="vis ', 'class="vis is-on ', 1)
     return f'<div class="svc__stage sx-stage" aria-hidden="true">\n{html}\n</div>'
