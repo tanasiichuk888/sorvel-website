@@ -278,4 +278,120 @@ dict(
        ("Do we need a brand before the website?", "It helps, but it is not required. A logo, colours and type can be designed together with the site so they match from the start."),
        ("Is it cheaper to use a template?", "Upfront, yes. But templates rarely fit your product story, and many teams pay for a redesign within a year. A template is a good choice before product-market fit.")],
 ),
+dict(
+  slug="webflow-vs-framer",
+  title="Webflow vs Framer in 2026: Which Is Better for Your Website? | Sorvel",
+  h1="Webflow vs Framer: which one to choose in 2026",
+  card="An honest comparison from a studio that builds on both: CMS, SEO, speed, editing, cost and which one fits your team.",
+  desc="Webflow vs Framer compared by a studio that builds on both: CMS, SEO, design freedom, editing, cost and when to pick each one for a SaaS, startup or B2B website.",
+  cat="Platforms", date="2026-10-31", svc=("saas-website-design", "SaaS website design"),
+  cover=("saas-team", "A product team planning a new website together"),
+  lead="We design and build on both Webflow and Framer every month, so we have no reason to push one. Here is the short answer, then the details that should decide it for your team.",
+  sections=[
+("short", "The short answer", """
+<p><b>Choose Webflow</b> if your marketing team publishes a lot: a blog, case studies, a changelog, integrations or hundreds of SEO pages. Its CMS, roles and structure scale better as the site grows.</p>
+<p><b>Choose Framer</b> if you need a fast, motion-rich site with fewer content types, and your team wants to edit pages as easily as a design file. It is often quicker to launch.</p>
+<div class="post-note"><b>Rule of thumb</b><p>Count your content types, not your pages. One or two content types: Framer is usually enough. Four or more, or a content team that publishes weekly: Webflow.</p></div>
+"""),
+("table", "Webflow vs Framer at a glance", """
+<div class="post-table" role="region" aria-label="Webflow and Framer compared" tabindex="0"><table>
+<thead><tr><th></th><th>Webflow</th><th>Framer</th></tr></thead>
+<tbody>
+<tr><td><b>Best for</b></td><td>Content-heavy marketing sites, SEO at scale</td><td>Launch sites, startups, design-led pages</td></tr>
+<tr><td><b>CMS</b></td><td>Strong: many collections, references, filters</td><td>Good for simple collections like a blog</td></tr>
+<tr><td><b>Design and motion</b></td><td>Full control, interactions take more setup</td><td>Very fast motion and effects, close to Figma</td></tr>
+<tr><td><b>Editing by your team</b></td><td>Structured editor, safe for non-designers</td><td>Edit on the canvas, very easy, easier to break layout</td></tr>
+<tr><td><b>SEO</b></td><td>Full control of meta, schema, redirects</td><td>Covers the basics well, less control for big sites</td></tr>
+<tr><td><b>Speed to launch</b></td><td>Medium</td><td>Fast</td></tr>
+<tr><td><b>Build cost with a studio</b></td><td>Usually a bit higher</td><td>Usually a bit lower</td></tr>
+</tbody></table></div>
+<p>Both host your site on a fast global network, both handle SSL and forms, and both can reach good Core Web Vitals when the build is clean. The real differences are content structure and how your team will work after launch.</p>
+"""),
+("webflow", "When Webflow is the better choice", """
+<ul>
+<li><b>You plan to grow through content.</b> Blog, guides, comparison pages, glossary, integrations directory. Webflow's CMS handles linked collections and filtering well.</li>
+<li><b>Several people edit the site.</b> Roles and a structured editor keep content people away from the layout.</li>
+<li><b>SEO is a main channel.</b> You get fine control over redirects, meta per item, schema and clean URL structures.</li>
+<li><b>You are moving from WordPress.</b> Webflow is the most common target for content-rich WordPress sites. See <a href="../blog/migrate-wordpress-to-webflow-without-losing-seo.html">how to migrate without losing SEO</a>.</li>
+</ul>
+"""),
+("framer", "When Framer is the better choice", """
+<ul>
+<li><b>You need to launch quickly.</b> A pre-seed or seed startup, a product launch, a waitlist or a campaign site.</li>
+<li><b>Motion is part of the story.</b> Scroll effects, interactive product scenes and polished transitions are faster to build in Framer.</li>
+<li><b>Your designer will own the site.</b> Framer feels like a design tool, so the person who designs can also update it.</li>
+<li><b>The content is simple.</b> A handful of pages plus a blog fits Framer's CMS without workarounds.</li>
+</ul>
+[[cta]]
+"""),
+("cost", "What each one costs", """
+<p>Both platforms charge a monthly site plan, and prices change, so check their current pricing pages. The bigger cost is the design and build. With our studio a website starts <b>from $6,900</b> and a single landing page <b>from $2,400</b>, on either platform. A Framer build is usually slightly cheaper for the same design; a Webflow build pays back when the site grows through content.</p>
+"""),
+("switch", "Can you switch later?", """
+<p>Yes, but it is a rebuild, not an export. Pages have to be recreated and the CMS content moved with redirects in place. Picking the right platform first is cheaper than switching a year later, which is why we ask how your team will publish before we recommend one.</p>
+"""),
+  ],
+  faq=[("Is Framer better than Webflow for SEO?", "For small sites both are fine. For sites that grow through content, Webflow gives more control over CMS structure, redirects and schema, which matters at scale."),
+       ("Is Framer cheaper than Webflow?", "The site plans are in a similar range. A Framer build is often a little cheaper and faster, while Webflow pays back on content-heavy sites."),
+       ("Which is easier for a marketing team to edit?", "Framer is easier for designers and quick text changes. Webflow's editor is safer for larger teams because people edit content without touching the layout."),
+       ("Can you build on both?", "Yes. We design in Figma and build in Webflow or Framer, and recommend one after looking at your content and team."),
+       ("Should a SaaS startup use Webflow or Framer?", "Pre-launch or seed with a few pages: Framer. Series A and later with a blog, changelog and SEO plans: Webflow."),
+  ],
+),
+dict(
+  slug="webflow-vs-wordpress",
+  title="Webflow vs WordPress in 2026: An Honest Comparison | Sorvel",
+  h1="Webflow vs WordPress: which is better for a business website in 2026",
+  card="Security, speed, editing, SEO, plugins and total cost: when Webflow wins, when WordPress is still the right call.",
+  desc="Webflow vs WordPress for business websites in 2026: security, speed, SEO, editing, plugins and total cost of ownership, with clear advice on when to choose each.",
+  cat="Platforms", date="2026-10-31", svc=("wordpress-to-webflow-migration", "WordPress to Webflow migration"),
+  cover=("mig-plan", "A team reviewing a website migration plan on a laptop"),
+  lead="We build on both platforms and migrate sites in both directions. For most marketing websites the answer is clear, but there are cases where WordPress is still the better tool.",
+  sections=[
+("short", "The short answer", """
+<p><b>Choose Webflow</b> for a marketing website that your team edits without a developer: no plugin updates, no security patches, hosting included and clean, fast pages.</p>
+<p><b>Choose WordPress</b> if you need things a website builder does not do well: complex membership or LMS features, very large content libraries with custom logic, deep WooCommerce stores, or full control over your own server.</p>
+<div class="post-note"><b>Rule of thumb</b><p>If your site is mainly pages, a blog and forms, Webflow costs less to run. If your site is really an application, WordPress (or custom code) gives you more room.</p></div>
+"""),
+("table", "Webflow vs WordPress at a glance", """
+<div class="post-table" role="region" aria-label="Webflow and WordPress compared" tabindex="0"><table>
+<thead><tr><th></th><th>Webflow</th><th>WordPress</th></tr></thead>
+<tbody>
+<tr><td><b>Hosting and security</b></td><td>Managed, included, no plugins to patch</td><td>Your responsibility: hosting, updates, backups</td></tr>
+<tr><td><b>Speed</b></td><td>Fast by default with a clean build</td><td>Depends on theme, plugins and hosting</td></tr>
+<tr><td><b>Editing</b></td><td>Visual editor on the live design</td><td>Block editor or page builder, varies by setup</td></tr>
+<tr><td><b>SEO</b></td><td>Meta, schema, redirects, sitemap built in</td><td>Strong with plugins like Yoast or Rank Math</td></tr>
+<tr><td><b>Plugins and features</b></td><td>Fewer, covered by integrations and code</td><td>Huge ecosystem for almost anything</td></tr>
+<tr><td><b>E-commerce</b></td><td>Fine for small catalogues</td><td>WooCommerce for large, complex stores</td></tr>
+<tr><td><b>Running cost</b></td><td>Predictable monthly plan</td><td>Low hosting, but maintenance time adds up</td></tr>
+</tbody></table></div>
+"""),
+("webflow", "Why many teams move to Webflow", """
+<ul>
+<li><b>No maintenance work.</b> No plugin conflicts, no core updates breaking the layout, no security patches on a Friday night.</li>
+<li><b>Marketing ships without developers.</b> New landing pages and posts are built from the existing components.</li>
+<li><b>Design stays consistent.</b> The site keeps looking like the design, instead of drifting with every page builder edit.</li>
+<li><b>Good Core Web Vitals.</b> Clean markup and global hosting make fast pages easier to keep.</li>
+</ul>
+[[cta]]
+"""),
+("wordpress", "When WordPress is still the right choice", """
+<ul>
+<li><b>Complex functionality.</b> Memberships, courses, bookings with custom rules, multi-language with many editors, or deep integrations with your own systems.</li>
+<li><b>Large stores.</b> WooCommerce handles big catalogues and custom checkout logic better than a website builder.</li>
+<li><b>You have a developer on hand.</b> With someone maintaining it, WordPress is flexible and cheap to host.</li>
+</ul>
+<p>We also build on WordPress, so if your project needs it, that is what we recommend.</p>
+"""),
+("cost", "Total cost of ownership", """
+<p>WordPress looks cheaper because hosting can cost a few dollars a month. The real cost is maintenance: updates, plugin licences, security, fixes after updates and developer time for small changes. Webflow costs more per month but usually less per year once that time is counted. Moving an existing site from WordPress to Webflow with us starts <b>from $2,900</b>; see <a href="../blog/wordpress-to-webflow-migration-cost.html">what a migration costs</a>.</p>
+"""),
+  ],
+  faq=[("Is Webflow better than WordPress for SEO?", "Both can rank equally well. Webflow has the SEO basics built in and tends to be faster out of the box; WordPress reaches the same level with good plugins and hosting."),
+       ("Is Webflow more expensive than WordPress?", "Per month, usually yes. Per year, often not, because there is no maintenance, plugin licences or developer time for routine changes."),
+       ("Can I move from WordPress to Webflow without losing rankings?", "Yes, with a content audit, a full 301 redirect map, kept meta data and checks in Search Console after launch."),
+       ("Is WordPress more secure than Webflow?", "WordPress can be secure, but security is your job. Webflow handles hosting, SSL and platform updates for you, so there are no plugins to patch."),
+       ("Do you build on both?", "Yes. We design in Figma and build in Webflow, Framer or WordPress, and recommend the platform after looking at what your site needs to do."),
+  ],
+),
 ]
