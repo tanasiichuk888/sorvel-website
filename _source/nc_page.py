@@ -98,9 +98,9 @@ C = {
   got=["Marketing website design", "Product screen compositions", "Business type icon set", "Mobile layout", "Feature sections", "Build-ready Figma file"]),
 
 "visit-pemba": dict(name="Visit Pemba", short="Visit Pemba", tag="Tourism · Figma + WordPress", eyebrow="Tourism · Pemba Island · Zanzibar, Tanzania",
-  title=["An island website", 'as <span class="accent">beautiful</span> as the island.'], url="visitpemba.tz", live="https://visitpemba.tz",
+  title=["An island website", 'as <span class="accent">beautiful</span> as the island.'], url="Visit Pemba · Figma + WordPress",
   lead="Visit Pemba is the travel guide for Pemba Island in the Zanzibar archipelago. We designed a website that sells the island through its landscapes, local stories and ready-made itineraries, and makes sending a trip inquiry the natural next step.",
-  facts=[("Client", "Visit Pemba"), ("Industry", "Tourism, Tanzania"), ("Scope", "Website design, desktop and mobile, WordPress build"), ("Live site", '<a href="https://visitpemba.tz" target="_blank" rel="noopener">visitpemba.tz ↗</a>')],
+  facts=[("Client", "Visit Pemba"), ("Industry", "Tourism, Tanzania"), ("Scope", "Website design, desktop and mobile, WordPress build"), ("Tools", "Figma, WordPress")],
   ch=("The challenge", 'Most travellers have <span class="dim">never heard of Pemba.</span>'),
   chp=["Pemba sits next to Zanzibar but gets a fraction of the visitors. The website had to introduce the island, make people want to go and help them plan a trip.",
        "It also had to reflect what makes Pemba different: untouched nature, a living Swahili culture and responsible tourism."],
@@ -113,7 +113,7 @@ C = {
   dec=[("How do you introduce the island?", "A slideshow of beaches.", "A full-bleed aerial shot with four facts: dive sites, community focus, flight time and no mass tourism."),
        ("How do people explore?", "A long list of tours.", "Experience tabs by interest, then ready-made itineraries."),
        ("What does it feel like?", "Generic resort turquoise.", "Deep teal, warm sand and an editorial serif, with arches taken from local architecture.")],
-  out=[("Desktop + mobile", "every page designed for both"), ("Live on WordPress", "built and launched at visitpemba.tz"), ("Itineraries", "ready-made trips that lead to inquiries"), ("Local identity", "Swahili arches and island colours")],
+  out=[("Desktop + mobile", "every page designed for both"), ("Built on WordPress", "designed in Figma, built in WordPress"), ("Itineraries", "ready-made trips that lead to inquiries"), ("Local identity", "Swahili arches and island colours")],
   got=["Website design, desktop and mobile", "Experience finder", "Itinerary pages", "Trip inquiry form", "WordPress build", "Design system in Figma"]),
 
 "agentur": dict(name="KI-Agentur", short="KI-Agentur", tag="AI agency · Website design (DE)", eyebrow="AI automation · Agency · Austria and Germany",

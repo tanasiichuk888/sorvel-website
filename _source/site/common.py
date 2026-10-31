@@ -257,7 +257,7 @@ PREVIEW = {
   "skyli": ("#e86a5e", "Skyli · Figma", "skyli/m-card.webp"),
   "open-select": ("#0f9480", "Open Select · Figma", "open-select/m-card.webp"),
   "copliancy": ("#2e9e5b", "Copliancy · Figma", "copliancy/m-card.webp"),
-  "visit-pemba": ("#1a8a8a", "visitpemba.tz", "visit-pemba/m-card.webp"),
+  "visit-pemba": ("#1a8a8a", "Visit Pemba · Figma", "visit-pemba/m-card.webp"),
   "agentur": ("#5b5bf0", "KI-Agentur · Figma", "agentur/m-card.webp"),
   "mutmachbuch": ("#6d3ad6", "mutmachbuch.com", "mutmachbuch/m-card.webp"),
   "wehike": ("#ef5a24", "WeHike · Figma", "wehike/m-card.webp"),
