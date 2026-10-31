@@ -45,13 +45,6 @@ def work():
     <section class="sec" data-chapter="Projects">
       <div class="wrap">
 {sec_head("Case studies", 'Real projects, <span class="dim">explained start to finish.</span>', "Each case shows the problem, the decisions we made and what the client walked away with. Filter by the kind of work you need.")}
-        <div class="filters" role="tablist" aria-label="Filter projects" data-reveal>
-          <button class="is-on" data-f="all">All<sup>{len(_vis)}</sup></button>
-          <button data-f="websites">Websites<sup>{_n("websites")}</sup></button>
-          <button data-f="ecommerce">E-commerce<sup>{_n("ecommerce")}</sup></button>
-          <button data-f="landing">Landing pages<sup>{_n("landing")}</sup></button>
-          <button data-f="product">Product UI<sup>{_n("product")}</sup></button>
-        </div>
         <div class="pcards">
 {chr(10).join(cards)}
 {varsity}
