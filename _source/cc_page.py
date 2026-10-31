@@ -158,6 +158,19 @@ main = f'''  <main class="cs cs--cc">
       </div>
     </section>
 
+    <!-- ============ FIGMA ============ -->
+    <section data-chapter="System" class="sec cs-figma">
+      <div class="wrap">
+        <header class="sec__head sec__head--row" data-reveal>
+          <div><p class="eyebrow">Design first</p><h2 class="h2">Every page of the store, <span class="dim">desktop and mobile.</span></h2></div>
+          <p class="sec__lead">Home, product, catalogue, our story, size and fit, contact, FAQ, returns, delivery, search and cart, all designed in Figma before a line of Shopify code.</p>
+        </header>
+        <div class="figma figma--solo" data-reveal>
+          <div class="vwin figma__canvas" data-parallax=".03"><div class="win__bar"><i></i><i></i><i></i><span class="win__url">Figma · College Classics</span></div><img src="../img/work/college-classics/figma.webp" alt="Figma canvas with every College Classics page for desktop and mobile" width="1600" height="700" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ GALLERY / STORY ============ -->
     <section data-chapter="Details" class="sec cs-story">
       <div class="wrap">
