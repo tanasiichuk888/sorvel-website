@@ -27,10 +27,14 @@
 
 ## Guides
 
+- [Framer vs WordPress in 2026: Which Is Right for Your Website?](https://sorvel.agency/blog/framer-vs-wordpress): Framer vs WordPress compared for business websites in 2026: design freedom, speed, editing, SEO, plugins, e-commerce and cost, with clear advice on which to choose.
 - [How to Migrate WordPress to Webflow Without Losing SEO](https://sorvel.agency/blog/migrate-wordpress-to-webflow-without-losing-seo): A step-by-step checklist for moving a site from WordPress to Webflow while keeping your rankings: inventory, CMS model, content import, 301 redirects, meta tags and post-launch checks.
 - [How Much Does a SaaS Website Cost in 2026?](https://sorvel.agency/blog/saas-website-cost): Realistic 2026 price ranges for a SaaS marketing website, from templates to agencies, what drives the cost, which pages you need at launch, and running costs after.
+- [Web Design Agency vs Freelancer: Which Should You Hire?](https://sorvel.agency/blog/web-design-agency-vs-freelancer): Web design agency vs freelancer compared on cost, quality, speed and risk, with a third option, the small senior studio, and questions to ask before you hire.
 - [Webflow vs Framer in 2026: Which Is Better for Your Website?](https://sorvel.agency/blog/webflow-vs-framer): Webflow vs Framer compared by a studio that builds on both: CMS, SEO, design freedom, editing, cost and when to pick each one for a SaaS, startup or B2B website.
 - [Webflow vs WordPress in 2026: An Honest Comparison](https://sorvel.agency/blog/webflow-vs-wordpress): Webflow vs WordPress for business websites in 2026: security, speed, SEO, editing, plugins and total cost of ownership, with clear advice on when to choose each.
+- [How Much Does a Webflow Website Cost in 2026?](https://sorvel.agency/blog/webflow-website-cost): How much a Webflow website costs in 2026: price ranges for templates, freelancers and studios, what drives the cost, Webflow plan fees and how to get a fixed quote.
+- [How Much Does a Website Redesign Cost in 2026?](https://sorvel.agency/blog/website-redesign-cost): How much a website redesign costs in 2026: price ranges, what drives the cost, a redesign vs a refresh, timelines and how to keep your SEO during a redesign.
 - [WordPress to Webflow Migration Cost in 2026](https://sorvel.agency/blog/wordpress-to-webflow-migration-cost): How much a WordPress to Webflow migration costs in 2026, what drives the price, the running costs after launch, and how to get an exact fixed quote.
 
 ## Company

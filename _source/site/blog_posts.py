@@ -394,4 +394,201 @@ dict(
        ("Do you build on both?", "Yes. We design in Figma and build in Webflow, Framer or WordPress, and recommend the platform after looking at what your site needs to do."),
   ],
 ),
+dict(
+  slug="webflow-website-cost",
+  title="How Much Does a Webflow Website Cost in 2026? | Sorvel",
+  h1="How much a Webflow website costs in 2026",
+  card="Real price ranges for a Webflow website, what moves the number, plan costs after launch and how to get a fixed quote.",
+  desc="How much a Webflow website costs in 2026: price ranges for templates, freelancers and studios, what drives the cost, Webflow plan fees and how to get a fixed quote.",
+  cat="Pricing", date="2026-10-31", svc=("webflow-agency", "Webflow design and development"),
+  cover=("saas-cover", "A designer working on a website layout on a large screen"),
+  lead="A Webflow website can cost a few hundred dollars or well over $30,000. The difference comes down to a handful of things you can see in advance, so here they are.",
+  sections=[
+("short", "The short answer", """
+<p>A custom-designed Webflow website for a startup or growing business usually costs <b>$5,000 to $20,000</b> with a professional team and takes <b>3 to 6 weeks</b>. With our studio a website starts <b>from $6,900</b>, a single landing page <b>from $2,400</b>, and moving an existing site to Webflow <b>from $2,900</b>.</p>
+<div class="post-note"><b>Rule of thumb</b><p>Price follows the number of unique page layouts, the CMS structure and how much custom motion you need. The number of pages matters much less.</p></div>
+"""),
+("table", "Typical price ranges", """
+<div class="post-table" role="region" aria-label="Webflow website price ranges" tabindex="0"><table>
+<thead><tr><th>Option</th><th>Typical cost</th><th>Time</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td><b>Template, set up yourself</b></td><td>$0 to $150 plus your time</td><td>1 to 3 weeks</td><td>Testing an idea</td></tr>
+<tr><td><b>Template, customised by a freelancer</b></td><td>$1,000 to $4,000</td><td>1 to 3 weeks</td><td>Small sites on a tight budget</td></tr>
+<tr><td><b>Custom design and build, studio</b></td><td>$5,000 to $20,000</td><td>3 to 6 weeks</td><td>Startups and growing companies</td></tr>
+<tr><td><b>Large site, big agency</b></td><td>$30,000 and up</td><td>2 to 4 months</td><td>Enterprise, many teams and languages</td></tr>
+</tbody></table></div>
+"""),
+("drivers", "What moves the price", """
+<ul>
+<li><b>Unique layouts.</b> Home, service, pricing, case study and blog templates each take design and build time. Extra pages on an existing layout are cheap.</li>
+<li><b>CMS structure.</b> A blog is simple. Linked collections for case studies, integrations, team and resources take more planning.</li>
+<li><b>Motion and interactions.</b> Scroll animations and interactive product scenes add days, not hours.</li>
+<li><b>Content.</b> Ready copy and images keep the price down. Copywriting and imagery add to it.</li>
+<li><b>Integrations and languages.</b> CRM forms, analytics, gated content and extra locales all add scope.</li>
+</ul>
+[[cta]]
+"""),
+("running", "Costs after launch", """
+<p>Webflow charges a monthly site plan for hosting and the CMS, and a workspace plan if your team needs editing seats. Plan prices change, so check Webflow's pricing page for current numbers. Beyond that there is no plugin licence or server maintenance to pay for, which is where Webflow usually saves money compared with WordPress. See <a href="../blog/webflow-vs-wordpress.html">Webflow vs WordPress</a>.</p>
+"""),
+("quote", "How to get an accurate quote", """
+<ul>
+<li>List the page types you need, not just the page count.</li>
+<li>Say what content you already have and what needs writing.</li>
+<li>Share two or three websites you like and why.</li>
+<li>Ask for a fixed price with written scope and timeline before work starts.</li>
+</ul>
+"""),
+  ],
+  faq=[("Is Webflow expensive?", "The plan is a monthly fee, but there is no hosting, plugin or maintenance bill on top. Over a year, many teams spend less than on a WordPress site they keep patching."),
+       ("How long does a Webflow website take?", "Usually 3 to 6 weeks for 5 to 10 custom pages, depending on how ready the content is."),
+       ("Can I edit the site myself after launch?", "Yes. Your team edits text, images and CMS items in the Webflow editor without touching the design."),
+       ("Is a Webflow template good enough?", "For testing an idea, yes. Once the site has to sell a real product, a custom design usually converts better and is easier to grow."),
+       ("Do you offer fixed prices?", "Yes. You get a written plan with scope, timeline and a fixed price within 24 hours."),
+  ],
+),
+dict(
+  slug="web-design-agency-vs-freelancer",
+  title="Web Design Agency vs Freelancer: Which Should You Hire? | Sorvel",
+  h1="Web design agency vs freelancer: which one to hire",
+  card="Cost, speed, risk and quality compared, plus a third option most companies overlook: a small senior studio.",
+  desc="Web design agency vs freelancer compared on cost, quality, speed and risk, with a third option, the small senior studio, and questions to ask before you hire.",
+  cat="Hiring", date="2026-10-31", svc=("websites", "website design and development"),
+  cover=("seo-watch", "A business owner reviewing website proposals on a laptop"),
+  lead="Hiring for a website usually comes down to three choices: a freelancer, a large agency or a small senior studio. Each one fits a different situation.",
+  sections=[
+("short", "The short answer", """
+<p><b>Hire a freelancer</b> for a small, clearly defined job on a tight budget. <b>Hire a large agency</b> when you need many specialists at once: research, content, paid media and development. <b>Hire a small senior studio</b> when you want agency-level design and build quality with one person accountable and a price that fits a startup.</p>
+"""),
+("table", "Side by side", """
+<div class="post-table" role="region" aria-label="Freelancer, agency and studio compared" tabindex="0"><table>
+<thead><tr><th></th><th>Freelancer</th><th>Senior studio</th><th>Large agency</th></tr></thead>
+<tbody>
+<tr><td><b>Typical website cost</b></td><td>$1,000 to $8,000</td><td>$5,000 to $20,000</td><td>$30,000 and up</td></tr>
+<tr><td><b>Speed</b></td><td>Fast if available</td><td>Fast, 3 to 6 weeks</td><td>Slower, more meetings</td></tr>
+<tr><td><b>Who does the work</b></td><td>One person</td><td>Senior lead does the key work</td><td>Often junior staff</td></tr>
+<tr><td><b>Range of skills</b></td><td>Usually one</td><td>Design, build, SEO basics</td><td>Everything</td></tr>
+<tr><td><b>Main risk</b></td><td>Disappears or gets overloaded</td><td>Limited capacity</td><td>Cost and handovers</td></tr>
+</tbody></table></div>
+"""),
+("checks", "What to check before you hire anyone", """
+<ul>
+<li><b>Live work, not only mockups.</b> Ask for links to sites they built that are online today.</li>
+<li><b>Verified reviews.</b> Reviews on Upwork, Fiverr or Clutch are harder to fake than quotes on a website.</li>
+<li><b>Who does the work.</b> Ask who designs and who builds your site day to day.</li>
+<li><b>A written scope.</b> Pages, features, revisions, timeline and price on paper before you start.</li>
+<li><b>What happens after launch.</b> Training, support and who owns the files and accounts.</li>
+</ul>
+[[cta]]
+"""),
+("us", "Where Sorvel fits", """
+<p>Sorvel is a small senior studio. The founder, Mykola Tanasiichuk, has designed and built websites for more than 11 years, with 600+ completed projects and 600+ five-star reviews on Upwork and Fiverr Pro. You get one accountable lead, a fixed price and a site built in Webflow, Framer or WordPress. See <a href="../reviews.html">client reviews</a>.</p>
+"""),
+  ],
+  faq=[("Is a freelancer cheaper than an agency?", "Usually yes, by half or more. The trade-off is capacity and range of skills, which matters more as the project grows."),
+       ("What is a boutique web design studio?", "A small team led by a senior designer or developer who does the key work personally, with agency-level process and a smaller overhead."),
+       ("How do I know a web designer is reliable?", "Look for live sites, verified platform reviews, a written scope and clear ownership of files and accounts."),
+       ("How much should I budget for a business website?", "For a custom site with a professional team, plan $5,000 to $20,000 depending on pages, CMS and content."),
+  ],
+),
+dict(
+  slug="framer-vs-wordpress",
+  title="Framer vs WordPress in 2026: Which Is Right for Your Website? | Sorvel",
+  h1="Framer vs WordPress: which is right for your website",
+  card="Speed, design, editing, SEO, plugins and cost: when Framer is the smarter choice and when WordPress still wins.",
+  desc="Framer vs WordPress compared for business websites in 2026: design freedom, speed, editing, SEO, plugins, e-commerce and cost, with clear advice on which to choose.",
+  cat="Platforms", date="2026-10-31", svc=("websites", "website design and development"),
+  cover=("seo-cover", "Laptop on a desk showing a website analytics dashboard"),
+  lead="Framer and WordPress sit at opposite ends: one is a design tool that publishes websites, the other a flexible system that can become almost anything. Here is how to choose.",
+  sections=[
+("short", "The short answer", """
+<p><b>Choose Framer</b> for a modern marketing or launch site where design and motion matter, the content is fairly simple and you want zero maintenance.</p>
+<p><b>Choose WordPress</b> when the site needs complex features, a large store, memberships or deep custom logic, and you have someone to maintain it.</p>
+"""),
+("table", "Framer vs WordPress at a glance", """
+<div class="post-table" role="region" aria-label="Framer and WordPress compared" tabindex="0"><table>
+<thead><tr><th></th><th>Framer</th><th>WordPress</th></tr></thead>
+<tbody>
+<tr><td><b>Best for</b></td><td>Startup and launch sites, portfolios</td><td>Complex sites, stores, memberships</td></tr>
+<tr><td><b>Design and motion</b></td><td>Excellent, close to Figma</td><td>Depends on theme and developer</td></tr>
+<tr><td><b>Maintenance</b></td><td>None, hosting included</td><td>Updates, backups, security</td></tr>
+<tr><td><b>Speed</b></td><td>Fast by default</td><td>Varies with plugins and hosting</td></tr>
+<tr><td><b>CMS</b></td><td>Simple collections</td><td>Very flexible</td></tr>
+<tr><td><b>Plugins</b></td><td>Small set</td><td>Huge ecosystem</td></tr>
+<tr><td><b>E-commerce</b></td><td>Not a store platform</td><td>WooCommerce</td></tr>
+</tbody></table></div>
+"""),
+("framer", "When Framer wins", """
+<ul>
+<li>You need to launch in weeks, not months.</li>
+<li>The site is mostly pages, a blog and forms.</li>
+<li>Your designer wants to update the site directly.</li>
+<li>You never want to think about plugin updates or hosting again.</li>
+</ul>
+[[cta]]
+"""),
+("wordpress", "When WordPress wins", """
+<ul>
+<li>Online store with many products and custom checkout rules.</li>
+<li>Memberships, courses, bookings or directories.</li>
+<li>Large content libraries with custom fields and logic.</li>
+<li>You want full control over code and hosting.</li>
+</ul>
+<p>If your content is growing fast but you do not need WordPress features, Webflow is often the middle ground. See <a href="../blog/webflow-vs-framer.html">Webflow vs Framer</a> and <a href="../blog/webflow-vs-wordpress.html">Webflow vs WordPress</a>.</p>
+"""),
+  ],
+  faq=[("Is Framer good for SEO?", "Yes for most marketing sites: clean pages, fast loading, editable meta tags and sitemaps. Very large content sites get more control on Webflow or WordPress."),
+       ("Is Framer cheaper than WordPress?", "Framer has a monthly plan but no maintenance costs. WordPress hosting is cheap, but updates, plugins and fixes add up over a year."),
+       ("Can I move from WordPress to Framer?", "Yes. Pages are rebuilt in Framer, blog content is imported and old URLs get 301 redirects to keep rankings."),
+       ("Do you build on both?", "Yes. We design in Figma and build in Framer, Webflow or WordPress depending on what the site needs."),
+  ],
+),
+dict(
+  slug="website-redesign-cost",
+  title="How Much Does a Website Redesign Cost in 2026? | Sorvel",
+  h1="How much a website redesign costs in 2026",
+  card="Redesign price ranges, what is included, signs you need one, and how to redesign without losing your search traffic.",
+  desc="How much a website redesign costs in 2026: price ranges, what drives the cost, a redesign vs a refresh, timelines and how to keep your SEO during a redesign.",
+  cat="Pricing", date="2026-10-31", svc=("websites", "website design and development"),
+  cover=("mig-cover", "A designer reworking a website layout at a desk"),
+  lead="A redesign is a chance to fix what is not working, not just to change colours. What it costs depends on how much has to change underneath.",
+  sections=[
+("short", "The short answer", """
+<p>A professional redesign of a small to mid-size business website usually costs <b>$5,000 to $20,000</b> and takes <b>3 to 8 weeks</b>. With our studio a full redesign and rebuild starts <b>from $6,900</b>. If only the look needs updating, a lighter refresh or a monthly design plan can cost much less.</p>
+"""),
+("types", "Refresh, redesign or rebuild", """
+<div class="post-table" role="region" aria-label="Types of website redesign" tabindex="0"><table>
+<thead><tr><th>Type</th><th>What changes</th><th>Typical cost</th></tr></thead>
+<tbody>
+<tr><td><b>Refresh</b></td><td>Visual style, key pages, same platform and structure</td><td>$1,500 to $5,000</td></tr>
+<tr><td><b>Redesign</b></td><td>New structure, messaging and design on the same platform</td><td>$5,000 to $15,000</td></tr>
+<tr><td><b>Redesign and replatform</b></td><td>New design and a move, for example WordPress to Webflow</td><td>$7,000 to $25,000</td></tr>
+</tbody></table></div>
+"""),
+("signs", "Signs you need a redesign", """
+<ul>
+<li>Visitors arrive but rarely enquire or sign up.</li>
+<li>The site looks older than your product or service.</li>
+<li>Your team needs a developer for simple changes.</li>
+<li>Pages load slowly on phones or fail Core Web Vitals.</li>
+<li>The message no longer matches who you sell to.</li>
+</ul>
+[[cta]]
+"""),
+("seo", "How to redesign without losing traffic", """
+<ul>
+<li>List the pages that bring visits and links before you change anything.</li>
+<li>Keep URLs where you can, and 301-redirect every one that changes.</li>
+<li>Carry over titles, descriptions and structured data.</li>
+<li>Watch Search Console for a few weeks after launch.</li>
+</ul>
+<p>The full checklist is in <a href="../blog/migrate-wordpress-to-webflow-without-losing-seo.html">how to migrate without losing SEO</a>.</p>
+"""),
+  ],
+  faq=[("How long does a website redesign take?", "Usually 3 to 8 weeks, depending on the number of layouts, content readiness and whether the platform changes."),
+       ("Will a redesign hurt my SEO?", "Not if URLs are kept or redirected, metadata is carried over and indexing is checked after launch."),
+       ("Should I redesign or just refresh?", "Refresh if the structure and message still work. Redesign if visitors do not convert or the site no longer fits the business."),
+       ("Can you redesign my site on the same platform?", "Yes. We redesign on Webflow, Framer or WordPress, or move you to a better fit if it makes sense."),
+  ],
+),
 ]

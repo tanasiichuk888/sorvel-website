@@ -2,7 +2,7 @@ import sys, re, datetime; sys.path.insert(0, "SOURCE_DIR/site")
 from common import *
 from blog_posts import POSTS
 
-PLAN = {"wordpress-to-webflow-migration": "migration", "saas-website-design": "website"}
+PLAN = {"wordpress-to-webflow-migration": "migration", "saas-website-design": "website", "webflow-agency": "website", "websites": "website"}
 
 def nice_date(d):
     return datetime.date.fromisoformat(d).strftime("%-d %B %Y")
@@ -21,7 +21,7 @@ def inline_cta(p, post):
     if PLAN[svc] == "migration":
         t, x = "Planning a move to Webflow?", "Send us your site address. You get a written plan with scope, timeline and a fixed price within 24 hours, no call needed."
     else:
-        t, x = "Want a number for your own site?", "Tell us about your product and the pages you need. You get a written plan with scope, timeline and a fixed price within 24 hours."
+        t, x = "Want a number for your own site?", "Tell us about your business and the pages you need. You get a written plan with scope, timeline and a fixed price within 24 hours."
     return f'''<aside class="post-cta" data-reveal>
   <div><p class="post-cta__t">{t}</p><p>{x}</p></div>
   <div class="post-cta__btns">{btn_primary(quote, "Get a fixed quote", lg=False)}{btn_ghost("https://t.me/tanasiychuk8", "Ask on Telegram", tg=True, lg=False)}</div>
