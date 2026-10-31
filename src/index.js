@@ -19,7 +19,7 @@ import { DurableObject } from "cloudflare:workers";
 import DASHBOARD from "./scoreboard.html";
 
 const HOST = "sorvel.agency";
-const EVENT_TYPES = new Set(["brief_start", "brief", "telegram", "email", "view", "scroll", "click", "time", "field", "form_seen"]);
+const EVENT_TYPES = new Set(["brief_start", "brief", "telegram", "whatsapp", "email", "view", "scroll", "click", "time", "field", "form_seen"]);
 const HOT = 6;  // visit score that counts as a hot lead (and triggers a Telegram alert)
 const TARGET = new Set(["United States", "United Kingdom", "Canada", "Australia", "Ireland", "Germany", "Netherlands", "Switzerland",
   "Sweden", "Norway", "Denmark", "France", "Belgium", "Austria", "Finland", "Spain", "Italy", "Israel", "United Arab Emirates", "Singapore", "New Zealand"]);
@@ -85,7 +85,7 @@ function visits(ev) {
     if (e.t === "brief_start") x.start_b = 1;
     if (e.t === "form_seen") x.seen = 1;
     if (e.t === "field" && e.k) { x.fields = x.fields.filter((f) => f !== e.k); x.fields.push(e.k); }
-    if (e.t === "telegram" || e.t === "email") x.contact = 1;
+    if (e.t === "telegram" || e.t === "whatsapp" || e.t === "email") x.contact = 1;
     if (e.t === "click" && x.clicks.length < 12) x.clicks.push(e.k);
   }
   for (const x of S.values()) x.score = score(x);
@@ -155,7 +155,7 @@ export class LeadStore extends DurableObject {
       ["Opened pricing", f((x) => x.pages.some((q) => /^\/pricing/.test(q.p)))],
       ["Started a brief", f((x) => x.start_b)],
       ["Sent a brief", f((x) => x.brief)],
-      ["Clicked Telegram or email", f((x) => x.contact)],
+      ["Clicked WhatsApp, Telegram or email", f((x) => x.contact)],
     ].map(([k, v]) => ({ k, v }));
     const P = new Map();
     for (const x of sess) for (const q of x.pages) {
@@ -211,10 +211,10 @@ export class LeadStore extends DurableObject {
   }
   report(a, b, withGroups) {
     const rows = this.sql.exec(`SELECT t, strftime('%Y-%m-%d', ts / 1000, 'unixepoch') AS d, COUNT(*) AS n FROM ev WHERE ts >= ? AND ts < ? GROUP BY t, d ORDER BY d`, a, b).toArray();
-    if (!withGroups) return { rows: rows.filter((r) => ["brief", "brief_start", "telegram", "email"].includes(r.t)) };
-    const grp = (col) => this.sql.exec(`SELECT ${col} AS k, COUNT(*) AS v FROM ev WHERE ts >= ? AND ts < ? AND t IN ('brief','telegram','email') GROUP BY k ORDER BY v DESC LIMIT 10`, a, b).toArray();
+    if (!withGroups) return { rows: rows.filter((r) => ["brief", "brief_start", "telegram", "whatsapp", "email"].includes(r.t)) };
+    const grp = (col) => this.sql.exec(`SELECT ${col} AS k, COUNT(*) AS v FROM ev WHERE ts >= ? AND ts < ? AND t IN ('brief','telegram','whatsapp','email') GROUP BY k ORDER BY v DESC LIMIT 10`, a, b).toArray();
     // lead chart keeps to lead actions only
-    rows.splice(0, rows.length, ...rows.filter((r) => ["brief", "brief_start", "telegram", "email"].includes(r.t)));
+    rows.splice(0, rows.length, ...rows.filter((r) => ["brief", "brief_start", "telegram", "whatsapp", "email"].includes(r.t)));
     return { rows, src: grp("s"), land: grp("l") };
   }
 }
@@ -484,7 +484,7 @@ function mock(r, days) {
 function mockBehavior(r) {
   const now = Date.now(), m = (min) => now - min * 60e3;
   return { sessions: 74, bounce: .41, median: 52,
-    funnel: [{ k: "Visited the site", v: 74 }, { k: "Opened a case study", v: 29 }, { k: "Opened pricing", v: 17 }, { k: "Started a brief", v: 4 }, { k: "Sent a brief", v: 2 }, { k: "Clicked Telegram or email", v: 5 }],
+    funnel: [{ k: "Visited the site", v: 74 }, { k: "Opened a case study", v: 29 }, { k: "Opened pricing", v: 17 }, { k: "Started a brief", v: 4 }, { k: "Sent a brief", v: 2 }, { k: "Clicked WhatsApp, Telegram or email", v: 5 }],
     pages: [{ k: "/", views: 70, avg: 48, deep: .38, depth: 61 }, { k: "/work", views: 31, avg: 35, deep: .52, depth: 70 }, { k: "/pricing", views: 19, avg: 64, deep: .63, depth: 78 },
       { k: "/work/valhalla-capital", views: 14, avg: 92, deep: .57, depth: 72 }, { k: "/services/saas-website-design", views: 9, avg: 41, deep: .33, depth: 55 }, { k: "/contact", views: 8, avg: 71, deep: .75, depth: 88 }],
     clicks: [{ k: "Start a project → /contact", v: 21 }, { k: "Work → /work", v: 18 }, { k: "Valhalla Capital → /work/valhalla-capital", v: 11 }, { k: "Pricing → /pricing", v: 9 }, { k: "Telegram → t.me", v: 3 }],
@@ -506,7 +506,7 @@ function hotText(x) {
   let country = x.c; try { country = x.c ? COUNTRY.of(x.c) : ""; } catch (e) {}
   const where = [x.ct, country].filter(Boolean).join(", ");
   const name = (p) => (p === "/" ? "Home" : p.replace(/^\/(work|services|solutions|blog)\//, "").replace(/^\//, "").replace(/-/g, " "));
-  const done = [x.brief ? "sent a brief" : x.start_b ? "started a brief" : "", x.contact ? "clicked Telegram/email" : ""].filter(Boolean).join(", ");
+  const done = [x.brief ? "sent a brief" : x.start_b ? "started a brief" : "", x.contact ? "clicked WhatsApp/Telegram/email" : ""].filter(Boolean).join(", ");
   return [
     `🔥 <b>Hot visitor on sorvel.agency</b> (score ${x.score})`,
     where && `📍 ${escH(where)}`,

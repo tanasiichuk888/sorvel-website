@@ -420,9 +420,9 @@ function render(D) {
   // leads per day
   const per = (rows, types) => days.map((d) => (rows || []).filter((r) => r.d === d && types.includes(r.t)).reduce((s, r) => s + r.n, 0));
   const sumT = (rows, types) => (rows || []).filter((r) => types.includes(r.t)).reduce((s, r) => s + r.n, 0);
-  const briefs = per(D.leads, ["brief"]), clicks = per(D.leads, ["telegram", "email"]);
-  const L = { brief: sumT(D.leads, ["brief"]), click: sumT(D.leads, ["telegram", "email"]), start: sumT(D.leads, ["brief_start"]) };
-  const LP = D.leadsPrev ? { brief: sumT(D.leadsPrev, ["brief"]), click: sumT(D.leadsPrev, ["telegram", "email"]) } : null;
+  const briefs = per(D.leads, ["brief"]), clicks = per(D.leads, ["telegram", "whatsapp", "email"]);
+  const L = { brief: sumT(D.leads, ["brief"]), click: sumT(D.leads, ["telegram", "whatsapp", "email"]), start: sumT(D.leads, ["brief_start"]) };
+  const LP = D.leadsPrev ? { brief: sumT(D.leadsPrev, ["brief"]), click: sumT(D.leadsPrev, ["telegram", "whatsapp", "email"]) } : null;
   const byDay = (k) => days.map((d) => { const x = R && R.byDay && R.byDay.find((r) => r.d === d); return x ? x[k] : 0; });
   const gDay = (k) => days.map((d) => { const x = G && G.byDay.find((r) => r.d === d); return x ? x[k] : 0; });
   const lcpM = R && R.lcp && R.lcp.mobile, lcpMP = P && P.lcp && P.lcp.mobile;

@@ -23,14 +23,17 @@ NOINDEX_CASES = True  # all case studies (work/*) kept out of Google: they ranke
 START, END = "<!-- seo -->", "<!-- /seo -->"
 GLASS_V = 5  # bump after editing css/glass.css or js/glass.js
 CASE_V = 17
+WA_FAB = ('  <a class="wa-fab" href="https://wa.me/34643439737?text=Hi%20Mykola%2C%20I%27m%20interested%20in%20a%20website%20project." target="_blank" rel="noopener" aria-label="Chat on WhatsApp" data-track="WhatsApp">'
+          '<svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.2-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.6-5.6C5.2 10 10 5.3 16 5.3S26.8 10 26.8 15.8 22 26.4 16 26.4zm5.9-7.8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.7c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5s.3-1.3.2-1.5c-.1-.1-.3-.2-.6-.4z"/></svg>'
+          '<span class="wa-fab__tip">Chat on WhatsApp</span></a>')
 IMG_V = 2  # bump after replacing case images (img/ is cached for a week)
 IMG_FRESH = "noir|skyli|open-select|copliancy|visit-pemba|agentur|mutmachbuch|wehike|college-classics"  # bump after editing css/case.css
 PAGES_V = 38
-APPLE, APPLE_V = True, 10  # Apple-style layer (css/apple.css); False = roll back
+APPLE, APPLE_V = True, 11  # Apple-style layer (css/apple.css); False = roll back
 MOBILE_V = 5  # bump after editing css/mobile.css
 BRAND_V = 2  # bump after replacing logo / favicon files
 # other assets that change: bump the number after editing the file
-ASSET_V = {"css/style.css": 10, "js/main.js": 32, "css/xp.css": 6, "js/scenes.js": 21, "js/xp.js": 9, "js/dots.js": 3, "css/hero.css": 3, "js/case.js": 13, "js/fx.js": 19, "js/svc.js": 17, "css/svc.css": 6}
+ASSET_V = {"css/style.css": 10, "js/main.js": 33, "css/xp.css": 6, "js/scenes.js": 21, "js/xp.js": 9, "js/dots.js": 3, "css/hero.css": 3, "js/case.js": 13, "js/fx.js": 19, "js/svc.js": 17, "css/svc.css": 6}
 
 # Search titles (aim for under ~60 characters). Case studies are generated from the page.
 POPULAR = [("saas-website-design", "SaaS website design"), ("fintech-website-design", "Fintech website design"),
@@ -260,6 +263,8 @@ def process(path):
         s = s[:k] + f'  <link rel="stylesheet" href="{pre}css/apple.css?v={APPLE_V}" />\n' + s[k:]
     if 'class="amb"' not in s:
         s = re.sub(r"(<body[^>]*>)", r'\1\n  <div class="amb" aria-hidden="true"><i></i><i></i><i></i></div>', s, count=1)
+    if 'class="wa-fab"' not in s:   # floating WhatsApp button on every page
+        s = s.replace("</body>", WA_FAB + "\n</body>", 1)
     if "js/glass.js" not in s:
         s = s.replace("</body>", f'  <script src="{pre}js/glass.js?v={GLASS_V}"></script>\n</body>', 1)
     s = re.sub(r'js/glass\.js\?v=\d+', f'js/glass.js?v={GLASS_V}', s)

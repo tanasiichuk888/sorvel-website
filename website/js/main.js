@@ -80,6 +80,7 @@
     if (!a) return;
     const h = a.getAttribute("href") || "";
     if (/^https:\/\/t\.me\//.test(h)) track("telegram");
+    else if (/^https:\/\/wa\.me\//.test(h)) track("whatsapp");
     else if (/^mailto:/.test(h)) track("email");
     let label = a.getAttribute("data-track") || a.getAttribute("aria-label") || (a.innerText || a.textContent || "").replace(/\s+/g, " ").trim();
     if (!label && a.querySelector("img[alt]")) label = a.querySelector("img[alt]").alt;
