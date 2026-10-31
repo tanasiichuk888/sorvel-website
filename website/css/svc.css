@@ -235,3 +235,15 @@
   .svc__stage .vis * { animation-duration: .01s !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .01s !important; }
 }
 @container (max-width: 440px) { .sp-kpis em { display: none; } .sb-k { display: none; } }
+
+/* Websites tab: a real design in the browser frame, scrolled like a visitor would */
+.vis--shot .sw-dev--shot { width: 92%; }
+.sw-shot { position: relative; aspect-ratio: 16 / 8.5; overflow: hidden; background: #0B4A3E; }
+.sw-shot img { display: block; width: 100%; height: auto; transform: translateY(0); will-change: transform; }
+.vis--shot.run .sw-shot img { animation: swScroll 9s cubic-bezier(.65,0,.35,1) both; }
+@keyframes swScroll { 0%, 30% { transform: translateY(0); } 52%, 74% { transform: translateY(-20%); } 94%, 100% { transform: translateY(0); } }
+.vis--shot.run .sw-dev--shot { animation: swLift 9s cubic-bezier(.65,0,.35,1) both; }
+@keyframes swLift { 0% { transform: translateY(2%) scale(.97); opacity: .6; } 10%, 100% { transform: none; opacity: 1; } }
+.vis--shot .sw-cms { left: 2%; top: 14%; bottom: auto; }
+.vis--shot .sw-pub { right: 2%; bottom: 8%; }
+@media (prefers-reduced-motion: reduce) { .vis--shot.run .sw-shot img, .vis--shot.run .sw-dev--shot { animation: none; } }
