@@ -269,3 +269,71 @@
 @keyframes swSweep { 0%, 24% { transform: translateX(-120%); } 32% { transform: translateX(120%); } 33%, 54% { transform: translateX(-120%); } 62% { transform: translateX(120%); } 63%, 88% { transform: translateX(-120%); } 97%, 100% { transform: translateX(120%); } }
 .vis--web .sv-chip { box-shadow: 0 0 0 1px rgba(124,155,255,.3), 0 10px 40px -8px rgba(59,107,255,.7); }
 @media (prefers-reduced-motion: reduce) { .vis--web.run *, .vis--web.run .sw-page::after { animation: none !important; } }
+
+/* ===== All service scenes: aurora light, depth and glow on black ===== */
+.vis--app, .vis--brand, .vis--cro, .vis--mig { --g1: rgba(59,107,255,.42); --g2: rgba(124,155,255,.16); }
+.vis--brand { --g1: rgba(124,92,255,.42); --g2: rgba(59,107,255,.18); }
+.vis--cro { --g1: rgba(61,220,132,.30); --g2: rgba(59,107,255,.22); }
+.vis--mig { --g1: rgba(45,212,191,.30); --g2: rgba(59,107,255,.24); }
+.vis--app::before, .vis--brand::before, .vis--cro::before, .vis--mig::before { content: ""; position: absolute; inset: 8% 6%; z-index: 0; pointer-events: none; border-radius: 50%;
+  background: radial-gradient(45% 50% at 35% 40%, var(--g1), transparent 70%), radial-gradient(45% 50% at 70% 65%, var(--g2), transparent 70%); filter: blur(34px); }
+.vis--app.run::before, .vis--brand.run::before, .vis--cro.run::before, .vis--mig.run::before { animation: svAurora 10s ease-in-out infinite alternate; }
+@keyframes svAurora { from { transform: rotate(0deg) scale(1); } to { transform: rotate(25deg) scale(1.12); } }
+.sp-dash, .sb, .sc, .sm { position: relative; z-index: 1; }
+
+/* Product: glowing dashboard, neon chart */
+.sp-dash { border-color: rgba(124,155,255,.35) !important; box-shadow: 0 0 0 1px rgba(124,155,255,.12), 0 30px 110px -30px rgba(59,107,255,.75), 0 50px 90px -40px rgba(0,0,0,.95); }
+.sp-dash aside i.on { background: linear-gradient(90deg, #3B6BFF, #7C9BFF); box-shadow: 0 0 1.6cqw rgba(59,107,255,.8); }
+.sp-kpis div { overflow: hidden; }
+.sp-kpis div::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, transparent, #7C9BFF, transparent); }
+.sp-kpis em { color: #4ADE80; text-shadow: 0 0 1cqw rgba(74,222,128,.7); }
+.sp-chart .ln { stroke: #7C9BFF; stroke-width: 3; filter: drop-shadow(0 0 4px rgba(124,155,255,.95)) drop-shadow(0 0 12px rgba(59,107,255,.8)); }
+.vis--app.run .sp-chart .ar { opacity: .22; }
+.sp-bars i { background: linear-gradient(to top, rgba(59,107,255,.08), rgba(124,155,255,.35)); }
+.sp-tip { box-shadow: 0 0 2.4cqw rgba(59,107,255,.9); }
+.sp-tip::after { box-shadow: 0 0 0 .5cqw rgba(124,155,255,.35), 0 0 2cqw #7C9BFF; }
+.sp-chip, .sp-cur span { box-shadow: 0 0 0 1px rgba(124,155,255,.3), 0 10px 40px -8px rgba(59,107,255,.7); }
+
+/* Brand: glowing mark, gradient wordmark, shiny swatches */
+.sb-art { background: radial-gradient(70% 70% at 50% 40%, rgba(124,92,255,.16), rgba(242,239,234,.02)); border-color: rgba(169,190,255,.25); box-shadow: inset 0 0 6cqw rgba(124,92,255,.15); }
+.sb-m1, .sb-m2 { stroke: #fff; filter: drop-shadow(0 0 3px rgba(169,190,255,.9)) drop-shadow(0 0 10px rgba(124,92,255,.8)); }
+.sb-dot { fill: #7C9BFF; filter: drop-shadow(0 0 6px #7C9BFF); }
+.sb-word span { color: #fff; text-shadow: 0 0 2.4cqw rgba(124,92,255,.75); }
+.sb-word span:nth-child(n+5) { color: #A9BEFF; }
+.sb-sw i { overflow: hidden; box-shadow: 0 1.2cqw 3cqw -1cqw var(--c); }
+.sb-sw i::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.45) 50%, transparent 70%); transform: translateX(-130%); }
+.vis--brand.run .sb-sw i::after { animation: svShine 1.2s ease-in-out 4.3s forwards; }
+@keyframes svShine { to { transform: translateX(130%); } }
+.sb-icon { box-shadow: 0 0 0 1px rgba(255,255,255,.15) inset, 0 20px 60px -10px rgba(59,107,255,.9) !important; }
+.sb-post { box-shadow: 0 0 0 1px rgba(169,190,255,.25), 0 30px 70px -20px rgba(124,92,255,.8) !important; }
+.vis--brand.run .sb-apps > div:not(.sb-card) { animation-name: sbApp, svFloat; animation-duration: .8s, 4s; animation-delay: var(--d, 4.6s), calc(var(--d, 4.6s) + .8s); animation-iteration-count: 1, infinite; animation-direction: normal, alternate; animation-fill-mode: forwards, none; animation-timing-function: cubic-bezier(.2,.8,.2,1), ease-in-out; }
+.vis--brand.run .sb-post { --d: 5.6s; }
+@keyframes svFloat { from { translate: 0 0; } to { translate: 0 -1.2cqw; } }
+
+/* CRO: traffic as glowing particles, the winner lights up */
+.sc-src { border-color: rgba(74,222,128,.35) !important; box-shadow: 0 0 2.4cqw -0.4cqw rgba(74,222,128,.6); }
+.sc-flow i { background: #A9BEFF; box-shadow: 0 0 1.2cqw #7C9BFF, 0 0 2.6cqw rgba(59,107,255,.9); }
+.sc-card { background: rgba(124,155,255,.05); border-color: rgba(124,155,255,.2); }
+.sc-b .sc-pg u { box-shadow: 0 0 1.6cqw rgba(59,107,255,.9); }
+.sc-b .sc-bar i { box-shadow: 0 0 1.4cqw rgba(124,155,255,.9); }
+.vis--cro.run .sc-b { animation: scGlow2 .8s 4.2s forwards; }
+@keyframes scGlow2 { to { border-color: rgba(74,222,128,.7); background: rgba(74,222,128,.07); box-shadow: 0 0 0 1px rgba(74,222,128,.35), 0 0 6cqw -1cqw rgba(74,222,128,.55); } }
+.sc-b .sc-num b { background: linear-gradient(90deg, #fff, #86EFAC); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.sc-b::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; border: 2px solid #4ADE80; opacity: 0; pointer-events: none; }
+.vis--cro.run .sc-b::after { animation: scRing 1.4s ease-out 4.3s 2; }
+@keyframes scRing { 0% { opacity: .9; transform: scale(1); } 100% { opacity: 0; transform: scale(1.12); } }
+.sc-win { box-shadow: 0 0 2.4cqw rgba(74,222,128,.8); }
+.sc-up { box-shadow: 0 0 0 1px rgba(74,222,128,.35), 0 10px 40px -6px rgba(74,222,128,.6); }
+
+/* Migration: glowing nodes, a light beam carries pages over */
+.sm-node { box-shadow: 0 20px 50px -24px rgba(0,0,0,.9); }
+.sm-node--to { background: linear-gradient(140deg, rgba(59,107,255,.35), rgba(45,212,191,.18)); border-color: rgba(124,155,255,.8); box-shadow: 0 0 4cqw -0.6cqw rgba(59,107,255,.85); }
+.sm-lane::after { content: ""; position: absolute; top: 50%; left: 0; width: 22%; height: 2px; margin-top: -1px; background: linear-gradient(90deg, transparent, #A9BEFF, #fff); filter: drop-shadow(0 0 6px #7C9BFF); opacity: 0; }
+.vis--mig.run .sm-lane::after { animation: smBeam 1.1s linear .2s 4; }
+@keyframes smBeam { 0% { left: 0; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { left: 78%; opacity: 0; } }
+.sm-lane span { box-shadow: 0 0 1.8cqw rgba(59,107,255,.85); }
+.sm-prog i { box-shadow: 0 0 1.6cqw rgba(124,155,255,.9); }
+.sm-stats div { background: rgba(124,155,255,.05); border-color: rgba(124,155,255,.18); }
+.sm-stats div:last-child b { text-shadow: 0 0 2cqw rgba(74,222,128,.7); }
+.sm-list li.is-ok { border-color: rgba(74,222,128,.5); box-shadow: 0 0 2.6cqw -0.8cqw rgba(74,222,128,.6); }
+@media (prefers-reduced-motion: reduce) { .vis.run::before, .vis--brand.run .sb-apps > div, .vis--mig.run .sm-lane::after, .vis--cro.run .sc-b::after { animation: none !important; } }
