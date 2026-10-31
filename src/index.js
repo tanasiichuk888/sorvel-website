@@ -178,6 +178,12 @@ export class LeadStore extends DurableObject {
     const devType = top(count((x) => (x.dv || "").split(" · ")[0]), 4);
     const browsers = top(count((x) => (x.dv || "").split(" · ").slice(1).join(" · ")), 8);
     const cities = top(count((x) => x.ct ? x.ct + (x.c ? " · " + x.c : "") : ""), 10);
+    // AI assistants: ChatGPT, Claude, Perplexity, Gemini, Copilot (referrer host or utm_source)
+    const AI = [["chatgpt", /chatgpt|openai/], ["Claude", /claude/], ["Perplexity", /perplexity/], ["Gemini", /gemini|bard/], ["Copilot", /copilot|bing\.com\/chat/], ["Other AI", /you\.com|phind|grok|deepseek|meta\.ai|mistral/]];
+    const aiOf = (src) => { for (const [n, re] of AI) if (re.test(src || "")) return n === "chatgpt" ? "ChatGPT" : n; return ""; };
+    const aiSess = sess.filter((x) => aiOf(x.s));
+    const ai = { visits: aiSess.length, hot: aiSess.filter((x) => x.score >= HOT).length, leads: aiSess.filter((x) => x.brief || x.contact || x.start_b).length,
+      by: top(count((x) => aiOf(x.s)), 6), pages: top(count((x) => aiOf(x.s) ? x.pages[0].p : ""), 6) };
     const orgs = top(count((x) => x.org), 10);
     // where people drop off: the brief form, step by step
     const form = { seen: f((x) => x.seen), touched: f((x) => x.fields.length), step1: f((x) => x.start_b), sent: f((x) => x.brief),
@@ -201,7 +207,7 @@ export class LeadStore extends DurableObject {
       .map((x) => ({ at: x.start, s: x.s, c: x.c, ct: x.ct, org: x.org, dv: x.dv, score: x.score, secs: x.secs, brief: x.brief, started: x.start_b, contact: x.contact,
         pages: x.pages.slice(0, 30).map((q) => ({ p: q.p, secs: q.secs, depth: q.depth })), clicks: x.clicks }));
     return { sessions: sess.length, bounce: sess.length ? single / sess.length : 0, median, hot, warm, hotAt: HOT, funnel, pages, clicks, exits, recent,
-      devType, browsers, cities, orgs, form, sources, entries, heat };
+      devType, browsers, cities, orgs, form, sources, entries, heat, ai };
   }
   report(a, b, withGroups) {
     const rows = this.sql.exec(`SELECT t, strftime('%Y-%m-%d', ts / 1000, 'unixepoch') AS d, COUNT(*) AS n FROM ev WHERE ts >= ? AND ts < ? GROUP BY t, d ORDER BY d`, a, b).toArray();

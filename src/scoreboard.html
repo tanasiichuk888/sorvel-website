@@ -562,13 +562,18 @@ function people(B, conn) {
   });
   if (!B || !B.sessions) { el.innerHTML = since; return; }
   const pct = (x) => Math.round(x * 100) + "%";
+  const AIx = B.ai || { visits: 0, hot: 0, leads: 0, by: [], pages: [] };
   el.innerHTML = `<div class="bstats">
       <div class="hotstat"><h4>Hot visits</h4><b>${fmt(B.hot)}</b><small>Score ${B.hotAt}+ : pricing, case studies, time, form or contact</small></div>
       <div><h4>Warm visits</h4><b>${fmt(B.warm)}</b><small>Showed some interest, score 3 to ${B.hotAt - 1}</small></div>
       <div><h4>Hot share</h4><b>${B.sessions ? pct(B.hot / B.sessions) : "—"}</b><small>Of ${fmt(B.sessions)} visits</small></div>
     </div>
     <div class="grid2"><div class="list" id="pDev"></div><div class="list" id="pBr"></div></div>
-    <div class="grid2" style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)"><div class="list" id="pCity"></div><div class="list" id="pOrg"></div></div>`;
+    <div class="grid2" style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)"><div class="list" id="pCity"></div><div class="list" id="pOrg"></div></div>
+    <div style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)"><h4 style="margin:0 0 4px;font-size:13px">AI assistants</h4><p class="sub" style="margin:0 0 12px">Visits sent by ChatGPT, Claude, Perplexity, Gemini or Copilot: ${fmt(AIx.visits)} visits, ${fmt(AIx.hot)} hot, ${fmt(AIx.leads)} leads.</p>
+    <div class="grid2"><div class="list" id="pAi"></div><div class="list" id="pAiP"></div></div></div>`;
+  list($("#pAi"), "Assistant", AIx.by, { empty: "No AI visits yet" });
+  list($("#pAiP"), "First page they opened", AIx.pages, { empty: "No AI visits yet" });
   list($("#pDev"), "Device", B.devType, { empty: "Collecting from 26 Oct" });
   list($("#pBr"), "System and browser", B.browsers, { empty: "Collecting from 26 Oct" });
   list($("#pCity"), "Cities", B.cities, { empty: "Collecting from 26 Oct" });

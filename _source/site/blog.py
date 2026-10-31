@@ -127,7 +127,7 @@ def index():
     p = ""
     cards = "".join(bcard(p, x, big=(i == 0)) for i, x in enumerate(POSTS))
     body = hero("<span>Blog</span>", "Blog", ['Notes on websites', 'that <span class="accent">sell</span>.'],
-                "Straight answers about website costs, platforms, migrations and design, from the team that designs and builds them every week.", p=p)
+                "Straight answers about website costs, platforms, migrations and design, from the team that designs and builds them every week. New to the jargon? See the <a href=\"glossary.html\">glossary</a>.", p=p)
     body += f'''
     <section class="sec post-sec">
       <div class="wrap">

@@ -352,6 +352,7 @@ open(W + "/llms.txt", "w").write(f"""# Sorvel
 
 - [Pricing]({SITE}/pricing): Fixed project prices, monthly plans and an hourly pack
 - [Process]({SITE}/process): How a project runs, from brief to launch
+- [Glossary]({SITE}/glossary): Plain definitions of website design, Webflow, SEO, migration and AEO terms
 - [Reviews]({SITE}/reviews): Client reviews from Upwork and Fiverr Pro
 - [About]({SITE}/about): The studio and its founder
 - [Contact]({SITE}/contact): Send a brief and get a fixed quote within 24 hours

@@ -30,7 +30,7 @@ def run(script, cwd):
 
 site = os.path.join(tmp, "site")
 # 1. inner pages (work, process, contact, pricing, about, reviews, legal, 404, services)
-for s in ["main_pages.py", "rest.py", "services.py", "solutions.py", "pricing.py", "blog.py"]:
+for s in ["main_pages.py", "rest.py", "services.py", "solutions.py", "pricing.py", "blog.py", "glossary.py"]:
     run(s, site)
 # 2. case studies
 for s in ["cc_page.py", "wa_page.py", "vc_page.py", "ci_page.py", "as_page.py", "vb_page.py"]:
