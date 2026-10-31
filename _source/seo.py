@@ -58,12 +58,12 @@ ORG = {"@type": "Organization", "@id": SITE + "/#org", "name": BRAND, "alternate
        "logo": {"@type": "ImageObject", "url": SITE + "/img/brand/logo-512.png", "width": 512, "height": 512},
        "image": SITE + "/img/og/default.jpg",
        "description": "Design and development studio for startups and growing businesses, with deep experience in SaaS, fintech and AI. Websites, product UI and brand identity, built in Webflow, Framer, WordPress and Shopify.",
-       "founder": {"@id": SITE + "/#founder"}, "sameAs": [LINKEDIN],
+       "founder": {"@id": SITE + "/#founder"}, "sameAs": [LINKEDIN, "https://www.upwork.com/freelancers/mykola888", "https://www.fiverr.com/tanasiychuk8", "https://www.behance.net/tanasiichuk8", "https://dribbble.com/koliafree11"],
        "knowsAbout": ["Web design", "UI/UX design", "Product design", "Brand identity", "Webflow", "Framer", "WordPress", "Shopify", "Figma"],
        "areaServed": "Worldwide"}
 PERSON = {"@type": "Person", "@id": SITE + "/#founder", "name": "Mykola Tanasiichuk", "jobTitle": "Founder, Design Lead",
           "image": SITE + "/img/team/mykola.webp", "worksFor": {"@id": SITE + "/#org"},
-          "sameAs": ["https://www.behance.net/tanasiichuk8", "https://dribbble.com/koliafree11"]}
+          "sameAs": ["https://www.behance.net/tanasiichuk8", "https://dribbble.com/koliafree11", "https://www.upwork.com/freelancers/mykola888", "https://www.fiverr.com/tanasiychuk8"]}
 WEBSITE = {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": BRAND, "publisher": {"@id": SITE + "/#org"}, "inLanguage": "en"}
 
 def section_name(rel):
@@ -316,7 +316,47 @@ def prio(rel):
 urls = "\n".join(f"  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod><priority>{prio(r)}</priority></url>"
                  for u, r in sorted(pages, key=lambda x: (-float(prio(x[1])), x[0])))
 open(W + "/sitemap.xml", "w").write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n')
-open(W + "/robots.txt", "w").write(f"User-agent: *\nAllow: /\nDisallow: /404\n\nSitemap: {SITE}/sitemap.xml\n")
+AI_BOTS = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'PerplexityBot', 'Google-Extended', 'Bingbot', 'Applebot-Extended']
+open(W + "/robots.txt", "w").write("".join(f"User-agent: {b}\nAllow: /\n\n" for b in AI_BOTS) + f"User-agent: *\nAllow: /\nDisallow: /404\n\nSitemap: {SITE}/sitemap.xml\n")
+def _desc(rel):
+    m = re.search(r'<meta name="description" content="([^"]*)"', open(W + "/" + rel).read())
+    return html.unescape(m.group(1)) if m else ""
+def _ttl(rel): return text(re.search(r"<title>(.*?)</title>", open(W + "/" + rel).read(), re.S).group(1)).split(" | ")[0]
+def _list(rels): return "\n".join(f"- [{_ttl(r)}]({clean_url(r)}): {_desc(r)}" for r in rels)
+_svc = sorted(f"services/{f}" for f in os.listdir(W + "/services") if f.endswith(".html"))
+_blog = sorted(f"blog/{f}" for f in os.listdir(W + "/blog") if f.endswith(".html"))
+open(W + "/llms.txt", "w").write(f"""# Sorvel
+
+> Sorvel (sorvel.agency) is a website design and development studio led by Mykola Tanasiichuk. It designs in Figma and builds marketing websites in Webflow, Framer and WordPress, and designs product UI for SaaS, fintech, AI and B2B companies. Clients are worldwide; work is fully remote.
+
+## Key facts
+
+- Founder and design lead: Mykola Tanasiichuk, 11+ years in web and product design
+- 600+ completed projects and 600+ five-star client reviews on Upwork and Fiverr Pro
+- Top Rated on Upwork and a verified Fiverr Pro seller, 100% Job Success
+- Platforms: Webflow, Framer, WordPress (design and build); Shopify (design); Figma for all design work
+- Specialities: SaaS websites, fintech websites, AI and B2B companies, WordPress to Webflow migrations, landing pages, product UI and design systems, brand identity
+- Every project gets a written plan with scope, timeline and a fixed price within 24 hours; no call required
+- Prices (USD): website design and build from $6,900; landing page from $2,400; product UI design from $4,800; brand identity from $3,900; website migration from $2,900; UX audit $750; monthly design and development from $4,500/month; 25-hour pack $2,250
+- Contact: {SITE}/contact (brief form), Telegram https://t.me/tanasiychuk8
+
+## Services
+
+{_list(_svc)}
+
+## Guides
+
+{_list(_blog)}
+
+## Company
+
+- [Pricing]({SITE}/pricing): Fixed project prices, monthly plans and an hourly pack
+- [Process]({SITE}/process): How a project runs, from brief to launch
+- [Reviews]({SITE}/reviews): Client reviews from Upwork and Fiverr Pro
+- [About]({SITE}/about): The studio and its founder
+- [Contact]({SITE}/contact): Send a brief and get a fixed quote within 24 hours
+""")
+
 open(W + "/_headers", "w").write("""/img/*
   Cache-Control: public, max-age=604800
 /css/*
