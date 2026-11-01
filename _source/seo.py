@@ -28,7 +28,7 @@ WA_FAB = ('  <a class="wa-fab" href="https://wa.me/34643439737?text=Hi%20Mykola%
           '<span class="wa-fab__tip">Chat on WhatsApp</span></a>')
 IMG_V = 2  # bump after replacing case images (img/ is cached for a week)
 IMG_FRESH = "noir|skyli|open-select|copliancy|visit-pemba|agentur|mutmachbuch|wehike|college-classics"  # bump after editing css/case.css
-PAGES_V = 38
+PAGES_V = 39
 APPLE, APPLE_V = True, 11  # Apple-style layer (css/apple.css); False = roll back
 MOBILE_V = 5  # bump after editing css/mobile.css
 BRAND_V = 2  # bump after replacing logo / favicon files
