@@ -285,7 +285,7 @@ dict(
   card="An honest comparison from a studio that builds on both: CMS, SEO, speed, editing, cost and which one fits your team.",
   desc="Webflow vs Framer compared by a studio that builds on both: CMS, SEO, design freedom, editing, cost and when to pick each one for a SaaS, startup or B2B website.",
   cat="Platforms", date="2026-10-31", svc=("saas-website-design", "SaaS website design"),
-  cover=("saas-team", "A product team planning a new website together"),
+  cover=("c-webflow-vs-framer", "A designer working on a laptop in a studio"),
   lead="We design and build on both Webflow and Framer every month, so we have no reason to push one. Here is the short answer, then the details that should decide it for your team.",
   sections=[
 ("short", "The short answer", """
@@ -345,7 +345,7 @@ dict(
   card="Security, speed, editing, SEO, plugins and total cost: when Webflow wins, when WordPress is still the right call.",
   desc="Webflow vs WordPress for business websites in 2026: security, speed, SEO, editing, plugins and total cost of ownership, with clear advice on when to choose each.",
   cat="Platforms", date="2026-10-31", svc=("wordpress-to-webflow-migration", "WordPress to Webflow migration"),
-  cover=("mig-plan", "A team reviewing a website migration plan on a laptop"),
+  cover=("c-webflow-vs-wordpress", "A developer working at a desktop computer"),
   lead="We build on both platforms and migrate sites in both directions. For most marketing websites the answer is clear, but there are cases where WordPress is still the better tool.",
   sections=[
 ("short", "The short answer", """
@@ -401,7 +401,7 @@ dict(
   card="Real price ranges for a Webflow website, what moves the number, plan costs after launch and how to get a fixed quote.",
   desc="How much a Webflow website costs in 2026: price ranges for templates, freelancers and studios, what drives the cost, Webflow plan fees and how to get a fixed quote.",
   cat="Pricing", date="2026-10-31", svc=("webflow-agency", "Webflow design and development"),
-  cover=("saas-cover", "A designer working on a website layout on a large screen"),
+  cover=("c-webflow-website-cost", "A designer working at a desk in a creative office"),
   lead="A Webflow website can cost a few hundred dollars or well over $30,000. The difference comes down to a handful of things you can see in advance, so here they are.",
   sections=[
 ("short", "The short answer", """
@@ -454,7 +454,7 @@ dict(
   card="Cost, speed, risk and quality compared, plus a third option most companies overlook: a small senior studio.",
   desc="Web design agency vs freelancer compared on cost, quality, speed and risk, with a third option, the small senior studio, and questions to ask before you hire.",
   cat="Hiring", date="2026-10-31", svc=("websites", "website design and development"),
-  cover=("seo-watch", "A business owner reviewing website proposals on a laptop"),
+  cover=("c-web-design-agency-vs-freelancer", "A freelance web designer working on a laptop"),
   lead="Hiring for a website usually comes down to three choices: a freelancer, a large agency or a small senior studio. Each one fits a different situation.",
   sections=[
 ("short", "The short answer", """
@@ -498,7 +498,7 @@ dict(
   card="Speed, design, editing, SEO, plugins and cost: when Framer is the smarter choice and when WordPress still wins.",
   desc="Framer vs WordPress compared for business websites in 2026: design freedom, speed, editing, SEO, plugins, e-commerce and cost, with clear advice on which to choose.",
   cat="Platforms", date="2026-10-31", svc=("websites", "website design and development"),
-  cover=("seo-cover", "Laptop on a desk showing a website analytics dashboard"),
+  cover=("c-framer-vs-wordpress", "A designer working at a desk with app layout printouts"),
   lead="Framer and WordPress sit at opposite ends: one is a design tool that publishes websites, the other a flexible system that can become almost anything. Here is how to choose.",
   sections=[
 ("short", "The short answer", """
@@ -550,7 +550,7 @@ dict(
   card="Redesign price ranges, what is included, signs you need one, and how to redesign without losing your search traffic.",
   desc="How much a website redesign costs in 2026: price ranges, what drives the cost, a redesign vs a refresh, timelines and how to keep your SEO during a redesign.",
   cat="Pricing", date="2026-10-31", svc=("websites", "website design and development"),
-  cover=("mig-cover", "A designer reworking a website layout at a desk"),
+  cover=("c-website-redesign-cost", "A professional working on a website redesign at her desk"),
   lead="A redesign is a chance to fix what is not working, not just to change colours. What it costs depends on how much has to change underneath.",
   sections=[
 ("short", "The short answer", """
@@ -598,7 +598,7 @@ dict(
   card="How AI startups explain the product, show it working and earn trust on the website, with costs and timelines.",
   desc="Website design for AI startups in 2026: how to explain an AI product in seconds, show it working, handle trust and data questions, and what a website costs.",
   cat="Niches", date="2026-11-01", svc=("saas-website-design", "SaaS website design"),
-  cover=("saas-team", "A startup team planning their product website"),
+  cover=("c-website-design-for-ai-startups", "A developer working with two monitors in a startup office"),
   lead="Every AI startup says it saves time with AI. The websites that convert are the ones that make the product concrete in the first few seconds. Here is how to do that.",
   sections=[
 ("short", "The short answer", """
@@ -641,7 +641,7 @@ dict(
   card="What B2B buyers look for, the pages every B2B site needs, and the details that turn visits into qualified leads.",
   desc="B2B website design guide: what B2B buyers look for, the pages and proof every B2B site needs, lead capture that works, and typical costs and timelines.",
   cat="Niches", date="2026-11-01", svc=("websites", "website design and development"),
-  cover=("seo-watch", "A business team reviewing a B2B website"),
+  cover=("c-b2b-website-design", "A professional working at a computer in a busy office"),
   lead="B2B buyers rarely buy on the first visit. They come back several times, often with colleagues, and the website has to answer a different question each time.",
   sections=[
 ("short", "The short answer", """
@@ -689,7 +689,7 @@ dict(
   card="Trust signals, practice area pages, calls to action and local SEO for law firm websites that turn visitors into consultations.",
   desc="Law firm website design guide for 2026: the trust signals clients look for, practice area pages, call-first design, local SEO and what a law firm website costs.",
   cat="Niches", date="2026-11-01", svc=("websites", "website design and development"),
-  cover=("seo-cover", "A professional reviewing a law firm website on a laptop"),
+  cover=("c-law-firm-website-design", "A lawyer on the phone working on a laptop"),
   lead="People looking for a lawyer are often stressed and in a hurry. A good law firm website calms them down and makes the next step obvious.",
   sections=[
 ("short", "The short answer", """
@@ -723,7 +723,7 @@ dict(
   card="How destination and tour websites inspire visitors, help them plan and turn interest into bookings and inquiries.",
   desc="Travel and tourism website design guide: inspiring imagery, experience finders, itineraries, booking and inquiry flows, mobile planning and typical costs.",
   cat="Niches", date="2026-11-01", svc=("websites", "website design and development"),
-  cover=("mig-cover", "A designer working on a travel website layout"),
+  cover=("c-travel-website-design", "A person browsing a travel agency website on a laptop"),
   lead="Travel websites sell a feeling first and a plan second. The best ones move visitors from 'that looks amazing' to 'send me a quote' without friction.",
   sections=[
 ("short", "The short answer", """
@@ -761,7 +761,7 @@ dict(
   card="Price ranges for landing pages, what moves the cost, and when one page is enough versus a full website.",
   desc="How much a landing page costs in 2026: price ranges from templates to studios, what drives the cost, timelines and how to get a fixed quote.",
   cat="Pricing", date="2026-11-01", svc=("websites", "website design and development"),
-  cover=("saas-cover", "A designer building a landing page on a large screen"),
+  cover=("c-landing-page-cost", "An entrepreneur reviewing charts on a desktop computer"),
   lead="A landing page has one job: turn a specific visitor into a lead or a sign-up. What you pay depends on how much strategy, design and testing goes into that one job.",
   sections=[
 ("short", "The short answer", """
@@ -802,7 +802,7 @@ dict(
   card="What a Framer site costs with templates, freelancers and studios, plan fees after launch and when Framer is the right choice.",
   desc="How much a Framer website costs in 2026: template, freelancer and studio price ranges, Framer plan fees, timelines and when to choose Framer over Webflow.",
   cat="Pricing", date="2026-11-01", svc=("websites", "website design and development"),
-  cover=("saas-team", "A startup team reviewing their new Framer website"),
+  cover=("c-framer-website-cost", "A designer sketching on a graphics tablet"),
   lead="Framer has become the fastest way for startups to launch a polished, motion-rich site. Here is what it costs to do it properly.",
   sections=[
 ("short", "The short answer", """
@@ -842,7 +842,7 @@ dict(
   card="Homepage, collection and product page design that sells, plus how a custom Shopify design project works.",
   desc="Shopify store design guide: homepage, collection and product pages that convert, mobile shopping, trust signals and how a custom Shopify design project works.",
   cat="E-commerce", date="2026-11-01", svc=("websites", "website design and development"),
-  cover=("mig-plan", "A team reviewing an online store design"),
+  cover=("c-shopify-store-design", "An online store owner preparing orders in her shop"),
   lead="Most Shopify stores use the same themes. The ones that stand out are designed around how their customers actually shop.",
   sections=[
 ("short", "The short answer", """
@@ -882,7 +882,7 @@ dict(
   card="Design freedom, SEO, speed, CMS and cost compared, with clear advice on when Wix is enough and when to move to Webflow.",
   desc="Webflow vs Wix for business websites in 2026: design freedom, SEO, speed, CMS, editing and cost compared, with advice on when to choose each.",
   cat="Platforms", date="2026-11-01", svc=("webflow-agency", "Webflow design and development"),
-  cover=("seo-watch", "A business owner comparing website platforms"),
+  cover=("c-webflow-vs-wix", "A business owner working on a laptop"),
   lead="Wix is easy to start with. Webflow is built for teams that want a professional, custom site they can grow. Here is how to choose.",
   sections=[
 ("short", "The short answer", """
@@ -923,7 +923,7 @@ dict(
   card="What to include in a website brief so you get accurate quotes, plus a copy-ready template.",
   desc="How to write a website design brief: the questions to answer, what to include so agencies can quote accurately, and a free copy-ready brief template.",
   cat="Hiring", date="2026-11-01", svc=("websites", "website design and development"),
-  cover=("mig-plan", "A team writing a website brief together"),
+  cover=("c-website-brief-template", "A person writing notes next to a laptop"),
   lead="A clear brief gets you accurate quotes, fewer revisions and a better website. It does not need to be long, just specific.",
   sections=[
 ("short", "The short answer", """
@@ -962,7 +962,7 @@ dict(
   card="The questions that separate reliable web design partners from risky ones, and the red flags to watch for.",
   desc="How to choose a web design agency in 2026: 12 questions to ask before you hire, red flags to watch for and how to compare proposals fairly.",
   cat="Hiring", date="2026-11-01", svc=("websites", "website design and development"),
-  cover=("seo-cover", "A founder comparing web design agency proposals"),
+  cover=("c-how-to-choose-a-web-design-agency", "Two business partners reviewing a proposal on a laptop"),
   lead="Most website projects that go wrong could have been spotted before they started. These questions help you find out early.",
   sections=[
 ("short", "The short answer", """
