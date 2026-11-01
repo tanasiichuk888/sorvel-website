@@ -1184,7 +1184,7 @@ dict(
 ("type", "Agency, studio or freelancer?", """
 <p>A large agency suits big projects that need many specialists. A freelancer suits small, clear jobs. A small senior studio sits in between: agency-level quality with one accountable lead. See <a href="../blog/web-design-agency-vs-freelancer.html">agency vs freelancer</a> for the full comparison.</p>
 """),
-("brief", "Make it easy to compare: send the same brief", """
+("same-brief", "Make it easy to compare: send the same brief", """
 <p>The fastest way to get comparable quotes is to send every team the same short brief: goals, pages, content status, examples, budget and deadline. Use our <a href="../blog/website-brief-template.html">website brief template</a>.</p>
 """),
   ],
