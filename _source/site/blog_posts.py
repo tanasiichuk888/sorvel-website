@@ -591,4 +591,413 @@ dict(
        ("Can you redesign my site on the same platform?", "Yes. We redesign on Webflow, Framer or WordPress, or move you to a better fit if it makes sense."),
   ],
 ),
+dict(
+  slug="website-design-for-ai-startups",
+  title="Website Design for AI Startups: What Works in 2026 | Sorvel",
+  h1="Website design for AI startups: what actually works in 2026",
+  card="How AI startups explain the product, show it working and earn trust on the website, with costs and timelines.",
+  desc="Website design for AI startups in 2026: how to explain an AI product in seconds, show it working, handle trust and data questions, and what a website costs.",
+  cat="Niches", date="2026-11-01", svc=("saas-website-design", "SaaS website design"),
+  cover=("saas-team", "A startup team planning their product website"),
+  lead="Every AI startup says it saves time with AI. The websites that convert are the ones that make the product concrete in the first few seconds. Here is how to do that.",
+  sections=[
+("short", "The short answer", """
+<p>A strong AI startup website does three things: it names the job your product does in plain words, it shows the product doing that job with real screens or a short demo, and it answers trust questions about data, accuracy and security before the visitor has to ask.</p>
+<p>With our studio an AI startup website starts <b>from $6,900</b> and takes <b>3 to 6 weeks</b>. A single launch or waitlist page starts <b>from $2,400</b>.</p>
+"""),
+("message", "Lead with the job, not the technology", """
+<ul>
+<li><b>Name the outcome.</b> "Answer support tickets in seconds" beats "AI-powered customer experience platform".</li>
+<li><b>Say who it is for.</b> One audience in the headline converts better than "for teams of all sizes".</li>
+<li><b>Skip the buzzwords.</b> Words like "revolutionary" and "next-generation" are what every competitor says.</li>
+</ul>
+"""),
+("show", "Show the product working", """
+<p>AI products are hard to picture. Visitors trust what they can see: a real interface, a before and after, a short looping demo of an input becoming an output. Abstract glowing brains and robot illustrations do the opposite.</p>
+[[cta]]
+"""),
+("trust", "Answer trust questions on the page", """
+<ul>
+<li>Where the data goes and whether it trains the model.</li>
+<li>Security and compliance (SOC 2, GDPR) if you have them.</li>
+<li>How accurate the output is and how a human stays in control.</li>
+<li>Integrations with the tools the buyer already uses.</li>
+</ul>
+<p>A dedicated "Security" or "How it works" section often lifts demo requests more than another feature block.</p>
+"""),
+("platform", "Webflow or Framer for an AI startup", """
+<p>Pre-seed and seed teams with a few pages usually launch faster on Framer. Teams that publish a changelog, docs, integrations or a blog are better served by Webflow's CMS. See <a href="../blog/webflow-vs-framer.html">Webflow vs Framer</a>.</p>
+"""),
+  ],
+  faq=[("How long does an AI startup website take?", "Usually 3 to 6 weeks for 5 to 10 pages, or 1 to 2 weeks for a single launch page."),
+       ("Should an AI startup use a template?", "Before product-market fit, a template can be enough. Once you raise or sell to larger buyers, a custom site that shows your real product usually converts better."),
+       ("Do you design product UI as well?", "Yes. We design the product interface in Figma, so the website and the app look like one product."),
+  ],
+),
+dict(
+  slug="b2b-website-design",
+  title="B2B Website Design: How to Build a Site That Generates Leads | Sorvel",
+  h1="B2B website design: how to build a site that generates leads",
+  card="What B2B buyers look for, the pages every B2B site needs, and the details that turn visits into qualified leads.",
+  desc="B2B website design guide: what B2B buyers look for, the pages and proof every B2B site needs, lead capture that works, and typical costs and timelines.",
+  cat="Niches", date="2026-11-01", svc=("websites", "website design and development"),
+  cover=("seo-watch", "A business team reviewing a B2B website"),
+  lead="B2B buyers rarely buy on the first visit. They come back several times, often with colleagues, and the website has to answer a different question each time.",
+  sections=[
+("short", "The short answer", """
+<p>A B2B website that generates leads makes it clear who you help and with what, proves it with case studies and named clients, and gives every type of visitor a next step, from a guide to download to a quote request.</p>
+<p>A professional B2B website usually costs <b>$5,000 to $20,000</b>. With our studio it starts <b>from $6,900</b>.</p>
+"""),
+("pages", "Pages every B2B website needs", """
+<div class="post-table" role="region" aria-label="B2B website pages" tabindex="0"><table>
+<thead><tr><th>Page</th><th>The question it answers</th></tr></thead>
+<tbody>
+<tr><td><b>Home</b></td><td>Is this for a company like mine?</td></tr>
+<tr><td><b>Solutions or industries</b></td><td>Do they understand my situation?</td></tr>
+<tr><td><b>Case studies</b></td><td>Have they done this before?</td></tr>
+<tr><td><b>Pricing or how we work</b></td><td>What will it cost and what happens next?</td></tr>
+<tr><td><b>About</b></td><td>Who will I actually work with?</td></tr>
+<tr><td><b>Contact</b></td><td>How do I start with the least effort?</td></tr>
+</tbody></table></div>
+"""),
+("proof", "Proof beats promises", """
+<ul>
+<li><b>Case studies with specifics:</b> the problem, what was done and what changed.</li>
+<li><b>Named logos and quotes</b> from real people with their role.</li>
+<li><b>Certifications and partners</b> that matter in your industry.</li>
+</ul>
+[[cta]]
+"""),
+("leads", "Lead capture that works for B2B", """
+<ul>
+<li>A short contact form: name, email, company, one question. Every extra field costs leads.</li>
+<li>A softer option for early researchers, like a guide, checklist or pricing sheet.</li>
+<li>Clear response time, for example "reply within one business day".</li>
+<li>CRM integration, so no lead sits in an inbox.</li>
+</ul>
+"""),
+  ],
+  faq=[("How many pages does a B2B website need?", "Most start with 6 to 12 pages and grow through case studies, industry pages and articles."),
+       ("Which platform is best for a B2B website?", "Webflow is a strong default for marketing teams that publish often. WordPress fits when you need complex functionality."),
+       ("How long does a B2B website take?", "Usually 4 to 8 weeks, depending on the number of layouts and how ready the content is."),
+  ],
+),
+dict(
+  slug="law-firm-website-design",
+  title="Law Firm Website Design: What Clients Look For in 2026 | Sorvel",
+  h1="Law firm website design: what clients look for before they call",
+  card="Trust signals, practice area pages, calls to action and local SEO for law firm websites that turn visitors into consultations.",
+  desc="Law firm website design guide for 2026: the trust signals clients look for, practice area pages, call-first design, local SEO and what a law firm website costs.",
+  cat="Niches", date="2026-11-01", svc=("websites", "website design and development"),
+  cover=("seo-cover", "A professional reviewing a law firm website on a laptop"),
+  lead="People looking for a lawyer are often stressed and in a hurry. A good law firm website calms them down and makes the next step obvious.",
+  sections=[
+("short", "The short answer", """
+<p>A law firm website that brings in consultations shows who you help and where, proves experience early, and puts a way to call or book on every screen, especially on mobile. Practice area pages and local SEO bring most of the search traffic.</p>
+"""),
+("trust", "Trust signals clients look for", """
+<ul>
+<li>Real photos of the attorneys, with bar admissions and years of practice.</li>
+<li>Results and reviews, within the rules of your bar.</li>
+<li>Languages spoken, if you serve more than one community.</li>
+<li>A clear, calm tone with no legal jargon in the headlines.</li>
+</ul>
+"""),
+("pages", "Practice area pages", """
+<p>Each practice area deserves its own page: what it covers, typical situations, how the process works and an FAQ. These pages rank for searches like "DUI lawyer in Houston" and give visitors confidence you handle their exact case.</p>
+[[cta]]
+"""),
+("mobile", "Call-first on mobile", """
+<p>Most legal searches happen on phones. A sticky call button, a short contact form and click-to-call numbers matter more than any animation. We built this approach for a bilingual criminal defense landing page in Webflow.</p>
+"""),
+  ],
+  faq=[("How much does a law firm website cost?", "A custom site with a professional team usually costs $5,000 to $20,000; with our studio from $6,900, or a single landing page from $2,400."),
+       ("Which platform is best for a law firm?", "Webflow or WordPress. Both handle practice area pages, blogs and local SEO well."),
+       ("Can the site be bilingual?", "Yes. We design and build sites in two or more languages."),
+  ],
+),
+dict(
+  slug="travel-website-design",
+  title="Travel and Tourism Website Design: A Practical Guide | Sorvel",
+  h1="Travel and tourism website design: a practical guide",
+  card="How destination and tour websites inspire visitors, help them plan and turn interest into bookings and inquiries.",
+  desc="Travel and tourism website design guide: inspiring imagery, experience finders, itineraries, booking and inquiry flows, mobile planning and typical costs.",
+  cat="Niches", date="2026-11-01", svc=("websites", "website design and development"),
+  cover=("mig-cover", "A designer working on a travel website layout"),
+  lead="Travel websites sell a feeling first and a plan second. The best ones move visitors from 'that looks amazing' to 'send me a quote' without friction.",
+  sections=[
+("short", "The short answer", """
+<p>A travel or tourism website needs big, honest imagery, a quick way to find the right experience, ready-made itineraries or tours with dates and prices, and a short inquiry or booking form. Most visitors plan on a phone, so mobile comes first.</p>
+"""),
+("flow", "From inspiration to inquiry", """
+<ol>
+<li><b>Inspire:</b> a strong hero, the destination's story and real photos.</li>
+<li><b>Explore:</b> filters by interest, such as diving, culture, family or adventure.</li>
+<li><b>Plan:</b> itineraries with duration, level and price.</li>
+<li><b>Act:</b> a short inquiry or booking form with a clear reply time.</li>
+</ol>
+"""),
+("details", "Details that build confidence", """
+<ul>
+<li>Best time to visit, how to get there and practical info.</li>
+<li>Named reviews with the trip and date.</li>
+<li>Responsible travel and local partners, if they matter to your audience.</li>
+</ul>
+[[cta]]
+"""),
+("platform", "Platform choice", """
+<p>WordPress suits content-rich destination sites with many tours and booking plugins. Webflow suits design-led tour operators that want an easy CMS without plugin maintenance.</p>
+"""),
+  ],
+  faq=[("How much does a travel website cost?", "A custom design and build usually costs $5,000 to $20,000 with a professional team; with our studio from $6,900."),
+       ("Can you add online booking?", "Yes, through booking integrations or a simple inquiry flow, depending on how you sell trips."),
+       ("Do you design for mobile first?", "Yes. Every page is designed for phones in Figma, not squeezed afterwards."),
+  ],
+),
+dict(
+  slug="landing-page-cost",
+  title="How Much Does a Landing Page Cost in 2026? | Sorvel",
+  h1="How much a landing page costs in 2026",
+  card="Price ranges for landing pages, what moves the cost, and when one page is enough versus a full website.",
+  desc="How much a landing page costs in 2026: price ranges from templates to studios, what drives the cost, timelines and how to get a fixed quote.",
+  cat="Pricing", date="2026-11-01", svc=("websites", "website design and development"),
+  cover=("saas-cover", "A designer building a landing page on a large screen"),
+  lead="A landing page has one job: turn a specific visitor into a lead or a sign-up. What you pay depends on how much strategy, design and testing goes into that one job.",
+  sections=[
+("short", "The short answer", """
+<p>A professionally designed and built landing page usually costs <b>$1,500 to $6,000</b>. With our studio a landing page starts <b>from $2,400</b>, extra pages on the same design from $600, and it takes <b>1 to 2 weeks</b>.</p>
+"""),
+("table", "Typical price ranges", """
+<div class="post-table" role="region" aria-label="Landing page price ranges" tabindex="0"><table>
+<thead><tr><th>Option</th><th>Typical cost</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td><b>Template or page builder, yourself</b></td><td>$0 to $300</td><td>Quick tests</td></tr>
+<tr><td><b>Freelancer</b></td><td>$500 to $3,000</td><td>Simple campaigns</td></tr>
+<tr><td><b>Senior studio</b></td><td>$2,400 to $6,000</td><td>Paid traffic, launches, lead generation</td></tr>
+<tr><td><b>CRO agency with testing</b></td><td>$5,000+ per month</td><td>High ad spend, ongoing tests</td></tr>
+</tbody></table></div>
+"""),
+("drivers", "What moves the price", """
+<ul>
+<li>Copywriting and the offer, if they are not ready.</li>
+<li>Custom illustrations, product scenes or motion.</li>
+<li>Integrations: CRM, booking, analytics and ad tracking.</li>
+<li>A/B testing and monthly optimisation after launch.</li>
+</ul>
+[[cta]]
+"""),
+("enough", "When one page is enough", """
+<p>One page is enough for a launch, a waitlist, a single offer or paid ads to one audience. When you sell several services or need SEO traffic, a full website works better. See <a href="../blog/webflow-website-cost.html">what a Webflow website costs</a>.</p>
+"""),
+  ],
+  faq=[("How long does a landing page take?", "Usually 1 to 2 weeks from brief to launch."),
+       ("Which platform is best for a landing page?", "Framer or Webflow for speed and easy edits; WordPress if the rest of your site already runs on it."),
+       ("Do you write the copy?", "We can shape the structure and messaging. Full copywriting can be added to the scope."),
+  ],
+),
+dict(
+  slug="framer-website-cost",
+  title="How Much Does a Framer Website Cost in 2026? | Sorvel",
+  h1="How much a Framer website costs in 2026",
+  card="What a Framer site costs with templates, freelancers and studios, plan fees after launch and when Framer is the right choice.",
+  desc="How much a Framer website costs in 2026: template, freelancer and studio price ranges, Framer plan fees, timelines and when to choose Framer over Webflow.",
+  cat="Pricing", date="2026-11-01", svc=("websites", "website design and development"),
+  cover=("saas-team", "A startup team reviewing their new Framer website"),
+  lead="Framer has become the fastest way for startups to launch a polished, motion-rich site. Here is what it costs to do it properly.",
+  sections=[
+("short", "The short answer", """
+<p>A custom Framer website with a professional team usually costs <b>$3,000 to $15,000</b> and takes <b>2 to 5 weeks</b>. With our studio a website starts <b>from $6,900</b> and a single Framer landing page <b>from $2,400</b>. Framer also charges a monthly site plan; check Framer's pricing page for current fees.</p>
+"""),
+("table", "Typical price ranges", """
+<div class="post-table" role="region" aria-label="Framer website price ranges" tabindex="0"><table>
+<thead><tr><th>Option</th><th>Typical cost</th><th>Time</th></tr></thead>
+<tbody>
+<tr><td><b>Template, set up yourself</b></td><td>$0 to $150</td><td>Days</td></tr>
+<tr><td><b>Freelancer</b></td><td>$1,000 to $5,000</td><td>1 to 3 weeks</td></tr>
+<tr><td><b>Senior studio, custom design</b></td><td>$3,000 to $15,000</td><td>2 to 5 weeks</td></tr>
+</tbody></table></div>
+"""),
+("drivers", "What moves the price", """
+<ul>
+<li>Number of unique layouts, not the number of pages.</li>
+<li>Custom motion, scroll effects and interactive components.</li>
+<li>CMS collections such as a blog, team or case studies.</li>
+<li>Copy, imagery and brand work if they are not ready.</li>
+</ul>
+[[cta]]
+"""),
+("when", "When Framer is the right choice", """
+<p>Framer fits launch sites, startups and design-led brands with simple content. If you plan to publish a lot or need complex CMS structures, Webflow is usually the better long-term choice. See <a href="../blog/webflow-vs-framer.html">Webflow vs Framer</a>.</p>
+"""),
+  ],
+  faq=[("Is Framer cheaper than Webflow?", "A Framer build is often a little cheaper and faster for the same design. Plan fees are in a similar range."),
+       ("Can my team edit a Framer site?", "Yes. Framer's editor is easy for text and image changes, and CMS items can be added without a designer."),
+       ("Is Framer good for SEO?", "For most marketing sites, yes: fast pages, editable meta tags and sitemaps."),
+  ],
+),
+dict(
+  slug="shopify-store-design",
+  title="Shopify Store Design: What Makes a Store Convert in 2026 | Sorvel",
+  h1="Shopify store design: what makes a store convert in 2026",
+  card="Homepage, collection and product page design that sells, plus how a custom Shopify design project works.",
+  desc="Shopify store design guide: homepage, collection and product pages that convert, mobile shopping, trust signals and how a custom Shopify design project works.",
+  cat="E-commerce", date="2026-11-01", svc=("websites", "website design and development"),
+  cover=("mig-plan", "A team reviewing an online store design"),
+  lead="Most Shopify stores use the same themes. The ones that stand out are designed around how their customers actually shop.",
+  sections=[
+("short", "The short answer", """
+<p>A Shopify store converts when shoppers find the right product in a few taps, understand why it is worth the price and trust the store enough to buy. That comes down to clear navigation, strong product pages and visible trust signals, designed for mobile first.</p>
+"""),
+("pages", "The pages that matter most", """
+<div class="post-table" role="region" aria-label="Key Shopify pages" tabindex="0"><table>
+<thead><tr><th>Page</th><th>What it must do</th></tr></thead>
+<tbody>
+<tr><td><b>Homepage</b></td><td>Say what you sell and for whom, and send shoppers to the right collection</td></tr>
+<tr><td><b>Collection</b></td><td>Make filtering and comparing easy</td></tr>
+<tr><td><b>Product</b></td><td>Show the product well, answer questions, make variants clear</td></tr>
+<tr><td><b>Cart</b></td><td>Remove doubt with delivery, returns and totals</td></tr>
+</tbody></table></div>
+"""),
+("trust", "Trust signals that sell", """
+<ul>
+<li>Reviews with photos close to the buy button.</li>
+<li>Delivery times, returns and size guides on the product page.</li>
+<li>Real photography over stock images.</li>
+</ul>
+[[cta]]
+"""),
+("how", "How a custom Shopify design project works", """
+<p>We design the store in Figma for desktop and mobile: homepage, collection, product, cart and key content pages. Then it is built as a custom Shopify theme. Recent examples include a personalised children's book store and a varsity jacket brand with 44 colourways linked by swatches.</p>
+"""),
+  ],
+  faq=[("How long does a Shopify store design take?", "Usually 2 to 4 weeks for the design, depending on the number of page templates."),
+       ("Do I need a custom theme?", "Not always. A well-chosen theme with custom sections works for many stores; fully custom design suits brands that want to stand out."),
+       ("Do you design for mobile?", "Yes. Most store traffic is mobile, so every template is designed for phones first."),
+  ],
+),
+dict(
+  slug="webflow-vs-wix",
+  title="Webflow vs Wix in 2026: Which Is Better for a Business Website? | Sorvel",
+  h1="Webflow vs Wix: which is better for a business website in 2026",
+  card="Design freedom, SEO, speed, CMS and cost compared, with clear advice on when Wix is enough and when to move to Webflow.",
+  desc="Webflow vs Wix for business websites in 2026: design freedom, SEO, speed, CMS, editing and cost compared, with advice on when to choose each.",
+  cat="Platforms", date="2026-11-01", svc=("webflow-agency", "Webflow design and development"),
+  cover=("seo-watch", "A business owner comparing website platforms"),
+  lead="Wix is easy to start with. Webflow is built for teams that want a professional, custom site they can grow. Here is how to choose.",
+  sections=[
+("short", "The short answer", """
+<p><b>Choose Wix</b> if you are building a small site yourself and want the simplest setup. <b>Choose Webflow</b> if you want a custom design, clean code, strong SEO control and a CMS that scales as your business grows.</p>
+"""),
+("table", "Webflow vs Wix at a glance", """
+<div class="post-table" role="region" aria-label="Webflow and Wix compared" tabindex="0"><table>
+<thead><tr><th></th><th>Webflow</th><th>Wix</th></tr></thead>
+<tbody>
+<tr><td><b>Best for</b></td><td>Custom, professional sites</td><td>DIY small business sites</td></tr>
+<tr><td><b>Design freedom</b></td><td>Full control</td><td>Template-based</td></tr>
+<tr><td><b>CMS</b></td><td>Structured collections</td><td>Basic</td></tr>
+<tr><td><b>SEO control</b></td><td>Fine control of meta, schema, redirects</td><td>Covers the basics</td></tr>
+<tr><td><b>Learning curve</b></td><td>Steeper, usually built by a pro</td><td>Very easy</td></tr>
+</tbody></table></div>
+"""),
+("move", "Signs it is time to move from Wix", """
+<ul>
+<li>The site looks like a template and no longer fits your brand.</li>
+<li>You need more pages, a blog or case studies with structure.</li>
+<li>SEO matters and you want more control.</li>
+</ul>
+[[cta]]
+"""),
+("how", "Moving from Wix to Webflow", """
+<p>A move means rebuilding the design in Webflow, importing content and adding 301 redirects so you keep your rankings. The same principles apply as in our <a href="../blog/migrate-wordpress-to-webflow-without-losing-seo.html">WordPress to Webflow checklist</a>.</p>
+"""),
+  ],
+  faq=[("Is Webflow better than Wix for SEO?", "Webflow gives more control over structure, schema and redirects, which matters as a site grows."),
+       ("Is Webflow more expensive than Wix?", "Plans cost more and a professional build is usually needed, but you get a custom site that scales."),
+       ("Can you move my Wix site to Webflow?", "Yes, with a content import and redirect map to keep rankings."),
+  ],
+),
+dict(
+  slug="website-brief-template",
+  title="How to Write a Website Brief (Free Template) | Sorvel",
+  h1="How to write a website brief, with a free template",
+  card="What to include in a website brief so you get accurate quotes, plus a copy-ready template.",
+  desc="How to write a website design brief: the questions to answer, what to include so agencies can quote accurately, and a free copy-ready brief template.",
+  cat="Hiring", date="2026-11-01", svc=("websites", "website design and development"),
+  cover=("mig-plan", "A team writing a website brief together"),
+  lead="A clear brief gets you accurate quotes, fewer revisions and a better website. It does not need to be long, just specific.",
+  sections=[
+("short", "The short answer", """
+<p>A good website brief answers seven questions: who you are, who the site is for, what visitors should do, which pages you need, what content you already have, which sites you like and why, and your budget and deadline.</p>
+"""),
+("template", "Copy-ready brief template", """
+<ol>
+<li><b>About us:</b> what we do in one or two sentences.</li>
+<li><b>Audience:</b> who we sell to and what they care about.</li>
+<li><b>Goal:</b> the main action, such as demo requests, sales or calls.</li>
+<li><b>Pages:</b> list of page types, for example home, services, pricing, case studies, blog, contact.</li>
+<li><b>Content:</b> what is ready (copy, photos, logo) and what we need help with.</li>
+<li><b>References:</b> two or three websites we like, and what we like about them.</li>
+<li><b>Platform and integrations:</b> Webflow, Framer, WordPress or open; CRM, booking, analytics.</li>
+<li><b>Budget and timeline:</b> a range and a launch date.</li>
+</ol>
+[[cta]]
+"""),
+("mistakes", "Common brief mistakes", """
+<ul>
+<li>Listing features without saying what the site should achieve.</li>
+<li>No budget range, which makes quotes impossible to compare.</li>
+<li>"Modern and clean" as the only design direction. Show examples instead.</li>
+</ul>
+"""),
+  ],
+  faq=[("How long should a website brief be?", "One or two pages is plenty if it answers the key questions."),
+       ("Should I include a budget?", "Yes. A range helps agencies suggest the right scope instead of guessing."),
+       ("Can I send a brief to Sorvel?", "Yes. Use the brief form on the contact page and you get a written plan with a fixed price within 24 hours."),
+  ],
+),
+dict(
+  slug="how-to-choose-a-web-design-agency",
+  title="How to Choose a Web Design Agency: 12 Questions to Ask | Sorvel",
+  h1="How to choose a web design agency: 12 questions to ask",
+  card="The questions that separate reliable web design partners from risky ones, and the red flags to watch for.",
+  desc="How to choose a web design agency in 2026: 12 questions to ask before you hire, red flags to watch for and how to compare proposals fairly.",
+  cat="Hiring", date="2026-11-01", svc=("websites", "website design and development"),
+  cover=("seo-cover", "A founder comparing web design agency proposals"),
+  lead="Most website projects that go wrong could have been spotted before they started. These questions help you find out early.",
+  sections=[
+("short", "The short answer", """
+<p>Choose the agency that shows relevant live work, explains a clear process, gives a written fixed scope and price, and tells you who will do the work. Price matters, but unclear scope is what usually makes a project expensive.</p>
+"""),
+("questions", "12 questions to ask", """
+<ol>
+<li>Can I see live websites you built, not only mockups?</li>
+<li>Have you worked in my industry or with similar buyers?</li>
+<li>Who designs and who builds my site day to day?</li>
+<li>What is included in the price, and what costs extra?</li>
+<li>How many revision rounds are included?</li>
+<li>What is the timeline, and what do you need from us to keep it?</li>
+<li>Which platform do you recommend and why?</li>
+<li>Will my team be able to edit the site without you?</li>
+<li>How do you handle SEO, speed and accessibility?</li>
+<li>Who owns the design files, domain and accounts?</li>
+<li>What happens after launch: support, fixes, training?</li>
+<li>Where can I read verified client reviews?</li>
+</ol>
+[[cta]]
+"""),
+("flags", "Red flags", """
+<ul>
+<li>No written scope, or a price that changes after the first call.</li>
+<li>Only mockups, no live sites.</li>
+<li>Vague answers about who does the work.</li>
+<li>Keeping your domain or accounts in their name.</li>
+</ul>
+<p>Comparing an agency and a freelancer? See <a href="../blog/web-design-agency-vs-freelancer.html">agency vs freelancer</a>.</p>
+"""),
+  ],
+  faq=[("How many agencies should I talk to?", "Two or three is usually enough to compare scope, price and fit."),
+       ("Is the cheapest quote a risk?", "Often. Very low quotes usually leave out content, SEO, redirects or testing."),
+       ("How does Sorvel quote?", "You send a short brief and get a written plan with scope, timeline and a fixed price within 24 hours."),
+  ],
+),
 ]
