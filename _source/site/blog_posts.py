@@ -330,12 +330,37 @@ dict(
 ("switch", "Can you switch later?", """
 <p>Yes, but it is a rebuild, not an export. Pages have to be recreated and the CMS content moved with redirects in place. Picking the right platform first is cheaper than switching a year later, which is why we ask how your team will publish before we recommend one.</p>
 """),
+('wf-takeaways', 'Summary', """
+<div class="post-note"><b>In one minute</b><p>Both are excellent. Framer is faster for launch sites and motion. Webflow is stronger for content, SEO at scale and larger teams. Count your content types and editors, and the choice usually becomes obvious.</p></div>
+"""),
+('wf-scenarios', 'Real scenarios', """
+<div class="post-table" role="region" aria-label="Webflow or Framer by scenario" tabindex="0"><table>
+<thead><tr><th>Scenario</th><th>Better fit</th></tr></thead>
+<tbody>
+<tr><td>Pre-seed startup, waitlist and 3 pages</td><td>Framer</td></tr>
+<tr><td>Series A SaaS with blog, changelog and integrations</td><td>Webflow</td></tr>
+<tr><td>Design studio portfolio with heavy motion</td><td>Framer</td></tr>
+<tr><td>Fintech firm with gated pages and many editors</td><td>Webflow</td></tr>
+<tr><td>Campaign landing page for paid ads</td><td>Either</td></tr>
+</tbody></table></div>
+"""),
+('wf-editing', 'Editing and collaboration', """
+<ul>
+<li><b>Framer:</b> edit on the canvas like a design file. Quick for designers; non-designers can move things they should not.</li>
+<li><b>Webflow:</b> a separate editor for content people, so copy and CMS items change without touching the layout. Better for larger teams.</li>
+</ul>
+"""),
+('wf-performance', 'Speed and SEO in practice', """
+<p>Both platforms host on fast global networks and can reach good Core Web Vitals. In practice, speed depends on image sizes, fonts and how much motion is used. For SEO, both handle titles, descriptions and sitemaps; Webflow gives more control over structured CMS pages, redirects and schema when the site grows into hundreds of pages.</p>
+"""),
   ],
   faq=[("Is Framer better than Webflow for SEO?", "For small sites both are fine. For sites that grow through content, Webflow gives more control over CMS structure, redirects and schema, which matters at scale."),
        ("Is Framer cheaper than Webflow?", "The site plans are in a similar range. A Framer build is often a little cheaper and faster, while Webflow pays back on content-heavy sites."),
        ("Which is easier for a marketing team to edit?", "Framer is easier for designers and quick text changes. Webflow's editor is safer for larger teams because people edit content without touching the layout."),
        ("Can you build on both?", "Yes. We design in Figma and build in Webflow or Framer, and recommend one after looking at your content and team."),
        ("Should a SaaS startup use Webflow or Framer?", "Pre-launch or seed with a few pages: Framer. Series A and later with a blog, changelog and SEO plans: Webflow."),
+       ('Can I start on Framer and move to Webflow later?', 'Yes, but it is a rebuild. If you expect to grow content quickly, starting on Webflow saves that cost.'),
+       ('Which is better for a portfolio?', 'Framer, in most cases, thanks to its motion tools and fast editing.'),
   ],
 ),
 dict(
@@ -386,12 +411,39 @@ dict(
 ("cost", "Total cost of ownership", """
 <p>WordPress looks cheaper because hosting can cost a few dollars a month. The real cost is maintenance: updates, plugin licences, security, fixes after updates and developer time for small changes. Webflow costs more per month but usually less per year once that time is counted. Moving an existing site from WordPress to Webflow with us starts <b>from $2,900</b>; see <a href="../blog/wordpress-to-webflow-migration-cost.html">what a migration costs</a>.</p>
 """),
+('ww-takeaways', 'Summary', """
+<div class="post-note"><b>In one minute</b><p>For a marketing website your team edits itself, Webflow usually costs less to run and stays faster and more consistent. WordPress is still the right tool for complex functionality, large stores and teams with a developer on hand.</p></div>
+"""),
+('ww-team', 'How your team will work with each', """
+<div class="post-table" role="region" aria-label="Team workflow on Webflow and WordPress" tabindex="0"><table>
+<thead><tr><th>Task</th><th>Webflow</th><th>WordPress</th></tr></thead>
+<tbody>
+<tr><td><b>Publish a blog post</b></td><td>CMS editor, no developer</td><td>Block editor, no developer</td></tr>
+<tr><td><b>Launch a new landing page</b></td><td>Built from existing components</td><td>Page builder or developer</td></tr>
+<tr><td><b>Change the navigation</b></td><td>Designer in minutes</td><td>Theme settings or developer</td></tr>
+<tr><td><b>Keep the site secure</b></td><td>Handled by Webflow</td><td>Your job: updates and backups</td></tr>
+</tbody></table></div>
+"""),
+('ww-migrate', 'Moving from WordPress to Webflow', """
+<p>A careful migration keeps your rankings: a content audit, a CMS model for posts and categories, content import, a full 301 redirect map, carried-over meta data and checks in Search Console after launch. It usually takes 1 to 3 weeks for a typical company site. Details in <a href="../blog/migrate-wordpress-to-webflow-without-losing-seo.html">how to migrate without losing SEO</a> and <a href="../blog/wordpress-to-webflow-migration-cost.html">what a migration costs</a>.</p>
+"""),
+('ww-checklist', 'Quick decision checklist', """
+<ul>
+<li>Do you need a store with many products or custom checkout? Choose WordPress or Shopify.</li>
+<li>Do you need memberships, courses or bookings with custom rules? Choose WordPress.</li>
+<li>Is your site mainly pages, a blog, case studies and forms? Choose Webflow.</li>
+<li>Do you want no plugin updates and no security work? Choose Webflow.</li>
+<li>Do you have a developer who maintains the site? WordPress becomes easier.</li>
+</ul>
+"""),
   ],
   faq=[("Is Webflow better than WordPress for SEO?", "Both can rank equally well. Webflow has the SEO basics built in and tends to be faster out of the box; WordPress reaches the same level with good plugins and hosting."),
        ("Is Webflow more expensive than WordPress?", "Per month, usually yes. Per year, often not, because there is no maintenance, plugin licences or developer time for routine changes."),
        ("Can I move from WordPress to Webflow without losing rankings?", "Yes, with a content audit, a full 301 redirect map, kept meta data and checks in Search Console after launch."),
        ("Is WordPress more secure than Webflow?", "WordPress can be secure, but security is your job. Webflow handles hosting, SSL and platform updates for you, so there are no plugins to patch."),
        ("Do you build on both?", "Yes. We design in Figma and build in Webflow, Framer or WordPress, and recommend the platform after looking at what your site needs to do."),
+       ('How long does a WordPress to Webflow migration take?', 'Usually 1 to 3 weeks for a typical company site with a blog.'),
+       ('Can I keep my blog posts when moving to Webflow?', 'Yes. Posts are imported into the Webflow CMS with their images, categories and metadata.'),
   ],
 ),
 dict(
@@ -439,12 +491,46 @@ dict(
 <li>Ask for a fixed price with written scope and timeline before work starts.</li>
 </ul>
 """),
+('wc-takeaways', 'Summary', """
+<div class="post-note"><b>In one minute</b><p>The price of a Webflow website follows unique layouts, CMS structure and motion. Templates are cheap but limiting; a senior studio gives you a custom site your team can grow. Running costs are a monthly plan, with no plugins or servers to maintain.</p></div>
+"""),
+('wc-breakdown', 'Where the money goes', """
+<div class="post-table" role="region" aria-label="Webflow website cost breakdown" tabindex="0"><table>
+<thead><tr><th>Part</th><th>Typical share</th><th>Includes</th></tr></thead>
+<tbody>
+<tr><td><b>Discovery and structure</b></td><td>10 to 15%</td><td>Goals, sitemap, page outlines</td></tr>
+<tr><td><b>Design in Figma</b></td><td>35 to 40%</td><td>Desktop and mobile, design system</td></tr>
+<tr><td><b>Webflow build</b></td><td>30 to 35%</td><td>Clean classes, CMS, interactions</td></tr>
+<tr><td><b>SEO and launch</b></td><td>10 to 15%</td><td>Meta, schema, redirects, QA, training</td></tr>
+</tbody></table></div>
+"""),
+('wc-examples', 'Example scopes and prices', """
+<div class="post-table" role="region" aria-label="Webflow website example scopes" tabindex="0"><table>
+<thead><tr><th>Scope</th><th>Typical studio price</th><th>Time</th></tr></thead>
+<tbody>
+<tr><td>Single landing page</td><td>From $2,400</td><td>1 to 2 weeks</td></tr>
+<tr><td>5 to 8 page startup site with blog</td><td>From $6,900</td><td>3 to 5 weeks</td></tr>
+<tr><td>10 to 20 pages, several CMS collections</td><td>$10,000 to $20,000</td><td>5 to 8 weeks</td></tr>
+<tr><td>WordPress to Webflow move, same design</td><td>From $2,900</td><td>1 to 3 weeks</td></tr>
+</tbody></table></div>
+"""),
+('wc-process', 'How a Webflow project runs', """
+<ol>
+<li>Brief and a written plan with a fixed price within 24 hours.</li>
+<li>Structure and messaging agreed.</li>
+<li>Design in Figma for desktop and mobile.</li>
+<li>Native Webflow build with a clean class system and CMS.</li>
+<li>Launch, SEO checks and a short training for your team.</li>
+</ol>
+"""),
   ],
   faq=[("Is Webflow expensive?", "The plan is a monthly fee, but there is no hosting, plugin or maintenance bill on top. Over a year, many teams spend less than on a WordPress site they keep patching."),
        ("How long does a Webflow website take?", "Usually 3 to 6 weeks for 5 to 10 custom pages, depending on how ready the content is."),
        ("Can I edit the site myself after launch?", "Yes. Your team edits text, images and CMS items in the Webflow editor without touching the design."),
        ("Is a Webflow template good enough?", "For testing an idea, yes. Once the site has to sell a real product, a custom design usually converts better and is easier to grow."),
        ("Do you offer fixed prices?", "Yes. You get a written plan with scope, timeline and a fixed price within 24 hours."),
+       ('Do I need a monthly plan after launch?', 'Webflow requires a site plan for hosting. Design support afterwards is optional.'),
+       ('Can you build from our existing Figma design?', 'Yes. We build in Webflow from your designs, or design from scratch.'),
   ],
 ),
 dict(
@@ -484,11 +570,38 @@ dict(
 ("us", "Where Sorvel fits", """
 <p>Sorvel is a small senior studio. The founder, Mykola Tanasiichuk, has designed and built websites for more than 11 years, with 600+ completed projects and 600+ five-star reviews on Upwork and Fiverr Pro. You get one accountable lead, a fixed price and a site built in Webflow, Framer or WordPress. See <a href="../reviews.html">client reviews</a>.</p>
 """),
+('af-takeaways', 'Summary', """
+<div class="post-note"><b>In one minute</b><p>Freelancers suit small, clear jobs. Large agencies suit big projects with many specialists. A small senior studio gives you agency-level quality, one accountable lead and a startup-friendly price. Whoever you hire, ask for live work, a written scope and ownership of everything.</p></div>
+"""),
+('af-risk', 'How to reduce the risk with any option', """
+<ul>
+<li><b>Pay in stages</b> tied to delivered work: design approved, site built, site launched.</li>
+<li><b>Get a written scope</b> with pages, features, revisions and timeline.</li>
+<li><b>Own your accounts:</b> domain, Webflow or hosting, Figma files, analytics.</li>
+<li><b>Ask for a handover:</b> a short training and documentation.</li>
+<li><b>Check verified reviews</b> on platforms with real transactions.</li>
+</ul>
+"""),
+('af-when', 'Which to choose by situation', """
+<div class="post-table" role="region" aria-label="Choosing by situation" tabindex="0"><table>
+<thead><tr><th>Situation</th><th>Best fit</th></tr></thead>
+<tbody>
+<tr><td>One landing page, copy ready, tight budget</td><td>Freelancer</td></tr>
+<tr><td>Startup or growing company, 5 to 20 pages, needs to look established</td><td>Senior studio</td></tr>
+<tr><td>Enterprise rebrand with research, content and media</td><td>Large agency</td></tr>
+<tr><td>Ongoing design and development every month</td><td>Studio on a monthly plan</td></tr>
+</tbody></table></div>
+"""),
+('af-questions', 'Questions to ask before you hire', """
+<p>Ask who does the work, what is included, how revisions work, who owns the files and what happens after launch. The full list is in <a href="../blog/how-to-choose-a-web-design-agency.html">how to choose a web design agency</a>.</p>
+"""),
   ],
   faq=[("Is a freelancer cheaper than an agency?", "Usually yes, by half or more. The trade-off is capacity and range of skills, which matters more as the project grows."),
        ("What is a boutique web design studio?", "A small team led by a senior designer or developer who does the key work personally, with agency-level process and a smaller overhead."),
        ("How do I know a web designer is reliable?", "Look for live sites, verified platform reviews, a written scope and clear ownership of files and accounts."),
        ("How much should I budget for a business website?", "For a custom site with a professional team, plan $5,000 to $20,000 depending on pages, CMS and content."),
+       ('Can a small studio handle a large site?', 'Yes, for most marketing sites. Very large projects with many workstreams may need a bigger agency.'),
+       ('Is it safe to hire remotely?', 'Yes, with a written scope, staged payments, verified reviews and ownership of your accounts.'),
   ],
 ),
 dict(
@@ -536,11 +649,43 @@ dict(
 </ul>
 <p>If your content is growing fast but you do not need WordPress features, Webflow is often the middle ground. See <a href="../blog/webflow-vs-framer.html">Webflow vs Framer</a> and <a href="../blog/webflow-vs-wordpress.html">Webflow vs WordPress</a>.</p>
 """),
+('fw-takeaways', 'Summary', """
+<div class="post-note"><b>In one minute</b><p>Framer wins on speed of launch, design quality and zero maintenance. WordPress wins on functionality: stores, memberships, complex content and thousands of plugins. If you need neither extreme, Webflow is often the middle ground.</p></div>
+"""),
+('fw-cost', 'Total cost over a year', """
+<div class="post-table" role="region" aria-label="Framer and WordPress yearly cost" tabindex="0"><table>
+<thead><tr><th></th><th>Framer</th><th>WordPress</th></tr></thead>
+<tbody>
+<tr><td><b>Build</b></td><td>Often faster, so usually a bit cheaper</td><td>Varies widely with theme and plugins</td></tr>
+<tr><td><b>Hosting</b></td><td>Included in the site plan</td><td>Separate, from cheap shared to managed hosting</td></tr>
+<tr><td><b>Plugins and licences</b></td><td>Rarely needed</td><td>Often several paid plugins</td></tr>
+<tr><td><b>Maintenance</b></td><td>None</td><td>Updates, backups, security, fixes</td></tr>
+</tbody></table></div>
+<p>WordPress looks cheaper per month, but maintenance time and plugin licences add up. Framer costs more per month and usually less per year for a marketing site.</p>
+"""),
+('fw-editing', 'Editing day to day', """
+<ul>
+<li><b>Framer:</b> edit text and images directly on the page, add CMS items such as blog posts in a simple panel. Very easy for designers and marketers.</li>
+<li><b>WordPress:</b> the block editor or a page builder. Flexible, but layouts can drift as more people edit, and updates sometimes break things.</li>
+</ul>
+"""),
+('fw-switch', 'Moving from WordPress to Framer', """
+<ol>
+<li>List the pages and posts that bring traffic and links.</li>
+<li>Design the new site in Figma and rebuild it in Framer.</li>
+<li>Import blog content into the Framer CMS.</li>
+<li>Set up 301 redirects for every changed URL.</li>
+<li>Check Search Console for a few weeks after launch.</li>
+</ol>
+<p>The same checklist as in our <a href="../blog/migrate-wordpress-to-webflow-without-losing-seo.html">WordPress to Webflow guide</a> applies.</p>
+"""),
   ],
   faq=[("Is Framer good for SEO?", "Yes for most marketing sites: clean pages, fast loading, editable meta tags and sitemaps. Very large content sites get more control on Webflow or WordPress."),
        ("Is Framer cheaper than WordPress?", "Framer has a monthly plan but no maintenance costs. WordPress hosting is cheap, but updates, plugins and fixes add up over a year."),
        ("Can I move from WordPress to Framer?", "Yes. Pages are rebuilt in Framer, blog content is imported and old URLs get 301 redirects to keep rankings."),
        ("Do you build on both?", "Yes. We design in Figma and build in Framer, Webflow or WordPress depending on what the site needs."),
+       ('How much does a Framer website cost?', 'Usually $3,000 to $15,000 with a professional team; see our Framer website cost guide for the breakdown.'),
+       ('Is WordPress better for large blogs?', 'For very large content libraries with custom logic, yes. For a normal company blog, Framer or Webflow is enough.'),
   ],
 ),
 dict(
@@ -584,11 +729,44 @@ dict(
 </ul>
 <p>The full checklist is in <a href="../blog/migrate-wordpress-to-webflow-without-losing-seo.html">how to migrate without losing SEO</a>.</p>
 """),
+('rd-takeaways', 'Summary', """
+<div class="post-note"><b>In one minute</b><p>A redesign costs more when the structure, message or platform changes, and less when only the look changes. Protect your SEO with redirects and kept metadata. Measure the current site first, so you know what the redesign must improve.</p></div>
+"""),
+('rd-breakdown', 'Where a redesign budget goes', """
+<div class="post-table" role="region" aria-label="Redesign cost breakdown" tabindex="0"><table>
+<thead><tr><th>Part</th><th>Typical share</th><th>Includes</th></tr></thead>
+<tbody>
+<tr><td><b>Audit and strategy</b></td><td>10 to 15%</td><td>Analytics review, content audit, goals</td></tr>
+<tr><td><b>Structure and messaging</b></td><td>10 to 15%</td><td>Sitemap, page outlines, key messages</td></tr>
+<tr><td><b>Design</b></td><td>30 to 35%</td><td>Desktop and mobile in Figma, components</td></tr>
+<tr><td><b>Build</b></td><td>25 to 35%</td><td>Pages, CMS, integrations</td></tr>
+<tr><td><b>SEO protection and launch</b></td><td>5 to 10%</td><td>Redirects, metadata, QA, monitoring</td></tr>
+</tbody></table></div>
+"""),
+('rd-process', 'How a redesign runs', """
+<ol>
+<li><b>Audit:</b> what works today, what does not, and which pages bring traffic.</li>
+<li><b>Plan:</b> structure, messaging and the scope, with a fixed price.</li>
+<li><b>Design:</b> key pages first, then the rest on the same components.</li>
+<li><b>Build:</b> on the same platform or a new one.</li>
+<li><b>Launch:</b> redirects, checks and a few weeks of monitoring.</li>
+</ol>
+"""),
+('rd-measure', 'How to measure success', """
+<ul>
+<li>Conversion rate on key pages: demo requests, inquiries, sales.</li>
+<li>Organic traffic and rankings before and after.</li>
+<li>Page speed and Core Web Vitals.</li>
+<li>Time your team spends on updates.</li>
+</ul>
+"""),
   ],
   faq=[("How long does a website redesign take?", "Usually 3 to 8 weeks, depending on the number of layouts, content readiness and whether the platform changes."),
        ("Will a redesign hurt my SEO?", "Not if URLs are kept or redirected, metadata is carried over and indexing is checked after launch."),
        ("Should I redesign or just refresh?", "Refresh if the structure and message still work. Redesign if visitors do not convert or the site no longer fits the business."),
        ("Can you redesign my site on the same platform?", "Yes. We redesign on Webflow, Framer or WordPress, or move you to a better fit if it makes sense."),
+       ('Should we redesign and change platform at the same time?', 'Often yes, as it saves building twice. Plan SEO carefully if URLs change.'),
+       ('Can we redesign in stages?', 'Yes. Start with the homepage and key landing pages, then the rest on the same design system.'),
   ],
 ),
 dict(
@@ -1243,10 +1421,44 @@ dict(
 ("how", "Moving from Wix to Webflow", """
 <p>A move means rebuilding the design in Webflow, importing content and adding 301 redirects so you keep your rankings. The same principles apply as in our <a href="../blog/migrate-wordpress-to-webflow-without-losing-seo.html">WordPress to Webflow checklist</a>.</p>
 """),
+('wx-takeaways', 'Summary', """
+<div class="post-note"><b>In one minute</b><p>Wix is the quicker start for a small site you build yourself. Webflow is the better base for a custom, professional site that has to grow, rank and be edited by a team. Most businesses outgrow Wix when content, SEO and brand start to matter.</p></div>
+"""),
+('wx-cost', 'Cost over the first year', """
+<div class="post-table" role="region" aria-label="Webflow and Wix first-year cost" tabindex="0"><table>
+<thead><tr><th></th><th>Webflow</th><th>Wix</th></tr></thead>
+<tbody>
+<tr><td><b>Build</b></td><td>Usually a professional build, from a few thousand dollars</td><td>Often DIY, or a low-cost freelancer</td></tr>
+<tr><td><b>Monthly plan</b></td><td>Site plan, plus editor seats if needed</td><td>Premium plan</td></tr>
+<tr><td><b>Maintenance</b></td><td>None, hosting included</td><td>None, hosting included</td></tr>
+<tr><td><b>Cost to grow</b></td><td>Low: new pages on existing components</td><td>Higher once the template limits you</td></tr>
+</tbody></table></div>
+<p>Plan prices change, so check both platforms' pricing pages. The bigger difference is what happens when the business grows: a custom Webflow site scales with you, while many Wix sites end up rebuilt.</p>
+"""),
+('wx-seo', 'SEO and speed compared', """
+<ul>
+<li><b>Webflow</b> gives full control over page titles, meta descriptions, Open Graph, schema markup, 301 redirects, canonical URLs and clean HTML structure.</li>
+<li><b>Wix</b> covers the basics well for small sites, with guided SEO settings, but offers less control over structure and code.</li>
+<li><b>Speed</b> depends mostly on the build. A clean Webflow build with optimised images usually reaches good Core Web Vitals; template-heavy Wix sites can be slower.</li>
+</ul>
+"""),
+('wx-who', 'Which one fits your business', """
+<div class="post-table" role="region" aria-label="Who should choose Webflow or Wix" tabindex="0"><table>
+<thead><tr><th>You are</th><th>Better fit</th></tr></thead>
+<tbody>
+<tr><td>A sole trader building a simple site yourself</td><td>Wix</td></tr>
+<tr><td>A startup or SaaS company that needs to look established</td><td>Webflow</td></tr>
+<tr><td>A business that publishes articles, case studies or resources</td><td>Webflow</td></tr>
+<tr><td>A marketing team that runs campaigns and landing pages</td><td>Webflow</td></tr>
+<tr><td>Testing an idea for a few weeks</td><td>Wix</td></tr>
+</tbody></table></div>
+"""),
   ],
   faq=[("Is Webflow better than Wix for SEO?", "Webflow gives more control over structure, schema and redirects, which matters as a site grows."),
        ("Is Webflow more expensive than Wix?", "Plans cost more and a professional build is usually needed, but you get a custom site that scales."),
        ("Can you move my Wix site to Webflow?", "Yes, with a content import and redirect map to keep rankings."),
+       ('How long does it take to move from Wix to Webflow?', 'Usually 2 to 5 weeks, depending on the number of pages and whether you redesign at the same time.'),
+       ('Will I lose my Google rankings when moving from Wix?', 'Not if every changed URL gets a 301 redirect, metadata is carried over and indexing is checked after launch.'),
   ],
 ),
 dict(
@@ -1282,10 +1494,39 @@ dict(
 <li>"Modern and clean" as the only design direction. Show examples instead.</li>
 </ul>
 """),
+('bt-takeaways', 'Summary', """
+<div class="post-note"><b>In one minute</b><p>A brief does not need to be long. Answer the eight questions in the template, attach two or three reference sites and give a budget range. That is enough for any good team to give you an accurate fixed quote.</p></div>
+"""),
+('bt-example', 'A filled-in example', """
+<ol>
+<li><b>About us:</b> B2B software that helps restaurants track licences and staff training.</li>
+<li><b>Audience:</b> owners and operations managers of restaurant groups in the US.</li>
+<li><b>Goal:</b> demo requests.</li>
+<li><b>Pages:</b> home, features, pricing, about, contact, blog.</li>
+<li><b>Content:</b> logo and product screenshots ready; homepage copy needs help.</li>
+<li><b>References:</b> two SaaS sites we like for their clear product screens.</li>
+<li><b>Platform:</b> Webflow; HubSpot forms.</li>
+<li><b>Budget and timeline:</b> $7,000 to $10,000; launch in six weeks.</li>
+</ol>
+"""),
+('bt-content', 'What content to prepare', """
+<ul>
+<li>Logo files and brand colours, if you have them.</li>
+<li>Product screenshots or photos.</li>
+<li>Team photos and short bios.</li>
+<li>Client logos, testimonials and case study notes.</li>
+<li>Any existing copy, even rough, and the questions customers ask most.</li>
+</ul>
+"""),
+('bt-next', 'What happens after you send a brief', """
+<p>A good team replies with questions, then a written plan: scope, pages, timeline, price and what they need from you. With us you get that plan within 24 hours, with a fixed price. If the scope changes later, the price changes only with your approval.</p>
+"""),
   ],
   faq=[("How long should a website brief be?", "One or two pages is plenty if it answers the key questions."),
        ("Should I include a budget?", "Yes. A range helps agencies suggest the right scope instead of guessing."),
        ("Can I send a brief to Sorvel?", "Yes. Use the brief form on the contact page and you get a written plan with a fixed price within 24 hours."),
+       ("What if I don't know which pages I need?", 'List your goals and audience; a good team will suggest the pages.'),
+       ('Do I need a sitemap before the brief?', 'No. A rough list of page types is enough.'),
   ],
 ),
 dict(
