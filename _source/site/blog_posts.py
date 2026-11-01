@@ -756,123 +756,286 @@ dict(
 ),
 dict(
   slug="landing-page-cost",
-  title="How Much Does a Landing Page Cost in 2026? | Sorvel",
+  title="How Much Does a Landing Page Cost in 2026? Full Price Guide | Sorvel",
   h1="How much a landing page costs in 2026",
-  card="Price ranges for landing pages, what moves the cost, and when one page is enough versus a full website.",
-  desc="How much a landing page costs in 2026: price ranges from templates to studios, what drives the cost, timelines and how to get a fixed quote.",
+  card="Price ranges for landing pages from templates to studios, a line-by-line cost breakdown, hidden costs and how to get a fixed quote.",
+  desc="How much a landing page costs in 2026: price ranges from DIY to studios, a cost breakdown by task, what drives the price, hidden costs, timelines and how to get a fixed quote.",
   cat="Pricing", date="2026-11-01", svc=("websites", "website design and development"),
   cover=("c-landing-page-cost", "An entrepreneur reviewing charts on a desktop computer"),
-  lead="A landing page has one job: turn a specific visitor into a lead or a sign-up. What you pay depends on how much strategy, design and testing goes into that one job.",
+  lead="A landing page has one job: turn a specific visitor into a lead, a sign-up or a sale. What you pay depends on how much strategy, design, building and testing goes into that one job. Here is the full picture, with real numbers.",
   sections=[
 ("short", "The short answer", """
-<p>A professionally designed and built landing page usually costs <b>$1,500 to $6,000</b>. With our studio a landing page starts <b>from $2,400</b>, extra pages on the same design from $600, and it takes <b>1 to 2 weeks</b>.</p>
+<p>A professionally designed and built landing page usually costs <b>$1,500 to $6,000</b> in 2026. A template you set up yourself can cost almost nothing, and a page from a conversion agency with ongoing testing can cost <b>$5,000 or more every month</b>.</p>
+<p>With our studio a landing page starts <b>from $2,400</b>, each extra page on the same design <b>from $600</b>, and it is usually live in <b>1 to 2 weeks</b>.</p>
+<div class="post-note"><b>Key takeaways</b><p>You pay for strategy and conversion work, not for the number of sections. A cheap page that does not convert is the most expensive option once you add up ad spend. Always ask what is included: copy, integrations, tracking and revisions.</p></div>
 """),
-("table", "Typical price ranges", """
+("table", "Landing page price ranges in 2026", """
 <div class="post-table" role="region" aria-label="Landing page price ranges" tabindex="0"><table>
-<thead><tr><th>Option</th><th>Typical cost</th><th>Best for</th></tr></thead>
+<thead><tr><th>Option</th><th>Typical cost</th><th>Time</th><th>Best for</th></tr></thead>
 <tbody>
-<tr><td><b>Template or page builder, yourself</b></td><td>$0 to $300</td><td>Quick tests</td></tr>
-<tr><td><b>Freelancer</b></td><td>$500 to $3,000</td><td>Simple campaigns</td></tr>
-<tr><td><b>Senior studio</b></td><td>$2,400 to $6,000</td><td>Paid traffic, launches, lead generation</td></tr>
-<tr><td><b>CRO agency with testing</b></td><td>$5,000+ per month</td><td>High ad spend, ongoing tests</td></tr>
+<tr><td><b>Template or page builder, yourself</b></td><td>$0 to $300 plus your time</td><td>1 to 5 days</td><td>Quick tests, very small budgets</td></tr>
+<tr><td><b>Freelancer</b></td><td>$500 to $3,000</td><td>1 to 3 weeks</td><td>Simple campaigns with ready copy</td></tr>
+<tr><td><b>Senior studio</b></td><td>$2,400 to $6,000</td><td>1 to 2 weeks</td><td>Paid traffic, launches, lead generation</td></tr>
+<tr><td><b>CRO agency with testing</b></td><td>$5,000+ per month</td><td>Ongoing</td><td>High ad spend, constant experiments</td></tr>
 </tbody></table></div>
+<p>The ranges overlap because "landing page" means very different things. A one-screen waitlist page and a long sales page for a $10,000 service are both landing pages, but the second needs far more thinking, writing and proof.</p>
 """),
-("drivers", "What moves the price", """
+("breakdown", "Where the money goes: a cost breakdown", """
+<p>For a typical studio landing page, the budget is roughly split like this:</p>
+<div class="post-table" role="region" aria-label="Landing page cost breakdown" tabindex="0"><table>
+<thead><tr><th>Task</th><th>Share of budget</th><th>What it covers</th></tr></thead>
+<tbody>
+<tr><td><b>Strategy and structure</b></td><td>15 to 20%</td><td>Audience, offer, objections, section order, the one action</td></tr>
+<tr><td><b>Copy and messaging</b></td><td>10 to 20%</td><td>Headline, proof points, calls to action (if not supplied)</td></tr>
+<tr><td><b>Design</b></td><td>30 to 35%</td><td>Desktop and mobile layouts in Figma, visuals, product scenes</td></tr>
+<tr><td><b>Build</b></td><td>25 to 30%</td><td>Webflow, Framer or WordPress, responsive, fast, editable</td></tr>
+<tr><td><b>Integrations and QA</b></td><td>5 to 10%</td><td>Forms, CRM, analytics, ad pixels, testing on devices</td></tr>
+</tbody></table></div>
+<p>When a quote is much lower than the market, one of these lines is usually missing. Most often it is strategy and QA, which are exactly the parts that decide whether the page converts and whether your tracking works.</p>
+"""),
+("drivers", "What moves the price up or down", """
 <ul>
-<li>Copywriting and the offer, if they are not ready.</li>
-<li>Custom illustrations, product scenes or motion.</li>
-<li>Integrations: CRM, booking, analytics and ad tracking.</li>
-<li>A/B testing and monthly optimisation after launch.</li>
+<li><b>Copy.</b> Ready, tested copy keeps the price down. Writing from scratch adds time, especially for complex B2B offers.</li>
+<li><b>Length and proof.</b> A short page for a free trial needs less than a long page that sells a high-ticket service with case studies, pricing and FAQ.</li>
+<li><b>Custom visuals.</b> Product scenes, illustrations and motion take longer than photography and simple layouts.</li>
+<li><b>Integrations.</b> HubSpot, Salesforce, booking tools, payment links and event tracking each add setup and testing.</li>
+<li><b>Variants.</b> Different pages for each ad campaign or audience are cheaper when they share one design system.</li>
+<li><b>Languages.</b> A second language means a second round of layout checks, not only translation.</li>
+<li><b>Platform.</b> Framer and Webflow are usually faster to build than a custom WordPress theme.</li>
 </ul>
 [[cta]]
 """),
-("enough", "When one page is enough", """
-<p>One page is enough for a launch, a waitlist, a single offer or paid ads to one audience. When you sell several services or need SEO traffic, a full website works better. See <a href="../blog/webflow-website-cost.html">what a Webflow website costs</a>.</p>
+("hidden", "Hidden costs to plan for", """
+<ul>
+<li><b>Platform plan.</b> Webflow and Framer charge a monthly site plan. Check their current pricing pages.</li>
+<li><b>Tools.</b> Form tools, schedulers, CRM seats and analytics can add a small monthly cost.</li>
+<li><b>Ad spend.</b> The page is only half of a campaign. A page that converts at 4% instead of 2% halves your cost per lead.</li>
+<li><b>Changes after launch.</b> New offers and tests are easier if the page is built on reusable components your team can edit.</li>
+</ul>
+"""),
+("roi", "How to judge if a landing page is worth it", """
+<p>Work backwards from your numbers. If you spend $3,000 a month on ads and the page converts at 2%, moving it to 3% gives you 50% more leads for the same budget. For most businesses running paid traffic, a well-built page pays for itself within the first one or two months.</p>
+<p>If you have no traffic plan yet, start smaller: one strong page, a clear offer and basic tracking. Then improve it with real data instead of guessing.</p>
+"""),
+("process", "How a landing page project runs", """
+<ol>
+<li><b>Brief.</b> You share the offer, audience, traffic source and examples you like.</li>
+<li><b>Structure.</b> A section-by-section outline, agreed before design starts.</li>
+<li><b>Design.</b> Desktop and mobile layouts in Figma, with one round of feedback built in.</li>
+<li><b>Build.</b> The page goes live in Webflow, Framer or WordPress with forms and tracking connected.</li>
+<li><b>Launch and check.</b> Speed, forms, pixels and mobile tested before traffic arrives.</li>
+</ol>
+<p>A page built this way is a good base for A/B tests later. See our <a href="../services/landing-pages.html">landing pages service</a>.</p>
+"""),
+("checklist", "Checklist before you ask for quotes", """
+<ul>
+<li>What is the single action you want visitors to take?</li>
+<li>Where will traffic come from: ads, email, social or search?</li>
+<li>Do you have copy, or do you need it written?</li>
+<li>Which tools must the form connect to?</li>
+<li>Two or three landing pages you like, and why.</li>
+<li>Your budget range and launch date.</li>
+</ul>
+<p>Need a starting point? Use our <a href="../blog/website-brief-template.html">website brief template</a>.</p>
+"""),
+("mistakes", "Common mistakes that waste budget", """
+<ul>
+<li>Sending ad traffic to the homepage instead of a page built for that offer.</li>
+<li>Several competing calls to action on one page.</li>
+<li>A desktop-only design when most ad clicks come from phones.</li>
+<li>No conversion tracking, so nobody knows what works.</li>
+<li>Choosing the cheapest quote and rebuilding the page three months later.</li>
+</ul>
 """),
   ],
-  faq=[("How long does a landing page take?", "Usually 1 to 2 weeks from brief to launch."),
+  faq=[("How much does a landing page cost?", "Usually $1,500 to $6,000 with a professional team in 2026. With our studio from $2,400, extra pages on the same design from $600."),
+       ("How long does a landing page take?", "Usually 1 to 2 weeks from brief to launch, depending on copy and integrations."),
+       ("Is a landing page cheaper than a website?", "Yes, usually. A full website with several layouts and a CMS starts around $6,900 with our studio."),
        ("Which platform is best for a landing page?", "Framer or Webflow for speed and easy edits; WordPress if the rest of your site already runs on it."),
-       ("Do you write the copy?", "We can shape the structure and messaging. Full copywriting can be added to the scope."),
+       ("Do you write the copy?", "We shape the structure and messaging. Full copywriting can be added to the scope."),
+       ("Can you connect the form to our CRM?", "Yes. HubSpot, Salesforce, Pipedrive, email tools and booking tools are all common."),
+       ("Do you offer A/B testing?", "Yes, as a monthly optimisation plan after launch, when the page has enough traffic to test."),
   ],
 ),
 dict(
   slug="framer-website-cost",
-  title="How Much Does a Framer Website Cost in 2026? | Sorvel",
+  title="How Much Does a Framer Website Cost in 2026? Full Price Guide | Sorvel",
   h1="How much a Framer website costs in 2026",
-  card="What a Framer site costs with templates, freelancers and studios, plan fees after launch and when Framer is the right choice.",
-  desc="How much a Framer website costs in 2026: template, freelancer and studio price ranges, Framer plan fees, timelines and when to choose Framer over Webflow.",
+  card="What a Framer site costs with templates, freelancers and studios, a cost breakdown, plan fees after launch and when Framer is the right choice.",
+  desc="How much a Framer website costs in 2026: template, freelancer and studio price ranges, a cost breakdown, Framer plan fees, timelines, hidden costs and when to choose Framer over Webflow.",
   cat="Pricing", date="2026-11-01", svc=("websites", "website design and development"),
   cover=("c-framer-website-cost", "A designer sketching on a graphics tablet"),
-  lead="Framer has become the fastest way for startups to launch a polished, motion-rich site. Here is what it costs to do it properly.",
+  lead="Framer has become one of the fastest ways for startups and design-led brands to launch a polished, motion-rich website. Here is what it costs to do it properly, and what to watch for.",
   sections=[
 ("short", "The short answer", """
-<p>A custom Framer website with a professional team usually costs <b>$3,000 to $15,000</b> and takes <b>2 to 5 weeks</b>. With our studio a website starts <b>from $6,900</b> and a single Framer landing page <b>from $2,400</b>. Framer also charges a monthly site plan; check Framer's pricing page for current fees.</p>
+<p>A custom Framer website built by a professional team usually costs <b>$3,000 to $15,000</b> in 2026 and takes <b>2 to 5 weeks</b>. A single Framer landing page usually costs <b>$1,500 to $5,000</b>.</p>
+<p>With our studio a Framer website starts <b>from $6,900</b> and a Framer landing page <b>from $2,400</b>. On top of that, Framer charges a monthly site plan; check Framer's pricing page for current fees.</p>
+<div class="post-note"><b>Key takeaways</b><p>Framer is usually a little faster and cheaper to build than Webflow for the same design. The price follows the number of unique layouts and the amount of custom motion, not the number of pages.</p></div>
 """),
-("table", "Typical price ranges", """
+("table", "Framer website price ranges", """
 <div class="post-table" role="region" aria-label="Framer website price ranges" tabindex="0"><table>
-<thead><tr><th>Option</th><th>Typical cost</th><th>Time</th></tr></thead>
+<thead><tr><th>Option</th><th>Typical cost</th><th>Time</th><th>Best for</th></tr></thead>
 <tbody>
-<tr><td><b>Template, set up yourself</b></td><td>$0 to $150</td><td>Days</td></tr>
-<tr><td><b>Freelancer</b></td><td>$1,000 to $5,000</td><td>1 to 3 weeks</td></tr>
-<tr><td><b>Senior studio, custom design</b></td><td>$3,000 to $15,000</td><td>2 to 5 weeks</td></tr>
+<tr><td><b>Template, set up yourself</b></td><td>$0 to $150</td><td>Days</td><td>Testing an idea</td></tr>
+<tr><td><b>Template, customised by a freelancer</b></td><td>$800 to $3,000</td><td>1 to 2 weeks</td><td>Small sites on a tight budget</td></tr>
+<tr><td><b>Custom design and build, senior studio</b></td><td>$3,000 to $15,000</td><td>2 to 5 weeks</td><td>Startups, SaaS, design-led brands</td></tr>
+<tr><td><b>Large site, big agency</b></td><td>$20,000+</td><td>1 to 3 months</td><td>Many languages, complex CMS, big teams</td></tr>
 </tbody></table></div>
 """),
-("drivers", "What moves the price", """
+("breakdown", "What you pay for", """
+<div class="post-table" role="region" aria-label="Framer project cost breakdown" tabindex="0"><table>
+<thead><tr><th>Part of the project</th><th>Typical share</th><th>Includes</th></tr></thead>
+<tbody>
+<tr><td><b>Discovery and structure</b></td><td>10 to 15%</td><td>Goals, sitemap, page outlines</td></tr>
+<tr><td><b>Design in Figma</b></td><td>35 to 40%</td><td>Desktop and mobile, components, style system</td></tr>
+<tr><td><b>Framer build</b></td><td>30 to 35%</td><td>Pages, breakpoints, CMS, interactions</td></tr>
+<tr><td><b>Motion and polish</b></td><td>5 to 15%</td><td>Scroll effects, hover states, transitions</td></tr>
+<tr><td><b>SEO and launch</b></td><td>5 to 10%</td><td>Meta tags, redirects, analytics, domain, QA</td></tr>
+</tbody></table></div>
+<p>Some freelancers design directly in Framer and skip Figma. That can be cheaper for very small sites, but a Figma design makes it easier to agree on the look before the build and to reuse the design later.</p>
+"""),
+("drivers", "What drives the price", """
 <ul>
-<li>Number of unique layouts, not the number of pages.</li>
-<li>Custom motion, scroll effects and interactive components.</li>
-<li>CMS collections such as a blog, team or case studies.</li>
-<li>Copy, imagery and brand work if they are not ready.</li>
+<li><b>Unique layouts.</b> Home, product, pricing, about and blog post templates each take design and build time. Extra pages on an existing layout are cheap.</li>
+<li><b>Motion.</b> Subtle fades are quick. Scroll-driven product stories and interactive components take days.</li>
+<li><b>CMS.</b> A simple blog is easy. Several linked collections, such as case studies, team and integrations, take more planning.</li>
+<li><b>Content.</b> Ready copy and images keep the price down. Copywriting, illustration and photography add to it.</li>
+<li><b>Languages.</b> Framer supports localisation, but every language needs layout checks.</li>
 </ul>
 [[cta]]
 """),
-("when", "When Framer is the right choice", """
-<p>Framer fits launch sites, startups and design-led brands with simple content. If you plan to publish a lot or need complex CMS structures, Webflow is usually the better long-term choice. See <a href="../blog/webflow-vs-framer.html">Webflow vs Framer</a>.</p>
+("running", "Costs after launch", """
+<ul>
+<li><b>Framer site plan,</b> billed monthly or yearly, depending on traffic, CMS limits and features.</li>
+<li><b>Domain,</b> usually a small yearly fee with your registrar.</li>
+<li><b>Tools,</b> such as form handling, analytics or a scheduler, if you use paid versions.</li>
+<li><b>Updates.</b> Your team can edit text, images and CMS items itself. New layouts or sections are usually a small paid task or part of a monthly plan.</li>
+</ul>
+<p>There are no plugins to update and no servers to maintain, which is where Framer and Webflow save money compared with WordPress over a year.</p>
+"""),
+("when", "When Framer is the right choice, and when it is not", """
+<div class="post-table" role="region" aria-label="When to choose Framer" tabindex="0"><table>
+<thead><tr><th>Choose Framer if</th><th>Consider Webflow or WordPress if</th></tr></thead>
+<tbody>
+<tr><td>You need to launch in weeks</td><td>You publish a lot of content every week</td></tr>
+<tr><td>Motion and visuals are part of the story</td><td>You need complex CMS structures and filters</td></tr>
+<tr><td>Your designer will update the site</td><td>Many editors with roles work on the site</td></tr>
+<tr><td>The content is simple: pages plus a blog</td><td>You need memberships, a store or custom logic</td></tr>
+</tbody></table></div>
+<p>More detail in <a href="../blog/webflow-vs-framer.html">Webflow vs Framer</a> and <a href="../blog/framer-vs-wordpress.html">Framer vs WordPress</a>.</p>
+"""),
+("process", "How a Framer project runs with us", """
+<ol>
+<li><b>Brief and plan.</b> You send a short brief and get a written plan with scope, timeline and a fixed price within 24 hours.</li>
+<li><b>Design.</b> Every page designed in Figma for desktop and mobile, on one set of components.</li>
+<li><b>Build.</b> The design is built natively in Framer with breakpoints, CMS and motion.</li>
+<li><b>Launch.</b> SEO basics, redirects, analytics and testing on real devices.</li>
+<li><b>Handover.</b> A short guide so your team can edit the site on its own.</li>
+</ol>
+"""),
+("mistakes", "Mistakes that make Framer sites expensive", """
+<ul>
+<li>Starting the build before the content and structure are agreed.</li>
+<li>Adding heavy motion everywhere, which slows the site and the project.</li>
+<li>Choosing Framer for a site that will soon need a large CMS.</li>
+<li>Skipping mobile design and fixing it after launch.</li>
+</ul>
 """),
   ],
-  faq=[("Is Framer cheaper than Webflow?", "A Framer build is often a little cheaper and faster for the same design. Plan fees are in a similar range."),
-       ("Can my team edit a Framer site?", "Yes. Framer's editor is easy for text and image changes, and CMS items can be added without a designer."),
-       ("Is Framer good for SEO?", "For most marketing sites, yes: fast pages, editable meta tags and sitemaps."),
+  faq=[("How much does a Framer website cost?", "Usually $3,000 to $15,000 with a professional team. With our studio from $6,900, or from $2,400 for a single landing page."),
+       ("Is Framer cheaper than Webflow?", "A Framer build is often a little cheaper and faster for the same design. Plan fees are in a similar range."),
+       ("How long does a Framer site take?", "Usually 2 to 5 weeks for a custom multi-page site, 1 to 2 weeks for a landing page."),
+       ("Can my team edit a Framer site?", "Yes. Text, images and CMS items can be edited without a designer."),
+       ("Is Framer good for SEO?", "For most marketing sites, yes: fast pages, editable meta tags, sitemaps and clean URLs."),
+       ("Can you move my site to Framer?", "Yes. Pages are rebuilt in Framer, blog content is imported and old URLs get 301 redirects."),
   ],
 ),
 dict(
   slug="shopify-store-design",
-  title="Shopify Store Design: What Makes a Store Convert in 2026 | Sorvel",
+  title="Shopify Store Design in 2026: What Makes a Store Convert | Sorvel",
   h1="Shopify store design: what makes a store convert in 2026",
-  card="Homepage, collection and product page design that sells, plus how a custom Shopify design project works.",
-  desc="Shopify store design guide: homepage, collection and product pages that convert, mobile shopping, trust signals and how a custom Shopify design project works.",
+  card="Homepage, collection and product page design that sells, mobile shopping, trust signals, costs and how a custom Shopify design project works.",
+  desc="Shopify store design guide for 2026: homepage, collection, product and cart design that converts, mobile-first shopping, trust signals, theme vs custom design and typical costs.",
   cat="E-commerce", date="2026-11-01", svc=("websites", "website design and development"),
   cover=("c-shopify-store-design", "An online store owner preparing orders in her shop"),
-  lead="Most Shopify stores use the same themes. The ones that stand out are designed around how their customers actually shop.",
+  lead="Most Shopify stores start from the same themes, so they end up looking alike. The stores that sell more are designed around how their customers actually shop, page by page. Here is what that means in practice.",
   sections=[
 ("short", "The short answer", """
-<p>A Shopify store converts when shoppers find the right product in a few taps, understand why it is worth the price and trust the store enough to buy. That comes down to clear navigation, strong product pages and visible trust signals, designed for mobile first.</p>
+<p>A Shopify store converts when shoppers find the right product in a few taps, understand why it is worth the price and trust the store enough to buy. That comes down to clear navigation, strong product pages, visible trust signals and a smooth cart, all designed for mobile first.</p>
+<div class="post-note"><b>Key takeaways</b><p>Design the product page first, because that is where the decision happens. Put reviews, delivery and returns next to the buy button. Most store traffic is mobile, so the phone layout is the main layout.</p></div>
 """),
 ("pages", "The pages that matter most", """
 <div class="post-table" role="region" aria-label="Key Shopify pages" tabindex="0"><table>
-<thead><tr><th>Page</th><th>What it must do</th></tr></thead>
+<thead><tr><th>Page</th><th>What it must do</th><th>Common mistake</th></tr></thead>
 <tbody>
-<tr><td><b>Homepage</b></td><td>Say what you sell and for whom, and send shoppers to the right collection</td></tr>
-<tr><td><b>Collection</b></td><td>Make filtering and comparing easy</td></tr>
-<tr><td><b>Product</b></td><td>Show the product well, answer questions, make variants clear</td></tr>
-<tr><td><b>Cart</b></td><td>Remove doubt with delivery, returns and totals</td></tr>
+<tr><td><b>Homepage</b></td><td>Say what you sell and for whom, and route shoppers to the right collection</td><td>A slideshow of banners with no clear path</td></tr>
+<tr><td><b>Collection</b></td><td>Make filtering, sorting and comparing easy</td><td>Too many products with no filters on mobile</td></tr>
+<tr><td><b>Product</b></td><td>Show the product well, answer questions, make variants clear</td><td>Small photos and key details hidden in tabs</td></tr>
+<tr><td><b>Cart</b></td><td>Remove doubt with totals, delivery and returns</td><td>Surprise costs at the last step</td></tr>
+<tr><td><b>About and FAQ</b></td><td>Build trust in a brand people do not know yet</td><td>Generic copy with no real people or story</td></tr>
 </tbody></table></div>
+"""),
+("product", "Designing a product page that sells", """
+<ul>
+<li><b>Large, real photos</b> with zoom, plus at least one image that shows scale or the product in use.</li>
+<li><b>A clear price and variants.</b> Colour swatches beat dropdowns when colour matters.</li>
+<li><b>Benefits before specs.</b> Three short reasons to buy, then the details.</li>
+<li><b>Delivery and returns</b> next to the button, not only in the footer.</li>
+<li><b>Reviews with photos</b> close to the top.</li>
+<li><b>A sticky add-to-cart button</b> on mobile.</li>
+</ul>
+<p>For a varsity jacket brand we linked 44 colourways with swatches on one product page, so shoppers could compare without leaving it.</p>
+[[cta]]
+"""),
+("mobile", "Mobile first, not mobile later", """
+<p>On most stores the majority of visits come from phones. Design decisions should start there: thumb-friendly buttons, filters that open in a drawer, short forms and fast-loading images. A store that looks great on desktop and awkward on a phone loses the majority of its shoppers.</p>
 """),
 ("trust", "Trust signals that sell", """
 <ul>
-<li>Reviews with photos close to the buy button.</li>
-<li>Delivery times, returns and size guides on the product page.</li>
-<li>Real photography over stock images.</li>
+<li>Reviews and ratings, ideally with customer photos.</li>
+<li>Clear delivery times, costs and returns.</li>
+<li>Secure checkout and familiar payment options shown before checkout.</li>
+<li>Real people behind the brand: founders, makers, the team.</li>
+<li>Press mentions or partner logos if you have them.</li>
 </ul>
-[[cta]]
 """),
-("how", "How a custom Shopify design project works", """
-<p>We design the store in Figma for desktop and mobile: homepage, collection, product, cart and key content pages. Then it is built as a custom Shopify theme. Recent examples include a personalised children's book store and a varsity jacket brand with 44 colourways linked by swatches.</p>
+("theme", "Theme or custom design?", """
+<div class="post-table" role="region" aria-label="Shopify theme vs custom design" tabindex="0"><table>
+<thead><tr><th></th><th>Theme with custom sections</th><th>Fully custom design</th></tr></thead>
+<tbody>
+<tr><td><b>Typical cost</b></td><td>Lower</td><td>Higher</td></tr>
+<tr><td><b>Time</b></td><td>1 to 3 weeks</td><td>4 to 8 weeks</td></tr>
+<tr><td><b>Brand fit</b></td><td>Good, within the theme's limits</td><td>Built around your brand</td></tr>
+<tr><td><b>Best for</b></td><td>New stores, small catalogues</td><td>Brands that need to stand out</td></tr>
+</tbody></table></div>
+<p>Many stores do well with a strong theme plus custom-designed key pages: homepage, product page and collection. That keeps the cost down where it matters less.</p>
+"""),
+("process", "How a Shopify design project works with us", """
+<ol>
+<li><b>Brief.</b> Your products, customers, competitors and stores you like.</li>
+<li><b>Structure.</b> Navigation, collections and the homepage flow.</li>
+<li><b>Design in Figma.</b> Homepage, collection, product, cart and content pages, for desktop and mobile.</li>
+<li><b>Build.</b> A custom Shopify theme or custom sections in your current theme.</li>
+<li><b>Launch.</b> Testing on real devices, speed checks and a handover.</li>
+</ol>
+<p>Recent examples include a store for personalised children's books where the child is the hero, and a fashion store with 44 colourways.</p>
+"""),
+("mistakes", "Common Shopify design mistakes", """
+<ul>
+<li>Too many apps that slow the store down.</li>
+<li>Pop-ups that cover the product on mobile.</li>
+<li>Hiding shipping costs until checkout.</li>
+<li>Stock photos instead of real product photography.</li>
+<li>A homepage that tries to show every product at once.</li>
+</ul>
 """),
   ],
-  faq=[("How long does a Shopify store design take?", "Usually 2 to 4 weeks for the design, depending on the number of page templates."),
-       ("Do I need a custom theme?", "Not always. A well-chosen theme with custom sections works for many stores; fully custom design suits brands that want to stand out."),
-       ("Do you design for mobile?", "Yes. Most store traffic is mobile, so every template is designed for phones first."),
+  faq=[("How much does Shopify store design cost?", "It depends on the number of page templates and whether you use a theme or a fully custom design. We quote a fixed price after a short brief."),
+       ("How long does a Shopify store design take?", "Usually 2 to 4 weeks for the design, and a similar time for the build."),
+       ("Do I need a custom theme?", "Not always. A good theme with custom key pages works for many stores; fully custom design suits brands that need to stand out."),
+       ("Can you redesign my existing store?", "Yes. We keep your products, customers and SEO, and redesign the pages that matter most."),
+       ("Do you design for mobile?", "Yes. Every template is designed for phones first."),
+       ("Can you move my store from WooCommerce to Shopify?", "Yes, as part of a redesign, with products, customers and redirects moved over."),
   ],
 ),
 dict(
@@ -957,46 +1120,79 @@ dict(
 ),
 dict(
   slug="how-to-choose-a-web-design-agency",
-  title="How to Choose a Web Design Agency: 12 Questions to Ask | Sorvel",
+  title="How to Choose a Web Design Agency in 2026: 12 Questions to Ask | Sorvel",
   h1="How to choose a web design agency: 12 questions to ask",
-  card="The questions that separate reliable web design partners from risky ones, and the red flags to watch for.",
-  desc="How to choose a web design agency in 2026: 12 questions to ask before you hire, red flags to watch for and how to compare proposals fairly.",
+  card="The questions that separate reliable web design partners from risky ones, how to compare proposals and the red flags to watch for.",
+  desc="How to choose a web design agency in 2026: where to find good options, 12 questions to ask before you hire, how to compare proposals fairly and the red flags to watch for.",
   cat="Hiring", date="2026-11-01", svc=("websites", "website design and development"),
   cover=("c-how-to-choose-a-web-design-agency", "Two business partners reviewing a proposal on a laptop"),
-  lead="Most website projects that go wrong could have been spotted before they started. These questions help you find out early.",
+  lead="Most website projects that go wrong could have been spotted before they started. A few good questions, asked early, show you who will deliver and who will disappear halfway. Here is how to choose with confidence.",
   sections=[
 ("short", "The short answer", """
-<p>Choose the agency that shows relevant live work, explains a clear process, gives a written fixed scope and price, and tells you who will do the work. Price matters, but unclear scope is what usually makes a project expensive.</p>
+<p>Choose the agency that shows relevant live work, explains a clear process, gives you a written fixed scope and price, and tells you exactly who will do the work. Price matters, but unclear scope is what usually makes a website project expensive.</p>
+<div class="post-note"><b>Key takeaways</b><p>Shortlist two or three teams, send them the same brief, and compare written proposals line by line. Ask to see live sites, not only mockups. Make sure you own the domain, files and accounts.</p></div>
 """),
-("questions", "12 questions to ask", """
+("where", "Where to find good options", """
+<ul>
+<li><b>Referrals</b> from founders or marketers you trust.</li>
+<li><b>Directories with verified reviews,</b> such as Clutch or the Webflow Experts directory.</li>
+<li><b>Freelance platforms</b> like Upwork and Fiverr Pro, where reviews come from real paid projects.</li>
+<li><b>Sites you admire.</b> Many sites credit their studio in the footer.</li>
+</ul>
+"""),
+("questions", "12 questions to ask before you hire", """
 <ol>
-<li>Can I see live websites you built, not only mockups?</li>
-<li>Have you worked in my industry or with similar buyers?</li>
-<li>Who designs and who builds my site day to day?</li>
-<li>What is included in the price, and what costs extra?</li>
-<li>How many revision rounds are included?</li>
-<li>What is the timeline, and what do you need from us to keep it?</li>
-<li>Which platform do you recommend and why?</li>
-<li>Will my team be able to edit the site without you?</li>
-<li>How do you handle SEO, speed and accessibility?</li>
-<li>Who owns the design files, domain and accounts?</li>
-<li>What happens after launch: support, fixes, training?</li>
-<li>Where can I read verified client reviews?</li>
+<li><b>Can I see live websites you built?</b> Mockups are easy to polish. Live sites show real build quality and speed.</li>
+<li><b>Have you worked in my industry or with similar buyers?</b> Not essential, but it shortens the learning curve.</li>
+<li><b>Who designs and who builds my site day to day?</b> Make sure the senior person you talk to is involved in the work.</li>
+<li><b>What exactly is included in the price?</b> Pages, copy, images, SEO setup, integrations, training.</li>
+<li><b>How many revision rounds are included?</b> And what happens if you need more.</li>
+<li><b>What is the timeline, and what do you need from us?</b> Most delays come from missing content and slow feedback.</li>
+<li><b>Which platform do you recommend, and why?</b> A good answer depends on how your team will use the site.</li>
+<li><b>Will my team be able to edit the site without you?</b> Ask to see the editor.</li>
+<li><b>How do you handle SEO, speed and accessibility?</b> Especially redirects if you are replacing an existing site.</li>
+<li><b>Who owns the design files, domain and accounts?</b> The answer should be: you.</li>
+<li><b>What happens after launch?</b> Support, fixes, training and the cost of small changes.</li>
+<li><b>Where can I read verified client reviews?</b> Reviews on platforms with real transactions are harder to fake.</li>
 </ol>
 [[cta]]
 """),
+("compare", "How to compare proposals fairly", """
+<div class="post-table" role="region" aria-label="Comparing website proposals" tabindex="0"><table>
+<thead><tr><th>Check</th><th>Why it matters</th></tr></thead>
+<tbody>
+<tr><td><b>Same scope</b></td><td>A cheaper quote often has fewer pages or no copy, SEO or integrations</td></tr>
+<tr><td><b>Fixed price or estimate</b></td><td>Estimates can grow; fixed prices protect your budget</td></tr>
+<tr><td><b>Timeline with milestones</b></td><td>Shows the team has planned the work</td></tr>
+<tr><td><b>Payment terms</b></td><td>Payments tied to delivered stages reduce risk</td></tr>
+<tr><td><b>Ownership and handover</b></td><td>You should own everything at the end</td></tr>
+</tbody></table></div>
+"""),
+("budget", "What a fair budget looks like", """
+<p>For a custom business website with a professional team, plan roughly <b>$5,000 to $20,000</b>. A single landing page usually costs <b>$1,500 to $6,000</b>. Large sites with many teams and languages can cost much more. See <a href="../blog/webflow-website-cost.html">what a Webflow website costs</a> and <a href="../blog/landing-page-cost.html">what a landing page costs</a>.</p>
+"""),
 ("flags", "Red flags", """
 <ul>
-<li>No written scope, or a price that changes after the first call.</li>
-<li>Only mockups, no live sites.</li>
+<li>No written scope, or a price that changes after the first conversation.</li>
+<li>Only mockups and no live sites.</li>
 <li>Vague answers about who does the work.</li>
-<li>Keeping your domain or accounts in their name.</li>
+<li>Pressure to sign quickly with a big upfront payment.</li>
+<li>Keeping your domain, hosting or accounts in their name.</li>
+<li>No questions about your business, only about the design you want.</li>
 </ul>
-<p>Comparing an agency and a freelancer? See <a href="../blog/web-design-agency-vs-freelancer.html">agency vs freelancer</a>.</p>
+"""),
+("type", "Agency, studio or freelancer?", """
+<p>A large agency suits big projects that need many specialists. A freelancer suits small, clear jobs. A small senior studio sits in between: agency-level quality with one accountable lead. See <a href="../blog/web-design-agency-vs-freelancer.html">agency vs freelancer</a> for the full comparison.</p>
+"""),
+("brief", "Make it easy to compare: send the same brief", """
+<p>The fastest way to get comparable quotes is to send every team the same short brief: goals, pages, content status, examples, budget and deadline. Use our <a href="../blog/website-brief-template.html">website brief template</a>.</p>
 """),
   ],
   faq=[("How many agencies should I talk to?", "Two or three is usually enough to compare scope, price and fit."),
        ("Is the cheapest quote a risk?", "Often. Very low quotes usually leave out content, SEO, redirects or testing."),
+       ("Should I choose a local agency?", "Not necessarily. Remote teams with a clear process and good reviews work well for most website projects."),
+       ("What should a website contract include?", "Scope, timeline, price, payment stages, revisions, ownership and what happens after launch."),
+       ("How long does choosing an agency take?", "One to two weeks is typical: shortlist, brief, proposals and a decision."),
        ("How does Sorvel quote?", "You send a short brief and get a written plan with scope, timeline and a fixed price within 24 hours."),
   ],
 ),
