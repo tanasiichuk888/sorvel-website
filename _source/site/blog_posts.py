@@ -593,62 +593,117 @@ dict(
 ),
 dict(
   slug="website-design-for-ai-startups",
-  title="Website Design for AI Startups: What Works in 2026 | Sorvel",
+  title="Website Design for AI Startups in 2026: What Converts | Sorvel",
   h1="Website design for AI startups: what actually works in 2026",
-  card="How AI startups explain the product, show it working and earn trust on the website, with costs and timelines.",
-  desc="Website design for AI startups in 2026: how to explain an AI product in seconds, show it working, handle trust and data questions, and what a website costs.",
+  card="How AI startups explain the product, show it working and earn trust on the website, with page structure, costs and timelines.",
+  desc="Website design for AI startups in 2026: how to explain an AI product in seconds, show it working, answer data and trust questions, which pages you need, platform choice and costs.",
   cat="Niches", date="2026-11-01", svc=("saas-website-design", "SaaS website design"),
   cover=("c-website-design-for-ai-startups", "A developer working with two monitors in a startup office"),
-  lead="Every AI startup says it saves time with AI. The websites that convert are the ones that make the product concrete in the first few seconds. Here is how to do that.",
+  lead="Every AI startup says it saves time with AI. Buyers have heard it hundreds of times. The websites that convert make the product concrete in the first few seconds and answer the trust questions before anyone asks. Here is how to do that.",
   sections=[
-("short", "The short answer", """
-<p>A strong AI startup website does three things: it names the job your product does in plain words, it shows the product doing that job with real screens or a short demo, and it answers trust questions about data, accuracy and security before the visitor has to ask.</p>
-<p>With our studio an AI startup website starts <b>from $6,900</b> and takes <b>3 to 6 weeks</b>. A single launch or waitlist page starts <b>from $2,400</b>.</p>
+("ai-short", "The short answer", """
+<p>A strong AI startup website does three things: it names the job your product does in plain words, it shows the product doing that job with real screens or a short demo, and it answers questions about data, accuracy and security on the page.</p>
+<p>With our studio an AI startup website starts <b>from $6,900</b> and takes <b>3 to 6 weeks</b>. A single launch or waitlist page starts <b>from $2,400</b> and takes 1 to 2 weeks.</p>
+<div class="post-note"><b>Key takeaways</b><p>Lead with the outcome, not the model. Show a real input becoming a real output. Give security and data handling their own section. Pick Framer for a fast launch and Webflow when you will publish a lot.</p></div>
 """),
-("message", "Lead with the job, not the technology", """
-<ul>
-<li><b>Name the outcome.</b> "Answer support tickets in seconds" beats "AI-powered customer experience platform".</li>
-<li><b>Say who it is for.</b> One audience in the headline converts better than "for teams of all sizes".</li>
-<li><b>Skip the buzzwords.</b> Words like "revolutionary" and "next-generation" are what every competitor says.</li>
-</ul>
+("ai-message", "Lead with the job, not the technology", """
+<p>Visitors decide in a few seconds whether a site is for them. "AI-powered platform" tells them nothing. A headline that names the job and the audience does:</p>
+<div class="post-table" role="region" aria-label="AI startup headline examples" tabindex="0"><table>
+<thead><tr><th>Vague</th><th>Clear</th></tr></thead>
+<tbody>
+<tr><td>AI-powered customer experience platform</td><td>Answer support tickets in seconds, in your brand's voice</td></tr>
+<tr><td>Next-generation AI for finance teams</td><td>Close the books three days faster with automatic reconciliation</td></tr>
+<tr><td>Revolutionary AI assistant</td><td>Find the subscriptions you forgot you pay for</td></tr>
+</tbody></table></div>
+<p>Then support the headline with one line on how it works and one clear action: start a trial, book a demo or join the waitlist.</p>
 """),
-("show", "Show the product working", """
-<p>AI products are hard to picture. Visitors trust what they can see: a real interface, a before and after, a short looping demo of an input becoming an output. Abstract glowing brains and robot illustrations do the opposite.</p>
+("ai-show", "Show the product working", """
+<p>AI products are hard to picture, so visitors trust what they can see. The strongest options, in order:</p>
+<ol>
+<li><b>A short looping demo</b> of an input turning into an output: a document into a summary, a question into an answer.</li>
+<li><b>Real interface screens</b>, cropped to the part that matters, with short captions.</li>
+<li><b>Before and after</b> examples that show the result, not the process.</li>
+</ol>
+<p>Avoid glowing brains, robots and abstract particles. They say "AI" without saying what your AI does. On the Skyli pre-launch site we showed a live subscription list with the monthly total and a "Skyli suggests" card, so the value was visible before anyone read a word.</p>
 [[cta]]
 """),
-("trust", "Answer trust questions on the page", """
+("ai-trust", "Answer trust questions on the page", """
+<p>Buyers of AI products worry about data, accuracy and control. Answer those concerns openly:</p>
 <ul>
-<li>Where the data goes and whether it trains the model.</li>
-<li>Security and compliance (SOC 2, GDPR) if you have them.</li>
-<li>How accurate the output is and how a human stays in control.</li>
-<li>Integrations with the tools the buyer already uses.</li>
+<li><b>Data:</b> where it goes, how long it is kept and whether it trains the model.</li>
+<li><b>Security and compliance:</b> SOC 2, GDPR or ISO, if you have them, with a link to details.</li>
+<li><b>Accuracy:</b> how the output is checked and how a human stays in control.</li>
+<li><b>Integrations:</b> the tools the buyer already uses, shown as logos.</li>
 </ul>
-<p>A dedicated "Security" or "How it works" section often lifts demo requests more than another feature block.</p>
+<p>A dedicated "Security" or "How it works" section often does more for demo requests than another feature grid. For German-speaking buyers we placed GDPR compliance and local partnership right under the hero of an AI agency site, because that is the first question they ask.</p>
 """),
-("platform", "Webflow or Framer for an AI startup", """
-<p>Pre-seed and seed teams with a few pages usually launch faster on Framer. Teams that publish a changelog, docs, integrations or a blog are better served by Webflow's CMS. See <a href="../blog/webflow-vs-framer.html">Webflow vs Framer</a>.</p>
+("ai-pages", "Pages an AI startup website needs", """
+<div class="post-table" role="region" aria-label="AI startup website pages" tabindex="0"><table>
+<thead><tr><th>Page</th><th>Purpose</th><th>When</th></tr></thead>
+<tbody>
+<tr><td><b>Home</b></td><td>The job, the proof, one action</td><td>Always</td></tr>
+<tr><td><b>Product or How it works</b></td><td>Show the workflow step by step</td><td>Always</td></tr>
+<tr><td><b>Use cases</b></td><td>One page per audience or job</td><td>Once you sell to more than one segment</td></tr>
+<tr><td><b>Pricing</b></td><td>Plans or "talk to us" with clear starting points</td><td>When you charge</td></tr>
+<tr><td><b>Security</b></td><td>Data handling and compliance</td><td>Selling to companies</td></tr>
+<tr><td><b>Changelog and blog</b></td><td>Show momentum, bring search traffic</td><td>After launch</td></tr>
+</tbody></table></div>
+"""),
+("ai-stage", "What to build at each stage", """
+<ul>
+<li><b>Pre-launch:</b> one landing page with the problem, a preview of the product and a waitlist. Fast and cheap to change.</li>
+<li><b>Seed:</b> 5 to 8 pages: home, product, use cases, pricing, about, contact, blog.</li>
+<li><b>Series A and later:</b> a CMS for use cases, integrations, customer stories and a changelog, built so marketing can publish without developers.</li>
+</ul>
+"""),
+("ai-platform", "Webflow or Framer for an AI startup", """
+<p>Pre-seed and seed teams with a handful of pages usually launch faster on Framer, and it handles motion-rich product scenes well. Teams that publish a changelog, docs links, integrations or a blog are better served by Webflow's CMS. See <a href="../blog/webflow-vs-framer.html">Webflow vs Framer</a> and <a href="../blog/framer-website-cost.html">what a Framer website costs</a>.</p>
+"""),
+("ai-mistakes", "Common mistakes", """
+<ul>
+<li>Leading with the model or the tech stack instead of the outcome.</li>
+<li>Abstract AI visuals instead of the real product.</li>
+<li>No answer to "what happens to my data?"</li>
+<li>Five different calls to action on the homepage.</li>
+<li>Claims like "10x productivity" with nothing behind them.</li>
+</ul>
 """),
   ],
   faq=[("How long does an AI startup website take?", "Usually 3 to 6 weeks for 5 to 10 pages, or 1 to 2 weeks for a single launch page."),
-       ("Should an AI startup use a template?", "Before product-market fit, a template can be enough. Once you raise or sell to larger buyers, a custom site that shows your real product usually converts better."),
+       ("How much does an AI startup website cost?", "With a professional team usually $5,000 to $20,000; with our studio from $6,900, or from $2,400 for one page."),
+       ("Should an AI startup use a template?", "Before product-market fit a template can be enough. Once you raise or sell to larger companies, a custom site that shows your real product usually converts better."),
+       ("How do we show the product before it is finished?", "With designed product scenes based on your real flows. They can be updated as the product changes."),
        ("Do you design product UI as well?", "Yes. We design the product interface in Figma, so the website and the app look like one product."),
+       ("Can the site be in several languages?", "Yes, in Webflow or Framer, with layouts checked for each language."),
   ],
 ),
 dict(
   slug="b2b-website-design",
-  title="B2B Website Design: How to Build a Site That Generates Leads | Sorvel",
+  title="B2B Website Design in 2026: How to Build a Site That Generates Leads | Sorvel",
   h1="B2B website design: how to build a site that generates leads",
-  card="What B2B buyers look for, the pages every B2B site needs, and the details that turn visits into qualified leads.",
-  desc="B2B website design guide: what B2B buyers look for, the pages and proof every B2B site needs, lead capture that works, and typical costs and timelines.",
+  card="What B2B buyers look for, the pages every B2B site needs, proof that works and lead capture that turns visits into qualified leads.",
+  desc="B2B website design guide for 2026: how B2B buyers decide, the pages and proof every B2B site needs, messaging, lead capture that works, platform choice, costs and timelines.",
   cat="Niches", date="2026-11-01", svc=("websites", "website design and development"),
   cover=("c-b2b-website-design", "A professional working at a computer in a busy office"),
-  lead="B2B buyers rarely buy on the first visit. They come back several times, often with colleagues, and the website has to answer a different question each time.",
+  lead="B2B buyers rarely buy on their first visit. They come back several times, often with colleagues, and each time the website has to answer a different question. A good B2B site is built for that whole journey, not just the first impression.",
   sections=[
-("short", "The short answer", """
-<p>A B2B website that generates leads makes it clear who you help and with what, proves it with case studies and named clients, and gives every type of visitor a next step, from a guide to download to a quote request.</p>
-<p>A professional B2B website usually costs <b>$5,000 to $20,000</b>. With our studio it starts <b>from $6,900</b>.</p>
+("b2b-short", "The short answer", """
+<p>A B2B website that generates leads makes clear who you help and with what, proves it with case studies and named clients, and gives every type of visitor a next step, from a guide to download to a quote request.</p>
+<p>A professional B2B website usually costs <b>$5,000 to $20,000</b> and takes <b>4 to 8 weeks</b>. With our studio it starts <b>from $6,900</b>.</p>
+<div class="post-note"><b>Key takeaways</b><p>Write for the buying committee, not one person. Make proof specific. Offer two kinds of action: one for buyers who are ready and one for those still researching. Connect every form to your CRM.</p></div>
 """),
-("pages", "Pages every B2B website needs", """
+("b2b-buyers", "How B2B buyers actually decide", """
+<p>A typical B2B purchase involves several people: a user who feels the problem, a manager who owns the budget and often someone from finance, IT or legal. Each of them visits your site with a different question:</p>
+<div class="post-table" role="region" aria-label="B2B buyer questions" tabindex="0"><table>
+<thead><tr><th>Who</th><th>Their question</th><th>Page that answers it</th></tr></thead>
+<tbody>
+<tr><td><b>User</b></td><td>Will this make my job easier?</td><td>Product and use cases</td></tr>
+<tr><td><b>Manager</b></td><td>Will it pay off, and who else uses it?</td><td>Case studies, pricing</td></tr>
+<tr><td><b>Finance or procurement</b></td><td>What does it cost and what are the terms?</td><td>Pricing, how we work</td></tr>
+<tr><td><b>IT or legal</b></td><td>Is it secure and compliant?</td><td>Security, FAQ</td></tr>
+</tbody></table></div>
+"""),
+("b2b-pages", "Pages every B2B website needs", """
 <div class="post-table" role="region" aria-label="B2B website pages" tabindex="0"><table>
 <thead><tr><th>Page</th><th>The question it answers</th></tr></thead>
 <tbody>
@@ -659,98 +714,213 @@ dict(
 <tr><td><b>About</b></td><td>Who will I actually work with?</td></tr>
 <tr><td><b>Contact</b></td><td>How do I start with the least effort?</td></tr>
 </tbody></table></div>
+<p>On a recruitment firm's site we led with the firm's hiring numbers and gave founders and engineers separate paths through the same site, because they arrive with completely different goals.</p>
 """),
-("proof", "Proof beats promises", """
+("b2b-message", "Messaging that works for B2B", """
 <ul>
-<li><b>Case studies with specifics:</b> the problem, what was done and what changed.</li>
-<li><b>Named logos and quotes</b> from real people with their role.</li>
-<li><b>Certifications and partners</b> that matter in your industry.</li>
+<li><b>Name the customer.</b> "For logistics companies with 50 to 500 drivers" beats "for businesses of all sizes".</li>
+<li><b>Name the outcome.</b> Fewer violations, faster hiring, lower cost per lead.</li>
+<li><b>Use their words.</b> The terms your buyers use in sales calls, not internal jargon.</li>
+<li><b>Show, then tell.</b> A product screen or a process diagram before the paragraph.</li>
 </ul>
 [[cta]]
 """),
-("leads", "Lead capture that works for B2B", """
+("b2b-proof", "Proof beats promises", """
 <ul>
-<li>A short contact form: name, email, company, one question. Every extra field costs leads.</li>
-<li>A softer option for early researchers, like a guide, checklist or pricing sheet.</li>
-<li>Clear response time, for example "reply within one business day".</li>
-<li>CRM integration, so no lead sits in an inbox.</li>
+<li><b>Case studies with specifics:</b> the problem, what was done and what changed.</li>
+<li><b>Named logos and quotes</b> from real people with their role and company.</li>
+<li><b>Numbers you can stand behind,</b> such as clients served, years in business or response time.</li>
+<li><b>Certifications and partners</b> that matter in your industry.</li>
+</ul>
+<p>Generic testimonials like "Great team, highly recommended" do little. A quote that mentions a specific result or moment is far more convincing.</p>
+"""),
+("b2b-leads", "Lead capture that works", """
+<ul>
+<li><b>A short contact form:</b> name, email, company and one question. Every extra field costs leads.</li>
+<li><b>A softer option</b> for early researchers: a guide, checklist or pricing sheet.</li>
+<li><b>A clear response time,</b> for example "reply within one business day".</li>
+<li><b>CRM integration,</b> so no lead sits unseen in an inbox.</li>
+<li><b>Analytics on every form,</b> so you know which pages bring qualified leads.</li>
+</ul>
+"""),
+("b2b-platform", "Which platform for a B2B website", """
+<p>Webflow is a strong default for marketing teams that publish case studies and articles often and want to edit without developers. WordPress fits when you need complex functionality or many integrations. For a fast, smaller site, Framer works well. See <a href="../blog/webflow-vs-wordpress.html">Webflow vs WordPress</a>.</p>
+"""),
+("b2b-mistakes", "Common B2B website mistakes", """
+<ul>
+<li>A homepage that talks about the company instead of the customer.</li>
+<li>No case studies, or case studies with no details.</li>
+<li>Only one call to action: "Book a demo", with nothing for early researchers.</li>
+<li>Forms that ask for budget, company size and phone before saying hello.</li>
+<li>No clear prices or starting points, so buyers go to a competitor that has them.</li>
 </ul>
 """),
   ],
   faq=[("How many pages does a B2B website need?", "Most start with 6 to 12 pages and grow through case studies, industry pages and articles."),
-       ("Which platform is best for a B2B website?", "Webflow is a strong default for marketing teams that publish often. WordPress fits when you need complex functionality."),
-       ("How long does a B2B website take?", "Usually 4 to 8 weeks, depending on the number of layouts and how ready the content is."),
+       ("How much does a B2B website cost?", "Usually $5,000 to $20,000 with a professional team; with our studio from $6,900."),
+       ("Which platform is best for a B2B website?", "Webflow is a strong default for marketing teams; WordPress fits complex functionality."),
+       ("How long does a B2B website take?", "Usually 4 to 8 weeks, depending on the number of layouts and content readiness."),
+       ("Should we show prices on a B2B website?", "Starting prices or ranges help qualify leads and build trust, even if final pricing is custom."),
+       ("Can you connect forms to our CRM?", "Yes: HubSpot, Salesforce, Pipedrive and most email tools."),
   ],
 ),
 dict(
   slug="law-firm-website-design",
-  title="Law Firm Website Design: What Clients Look For in 2026 | Sorvel",
+  title="Law Firm Website Design in 2026: What Clients Look For | Sorvel",
   h1="Law firm website design: what clients look for before they call",
-  card="Trust signals, practice area pages, calls to action and local SEO for law firm websites that turn visitors into consultations.",
-  desc="Law firm website design guide for 2026: the trust signals clients look for, practice area pages, call-first design, local SEO and what a law firm website costs.",
+  card="Trust signals, practice area pages, call-first design, local SEO and costs for law firm websites that turn visitors into consultations.",
+  desc="Law firm website design guide for 2026: the trust signals clients look for, practice area pages, call-first mobile design, bilingual sites, local SEO and what a law firm website costs.",
   cat="Niches", date="2026-11-01", svc=("websites", "website design and development"),
   cover=("c-law-firm-website-design", "A lawyer on the phone working on a laptop"),
-  lead="People looking for a lawyer are often stressed and in a hurry. A good law firm website calms them down and makes the next step obvious.",
+  lead="People looking for a lawyer are often stressed and in a hurry. They compare a few firms on their phone and call the one that feels most trustworthy and easiest to reach. A good law firm website is built for exactly that moment.",
   sections=[
-("short", "The short answer", """
+("law-short", "The short answer", """
 <p>A law firm website that brings in consultations shows who you help and where, proves experience early, and puts a way to call or book on every screen, especially on mobile. Practice area pages and local SEO bring most of the search traffic.</p>
+<p>A custom law firm website usually costs <b>$5,000 to $20,000</b>. With our studio it starts <b>from $6,900</b>, and a single call-first landing page for ads starts <b>from $2,400</b>.</p>
+<div class="post-note"><b>Key takeaways</b><p>Calm the visitor, then make calling easy. Give every practice area its own page. Show real attorneys and real credentials. Design for phones first, because that is where most legal searches happen.</p></div>
 """),
-("trust", "Trust signals clients look for", """
+("law-trust", "Trust signals clients look for", """
 <ul>
-<li>Real photos of the attorneys, with bar admissions and years of practice.</li>
-<li>Results and reviews, within the rules of your bar.</li>
-<li>Languages spoken, if you serve more than one community.</li>
-<li>A clear, calm tone with no legal jargon in the headlines.</li>
+<li><b>Real photos of the attorneys</b> with bar admissions, years of practice and education.</li>
+<li><b>Results and reviews,</b> presented within the advertising rules of your bar.</li>
+<li><b>Languages spoken,</b> if you serve more than one community.</li>
+<li><b>Clear, calm language.</b> No legal jargon in the headlines.</li>
+<li><b>Free consultation details:</b> how it works, how long it takes and that it is confidential.</li>
 </ul>
 """),
-("pages", "Practice area pages", """
-<p>Each practice area deserves its own page: what it covers, typical situations, how the process works and an FAQ. These pages rank for searches like "DUI lawyer in Houston" and give visitors confidence you handle their exact case.</p>
+("law-pages", "Practice area pages: the backbone of the site", """
+<p>Each practice area deserves its own page. These pages rank for searches like "DUI lawyer in Houston" and give visitors confidence that you handle their exact situation. A strong practice area page includes:</p>
+<ol>
+<li>What the area covers, in plain words.</li>
+<li>Typical situations clients come with.</li>
+<li>How the process works and what happens next.</li>
+<li>Relevant results or experience.</li>
+<li>An FAQ with the questions clients ask on the first call.</li>
+<li>A call or booking button, repeated.</li>
+</ol>
 [[cta]]
 """),
-("mobile", "Call-first on mobile", """
-<p>Most legal searches happen on phones. A sticky call button, a short contact form and click-to-call numbers matter more than any animation. We built this approach for a bilingual criminal defense landing page in Webflow.</p>
+("law-mobile", "Call-first design on mobile", """
+<p>Most people search for a lawyer on their phone, often in a stressful moment. A sticky call button, click-to-call numbers and a short contact form matter more than any animation. For a Houston criminal defense firm we designed a bilingual landing page with proof above the fold and a way to call from every single section, built in Webflow.</p>
+"""),
+("law-bilingual", "Bilingual and multilingual law firm sites", """
+<p>If you serve Spanish-speaking or other communities, a real second-language version, not an automatic translation widget, builds far more trust. Plan for a language switcher, translated practice pages and staff who answer in that language.</p>
+"""),
+("law-seo", "Local SEO for law firms", """
+<ul>
+<li>A Google Business Profile with the same name, address and phone as the website.</li>
+<li>Practice area pages that mention the city or region you serve.</li>
+<li>Reviews on Google and legal directories.</li>
+<li>Structured data for your firm, attorneys and locations.</li>
+<li>Helpful articles that answer common legal questions in your area.</li>
+</ul>
+"""),
+("law-pages-list", "Pages a law firm website needs", """
+<div class="post-table" role="region" aria-label="Law firm website pages" tabindex="0"><table>
+<thead><tr><th>Page</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><b>Home</b></td><td>Who you help, where, and how to reach you now</td></tr>
+<tr><td><b>Practice areas</b></td><td>One page per area, for search and trust</td></tr>
+<tr><td><b>Attorneys</b></td><td>Real people, credentials and experience</td></tr>
+<tr><td><b>Results and reviews</b></td><td>Proof, within your bar's rules</td></tr>
+<tr><td><b>Contact or free consultation</b></td><td>Short form, phone, map, hours</td></tr>
+<tr><td><b>Blog or FAQ</b></td><td>Answers to common questions, for search traffic</td></tr>
+</tbody></table></div>
+"""),
+("law-mistakes", "Common law firm website mistakes", """
+<ul>
+<li>Stock photos of gavels and handshakes instead of the real team.</li>
+<li>One "Services" page for every practice area.</li>
+<li>Phone numbers that are not clickable on mobile.</li>
+<li>Long contact forms that ask for the whole story up front.</li>
+<li>Slow pages, which hurt both rankings and patience.</li>
+</ul>
 """),
   ],
-  faq=[("How much does a law firm website cost?", "A custom site with a professional team usually costs $5,000 to $20,000; with our studio from $6,900, or a single landing page from $2,400."),
+  faq=[("How much does a law firm website cost?", "A custom site with a professional team usually costs $5,000 to $20,000; with our studio from $6,900, or from $2,400 for one landing page."),
        ("Which platform is best for a law firm?", "Webflow or WordPress. Both handle practice area pages, blogs and local SEO well."),
+       ("How long does a law firm website take?", "Usually 4 to 6 weeks, depending on the number of practice areas and content."),
        ("Can the site be bilingual?", "Yes. We design and build sites in two or more languages."),
+       ("Can you build a landing page for Google Ads?", "Yes. A call-first landing page for one practice area is often the fastest way to get calls from ads."),
+       ("Do you write the legal content?", "We structure and design the pages. Legal content should come from or be reviewed by your attorneys."),
   ],
 ),
 dict(
   slug="travel-website-design",
-  title="Travel and Tourism Website Design: A Practical Guide | Sorvel",
+  title="Travel and Tourism Website Design in 2026: A Practical Guide | Sorvel",
   h1="Travel and tourism website design: a practical guide",
-  card="How destination and tour websites inspire visitors, help them plan and turn interest into bookings and inquiries.",
-  desc="Travel and tourism website design guide: inspiring imagery, experience finders, itineraries, booking and inquiry flows, mobile planning and typical costs.",
+  card="How destination and tour websites inspire visitors, help them plan and turn interest into bookings and inquiries, with structure, platform and costs.",
+  desc="Travel and tourism website design guide for 2026: inspiring imagery, experience finders, itineraries, booking and inquiry flows, mobile planning, platform choice and typical costs.",
   cat="Niches", date="2026-11-01", svc=("websites", "website design and development"),
   cover=("c-travel-website-design", "A person browsing a travel agency website on a laptop"),
-  lead="Travel websites sell a feeling first and a plan second. The best ones move visitors from 'that looks amazing' to 'send me a quote' without friction.",
+  lead="Travel websites sell a feeling first and a plan second. The best ones move visitors from 'that looks amazing' to 'send me a quote' without friction. Here is how to design that journey for a destination, a tour operator or a travel brand.",
   sections=[
-("short", "The short answer", """
+("tr-short", "The short answer", """
 <p>A travel or tourism website needs big, honest imagery, a quick way to find the right experience, ready-made itineraries or tours with dates and prices, and a short inquiry or booking form. Most visitors plan on a phone, so mobile comes first.</p>
+<p>A custom travel website usually costs <b>$5,000 to $20,000</b> with a professional team. With our studio it starts <b>from $6,900</b>.</p>
+<div class="post-note"><b>Key takeaways</b><p>Inspire, then help people plan. Show dates, duration and price on every tour. Keep the inquiry form short. Use real photos of the place, and design for phones first.</p></div>
 """),
-("flow", "From inspiration to inquiry", """
+("tr-flow", "From inspiration to inquiry", """
 <ol>
-<li><b>Inspire:</b> a strong hero, the destination's story and real photos.</li>
-<li><b>Explore:</b> filters by interest, such as diving, culture, family or adventure.</li>
-<li><b>Plan:</b> itineraries with duration, level and price.</li>
+<li><b>Inspire:</b> a strong hero with a real photo or video, the place's story and a few key facts.</li>
+<li><b>Explore:</b> filters by interest, such as diving, culture, family, adventure or wellness.</li>
+<li><b>Plan:</b> itineraries or tours with duration, level, season and price.</li>
 <li><b>Act:</b> a short inquiry or booking form with a clear reply time.</li>
 </ol>
+<p>For Visit Pemba, the travel guide to Pemba Island in Zanzibar, we built exactly this path: an aerial hero with four island facts, arched story cards inspired by Swahili doorways, an experience finder by interest and ready-made itineraries leading to a trip inquiry. It was designed in Figma and built in WordPress.</p>
 """),
-("details", "Details that build confidence", """
-<ul>
-<li>Best time to visit, how to get there and practical info.</li>
-<li>Named reviews with the trip and date.</li>
-<li>Responsible travel and local partners, if they matter to your audience.</li>
-</ul>
+("tr-pages", "Pages a travel website needs", """
+<div class="post-table" role="region" aria-label="Travel website pages" tabindex="0"><table>
+<thead><tr><th>Page</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><b>Home</b></td><td>Inspire and route visitors to experiences</td></tr>
+<tr><td><b>Experiences or tours</b></td><td>Browse and filter by interest</td></tr>
+<tr><td><b>Itineraries</b></td><td>Ready-made trips with duration and price</td></tr>
+<tr><td><b>Stay and eat</b></td><td>Accommodation and food options</td></tr>
+<tr><td><b>Travel info</b></td><td>Best time to visit, how to get there, practical tips</td></tr>
+<tr><td><b>Plan your trip</b></td><td>Inquiry or booking form</td></tr>
+</tbody></table></div>
 [[cta]]
 """),
-("platform", "Platform choice", """
-<p>WordPress suits content-rich destination sites with many tours and booking plugins. Webflow suits design-led tour operators that want an easy CMS without plugin maintenance.</p>
+("tr-details", "Details that build confidence", """
+<ul>
+<li>Best time to visit and what each season is like.</li>
+<li>How to get there, with travel times.</li>
+<li>Named reviews with the trip and date.</li>
+<li>Clear cancellation and payment terms.</li>
+<li>Responsible travel and local partners, if they matter to your audience.</li>
+</ul>
+"""),
+("tr-booking", "Booking or inquiry?", """
+<div class="post-table" role="region" aria-label="Booking vs inquiry" tabindex="0"><table>
+<thead><tr><th></th><th>Online booking</th><th>Inquiry form</th></tr></thead>
+<tbody>
+<tr><td><b>Best for</b></td><td>Fixed-date tours, day trips, activities</td><td>Tailor-made trips, groups, premium travel</td></tr>
+<tr><td><b>Setup</b></td><td>Booking system integration</td><td>Simple form connected to email or CRM</td></tr>
+<tr><td><b>Conversion</b></td><td>Instant, but needs exact availability</td><td>Starts a conversation, higher value per lead</td></tr>
+</tbody></table></div>
+"""),
+("tr-mobile", "Design for planning on a phone", """
+<p>Travellers browse on their phones, often in short sessions. Use large images that load fast, swipeable cards for tours, sticky "Plan your trip" buttons and forms with as few fields as possible. Save details like dates and group size for a second step.</p>
+"""),
+("tr-platform", "Which platform", """
+<p>WordPress suits content-rich destination sites with many pages, tours and booking plugins. Webflow suits design-led tour operators that want an easy CMS without plugin maintenance. Framer works for smaller, highly visual brands. See <a href="../blog/webflow-vs-wordpress.html">Webflow vs WordPress</a>.</p>
+"""),
+("tr-mistakes", "Common travel website mistakes", """
+<ul>
+<li>Stock beach photos that could be anywhere.</li>
+<li>Tours without dates, duration or price.</li>
+<li>Long inquiry forms on mobile.</li>
+<li>Heavy images that make pages slow on mobile networks.</li>
+<li>No practical information, so visitors leave to find it elsewhere.</li>
+</ul>
 """),
   ],
   faq=[("How much does a travel website cost?", "A custom design and build usually costs $5,000 to $20,000 with a professional team; with our studio from $6,900."),
+       ("How long does a travel website take?", "Usually 4 to 8 weeks, depending on the number of tours, pages and integrations."),
        ("Can you add online booking?", "Yes, through booking integrations or a simple inquiry flow, depending on how you sell trips."),
+       ("Should a tour operator show prices?", "Yes. Starting prices help visitors self-qualify and increase inquiries from the right travellers."),
+       ("Can the site be multilingual?", "Yes, with real translated pages rather than an automatic widget."),
        ("Do you design for mobile first?", "Yes. Every page is designed for phones in Figma, not squeezed afterwards."),
   ],
 ),
