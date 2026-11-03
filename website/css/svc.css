@@ -6,8 +6,9 @@
 .sv-chip { position: absolute; z-index: 5; display: inline-flex; align-items: center; gap: 1.4cqw; padding: 1.5cqw 2.2cqw; border-radius: 1.4cqw; font-size: max(11px, 2.1cqw); font-weight: 500; color: var(--text);
   background: rgba(22,23,28,.9); border: 1px solid rgba(242,239,234,.12); box-shadow: 0 20px 40px -18px rgba(0,0,0,.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   opacity: 0; transform: translateY(10px) scale(.96); }
-.sv-chip .dot { width: 1.3cqw; height: 1.3cqw; min-width: 7px; min-height: 7px; border-radius: 50%; background: #3DDC84; box-shadow: 0 0 0 0 rgba(61,220,132,.6); animation: svPing 1.8s infinite; }
-@keyframes svPing { 70% { box-shadow: 0 0 0 1.4cqw rgba(61,220,132,0); } 100% { box-shadow: 0 0 0 0 rgba(61,220,132,0); } }
+.sv-chip .dot { width: 1.3cqw; height: 1.3cqw; min-width: 7px; min-height: 7px; border-radius: 50%; background: #3DDC84; position: relative; }
+.sv-chip .dot::after, .sc-src .dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: rgba(61,220,132,.55); animation: svPing 1.8s infinite; }
+@keyframes svPing { 0% { transform: scale(1); opacity: 1; } 70%, 100% { transform: scale(3); opacity: 0; } }
 @keyframes svIn { to { opacity: 1; transform: none; } }
 .sv-cur { position: absolute; z-index: 6; left: 70%; top: 70%; pointer-events: none; opacity: 0; }
 .sv-cur svg { width: max(15px, 3cqw); fill: var(--accent); stroke: #fff; stroke-width: 1.3; stroke-linejoin: round; filter: drop-shadow(0 2px 4px rgba(0,0,0,.5)); }
@@ -168,7 +169,7 @@
 /* ---------- 3. landing pages & CRO: A/B test ---------- */
 .sc { position: relative; width: 100%; display: grid; gap: 0; justify-items: center; }
 .sc-src { display: inline-flex; align-items: center; gap: 1.4cqw; padding: 1.3cqw 2.2cqw; border-radius: 99px; font-size: max(11px, 2cqw); background: rgba(22,23,28,.9); border: 1px solid rgba(242,239,234,.14); }
-.sc-src .dot { width: 1.3cqw; height: 1.3cqw; min-width: 7px; min-height: 7px; border-radius: 50%; background: #3DDC84; animation: svPing 1.8s infinite; }
+.sc-src .dot { width: 1.3cqw; height: 1.3cqw; min-width: 7px; min-height: 7px; border-radius: 50%; background: #3DDC84; position: relative; }
 .sc-src span { font-variant-numeric: tabular-nums; font-weight: 600; }
 .sc-flow { position: relative; width: 52%; height: 11cqw; }
 .sc-flow::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: linear-gradient(rgba(169,190,255,.5), transparent); }
@@ -211,8 +212,7 @@
 .vis--mig.run .sm-node--to { animation: smPulse 1.2s 1s 4; }
 @keyframes smPulse { 50% { box-shadow: 0 0 0 1.6cqw rgba(59,107,255,0), 0 0 6cqw -1cqw rgba(59,107,255,.7); } }
 .sm-lane { position: relative; height: 5cqw; }
-.sm-lane::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 2px dashed rgba(59,107,255,.55); animation: smDash 1s linear infinite; }
-@keyframes smDash { to { background-position: 20px 0; } }
+.sm-lane::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 2px dashed rgba(59,107,255,.55); }
 .sm-lane span { position: absolute; left: 0; top: 50%; padding: .5cqw 1.2cqw; border-radius: .7cqw; font-size: max(9px, 1.5cqw); font-weight: 500; color: #fff; background: #1B1D25; border: 1px solid rgba(169,190,255,.45); white-space: nowrap; transform: translate(-30%, -50%); opacity: 0; }
 .vis--mig.run .sm-lane span { animation: smGo 1.5s cubic-bezier(.6,0,.4,1) var(--t) 2; }
 @keyframes smGo { 0% { left: 0; opacity: 0; } 15% { opacity: 1; } 80% { opacity: 1; } 100% { left: 100%; opacity: 0; transform: translate(-70%, -50%); } }

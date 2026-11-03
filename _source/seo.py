@@ -109,6 +109,9 @@ def _svc_mobile(s):
 def process(path):
     rel = os.path.relpath(path, W).replace(os.sep, "/")
     s = open(path, encoding="utf-8").read()
+    # undo the stylesheet bundle from a previous build (index.html is edited in place), then rebundle below
+    s = re.sub(r'([ \t]*)<link rel="stylesheet" href="((?:\.\./)*)css/b-[0-9a-f]+\.css" data-css="([^"]+)" />\n?',
+               lambda m: "".join(f'{m.group(1)}<link rel="stylesheet" href="{m.group(2)}css/{n}" />\n' for n in m.group(3).split()), s)
     s = re.sub(r"[ \t]*" + re.escape(START) + r".*?" + re.escape(END) + r"\n?", "", s, flags=re.S)
     if rel in TITLES:
         s = re.sub(r"<title>.*?</title>", "<title>" + html.escape(TITLES[rel], quote=False) + "</title>", s, count=1, flags=re.S)
@@ -303,6 +306,21 @@ def process(path):
     s = re.sub(r'<img[^>]*src="((?:\.\./)?img/logos/[^"]+)"[^>]*style="height:(\d+)px"[^>]*>', _logo, s)
     s = re.sub(r'(<img[^>]*img/logos/[^>]*?)style="height:(\d+)px"', r'\1style="--h:\2px"', s)
 
+    # bundle all stylesheets into one file (one render-blocking request instead of ~9)
+    links = re.findall(r'[ \t]*<link rel="stylesheet" href="((?:\.\./)*)css/([a-z-]+\.css)(?:\?v=\d+)?" ?/?>\n?', s)
+    if len(links) > 1:
+        import hashlib
+        links = [l for i, l in enumerate(links) if l[1] not in [x[1] for x in links[i + 1:]]]   # drop repeats, keep the later one
+        css = "".join(f"/* {n} */\n" + open(f"{W}/css/{n}", encoding="utf-8").read() + "\n" for _, n in links)
+        name = "b-" + hashlib.md5(css.encode()).hexdigest()[:10] + ".css"
+        if not os.path.exists(f"{W}/css/{name}"): open(f"{W}/css/{name}", "w", encoding="utf-8").write(css)
+        first = [True]
+        def _bl(m):
+            if first[0]:
+                first[0] = False
+                return f'  <link rel="stylesheet" href="{m.group(1)}css/{name}" data-css="{" ".join(n for _, n in links)}" />\n'
+            return ""
+        s = re.sub(r'[ \t]*<link rel="stylesheet" href="((?:\.\./)*)css/[a-z-]+\.css(?:\?v=\d+)?" ?/?>\n?', _bl, s)
     # lazy-load images below the first section
     body_start = s.find("</section>")
     if body_start > 0:
@@ -313,6 +331,7 @@ def process(path):
     open(path, "w", encoding="utf-8").write(s)
     return None if rel in NOINDEX or (NOINDEX_CASES and rel.startswith("work/")) else (url, rel)
 
+for _b in glob.glob(W + "/css/b-*.css"): os.remove(_b)
 pages = [process(p) for p in sorted(glob.glob(W + "/**/*.html", recursive=True))]
 pages = [p for p in pages if p]
 def prio(rel):
