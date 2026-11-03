@@ -36,6 +36,10 @@ export default {
     if (url.pathname === "/stats" || url.pathname.startsWith("/stats/")) return scoreboard(request, env, url, "key");
     return env.ASSETS.fetch(request);
   },
+  // hourly: ask Search Console for new searches, so "spotted 3 h ago" is right even when nobody opens the dashboard
+  async scheduled(event, env, ctx) {
+    if (env.GSC_KEY && env.LEADS) ctx.waitUntil(searchConsole(env, ranges(7)).catch(() => {}));
+  },
 };
 
 /* ------------------------------------------------------------------ events */
@@ -122,6 +126,15 @@ export class LeadStore extends DurableObject {
     for (const [c, ty] of [["i", "TEXT"], ["k", "TEXT"], ["v", "INTEGER"], ["dv", "TEXT"], ["ct", "TEXT"], ["org", "TEXT"]]) if (!cols.includes(c)) this.sql.exec(`ALTER TABLE ev ADD COLUMN ${c} ${ty}`);
     this.sql.exec(`CREATE INDEX IF NOT EXISTS ev_i ON ev (i)`);
     this.sql.exec(`CREATE TABLE IF NOT EXISTS alerted (i TEXT PRIMARY KEY, ts INTEGER)`);
+    this.sql.exec(`CREATE TABLE IF NOT EXISTS gq (k TEXT PRIMARY KEY, ts INTEGER NOT NULL)`);   // Google searches: when the dashboard first saw each one
+  }
+  /* records the searches not seen before and returns {query: first-seen ms}; 0 = already there when tracking started */
+  seenQueries(keys) {
+    const first = this.sql.exec(`SELECT COUNT(*) AS n FROM gq`).one().n === 0, now = first ? 0 : Date.now();
+    for (const k of keys) this.sql.exec(`INSERT OR IGNORE INTO gq (k, ts) VALUES (?, ?)`, k, now);
+    const out = {};
+    for (const r of this.sql.exec(`SELECT k, ts FROM gq`)) out[r.k] = r.ts;
+    return out;
   }
   add(e) {
     // keep 13 months of statistics (privacy policy promise); prune now and then
@@ -449,8 +462,9 @@ async function searchConsole(env, r) {
     q([new Date(histStart), new Date(histEnd)], ["query", "date"], 25000).catch(() => [])]);
   const first = new Map(); let lastDay = "";
   for (const x of hist) { const [k, d] = x.keys; if (!first.has(k) || d < first.get(k)) first.set(k, d); if (d > lastDay) lastDay = d; }
-  const newSince = lastDay ? day(new Date(Date.parse(lastDay) - 6 * 864e5)) : "";   // first seen in the last 7 days of data
-  const isNew = (k) => !!newSince && (first.get(k) || "") >= newSince;
+  const seen = env.LEADS ? await leadStore(env).seenQueries([...new Set([...first.keys(), ...qCur.map((x) => x.keys[0])])]).catch(() => ({})) : {};
+  const spotted = (k) => seen[k] || 0;                                   // ms when it first appeared here, 0 = before tracking
+  const isNew = (k) => spotted(k) > Date.now() - 7 * 864e5;
   const sum = (rows, k) => rows.reduce((s, x) => s + (x[k] || 0), 0);
   const brand = (s) => /sorvel/i.test(s);
   const nb = (rows) => rows.filter((x) => !brand(x.keys[0]));
@@ -462,9 +476,9 @@ async function searchConsole(env, r) {
     queries: (() => {   // top 20 by impressions, plus any new searches that didn't make the top 20
       const s = qCur.slice().sort((x, y) => y.impressions - x.impressions), top = s.slice(0, 20);
       const extra = s.slice(20).filter((x) => isNew(x.keys[0])).slice(0, 20);
-      return [...top, ...extra].map((x) => ({ k: x.keys[0], clicks: x.clicks, impressions: x.impressions, pos: Math.round(x.position * 10) / 10, brand: brand(x.keys[0]), isNew: isNew(x.keys[0]), first: first.get(x.keys[0]) || "" }));
+      return [...top, ...extra].map((x) => ({ k: x.keys[0], clicks: x.clicks, impressions: x.impressions, pos: Math.round(x.position * 10) / 10, brand: brand(x.keys[0]), isNew: isNew(x.keys[0]), spotted: spotted(x.keys[0]), first: first.get(x.keys[0]) || "" }));
     })(),
-    newCount: qCur.filter((x) => isNew(x.keys[0])).length,
+    newCount: qCur.filter((x) => spotted(x.keys[0]) > Date.now() - 864e5).length,   // last 24 hours
     pages: pages.map((x) => ({ k: x.keys[0].replace(/^https?:\/\/[^/]+/, "") || "/", clicks: x.clicks, impressions: x.impressions })),
   };
 }
@@ -487,7 +501,7 @@ function mock(r, days) {
     leadSrc: [{ k: "www.google.com", v: 6 }, { k: "direct", v: 4 }, { k: "www.linkedin.com", v: 3 }], leadLand: [{ k: "/", v: 6 }, { k: "/pricing", v: 4 }, { k: "/work/serverscamp", v: 2 }],
     gsc: { clicks: 41, impressions: 5071, prevClicks: 30, prevImpressions: 2035, nbClicks: 6, prevNbClicks: 5,
       byDay: r.days.map((d) => ({ d, clicks: rnd(0, 6), impressions: rnd(80, 400) })),
-      newCount: 1, queries: [{ k: "sorvel agency", clicks: 22, impressions: 60, pos: 1.1, brand: true }, { k: "webflow agency for saas", clicks: 3, impressions: 820, pos: 18.4, brand: false, isNew: true, first: "2026-10-30" }, { k: "fintech website design", clicks: 2, impressions: 610, pos: 22.7, brand: false }],
+      newCount: 1, queries: [{ k: "sorvel agency", clicks: 22, impressions: 60, pos: 1.1, brand: true }, { k: "webflow agency for saas", clicks: 3, impressions: 820, pos: 18.4, brand: false, isNew: true, spotted: Date.now() - 3 * 36e5, first: "2026-10-30" }, { k: "fintech website design", clicks: 2, impressions: 610, pos: 22.7, brand: false }],
       pages: [{ k: "/", clicks: 30, impressions: 2100 }, { k: "/services/websites", clicks: 6, impressions: 900 }] },
     behavior: mockBehavior(r), behaviorPrev: { sessions: 61, bounce: .48, median: 41, funnel: [] },
     connected: { analytics: true, events: true, gsc: true }, errors: [], at: new Date().toISOString() };

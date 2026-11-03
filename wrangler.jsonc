@@ -16,5 +16,7 @@
   // lead events live in one small SQLite-backed Durable Object (free plan, no setup)
   "durable_objects": { "bindings": [{ "name": "LEADS", "class_name": "LeadStore" }] },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["LeadStore"] }],
-  "observability": { "enabled": true }
+  "observability": { "enabled": true },
+  // hourly Search Console check for new searches (dashboard "spotted … ago")
+  "triggers": { "crons": ["23 * * * *"] }
 }
