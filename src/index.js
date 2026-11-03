@@ -443,7 +443,14 @@ async function searchConsole(env, r) {
     if (j.error) throw new Error(j.error.message);
     return j.rows || [];
   };
-  const [daysCur, daysPrev, qCur, qPrev, pages] = await Promise.all([q(r.cur, ["date"]), q(r.prev, ["date"]), q(r.cur, ["query"]), q(r.prev, ["query"]), q(r.cur, ["page"], 15)]);
+  // query × date over the last 120 days: tells when each search first showed up, for the "New" badge
+  const histEnd = Date.now() + 864e5, histStart = histEnd - 121 * 864e5;
+  const [daysCur, daysPrev, qCur, qPrev, pages, hist] = await Promise.all([q(r.cur, ["date"]), q(r.prev, ["date"]), q(r.cur, ["query"]), q(r.prev, ["query"]), q(r.cur, ["page"], 15),
+    q([new Date(histStart), new Date(histEnd)], ["query", "date"], 25000).catch(() => [])]);
+  const first = new Map(); let lastDay = "";
+  for (const x of hist) { const [k, d] = x.keys; if (!first.has(k) || d < first.get(k)) first.set(k, d); if (d > lastDay) lastDay = d; }
+  const newSince = lastDay ? day(new Date(Date.parse(lastDay) - 6 * 864e5)) : "";   // first seen in the last 7 days of data
+  const isNew = (k) => !!newSince && (first.get(k) || "") >= newSince;
   const sum = (rows, k) => rows.reduce((s, x) => s + (x[k] || 0), 0);
   const brand = (s) => /sorvel/i.test(s);
   const nb = (rows) => rows.filter((x) => !brand(x.keys[0]));
@@ -452,7 +459,12 @@ async function searchConsole(env, r) {
     prevClicks: sum(daysPrev, "clicks"), prevImpressions: sum(daysPrev, "impressions"),
     nbClicks: sum(nb(qCur), "clicks"), prevNbClicks: sum(nb(qPrev), "clicks"),
     byDay: daysCur.map((x) => ({ d: x.keys[0], clicks: x.clicks, impressions: x.impressions })),
-    queries: qCur.slice().sort((x, y) => y.impressions - x.impressions).slice(0, 20).map((x) => ({ k: x.keys[0], clicks: x.clicks, impressions: x.impressions, pos: Math.round(x.position * 10) / 10, brand: brand(x.keys[0]) })),
+    queries: (() => {   // top 20 by impressions, plus any new searches that didn't make the top 20
+      const s = qCur.slice().sort((x, y) => y.impressions - x.impressions), top = s.slice(0, 20);
+      const extra = s.slice(20).filter((x) => isNew(x.keys[0])).slice(0, 20);
+      return [...top, ...extra].map((x) => ({ k: x.keys[0], clicks: x.clicks, impressions: x.impressions, pos: Math.round(x.position * 10) / 10, brand: brand(x.keys[0]), isNew: isNew(x.keys[0]), first: first.get(x.keys[0]) || "" }));
+    })(),
+    newCount: qCur.filter((x) => isNew(x.keys[0])).length,
     pages: pages.map((x) => ({ k: x.keys[0].replace(/^https?:\/\/[^/]+/, "") || "/", clicks: x.clicks, impressions: x.impressions })),
   };
 }
@@ -475,7 +487,7 @@ function mock(r, days) {
     leadSrc: [{ k: "www.google.com", v: 6 }, { k: "direct", v: 4 }, { k: "www.linkedin.com", v: 3 }], leadLand: [{ k: "/", v: 6 }, { k: "/pricing", v: 4 }, { k: "/work/serverscamp", v: 2 }],
     gsc: { clicks: 41, impressions: 5071, prevClicks: 30, prevImpressions: 2035, nbClicks: 6, prevNbClicks: 5,
       byDay: r.days.map((d) => ({ d, clicks: rnd(0, 6), impressions: rnd(80, 400) })),
-      queries: [{ k: "sorvel agency", clicks: 22, impressions: 60, pos: 1.1, brand: true }, { k: "webflow agency for saas", clicks: 3, impressions: 820, pos: 18.4, brand: false }, { k: "fintech website design", clicks: 2, impressions: 610, pos: 22.7, brand: false }],
+      newCount: 1, queries: [{ k: "sorvel agency", clicks: 22, impressions: 60, pos: 1.1, brand: true }, { k: "webflow agency for saas", clicks: 3, impressions: 820, pos: 18.4, brand: false, isNew: true, first: "2026-10-30" }, { k: "fintech website design", clicks: 2, impressions: 610, pos: 22.7, brand: false }],
       pages: [{ k: "/", clicks: 30, impressions: 2100 }, { k: "/services/websites", clicks: 6, impressions: 900 }] },
     behavior: mockBehavior(r), behaviorPrev: { sessions: 61, bounce: .48, median: 41, funnel: [] },
     connected: { analytics: true, events: true, gsc: true }, errors: [], at: new Date().toISOString() };

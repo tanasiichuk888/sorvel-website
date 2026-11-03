@@ -102,6 +102,9 @@ table { width: 100%; border-collapse: collapse; font-size: 12.5px; font-variant-
 th { text-align: left; font-weight: 500; color: var(--muted); padding: 7px 8px; border-bottom: 1px solid var(--line); }
 td { padding: 7px 8px; border-bottom: 1px solid var(--line); color: var(--text-2); }
 td.n, th.n { text-align: right; }
+.newb { margin-left: 8px; padding: 1px 7px; border-radius: 99px; font-size: 10.5px; font-weight: 600; letter-spacing: .02em; color: #3DDC84; background: rgba(61,220,132,.12); border: 1px solid rgba(61,220,132,.35); vertical-align: 1px; }
+tr.isnew td { background: rgba(61,220,132,.04); }
+.newsum { margin: -4px 0 10px; font-size: 12.5px; color: var(--muted); } .newsum b { color: #3DDC84; font-weight: 600; }
 tr.isbrand td:first-child::after { content: "brand"; margin-left: 8px; padding: 1px 6px; border-radius: 4px; font-size: 10.5px; color: var(--muted); background: rgba(242,239,234,.06); }
 /* ranked lists */
 .list h4 { margin: 0 0 10px; font-size: 12px; font-weight: 500; color: var(--text-2); }
@@ -479,7 +482,7 @@ function render(D) {
   if (G) {
     $("#gsc").innerHTML = `<div class="grid2"><div><h4 style="margin:0 0 8px;font-size:12px;font-weight:500;color:var(--text-2)">Clicks from Google</h4><div id="gC"></div></div><div><h4 style="margin:0 0 8px;font-size:12px;font-weight:500;color:var(--text-2)">Impressions in Google</h4><div id="gI"></div></div></div>
       <div style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)"><h4 style="margin:0 0 6px;font-size:12px;font-weight:500;color:var(--text-2)">What people searched</h4>
-      ${G.queries.length ? `<table><tr><th>Query</th><th class="n">Clicks</th><th class="n">Impressions</th><th class="n">Avg. position</th></tr>${G.queries.map((q) => `<tr class="${q.brand ? "isbrand" : ""}"><td>${esc(q.k)}</td><td class="n">${fmt(q.clicks)}</td><td class="n">${fmt(q.impressions)}</td><td class="n">${q.pos}</td></tr>`).join("")}</table>` : '<div class="empty">No searches yet. New sites usually show up in 1 to 2 weeks.</div>'}</div>`;
+      ${G.newCount ? `<p class="newsum"><b>${G.newCount} new</b> ${G.newCount === 1 ? "search" : "searches"} this week: Google started showing you for ${G.newCount === 1 ? "it" : "them"} in the last 7 days.</p>` : ""}${G.queries.length ? `<table><tr><th>Query</th><th class="n">Clicks</th><th class="n">Impressions</th><th class="n">Avg. position</th></tr>${G.queries.map((q) => `<tr class="${q.brand ? "isbrand" : ""}${q.isNew ? " isnew" : ""}"><td>${esc(q.k)}${q.isNew ? `<span class="newb" title="First seen ${esc(q.first)}">New</span>` : ""}</td><td class="n">${fmt(q.clicks)}</td><td class="n">${fmt(q.impressions)}</td><td class="n">${q.pos}</td></tr>`).join("")}</table>` : '<div class="empty">No searches yet. New sites usually show up in 1 to 2 weeks.</div>'}</div>`;
     area($("#gC"), days, gDay("clicks"), "Clicks", "var(--s1)");
     area($("#gI"), days, gDay("impressions"), "Impressions", "var(--s1)");
     list($("#gscPages"), "Pages getting Google clicks", G.pages.map((p) => ({ k: p.k, v: p.clicks || 0 })).filter((p) => p.v), { empty: "No clicks from Google yet" });
