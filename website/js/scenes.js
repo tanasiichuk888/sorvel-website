@@ -81,13 +81,13 @@
       let lastDraw = 0, started = false;
       const v3 = (lat, lon) => { const a = lat * D2R, b = lon * D2R; return [Math.cos(a) * Math.sin(b), Math.sin(a), Math.cos(a) * Math.cos(b)]; };
       const land = []; for (let i = 0; i < G.p.length; i += LITE ? 6 : 3) land.push([v3(G.p[i] / 10, G.p[i + 1] / 10), G.p[i + 2]]);
-      const CO = G.c.map(([n, la, lo, rings, area]) => ({ n, v: v3(la, lo), rings: rings.map((r) => r.map(([a, b]) => v3(a, b))), area, home: n === "Spain" }));
-      const HOME = v3(39.5, -0.6), PICK = CO.filter((c) => c.area > 3 && !c.home);
+      const CO = G.c.map(([n, la, lo, rings, area]) => ({ n, v: v3(la, lo), rings: rings.map((r) => r.map(([a, b]) => v3(a, b))), area, home: false }));
+      const PICK = CO.filter((c) => c.area > 3 && c.n !== "Spain");
       const byName = (n) => CO.find((c) => c.n === n), USA = byName("United States");
       const PRIO = ["United States", "United Kingdom", "Canada", "Germany", "Australia", "United Arab Emirates", "Brazil", "France", "Netherlands", "Saudi Arabia", "Mexico", "Japan", "Italy", "Sweden", "India", "South Africa"].map(byName).filter(Boolean);
       const TYPES = ["Website", "Landing page", "Product UI", "Brand identity", "Webflow build", "Migration"];
       const feed = root.querySelector(".gl-feed"), feedT = feed && feed.querySelector("b"), feedS = feed && feed.querySelector("small");
-      let fires = 0, pi = 0;
+      let fires = 0, pi = 0, prev = null;   // arcs chain from country to country: each new one starts where the last one landed
       let rot = 0.2, tilt = 0.42, ph = -.42, base = .35, userTilt = 0, vel = 0.0022, drag = null, hover = 0, live = [], nextFire = 0, last = performance.now();
       const autoTilt = () => { const a = Math.atan2(Math.sin(rot), Math.cos(rot)), k = Math.max(0, Math.min(1, 1 - Math.abs(a - 2.3) / 1.1)); return .42 - .5 * k * k * (3 - 2 * k); };
       const resize = () => { const r = cv.getBoundingClientRect(), w = Math.round(r.width * DPR), h = Math.round(r.height * DPR);
@@ -115,7 +115,11 @@
         if (fires % 3 === 1 && ok(USA)) c = USA;
         else if (fires % 2 === 0) { for (let k = 0; k < PRIO.length && !c; k++) { const q = PRIO[(pi + k) % PRIO.length]; if (ok(q)) { c = q; pi = (pi + k + 1) % PRIO.length; } } }
         if (!c) { const vis = PICK.filter(ok); if (!vis.length) return; c = vis[Math.floor(Math.random() * vis.length)]; }
-        live.push({ c, t: now });
+        const vis = (x) => x && x !== c && P(x.v)[2] > .15;
+        let from = vis(prev) ? prev : null;
+        if (!from) { const o = PICK.filter(vis); if (!o.length) return; from = o[Math.floor(Math.random() * o.length)]; }
+        prev = c;
+        live.push({ c, f: from, t: now });
         if (feed) { feed.classList.remove("is-new"); void feed.offsetWidth; feed.classList.add("is-new");
           feedT.textContent = c.n; feedS.textContent = "New brief · " + TYPES[Math.floor(Math.random() * TYPES.length)]; }
       };
@@ -144,7 +148,7 @@
         // land dots
         for (const [p, code] of land) { const q = P(p); const z = q[2]; const [X, Y] = S(q);
           if (z < 0) { if (z > -.5) { ctx.fillStyle = `rgba(124,155,255,${.05 + z * .08})`; ctx.fillRect(X, Y, DPR, DPR); } continue; }
-          ctx.fillStyle = code ? `rgba(110,240,170,${.6 + z * .4})` : `rgba(170,192,255,${.25 + z * .6})`;
+          ctx.fillStyle = `rgba(170,192,255,${.25 + z * .6})`;
           if (LITE) { const d = (1.2 + z * 1.3) * DPR; ctx.fillRect(X - d / 2, Y - d / 2, d, d); }
           else { ctx.beginPath(); ctx.arc(X, Y, (.6 + z * .65) * DPR, 0, 6.283); ctx.fill(); } }
         // country borders (all) + live highlights
@@ -163,23 +167,18 @@
             ctx.shadowColor = "rgba(59,107,255,.9)"; ctx.shadowBlur = 10 * DPR; ctx.stroke(); ctx.shadowBlur = 0; }); });
         g = ctx.createRadialGradient(cx, cy, R * .82, cx, cy, R); g.addColorStop(0, "rgba(124,155,255,0)"); g.addColorStop(1, "rgba(124,155,255,.28)");
         ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.283); ctx.fill();
-        // live arcs from the studio
+        // live arcs between client countries
         const labels = [];
-        if (USA && !live.some((l) => l.c === USA)) live.push({ c: USA, t: now - 1500, keep: true });
         live.forEach((l) => { const age = (now - l.t) / 1000, k = Math.min(1, age / .9), fade = age > 3.2 ? Math.max(0, 1 - (age - 3.2) * 1.5) : 1;
-          ctx.beginPath(); let f = true; for (let s = 0; s <= 48; s++) { const q = P(slerp(HOME, l.c.v, s / 48 * k, .22)); if (q[2] < -.12) { f = true; continue; } const [X, Y] = S(q); f ? ctx.moveTo(X, Y) : ctx.lineTo(X, Y); f = false; }
+          ctx.beginPath(); let f = true; for (let s = 0; s <= 48; s++) { const q = P(slerp(l.f.v, l.c.v, s / 48 * k, .22)); if (q[2] < -.12) { f = true; continue; } const [X, Y] = S(q); f ? ctx.moveTo(X, Y) : ctx.lineTo(X, Y); f = false; }
           ctx.strokeStyle = `rgba(110,145,255,${.75 * fade})`; ctx.lineWidth = 1.4 * DPR; ctx.shadowColor = "rgba(59,107,255,.9)"; ctx.shadowBlur = 8 * DPR; ctx.stroke(); ctx.shadowBlur = 0;
-          const hq = P(slerp(HOME, l.c.v, k, .22)); if (hq[2] > -.12 && k < 1) { const [X, Y] = S(hq); const cg = ctx.createRadialGradient(X, Y, 0, X, Y, 8 * DPR); cg.addColorStop(0, "#fff"); cg.addColorStop(1, "rgba(91,131,255,0)"); ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(X, Y, 8 * DPR, 0, 6.283); ctx.fill(); }
-          if (l.keep) { const u = (now / 2400) % 1, cq = P(slerp(HOME, l.c.v, u, .22)); if (cq[2] > -.12) { const [X, Y] = S(cq); const cg = ctx.createRadialGradient(X, Y, 0, X, Y, 9 * DPR); cg.addColorStop(0, "#fff"); cg.addColorStop(1, "rgba(91,131,255,0)"); ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(X, Y, 9 * DPR, 0, 6.283); ctx.fill(); } }
+          const hq = P(slerp(l.f.v, l.c.v, k, .22)); if (hq[2] > -.12 && k < 1) { const [X, Y] = S(hq); const cg = ctx.createRadialGradient(X, Y, 0, X, Y, 8 * DPR); cg.addColorStop(0, "#fff"); cg.addColorStop(1, "rgba(91,131,255,0)"); ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(X, Y, 8 * DPR, 0, 6.283); ctx.fill(); }
+          if (l.keep) { const u = (now / 2400) % 1, cq = P(slerp(l.f.v, l.c.v, u, .22)); if (cq[2] > -.12) { const [X, Y] = S(cq); const cg = ctx.createRadialGradient(X, Y, 0, X, Y, 9 * DPR); cg.addColorStop(0, "#fff"); cg.addColorStop(1, "rgba(91,131,255,0)"); ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(X, Y, 9 * DPR, 0, 6.283); ctx.fill(); } }
           if (k < 1) return; const q = P(l.c.v); if (q[2] < .05) return; const [X, Y] = S(q), pu = l.keep ? (now / 1300) % 1 : Math.min(1, (age - .9) / 1.2);
           ctx.beginPath(); ctx.arc(X, Y, (3 + pu * 18) * DPR, 0, 6.283); ctx.strokeStyle = `rgba(170,192,255,${(1 - pu) * fade})`; ctx.lineWidth = 1.2 * DPR; ctx.stroke();
           ctx.beginPath(); ctx.arc(X, Y, 3 * DPR, 0, 6.283); ctx.fillStyle = `rgba(255,255,255,${fade})`; ctx.fill();
           labels.push({ x: X + 8 * DPR, y: Y - 12 * DPR, txt: l.c.n, a: Math.min(1, (age - .9) * 4) * fade, z: l.c === USA ? 5 : q[2] }); });
         live = live.filter((l) => !l.keep && now - l.t < 4000);
-        const hq = P(HOME); if (hq[2] > 0) { const [X, Y] = S(hq), pu = (now / 1250) % 1;
-          ctx.beginPath(); ctx.arc(X, Y, (5 + pu * 16) * DPR, 0, 6.283); ctx.strokeStyle = `rgba(61,220,132,${(1 - pu) * .9})`; ctx.lineWidth = 1.5 * DPR; ctx.stroke();
-          ctx.beginPath(); ctx.arc(X, Y, 4.5 * DPR, 0, 6.283); ctx.fillStyle = "#3DDC84"; ctx.fill();
-          if (hq[2] > .3) labels.unshift({ x: X + 10 * DPR, y: Y + 14 * DPR, txt: "Studio · Spain", a: Math.min(1, (hq[2] - .3) * 4), z: 9, g: true }); }
         orb(true);
         const placed = []; ctx.font = `500 ${11 * DPR}px Inter, system-ui, sans-serif`;
         labels.sort((a, b) => b.z - a.z).forEach((l) => { const w = ctx.measureText(l.txt).width + 16 * DPR, h = 20 * DPR, r = [l.x, l.y - h / 2, l.x + w, l.y + h / 2];
