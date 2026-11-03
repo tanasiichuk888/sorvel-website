@@ -94,7 +94,7 @@ dict(
   h1="How to migrate from WordPress to Webflow without losing SEO",
   card="A step-by-step checklist for moving to Webflow while keeping your rankings, links and traffic.",
   desc="A step-by-step checklist for moving a site from WordPress to Webflow while keeping your rankings: inventory, CMS model, content import, 301 redirects, meta tags and post-launch checks.",
-  cat="Migrations", date="2026-10-25", svc=("wordpress-to-webflow-migration", "WordPress to Webflow migration"),
+  cat="Migrations", date="2026-11-03", svc=("wordpress-to-webflow-migration", "WordPress to Webflow migration"),
   cover=("seo-cover", "A desktop screen showing website traffic and search performance charts"),
   lead="Traffic rarely drops because of Webflow. It drops because URLs, meta tags or images were lost on the way. This is the checklist we follow on every migration, in the order we do it.",
   sections=[
@@ -193,8 +193,29 @@ dict(
 <li>Changing slugs and content at the same time on the pages that earn the most traffic.</li>
 </ul>
 """),
+("challenges", "Common challenges during a WordPress to Webflow migration", """
+<p>Most migrations hit the same problems. Knowing them before you start saves days of fixing after launch.</p>
+<div class="post-table" role="region" aria-label="WordPress to Webflow migration challenges" tabindex="0"><table>
+<thead><tr><th>Challenge</th><th>Why it happens</th><th>How to solve it</th></tr></thead>
+<tbody>
+<tr><td><b>Page builder markup</b></td><td>Elementor, Divi or WPBakery wrap content in layers of extra code and shortcodes</td><td>Export clean content, strip shortcodes and rebuild layouts as Webflow templates</td></tr>
+<tr><td><b>URLs change for CMS items</b></td><td>Webflow keeps every CMS item inside a collection folder, such as /blog/post-name</td><td>Plan the new pattern once and cover it with 301 redirects</td></tr>
+<tr><td><b>Plugin features</b></td><td>Forms, search, comments, memberships and sliders came from plugins</td><td>List each one in the audit and replace it with a Webflow feature, a light embed or a simpler solution</td></tr>
+<tr><td><b>Complex categories</b></td><td>WordPress allows nested categories and unlimited tags</td><td>Model them as reference and multi-reference fields, and flatten deep hierarchies</td></tr>
+<tr><td><b>CMS limits</b></td><td>Webflow plans have limits on CMS items and fields</td><td>Count posts, authors and categories first and pick the plan before importing</td></tr>
+<tr><td><b>Images in posts</b></td><td>Images inside articles still point to the old server</td><td>Re-upload them during import and check that no post loads files from WordPress</td></tr>
+<tr><td><b>Tables, embeds and custom blocks</b></td><td>Rich text in Webflow is simpler than the WordPress block editor</td><td>Use custom code embeds or rebuild them as components</td></tr>
+</tbody></table></div>
+<p>None of these block a migration. They only need to be planned in the audit, not discovered after the old site is switched off.</p>
+"""),
+("diy-or-hire", "Do it yourself or hire help?", """
+<p>A small site with 10 to 20 pages and a short blog can be moved by a confident in-house team with this checklist. Bring in help when the site has hundreds of posts, many plugin features, a store, several languages or pages that bring most of your leads. The cost of a careful migration is small next to a few months of lost organic traffic.</p>
+<p>See what a migration usually costs in our <a href="../blog/wordpress-to-webflow-migration-cost.html">WordPress to Webflow migration cost guide</a>, or how we run it on our <a href="../services/wordpress-to-webflow-migration.html">WordPress to Webflow migration</a> page.</p>
+"""),
   ],
-  faq=[("Will my rankings drop after moving to Webflow?", "A short wobble is common while Google recrawls the site. With a complete redirect map and the same on-page SEO, rankings usually settle within a few weeks, and faster pages often help."),
+  faq=[("What are the biggest challenges in a WordPress to Webflow migration?", "Page builder markup and shortcodes, CMS URLs that change, plugin features that need a replacement, nested categories, CMS item limits and images still loading from the old server. All of them can be planned in the audit."),
+       ("How long does a WordPress to Webflow migration take?", "Usually 1 to 3 weeks for a company site. Large blogs, a redesign on top or many integrations take longer."),
+       ("Will my rankings drop after moving to Webflow?", "A short wobble is common while Google recrawls the site. With a complete redirect map and the same on-page SEO, rankings usually settle within a few weeks, and faster pages often help."),
        ("Can I keep the same URLs in Webflow?", "Static pages, yes. CMS items always live under a collection folder, such as /blog/post-name, so root-level or date-based post URLs change and need 301 redirects."),
        ("How do I move hundreds of blog posts?", "Export them to CSV, clean the content, and import the file into a Webflow collection. Large or messy content is best cleaned with a script before import."),
        ("Do redirects slow the site down?", "No. A single 301 redirect is handled almost instantly. Avoid chains of several redirects in a row."),
@@ -609,8 +630,8 @@ dict(
   title="Framer vs WordPress in 2026: Which Is Right for Your Website? | Sorvel",
   h1="Framer vs WordPress: which is right for your website",
   card="Speed, design, editing, SEO, plugins and cost: when Framer is the smarter choice and when WordPress still wins.",
-  desc="Framer vs WordPress compared for business websites in 2026: design freedom, speed, editing, SEO, plugins, e-commerce and cost, with clear advice on which to choose.",
-  cat="Platforms", date="2026-10-31", svc=("websites", "website design and development"),
+  desc="Framer vs WordPress in 2026: SEO, security, speed, design, languages, plugins and cost compared, plus a quick test to pick the right platform for your site.",
+  cat="Platforms", date="2026-11-03", svc=("websites", "website design and development"),
   cover=("c-framer-vs-wordpress", "A designer working at a desk with app layout printouts"),
   lead="Framer and WordPress sit at opposite ends: one is a design tool that publishes websites, the other a flexible system that can become almost anything. Here is how to choose.",
   sections=[
@@ -679,8 +700,62 @@ dict(
 </ol>
 <p>The same checklist as in our <a href="../blog/migrate-wordpress-to-webflow-without-losing-seo.html">WordPress to Webflow guide</a> applies.</p>
 """),
+('fw-seo', 'Framer or WordPress for SEO?', """
+<p>This is the question we hear most, and the honest answer is that <b>both can rank well</b>. Google does not prefer one platform. It ranks pages that load fast, answer the search and have a clean structure. The difference is in how much work it takes to get there.</p>
+<div class="post-table" role="region" aria-label="Framer and WordPress SEO compared" tabindex="0"><table>
+<thead><tr><th>SEO task</th><th>Framer</th><th>WordPress</th></tr></thead>
+<tbody>
+<tr><td><b>Titles and meta descriptions</b></td><td>Built in, per page and per CMS item</td><td>Usually through a plugin such as Yoast or Rank Math</td></tr>
+<tr><td><b>Sitemap and robots.txt</b></td><td>Generated automatically</td><td>Generated by core or an SEO plugin</td></tr>
+<tr><td><b>301 redirects</b></td><td>Set in site settings</td><td>Plugin or server rules</td></tr>
+<tr><td><b>Structured data (schema)</b></td><td>Added as custom code per page</td><td>Plugins generate most of it automatically</td></tr>
+<tr><td><b>Page speed</b></td><td>Fast out of the box, served from a CDN</td><td>Depends on hosting, theme, plugins and caching</td></tr>
+<tr><td><b>Large content sites</b></td><td>Fine for a normal blog</td><td>More control over taxonomies, archives and filters</td></tr>
+</tbody></table></div>
+<p><b>Framer is the easier choice</b> for a company site with a blog: speed and clean markup come by default, and there is no plugin stack to slow pages down. <b>WordPress gives more control</b> when SEO depends on thousands of pages, complex categories, faceted filters or programmatic pages.</p>
+<div class="post-note"><b>What actually moves rankings</b><p>On either platform, rankings come from useful content, a clear page structure, internal links and links from other sites. The platform only decides how easy the technical part is. A fast Framer page with thin content will not beat a slower WordPress page that answers the question better.</p></div>
+"""),
+('fw-security', 'Security: is Framer safer than WordPress?', """
+<p>For a typical marketing site, <b>Framer carries far less security risk</b>, mostly because there is much less for you to manage.</p>
+<ul>
+<li><b>Framer</b> is a hosted platform. Framer runs the servers, SSL certificates and updates. There are no plugins or themes on your side to patch, and no admin login on your domain for bots to attack.</li>
+<li><b>WordPress</b> core is well maintained, but most real-world problems come from outdated plugins, themes and weak admin passwords. Security depends on regular updates, backups, a good host and often a security plugin.</li>
+</ul>
+<p>That does not make WordPress unsafe. It means WordPress security is a job someone has to do every month. If nobody on your team owns that job, Framer or Webflow removes the risk instead of managing it.</p>
+<p>One thing to weigh on the other side: with Framer your site lives on Framer's platform. You cannot move the code to your own server. WordPress is open source, so you can host it anywhere and take everything with you.</p>
+"""),
+('fw-speed', 'Speed and Core Web Vitals', """
+<p>Framer publishes pre-built pages to a global CDN, compresses images and handles caching for you, so a well-built Framer site usually scores well on Core Web Vitals without extra work. Heavy animations and very large images can still slow it down, so they need the same care as anywhere else.</p>
+<p>WordPress can be just as fast, but it takes deliberate choices: good managed hosting, a light theme, few plugins, a caching layer and optimised images. Many slow WordPress sites are slow because plugins were added over the years and never removed.</p>
+"""),
+('fw-languages', 'Multilingual sites', """
+<ul>
+<li><b>Framer</b> has built-in localization: you translate pages and CMS items inside the editor, and each language gets its own URL for search engines.</li>
+<li><b>WordPress</b> uses plugins such as WPML or Polylang. They are powerful and handle complex setups, but they add another plugin to keep updated and can slow the editor down on big sites.</li>
+</ul>
+<p>For two to five languages on a company site, Framer is simpler. For many languages with different content per market, WordPress or Webflow give more room.</p>
+"""),
+('fw-design', 'Design freedom and animations', """
+<p>Framer was built by people who make design tools, and it shows. Layouts, hover effects, scroll animations and page transitions are set visually, very close to how a designer works in Figma. What you approve in the design is what goes live.</p>
+<p>On WordPress the result depends on the theme or page builder and on the developer. Anything is possible with custom code, but advanced motion takes more development time, and page builders often add extra code that slows the page down.</p>
+"""),
+('fw-choose', 'A quick way to decide', """
+<p>Answer these five questions. If most answers point one way, that is your platform.</p>
+<ol>
+<li><b>Do you sell many products online?</b> Yes: WordPress with WooCommerce, or Shopify. No: Framer works.</li>
+<li><b>Do you need logins, memberships, courses or bookings?</b> Yes: WordPress. No: Framer.</li>
+<li><b>Will you publish more than a few hundred articles with complex categories?</b> Yes: WordPress or Webflow. No: Framer is enough.</li>
+<li><b>Is there someone to update plugins and watch security every month?</b> No: Framer.</li>
+<li><b>Is design and first impression the main goal of the site?</b> Yes: Framer.</li>
+</ol>
+<p>Still not sure? Send us a short brief and we will tell you which platform fits, even if the answer is the one we do not build on.</p>
+"""),
   ],
-  faq=[("Is Framer good for SEO?", "Yes for most marketing sites: clean pages, fast loading, editable meta tags and sitemaps. Very large content sites get more control on Webflow or WordPress."),
+  faq=[("Is Framer or WordPress better for SEO?", "Both can rank well. Framer is faster to set up correctly and fast by default; WordPress gives more control for very large content sites with complex categories."),
+       ("Is a Framer website secure?", "Yes. Framer hosts the site and handles servers, SSL and updates, so there are no plugins or admin logins on your domain to attack. WordPress can be secure too, but it needs regular updates and backups."),
+       ("Can I export my Framer site and host it myself?", "No. Framer sites are hosted by Framer. If owning and moving the code matters to you, WordPress or a custom build is the better fit."),
+       ("Does Framer support multiple languages?", "Yes. Framer has built-in localization for pages and CMS content, with a separate URL for each language."),
+       ("Is Framer good for SEO?", "Yes for most marketing sites: clean pages, fast loading, editable meta tags and sitemaps. Very large content sites get more control on Webflow or WordPress."),
        ("Is Framer cheaper than WordPress?", "Framer has a monthly plan but no maintenance costs. WordPress hosting is cheap, but updates, plugins and fixes add up over a year."),
        ("Can I move from WordPress to Framer?", "Yes. Pages are rebuilt in Framer, blog content is imported and old URLs get 301 redirects to keep rankings."),
        ("Do you build on both?", "Yes. We design in Figma and build in Framer, Webflow or WordPress depending on what the site needs."),
@@ -1108,7 +1183,7 @@ dict(
   h1="How much a landing page costs in 2026",
   card="Price ranges for landing pages from templates to studios, a line-by-line cost breakdown, hidden costs and how to get a fixed quote.",
   desc="How much a landing page costs in 2026: price ranges from DIY to studios, a cost breakdown by task, what drives the price, hidden costs, timelines and how to get a fixed quote.",
-  cat="Pricing", date="2026-11-01", svc=("websites", "website design and development"),
+  cat="Pricing", date="2026-11-03", svc=("websites", "website design and development"),
   cover=("c-landing-page-cost", "An entrepreneur reviewing charts on a desktop computer"),
   lead="A landing page has one job: turn a specific visitor into a lead, a sign-up or a sale. What you pay depends on how much strategy, design, building and testing goes into that one job. Here is the full picture, with real numbers.",
   sections=[
@@ -1195,8 +1270,50 @@ dict(
 <li>Choosing the cheapest quote and rebuilding the page three months later.</li>
 </ul>
 """),
+("rates", "Hourly rates vs a fixed price", """
+<p>Many people search for landing page setup rates, because some designers quote by the hour. Typical rates in 2026 look like this:</p>
+<div class="post-table" role="region" aria-label="Hourly rates for landing page work" tabindex="0"><table>
+<thead><tr><th>Who</th><th>Typical hourly rate</th><th>Hours for one landing page</th></tr></thead>
+<tbody>
+<tr><td><b>Junior freelancer</b></td><td>$20 to $50</td><td>15 to 40</td></tr>
+<tr><td><b>Senior freelancer</b></td><td>$50 to $120</td><td>20 to 40</td></tr>
+<tr><td><b>Studio or agency</b></td><td>$90 to $200</td><td>25 to 60, including strategy and QA</td></tr>
+</tbody></table></div>
+<p>Hourly pricing looks flexible, but the final bill is hard to predict, and every round of changes adds hours. A <b>fixed price</b> agreed after the brief is easier to plan: you know the total, the scope and the timeline before work starts. That is how we quote every landing page.</p>
+"""),
+("setup", "What a landing page setup includes", """
+<p>The design is only part of the job. A page that is ready for traffic also needs a technical setup. Check that your quote covers it:</p>
+<ul>
+<li><b>Domain or subdomain</b> connected, with SSL.</li>
+<li><b>Hosting</b> on the platform plan, Webflow, Framer or WordPress.</li>
+<li><b>Form</b> connected to your CRM, email tool or booking calendar.</li>
+<li><b>Analytics and conversion tracking</b>: Google Analytics, Google Ads or Meta pixel, and events on every button that matters.</li>
+<li><b>SEO basics</b>: title, description, social sharing image and a clean URL.</li>
+<li><b>Speed and mobile checks</b> before launch, because most ad clicks come from phones.</li>
+<li><b>Cookie banner</b> if you run ads to visitors in the EU or the UK.</li>
+</ul>
+<p>Setup on its own usually takes <b>half a day to two days</b>, so it adds a few hundred dollars when it is quoted separately. Ours is included in the price.</p>
+"""),
+("bytype", "Landing page cost by type", """
+<div class="post-table" role="region" aria-label="Landing page cost by type" tabindex="0"><table>
+<thead><tr><th>Type of page</th><th>Typical cost with a professional team</th><th>What makes it cost more</th></tr></thead>
+<tbody>
+<tr><td><b>Lead generation for a service</b></td><td>$1,500 to $4,000</td><td>Several forms, booking, CRM routing</td></tr>
+<tr><td><b>SaaS sign-up or demo page</b></td><td>$2,500 to $6,000</td><td>Product visuals, pricing table, integrations</td></tr>
+<tr><td><b>Product launch or waitlist</b></td><td>$2,000 to $5,000</td><td>Animation, video, referral mechanics</td></tr>
+<tr><td><b>Event or webinar</b></td><td>$1,000 to $3,000</td><td>Registration tools, reusable templates</td></tr>
+<tr><td><b>E-commerce product page</b></td><td>$1,500 to $5,000</td><td>Checkout, reviews, upsells, store integration</td></tr>
+</tbody></table></div>
+<p>If you plan several campaigns, ask for a reusable template. The first page costs more, and every next page on the same system costs a fraction of it.</p>
+"""),
+("diy", "Should you build it yourself?", """
+<p>A template is fine to test an idea for a week. It stops being cheap when real ad money goes to it. If you spend $2,000 a month on ads and a better page lifts conversion from 2% to 3%, you get <b>50% more leads</b> for the same spend. Over a few months that pays for a professional page many times over.</p>
+<p>Build it yourself when the budget is very small, the offer is still changing every week, or you only need a page for a short test. Hire help when the page carries real traffic, the brand matters or you need tracking you can trust.</p>
+"""),
   ],
-  faq=[("How much does a landing page cost?", "Usually $1,500 to $6,000 with a professional team in 2026. With our studio from $2,400, extra pages on the same design from $600."),
+  faq=[("What are typical landing page setup rates?", "Freelancers usually charge $20 to $120 an hour and studios $90 to $200. A landing page takes 15 to 60 hours, which is why many teams prefer a fixed price agreed upfront."),
+       ("What is included in a landing page setup?", "Domain and SSL, hosting, a connected form, analytics and conversion tracking, SEO basics, a cookie banner where needed, and speed and mobile checks before launch."),
+       ("How much does a landing page cost?", "Usually $1,500 to $6,000 with a professional team in 2026. With our studio from $2,400, extra pages on the same design from $600."),
        ("How long does a landing page take?", "Usually 1 to 2 weeks from brief to launch, depending on copy and integrations."),
        ("Is a landing page cheaper than a website?", "Yes, usually. A full website with several layouts and a CMS starts around $6,900 with our studio."),
        ("Which platform is best for a landing page?", "Framer or Webflow for speed and easy edits; WordPress if the rest of your site already runs on it."),

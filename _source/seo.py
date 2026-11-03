@@ -329,6 +329,22 @@ def process(path):
                 return f'  <link rel="stylesheet" href="{m.group(1)}css/{name}" data-css="{" ".join(n for _, n in links)}" />\n'
             return ""
         s = re.sub(r'[ \t]*<link rel="stylesheet" href="((?:\.\./)*)css/[a-z-]+\.css(?:\?v=\d+)?" ?/?>\n?', _bl, s)
+    # tables in articles: give each cell its column name, shown as a label when the table turns into cards on phones
+    def _tbl(m):
+        t = m.group(0)
+        hd = re.search(r"<thead>(.*?)</thead>", t, re.S)
+        if not hd: return t
+        names = [html.unescape(re.sub(r"<[^>]+>", "", x)).strip() for x in re.findall(r"<th[^>]*>(.*?)</th>", hd.group(1), re.S)]
+        def _row(r):
+            n = [0]
+            def _td(c):
+                i = n[0]; n[0] += 1
+                attrs = c.group(1) or ""
+                if "data-l=" in attrs or i >= len(names) or not names[i]: return c.group(0)
+                return f'<td data-l="{html.escape(names[i])}"{attrs}>'
+            return re.sub(r"<td(\s[^>]*)?>", _td, r.group(0))
+        return re.sub(r"<tr>.*?</tr>", _row, t, flags=re.S)
+    s = re.sub(r'<div class="post-table".*?</table>', _tbl, s, flags=re.S)
     # lazy-load images below the first section
     body_start = s.find("</section>")
     if body_start > 0:

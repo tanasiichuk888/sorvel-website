@@ -1171,9 +1171,7 @@ main > section.sec, main > section.cs-more, main > section.cs-numbers { isolatio
   .post-table td:first-child { grid-column: 1 / -1; font-size: 16px; }
   .post-table td:nth-child(4) { grid-column: 1 / -1; }
   .post-table td:nth-child(n+2)::before { display: block; margin-bottom: 3px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-  .post-table td:nth-child(2)::before { content: "Typical cost"; }
-  .post-table td:nth-child(3)::before { content: "Time"; }
-  .post-table td:nth-child(4)::before { content: "Best for"; }
+  .post-table td:nth-child(n+2)::before { content: attr(data-l); }   /* column name, added by the build from the table header */
 }
 @media (max-width: 640px) {
   .dia-table { overflow: visible; }

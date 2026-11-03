@@ -28,7 +28,7 @@
 ## Guides
 
 - [B2B Website Design in 2026: How to Build a Site That Generates Leads](https://sorvel.agency/blog/b2b-website-design): B2B website design guide for 2026: how B2B buyers decide, the pages and proof every B2B site needs, messaging, lead capture that works, platform choice, costs and timelines.
-- [Framer vs WordPress in 2026: Which Is Right for Your Website?](https://sorvel.agency/blog/framer-vs-wordpress): Framer vs WordPress compared for business websites in 2026: design freedom, speed, editing, SEO, plugins, e-commerce and cost, with clear advice on which to choose.
+- [Framer vs WordPress in 2026: Which Is Right for Your Website?](https://sorvel.agency/blog/framer-vs-wordpress): Framer vs WordPress in 2026: SEO, security, speed, design, languages, plugins and cost compared, plus a quick test to pick the right platform for your site.
 - [How Much Does a Framer Website Cost in 2026? Full Price Guide](https://sorvel.agency/blog/framer-website-cost): How much a Framer website costs in 2026: template, freelancer and studio price ranges, a cost breakdown, Framer plan fees, timelines, hidden costs and when to choose Framer over Webflow.
 - [How to Choose a Web Design Agency in 2026: 12 Questions to Ask](https://sorvel.agency/blog/how-to-choose-a-web-design-agency): How to choose a web design agency in 2026: where to find good options, 12 questions to ask before you hire, how to compare proposals fairly and the red flags to watch for.
 - [How Much Does a Landing Page Cost in 2026? Full Price Guide](https://sorvel.agency/blog/landing-page-cost): How much a landing page costs in 2026: price ranges from DIY to studios, a cost breakdown by task, what drives the price, hidden costs, timelines and how to get a fixed quote.
