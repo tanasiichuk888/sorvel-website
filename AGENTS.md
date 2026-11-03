@@ -17,7 +17,7 @@ Static site for sorvel.agency, deployed by Cloudflare on every push to `main`.
 
 ## After any change
 1. `cd _source && python3 build.py` (needs Python 3 + Pillow).
-2. CSS: the build bundles each page's stylesheets into one `css/b-<hash>.css` (the `data-css` attribute lists the source files). Edit the source files in `website/css/`, never the `b-*.css` bundles; rebuilding makes a new bundle. JS: bump its number in `ASSET_V` in `_source/seo.py`, then rebuild. If you replaced a case image under `website/img/work/`, bump `IMG_V`.
+2. CSS: the build bundles each page's stylesheets into one `css/b-<hash>.css` (the `data-css` attribute lists the source files). On the home page the bundle is inlined as `<style data-css=...>` (INLINE_CSS in `seo.py`). Edit the source files in `website/css/`, never the bundles or that inline style; rebuilding makes a new bundle. JS: bump its number in `ASSET_V` in `_source/seo.py`, then rebuild. If you replaced a case image under `website/img/work/`, bump `IMG_V`.
 3. Check the page in a browser at desktop and 390px width (no horizontal scroll).
 4. Commit and push to `main`.
 

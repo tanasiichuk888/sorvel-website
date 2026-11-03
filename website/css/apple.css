@@ -175,3 +175,8 @@
 @media (prefers-reduced-motion: reduce) { .wa-fab::before { animation: none; } }
 /* keep the case-study chapter dock and the WhatsApp button apart on small screens */
 @media (max-width: 760px) { .cs-dock { bottom: 80px; } }
+
+/* speed: skip rendering of sections that are off screen (the browser renders them as they scroll into view) */
+@media (max-width: 760px) {
+  main > .sec, .foot { content-visibility: auto; contain-intrinsic-size: auto 900px; }
+}

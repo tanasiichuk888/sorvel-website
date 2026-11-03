@@ -3,6 +3,7 @@
   const root = document.querySelector(".xp"); if (!root) return;
   const stage = root.querySelector(".xp__stage");
   const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const MOBILE = matchMedia("(max-width: 760px)").matches;   // phones: show the finished site first, start the cycle a bit later
   // only the strongest UI/UX work
   const CASES = [
     { name: "Valhalla Capital", tags: "Private credit · Figma + Webflow", dir: "valhalla", url: "valhallacap.com", plat: "Live · Webflow", slug: "valhalla-capital", m: "m-hero" },
@@ -11,7 +12,7 @@
     { name: "College Classics", tags: "Fashion · Shopify design + build", dir: "college-classics", url: "College Classics · Shopify", plat: "Live · Shopify", slug: "college-classics", m: "m-hero" },
   ];
   // warm up the other projects' screens only after the page has loaded (keeps the first paint fast)
-  const warm = () => setTimeout(() => CASES.forEach((c) => { new Image().src = `img/work/${c.dir}/hero-xp.webp`; if (c.m) new Image().src = `img/work/${c.dir}/${c.m}-xp.webp`; }), 1500);
+  const warm = () => setTimeout(() => CASES.forEach((c) => { new Image().src = `img/work/${c.dir}/hero-xp.webp`; if (c.m) new Image().src = `img/work/${c.dir}/${c.m}-xp.webp`; }), MOBILE ? 6000 : 1500);
   if (document.readyState === "complete") warm(); else addEventListener("load", warm, { once: true });
 
   const $ = (s) => root.querySelector(s), $$ = (s) => [...root.querySelectorAll(s)];
@@ -70,7 +71,7 @@
   if (REDUCED) { load(CASES[0]); phase("live"); return; }
   stage.dataset.phase = "out";
   nameEl.textContent = CASES[0].name; tagsEl.textContent = CASES[0].tags; link.href = `work/${CASES[0].slug}.html`;
-  const begin = () => setTimeout(() => run(0), 120);
+  const begin = MOBILE ? () => { load(CASES[0]); phase("live"); timer = setTimeout(() => run(4), 5000); } : () => setTimeout(() => run(0), 120);
   if (document.readyState !== "loading") begin(); else addEventListener("DOMContentLoaded", begin, { once: true });
 
   // pause when off-screen

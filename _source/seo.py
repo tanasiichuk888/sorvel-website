@@ -33,7 +33,7 @@ APPLE, APPLE_V = True, 11  # Apple-style layer (css/apple.css); False = roll bac
 MOBILE_V = 5  # bump after editing css/mobile.css
 BRAND_V = 2  # bump after replacing logo / favicon files
 # other assets that change: bump the number after editing the file
-ASSET_V = {"css/style.css": 10, "js/main.js": 33, "css/xp.css": 6, "js/scenes.js": 21, "js/xp.js": 9, "js/dots.js": 3, "css/hero.css": 3, "js/case.js": 13, "js/fx.js": 19, "js/svc.js": 17, "css/svc.css": 6}
+ASSET_V = {"css/style.css": 10, "js/main.js": 33, "css/xp.css": 6, "js/scenes.js": 21, "js/xp.js": 10, "js/dots.js": 3, "css/hero.css": 3, "js/case.js": 13, "js/fx.js": 19, "js/svc.js": 17, "css/svc.css": 6}
 
 # Search titles (aim for under ~60 characters). Case studies are generated from the page.
 POPULAR = [("saas-website-design", "SaaS website design"), ("fintech-website-design", "Fintech website design"),
@@ -106,12 +106,15 @@ def _svc_mobile(s):
         return m.group(0) + (clone(i) if i < len(vis) else "")
     return re.sub(r'<div class="svc__body"><div>', put, s)
 
+INLINE_CSS = {"index.html"}
 def process(path):
     rel = os.path.relpath(path, W).replace(os.sep, "/")
     s = open(path, encoding="utf-8").read()
     # undo the stylesheet bundle from a previous build (index.html is edited in place), then rebundle below
     s = re.sub(r'([ \t]*)<link rel="stylesheet" href="((?:\.\./)*)css/b-[0-9a-f]+\.css" data-css="([^"]+)" />\n?',
                lambda m: "".join(f'{m.group(1)}<link rel="stylesheet" href="{m.group(2)}css/{n}" />\n' for n in m.group(3).split()), s)
+    s = re.sub(r'([ \t]*)<style data-css="([^"]+)">.*?</style>\n?',
+               lambda m: "".join(f'{m.group(1)}<link rel="stylesheet" href="css/{n}" />\n' for n in m.group(2).split()), s, flags=re.S)
     s = re.sub(r"[ \t]*" + re.escape(START) + r".*?" + re.escape(END) + r"\n?", "", s, flags=re.S)
     if rel in TITLES:
         s = re.sub(r"<title>.*?</title>", "<title>" + html.escape(TITLES[rel], quote=False) + "</title>", s, count=1, flags=re.S)
@@ -311,13 +314,18 @@ def process(path):
     if len(links) > 1:
         import hashlib
         links = [l for i, l in enumerate(links) if l[1] not in [x[1] for x in links[i + 1:]]]   # drop repeats, keep the later one
-        css = "".join(f"/* {n} */\n" + open(f"{W}/css/{n}", encoding="utf-8").read() + "\n" for _, n in links)
+        css = "".join(open(f"{W}/css/{n}", encoding="utf-8").read() + "\n" for _, n in links)
+        css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)                     # minify: comments
+        css = re.sub(r"\s+", " ", css)                                      # whitespace runs
+        css = re.sub(r"\s*([{};,>])\s*", r"\1", css).replace(";}", "}")   # around punctuation (not ':' or '+', they matter in selectors/calc)
         name = "b-" + hashlib.md5(css.encode()).hexdigest()[:10] + ".css"
         if not os.path.exists(f"{W}/css/{name}"): open(f"{W}/css/{name}", "w", encoding="utf-8").write(css)
         first = [True]
         def _bl(m):
             if first[0]:
                 first[0] = False
+                if rel in INLINE_CSS:   # home page: CSS inline, saves a render-blocking round trip on mobile
+                    return f'  <style data-css="{" ".join(n for _, n in links)}">{css}</style>\n'
                 return f'  <link rel="stylesheet" href="{m.group(1)}css/{name}" data-css="{" ".join(n for _, n in links)}" />\n'
             return ""
         s = re.sub(r'[ \t]*<link rel="stylesheet" href="((?:\.\./)*)css/[a-z-]+\.css(?:\?v=\d+)?" ?/?>\n?', _bl, s)
