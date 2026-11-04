@@ -25,3 +25,6 @@ Static site for sorvel.agency, deployed by Cloudflare on every push to `main`.
 - Case study pages stay `noindex` (`NOINDEX_CASES` in `seo.py`) unless the owner says otherwise. The ServersCamp case is hidden (`HIDDEN` in `common.py`).
 - Never invent client results, metrics or reviews. Use facts about scope and design only.
 - Keep copy in plain, natural English. Brand name: Sorvel. Never mention "AltCreative".
+
+## Scheduled blog posts
+- A scheduled task adds one article every 48 hours by following `BLOG_AUTOPILOT.md`. The repo is the source of truth: always `git pull` before editing.
