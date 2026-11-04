@@ -502,7 +502,7 @@ dict(
 [[cta]]
 """),
 ("running", "Costs after launch", """
-<p>Webflow charges a monthly site plan for hosting and the CMS, and a workspace plan if your team needs editing seats. Plan prices change, so check Webflow's pricing page for current numbers. Beyond that there is no plugin licence or server maintenance to pay for, which is where Webflow usually saves money compared with WordPress. See <a href="../blog/webflow-vs-wordpress.html">Webflow vs WordPress</a>.</p>
+<p>Webflow charges a monthly site plan for hosting and the CMS, and a workspace plan if your team needs editing seats. Plan prices change, so check our <a href="../blog/webflow-pricing.html">Webflow pricing guide</a> for current numbers. Beyond that there is no plugin licence or server maintenance to pay for, which is where Webflow usually saves money compared with WordPress. See <a href="../blog/webflow-vs-wordpress.html">Webflow vs WordPress</a>.</p>
 """),
 ("quote", "How to get an accurate quote", """
 <ul>
@@ -1722,6 +1722,155 @@ dict(
        ("What should a website contract include?", "Scope, timeline, price, payment stages, revisions, ownership and what happens after launch."),
        ("How long does choosing an agency take?", "One to two weeks is typical: shortlist, brief, proposals and a decision."),
        ("How does Sorvel quote?", "You send a short brief and get a written plan with scope, timeline and a fixed price within 24 hours."),
+  ],
+),
+dict(
+  slug="webflow-pricing",
+  title="Webflow Pricing 2026: Plans, Seats, Hosting and Real Costs | Sorvel",
+  h1="Webflow pricing in 2026: plans, seats and what you will really pay",
+  card="Every Webflow plan after the 2026 price change, how site plans and seats add up, and real yearly costs for five typical sites.",
+  desc="Webflow pricing in 2026 explained: Starter, Basic and Premium site plans, workspace seats, ecommerce, Localize and bandwidth, with real yearly costs and how to pay less.",
+  cat="Pricing", date="2026-11-04", svc=("webflow-agency", "Webflow design and development"),
+  cover=("c-webflow-pricing", "An open laptop with a notebook, pencil and calculator on a wooden desk"),
+  lead="Webflow changed its pricing in 2026: the CMS and Business plans are gone, there is a new Premium plan, and seats are billed separately. Here is what each plan costs, what you actually need, and what a real Webflow site costs per year.",
+  sections=[
+("wfp-short", "The short answer", """
+<p>For most businesses, <b>Webflow costs $15 to $25 per month per site</b> when billed yearly. A site without a blog runs on the <b>Basic</b> plan at $15 a month; a site with a blog or any CMS content needs <b>Premium</b> at $25 a month. Paying month to month costs more: $25 and $39.</p>
+<p>On top of the site plan you may pay for <b>seats</b> if several people edit the site ($15 to $39 per person per month), for <b>Localize</b> if the site has more than one language, and for <b>ecommerce</b> if you sell online. The design and build of the site is a separate, one-off cost.</p>
+<div class="post-note"><b>Key takeaways</b><p>Basic for sites without a CMS, Premium for anything with a blog or collections. Always pay yearly if you plan to keep the site. A typical company site with a blog and one extra editor costs about $480 a year in Webflow fees. Prices below are in US dollars, before tax, as of November 2026.</p></div>
+"""),
+("wfp-plans", "Webflow site plans and prices in 2026", """
+<p>A site plan pays for hosting, the custom domain, bandwidth and the CMS for one website. Every live site needs its own plan.</p>
+<div class="post-table" role="region" aria-label="Webflow site plans 2026" tabindex="0"><table>
+<thead><tr><th>Plan</th><th>Billed yearly</th><th>Billed monthly</th><th>What you get</th></tr></thead>
+<tbody>
+<tr><td><b>Starter</b></td><td>Free</td><td>Free</td><td>webflow.io address only, 2 pages, 50 CMS items, 1 GB bandwidth. For learning and drafts.</td></tr>
+<tr><td><b>Basic</b></td><td>$15/mo</td><td>$25/mo</td><td>Custom domain, up to 300 static pages, 10 GB bandwidth, no CMS.</td></tr>
+<tr><td><b>Premium</b></td><td>$25/mo</td><td>$39/mo</td><td>20,000 CMS items in 40 collections, 50 GB bandwidth that can be expanded.</td></tr>
+<tr><td><b>Team</b></td><td>$2,500/mo</td><td>Yearly contract only</td><td>Premium limits and more, plus seats and Localize for larger marketing teams.</td></tr>
+<tr><td><b>Enterprise</b></td><td>Custom</td><td>Custom</td><td>SSO, custom roles, uptime agreement and custom limits.</td></tr>
+</tbody></table></div>
+<p>The only real question for most companies is <b>Basic or Premium</b>. If the site has a blog, case studies, team profiles, job listings or anything else you add as items, you need Premium.</p>
+"""),
+("wfp-changes", "What changed in Webflow pricing in 2026", """
+<p>Webflow reworked its plans in 2026. If you read an older guide, these are the differences:</p>
+<ul>
+<li><b>The CMS plan and the Business plan were retired.</b> Both were replaced by one plan, <b>Premium</b>.</li>
+<li><b>CMS limits went up</b> to 20,000 items, and CMS item add-ons were removed.</li>
+<li><b>Included bandwidth on the top plan went down</b>: Premium includes 50 GB, while the old Business plan included 100 GB. High-traffic sites buy bandwidth add-ons.</li>
+<li><b>Basic went up slightly</b>, to $15 a month billed yearly.</li>
+<li><b>A Team plan</b> was added for in-house marketing teams.</li>
+</ul>
+<p>New purchases moved to the new plans in May 2026. Most existing sites switch at their next renewal from 29 June 2026, and sites in Freelancer and Agency workspaces or on older legacy pricing from <b>16 November 2026</b>. If your site is still on a CMS or Business plan, check your billing page to see when your price changes.</p>
+[[cta]]
+"""),
+("wfp-twice", "Site plans vs workspace plans: why you may pay twice", """
+<p>Webflow has two kinds of plans, and they confuse almost everyone:</p>
+<ul>
+<li><b>Site plan</b>: pays for one live website. This is the plan above.</li>
+<li><b>Workspace plan</b>: pays for the place where people design and manage sites, with seats, staging sites and team features.</li>
+</ul>
+<div class="post-table" role="region" aria-label="Webflow workspace plans 2026" tabindex="0"><table>
+<thead><tr><th>Workspace</th><th>Billed yearly</th><th>Who it is for</th></tr></thead>
+<tbody>
+<tr><td><b>Starter</b></td><td>Free</td><td>Owners of one or two sites. Includes one Full seat.</td></tr>
+<tr><td><b>Core</b></td><td>$19/mo</td><td>In-house teams: 10 staging sites, code export, shared libraries.</td></tr>
+<tr><td><b>Growth</b></td><td>$49/mo</td><td>Bigger teams: unlimited staging sites, site-level roles.</td></tr>
+<tr><td><b>Freelancer</b></td><td>$16/mo</td><td>Freelancers who build sites for clients.</td></tr>
+<tr><td><b>Agency</b></td><td>$35/mo</td><td>Studios: unlimited staging, free client seats per site.</td></tr>
+</tbody></table></div>
+<p>If a studio builds your site and you just run it, you often need <b>only a site plan</b> and the free Starter workspace. The studio pays for its own workspace.</p>
+"""),
+("wfp-seats", "Webflow seats explained", """
+<p>Seats decide who can do what inside the workspace. They are billed per person, per month:</p>
+<div class="post-table" role="region" aria-label="Webflow seat prices 2026" tabindex="0"><table>
+<thead><tr><th>Seat</th><th>Billed yearly</th><th>What the person can do</th></tr></thead>
+<tbody>
+<tr><td><b>Full</b></td><td>$39/mo</td><td>Design and build in the Webflow Designer, manage settings and publish.</td></tr>
+<tr><td><b>Limited</b></td><td>$15/mo</td><td>Edit content and CMS items, publish changes. Typical for marketers and writers.</td></tr>
+<tr><td><b>Free</b></td><td>$0</td><td>Review and comment only.</td></tr>
+</tbody></table></div>
+<p>Most small teams need one Full seat (often included) and one or two Limited seats for the people who update the blog. Monthly billing for seats costs a little more.</p>
+"""),
+("wfp-ecom", "Webflow ecommerce pricing", """
+<div class="post-table" role="region" aria-label="Webflow ecommerce plans 2026" tabindex="0"><table>
+<thead><tr><th>Plan</th><th>Billed yearly</th><th>Products</th><th>Webflow transaction fee</th></tr></thead>
+<tbody>
+<tr><td><b>Standard</b></td><td>$29/mo</td><td>500</td><td>2%</td></tr>
+<tr><td><b>Plus</b></td><td>$74/mo</td><td>5,000</td><td>0%</td></tr>
+<tr><td><b>Advanced</b></td><td>$212/mo</td><td>15,000</td><td>0%</td></tr>
+</tbody></table></div>
+<p>Card fees from Stripe or PayPal come on top. The 2% fee on Standard means Plus becomes cheaper once you sell more than about $2,250 a month. For large catalogues, subscriptions or complex checkout rules, Shopify is usually the better platform. See our <a href="../blog/shopify-store-design.html">Shopify store design guide</a>.</p>
+"""),
+("wfp-addons", "Add-ons: languages, bandwidth and more", """
+<ul>
+<li><b>Localize</b> (multilingual sites): Essential from $9 a month per extra language, up to 3 languages; Advanced from $29 a month per language, with translated URLs and more words. Your main language is free.</li>
+<li><b>Bandwidth</b>: extra blocks from $20 a month for 50 GB on yearly billing. Most company sites never need them; video-heavy or high-traffic sites do.</li>
+<li><b>Optimize and Analyze</b>: Webflow's own A/B testing and analytics, priced by traffic. Useful for high-traffic marketing teams, not needed for a typical company site.</li>
+</ul>
+"""),
+("wfp-real", "What a Webflow site really costs per year", """
+<p>Here is what five typical sites pay Webflow per year on yearly billing, not counting design and build:</p>
+<div class="post-table" role="region" aria-label="Real yearly Webflow costs" tabindex="0"><table>
+<thead><tr><th>Site</th><th>What it needs</th><th>Webflow cost per year</th></tr></thead>
+<tbody>
+<tr><td><b>Landing page or small site</b></td><td>Basic plan</td><td>$180</td></tr>
+<tr><td><b>Company site with a blog</b></td><td>Premium plan</td><td>$300</td></tr>
+<tr><td><b>Company site with a blog and one editor</b></td><td>Premium plus one Limited seat</td><td>$480</td></tr>
+<tr><td><b>Bilingual company site</b></td><td>Premium, one Limited seat, Localize Essential for one extra language</td><td>About $590</td></tr>
+<tr><td><b>Small online shop</b></td><td>Ecommerce Standard</td><td>$348 plus 2% of sales</td></tr>
+</tbody></table></div>
+<p>Compared with WordPress, there is no separate hosting, security plugin or maintenance contract to add. That is why Webflow often costs less per year even though the monthly fee looks higher. See <a href="../blog/webflow-vs-wordpress.html">Webflow vs WordPress</a>.</p>
+"""),
+("wfp-build", "Webflow plan price vs the cost of building the site", """
+<p>The plan is the small part. The design and build is the main investment, and it is a one-off cost:</p>
+<ul>
+<li><b>Landing page</b>: usually $1,500 to $6,000 with a professional team. With us from $2,400.</li>
+<li><b>Company website</b> of 5 to 10 pages with a CMS: with us from $6,900.</li>
+<li><b>WordPress to Webflow migration</b>: with us from $2,900.</li>
+</ul>
+<p>For full ranges and what drives them, read <a href="../blog/webflow-website-cost.html">how much a Webflow website costs</a>.</p>
+"""),
+("wfp-owner", "Who should pay for the plan: you or your agency?", """
+<p>Put the site plan on <b>your own company account and card</b>, even when a studio builds the site. Then the domain, the hosting and the content stay yours if you ever change agency, and nobody can switch the site off over an unpaid invoice.</p>
+<p>The usual setup looks like this: the studio designs and builds in its own workspace, then transfers the finished site to your workspace, and you buy the site plan there. On Agency and Freelancer workspaces the studio can also invite you as a free client, so you can edit content without buying a seat. Ask about this before the project starts, so there are no surprise seat costs after launch.</p>
+"""),
+("wfp-limits", "What happens when you hit a limit", """
+<ul>
+<li><b>Too many CMS items or pages</b>: you cannot add more until you move up a plan or clean up old items. 20,000 items on Premium is plenty for almost every company blog.</li>
+<li><b>Too much bandwidth</b>: Webflow lets you go over for a short time, then asks you to buy a larger bandwidth block. Heavy images and self-hosted video are the usual cause.</li>
+<li><b>Too many editors</b>: each extra person who edits needs a seat, or a free client seat if your agency's workspace includes them.</li>
+</ul>
+<p>Check your usage in the site settings every few months. It takes a minute and avoids an unexpected upgrade.</p>
+"""),
+("wfp-choose", "Which Webflow plan do you need?", """
+<ol>
+<li><b>Only a few pages, no blog?</b> Basic.</li>
+<li><b>A blog, case studies, careers or any repeated content?</b> Premium.</li>
+<li><b>More than one language?</b> Premium plus Localize.</li>
+<li><b>Selling products?</b> An ecommerce plan, or Shopify for bigger stores.</li>
+<li><b>A marketing team of five or more people editing every week?</b> Look at Team or Enterprise.</li>
+</ol>
+"""),
+("wfp-save", "How to pay less for Webflow", """
+<ul>
+<li><b>Pay yearly.</b> Monthly billing costs 56 to 67% more on Premium and Basic.</li>
+<li><b>Do not buy Premium for a site without a CMS.</b> Basic is enough.</li>
+<li><b>Give writers Limited seats</b>, not Full seats.</li>
+<li><b>Compress images and host long videos elsewhere</b> to stay inside your bandwidth.</li>
+<li><b>Keep drafts on staging.</b> A site needs a paid plan only when it goes live on your domain.</li>
+</ul>
+<p>Prices change often. Always confirm the current numbers on Webflow's own pricing page before you buy.</p>
+"""),
+  ],
+  faq=[("How much does Webflow cost per month?", "$15 a month for Basic and $25 a month for Premium when billed yearly, or $25 and $39 billed monthly. Seats, ecommerce and Localize are extra."),
+       ("Is Webflow free?", "You can build on the free Starter plan, but it only publishes to a webflow.io address with 2 pages. A site on your own domain needs a paid site plan."),
+       ("What happened to the Webflow CMS and Business plans?", "They were retired in 2026 and replaced by one Premium plan with 20,000 CMS items. Existing sites move to the new plans at renewal."),
+       ("What is the difference between a site plan and a workspace plan?", "A site plan pays for one live website: hosting, domain, CMS. A workspace plan pays for the team space where people design and manage sites, including seats."),
+       ("What is a Webflow seat?", "A paid place for one person in the workspace. A Full seat ($39 a month yearly) can design and publish; a Limited seat ($15) can edit content; a Free seat can only comment."),
+       ("Does Webflow charge transaction fees?", "Only on the Standard ecommerce plan, at 2%. Plus and Advanced have no Webflow fee. Card processing fees from Stripe or PayPal apply on every plan."),
+       ("Is Webflow more expensive than WordPress?", "Per month, usually yes. Per year, often not, because hosting, security and maintenance are included."),
+       ("How much does it cost to build a Webflow website?", "A landing page usually costs $1,500 to $6,000 with a professional team, and a 5 to 10 page company site more. With Sorvel, websites start from $6,900 and landing pages from $2,400."),
   ],
 ),
 ]
