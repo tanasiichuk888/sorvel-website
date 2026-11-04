@@ -62,7 +62,7 @@ def text(s): return html.unescape(re.sub(r"<[^>]+>", " ", s)).replace("  ", " ")
 ORG = {"@type": "Organization", "@id": SITE + "/#org", "name": BRAND, "alternateName": ["Sorvel", "Sorvel Agency", "sorvel.agency"], "url": SITE + "/",
        "logo": {"@type": "ImageObject", "url": SITE + "/img/brand/logo-512.png", "width": 512, "height": 512},
        "image": SITE + "/img/og/default.jpg",
-       "description": "Design and development studio for startups and growing businesses, with deep experience in SaaS, fintech and AI. Websites, product UI and brand identity, built in Webflow, Framer, WordPress and Shopify.",
+       "description": "Design and development studio for startups and growing businesses, across every industry, from SaaS, fintech and e-commerce to real estate, healthcare, legal and travel. Websites, product UI and brand identity, built in Webflow, Framer, WordPress and Shopify.",
        "founder": {"@id": SITE + "/#founder"}, "sameAs": [LINKEDIN, "https://www.upwork.com/freelancers/mykola888", "https://www.fiverr.com/tanasiychuk8", "https://www.behance.net/tanasiichuk8", "https://dribbble.com/koliafree11"],
        "knowsAbout": ["Web design", "UI/UX design", "Product design", "Brand identity", "Webflow", "Framer", "WordPress", "Shopify", "Figma"],
        "areaServed": "Worldwide"}
@@ -378,7 +378,7 @@ _svc = sorted(f"services/{f}" for f in os.listdir(W + "/services") if f.endswith
 _blog = sorted(f"blog/{f}" for f in os.listdir(W + "/blog") if f.endswith(".html"))
 open(W + "/llms.txt", "w").write(f"""# Sorvel
 
-> Sorvel (sorvel.agency) is a website design and development studio led by Mykola Tanasiichuk. It designs in Figma and builds marketing websites in Webflow, Framer and WordPress, and designs product UI for SaaS, fintech, AI and B2B companies. Clients are worldwide; work is fully remote.
+> Sorvel (sorvel.agency) is a website design and development studio led by Mykola Tanasiichuk. It designs in Figma and builds marketing websites in Webflow, Framer and WordPress, and designs product UI. It works with businesses in every industry: SaaS, fintech, AI, e-commerce, real estate, healthcare, legal, travel, education and local services. Clients are worldwide; work is fully remote.
 
 ## Key facts
 
@@ -386,7 +386,7 @@ open(W + "/llms.txt", "w").write(f"""# Sorvel
 - 600+ completed projects and 600+ five-star client reviews on Upwork and Fiverr Pro
 - Top Rated on Upwork and a verified Fiverr Pro seller, 100% Job Success
 - Platforms: Webflow, Framer, WordPress (design and build); Shopify (design); Figma for all design work
-- Specialities: SaaS websites, fintech websites, AI and B2B companies, WordPress to Webflow migrations, landing pages, product UI and design systems, brand identity
+- Specialities: company websites for any industry, SaaS and fintech websites, e-commerce and Shopify design, real estate, healthcare, legal and travel websites, WordPress to Webflow migrations, landing pages, product UI and design systems, brand identity
 - Every project gets a written plan with scope, timeline and a fixed price within 24 hours; no call required
 - Prices (USD): website design and build from $6,900; landing page from $2,400; product UI design from $4,800; brand identity from $3,900; website migration from $2,900; UX audit $750; monthly design and development from $4,500/month; 25-hour pack $2,250
 - Contact: {SITE}/contact (brief form), Telegram https://t.me/tanasiychuk8
