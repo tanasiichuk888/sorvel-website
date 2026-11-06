@@ -1,4 +1,4 @@
-import sys, re, datetime; sys.path.insert(0, "SOURCE_DIR/site")
+import sys, re, datetime, html; sys.path.insert(0, "SOURCE_DIR/site")
 from common import *
 from blog_posts import POSTS
 
@@ -90,6 +90,10 @@ def post_page(post):
     secs = "\n".join(f'          <h2 id="{sid}">{h}</h2>\n{b.strip()}' for sid, h, b in post["sections"]).replace("[[cta]]", inline_cta(p, post))
     secs = render(p, secs)
     cname, calt = post["cover"]
+    credit = CREDIT
+    if "cover_credit" in post:
+        label, url = post["cover_credit"]
+        credit = f'<span class="post-fig__cr">Photo: <a href="{html.escape(url, quote=True)}" target="_blank" rel="noopener">{html.escape(label)}</a></span>'
     short = post["h1"] if len(post["h1"]) < 48 else post["h1"][:46].rsplit(" ", 1)[0] + "…"
     body = hero(f'<a href="../blog.html">Blog</a><span>/</span><span>{short}</span>', f'{post["cat"]} · {read_min(post)} min read',
                 [post["h1"]], post["lead"], actions=author(p, post), p=p)
@@ -97,7 +101,7 @@ def post_page(post):
     rel = "".join(bcard(p, x) for x in others[:2])
     body += f'''
     <section class="sec post-sec">
-      <div class="wrap"><figure class="post-cover" data-reveal>{pic(p, cname, calt, eager=True, sizes="(max-width: 1340px) 100vw, 1240px")}<figcaption>{CREDIT}</figcaption></figure></div>
+      <div class="wrap"><figure class="post-cover" data-reveal>{pic(p, cname, calt, eager=True, sizes="(max-width: 1340px) 100vw, 1240px")}<figcaption>{credit}</figcaption></figure></div>
       <div class="wrap legal post">
         <nav class="legal__toc post__toc" aria-label="In this article"><p>In this article</p>{toc}</nav>
         <article class="legal__body post__body">

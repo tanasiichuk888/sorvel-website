@@ -775,6 +775,8 @@ dict(
   sections=[
 ("short", "The short answer", """
 <p>A professional redesign of a small to mid-size business website usually costs <b>$5,000 to $20,000</b> and takes <b>3 to 8 weeks</b>. With our studio a full redesign and rebuild starts <b>from $6,900</b>. If only the look needs updating, a lighter refresh or a monthly design plan can cost much less.</p>
+
+<p>Planning a hospitality project? Our <a href="../blog/restaurant-website-design.html">restaurant website design guide</a> covers menu editing, reservations and the scope to agree before hiring.</p>
 """),
 ("types", "Refresh, redesign or rebuild", """
 <div class="post-table" role="region" aria-label="Types of website redesign" tabindex="0"><table>
@@ -1871,6 +1873,114 @@ dict(
        ("Does Webflow charge transaction fees?", "Only on the Standard ecommerce plan, at 2%. Plus and Advanced have no Webflow fee. Card processing fees from Stripe or PayPal apply on every plan."),
        ("Is Webflow more expensive than WordPress?", "Per month, usually yes. Per year, often not, because hosting, security and maintenance are included."),
        ("How much does it cost to build a Webflow website?", "A landing page usually costs $1,500 to $6,000 with a professional team, and a 5 to 10 page company site more. With Sorvel, websites start from $6,900 and landing pages from $2,400."),
+  ],
+),
+
+dict(
+  slug="restaurant-website-design",
+  title="Restaurant Website Design: Scope, Menus & Booking | Sorvel",
+  h1="Restaurant website design: what to include before you hire",
+  card="A buying guide for restaurant owners: menus, reservations, local search and the scope to agree before a website redesign.",
+  desc="Plan a restaurant website redesign with readable menus, clear booking paths and local search basics. Compare agency proposals and prepare a clear project brief.",
+  cat="Hospitality", date="2026-11-06", svc=("websites", "website design and development"),
+  cover=("c-restaurant-website-design", "A waiter carrying plates of salad and appetizers in a restaurant"),
+  cover_credit=("Pixabay / Pexels", "https://www.pexels.com/photo/people-inside-restaurant-262978/"),
+  lead="Commission a restaurant website around the decisions guests need to make: what to eat, where to go and how to book. This guide explains what to put in your brief and how to compare redesign proposals.",
+  sections=[
+("rwd-short", "The short answer", """
+<p>A restaurant website design project should give guests a readable menu, accurate location details and a clear route to reservations or ordering. Before hiring an agency, agree who supplies the content, which booking system stays, what staff can edit and how launch will be checked.</p>
+<div class="post-note"><b>Key takeaways</b><ul>
+<li>Start with guest tasks, then choose the page structure and visual direction.</li>
+<li>Ask for an editable text menu, with a downloadable version only as an extra.</li>
+<li>Separate website work from booking subscriptions, photography and ongoing support.</li>
+<li>Compare written deliverables rather than a homepage mockup or an unsupported promise of more bookings.</li>
+</ul></div>
+"""),
+("rwd-scope", "What should a restaurant website include?", """
+<p>Write down what you want guests to do before discussing colours. A neighbourhood restaurant might prioritise walk-ins and directions. A destination venue might need reservations and private dining enquiries. A takeaway business might make ordering its main action. Choose the main task for your venue and make the supporting information easy to find.</p>
+<p>Use this example structure as a starting brief, then remove anything your team cannot keep current. These are suggested deliverables, not a required page count.</p>
+<div class="post-table" role="region" aria-label="Suggested restaurant website scope" tabindex="0"><table>
+<thead><tr><th>Page or section</th><th>Guest question</th><th>Ask the agency to deliver</th></tr></thead>
+<tbody>
+<tr><td>Home</td><td>Is this the right place?</td><td>Cuisine, atmosphere, location and the main action</td></tr>
+<tr><td>Menus</td><td>What can I eat?</td><td>Editable dishes, descriptions, prices and menu categories</td></tr>
+<tr><td>Reservations</td><td>Can I get a table?</td><td>Booking route, group policy and a contact fallback</td></tr>
+<tr><td>Visit</td><td>How do I get there?</td><td>Address, service hours, directions and verified access details</td></tr>
+<tr><td>Private dining</td><td>Can you host our event?</td><td>Approved room information and a routed enquiry form</td></tr>
+</tbody></table></div>
+<p>Keep your story and photography, but give them a job. Show the room to explain the atmosphere. Show dishes you actually serve. Stock photography can illustrate an editorial guide like this one; for your restaurant's sales pages, commission or supply photographs of the venue itself.</p>
+<p>For example, brief a neighbourhood bistro around dinner menus, table reservations and finding the entrance. For a venue with an event room, add a separate enquiry route and approved room photographs. Treat these as planning examples, not a standard package: the right structure is the one your guests need and your staff can maintain.</p>
+"""),
+("rwd-menu", "Should your restaurant menu be a PDF or a web page?", """
+<p>We recommend a text-based web menu as the main version. Let guests browse categories, read descriptions and check prices without interpreting a photograph of a printed sheet. Offer a PDF alongside it if guests need a download. Ask the designer to demonstrate the longest dish name and description on a narrow screen.</p>
+<p>This recommendation follows two accessibility sources: the <a href="https://www.w3.org/WAI/tutorials/images/" target="_blank" rel="noopener">W3C Images Tutorial</a> and <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html" target="_blank" rel="noopener">WCAG guidance on non-text content</a>. Both explain that informative images need an equivalent text alternative. Do not make an image the only way to understand what you serve.</p>
+<p>Agree a publishing process with the person who runs service. Who changes a dish, who approves its description, and who updates the printed menu? Ask for a demonstration using your content. Keep dietary statements under restaurant approval; a designer should never infer ingredients or make assurances about allergens.</p>
+[[cta]]
+"""),
+("rwd-booking", "How should reservations and ordering work?", """
+<p>Choose the booking or ordering workflow before approving the layout. Tell the agency which provider you already use and whether the project includes a link, an embedded widget or additional integration work. Ask the provider to confirm what your account supports. We would keep a working operational system unless there is a clear reason to replace it.</p>
+<p>Make the handoff explicit. A reservation button should say what happens next. A private dining form should explain whether it sends an enquiry or confirms a booking. Decide how to handle large parties, unavailable dates and requests outside service hours. Do not present an enquiry receipt as a confirmed table.</p>
+<p>Test a complete journey before launch: choose the venue, follow the booking route and check the confirmation. Include a visible phone or contact fallback when the external service is unavailable. Ask who owns troubleshooting after launch, especially where responsibility passes from the website team to the booking provider.</p>
+"""),
+("rwd-budget", "What changes the cost of restaurant website design?", """
+<p>Ask for a quote against an agreed brief rather than a price for “a restaurant website.” We have not included market price ranges here because an unsupported benchmark would make different scopes look comparable. Use the <a href="../blog/website-redesign-cost.html">website redesign cost guide</a> to organise the discussion, then confirm the actual deliverables in your proposal.</p>
+<div class="post-table" role="region" aria-label="Restaurant website proposal comparison" tabindex="0"><table>
+<thead><tr><th>Scope item</th><th>Define in the quote</th><th>Confirm separately</th></tr></thead>
+<tbody>
+<tr><td>Menu management</td><td>Content entry, categories and staff editing</td><td>Who supplies and approves future changes</td></tr>
+<tr><td>Reservations</td><td>Link, widget or agreed integration</td><td>Provider subscriptions and transaction terms</td></tr>
+<tr><td>Photography and copy</td><td>Existing assets or commissioned content</td><td>Usage rights and approval responsibilities</td></tr>
+<tr><td>Multiple locations</td><td>Shared templates and venue-specific content</td><td>Different hours, menus and booking accounts</td></tr>
+<tr><td>Launch and support</td><td>Redirects, testing, training and handover</td><td>Hosting, maintenance and later changes</td></tr>
+</tbody></table></div>
+<p>Request the same scope from each supplier. Mark exclusions, revision arrangements, content responsibilities and recurring fees beside the project total. Ask what happens if the booking requirement changes after design approval. A useful quote should make that decision understandable before work starts.</p>
+<p>Ask suppliers to identify optional work explicitly. A seasonal campaign page, translated menu or new location can become a later phase if it is not needed for launch. Have the agency explain what can reuse the agreed design and what would require a new layout. Keep those assumptions beside the quote so a lower total does not conceal a missing requirement.</p>
+"""),
+("rwd-platform", "Which platform should you ask the agency to use?", """
+<p>Start with an editing test rather than a platform preference. Ask the proposed team to show how your manager would change opening hours, replace a menu and publish a new photograph. Decide who will hold the account and who can recover access if the original supplier is unavailable.</p>
+<p>We would choose between a custom build and a template by testing your actual content and booking workflow. A template proposal should identify its limits and the changes included. A custom proposal should explain what the extra design work solves. Neither label replaces a practical demonstration.</p>
+<p>Ask for ownership and handover terms in writing: domain access, site administration, content files, image rights and any continuing maintenance arrangement. Discuss portability before signing. Keep your restaurant's operational accounts under your control, with the agency given the access it needs to do the work.</p>
+"""),
+("rwd-search", "What should the brief say about local search and AI answers?", """
+<p>Give each location a clear identity and keep its name, address, hours and menu information consistent. Ask for restaurant structured data that describes the visible content. <a href="https://developers.google.com/search/docs/appearance/structured-data/local-business" target="_blank" rel="noopener">Google's Local Business documentation</a> and the <a href="https://schema.org/Restaurant" target="_blank" rel="noopener">Schema.org Restaurant definition</a> both document restaurant information such as address, opening hours and menu URLs.</p>
+<p>Write direct answers to real guest questions: where to park, how to request a group booking and which menu is served at lunch. Publish only details the restaurant can confirm. Put the answer beside the relevant menu or visit information, rather than hiding everything inside promotional copy.</p>
+<p>Keep expectations realistic. Google's <a href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener">AI search guidance</a> and <a href="https://developers.google.com/search/docs/appearance/structured-data/sd-policies" target="_blank" rel="noopener">structured data policies</a> do not guarantee search appearances. We would commission clear content and correct implementation, and reject a promise of guaranteed AI citations or rankings.</p>
+"""),
+("rwd-redesign", "How do you protect existing pages during a redesign?", """
+<p>Give the agency a list of your existing pages before it proposes replacements. Identify menu links, location pages, event pages and campaign destinations that still matter. Decide which URLs should stay and which need a replacement. Include old PDF menus if guests or other websites still link to them.</p>
+<p>When a URL permanently changes, ask for a direct permanent redirect to the relevant replacement. Google documents HTTP <b>301</b> and <b>308</b> for this purpose in both its <a href="https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes" target="_blank" rel="noopener">site move guide</a> and <a href="https://developers.google.com/search/docs/crawling-indexing/301-redirects" target="_blank" rel="noopener">redirect documentation</a>. Request a URL map and test it; do not accept “SEO included” as the whole handover.</p>
+<p>Keep the current site available until the replacement is approved. Assign someone to verify menus and hours immediately before launch. After the switch, check representative old links, booking routes and contact messages again. A successful design review is only part of accepting the finished website.</p>
+"""),
+("rwd-checklist", "What should you check before accepting the website?", """
+<p>Put acceptance checks in the brief so both sides know what “finished” means. Our suggested checklist is:</p>
+<ol>
+<li>Read the menu on a phone without sideways page scrolling.</li>
+<li>Change a dish and opening hours using the staff account.</li>
+<li>Complete a reservation through the agreed provider's test process.</li>
+<li>Send an event enquiry and confirm the right person receives it.</li>
+<li>Open the navigation and booking controls using a keyboard.</li>
+<li>Check venue details, image descriptions and approved dietary wording.</li>
+<li>Follow old links and confirm the agreed redirects.</li>
+<li>Receive account access, training notes and support contacts.</li>
+</ol>
+<p>Agree how test bookings will be identified and removed. Use test details in forms, and ask staff to confirm receipt without creating real reservations or service work. Record issues in a shared list with an owner, then repeat affected checks after fixes. Keep that record with the handover.</p>
+<p>Include the person who handles daily updates in the final review. Give them an ordinary task without talking them through each click. If the task needs a developer or an undocumented workaround, resolve that before accepting the handover. Training should use your real menu structure and the actual staff permissions.</p>
+"""),
+("rwd-hire", "How do you choose a restaurant website design agency?", """
+<p>Ask each candidate to walk through a menu update, a mobile booking journey and a launch checklist. Discuss who will build the site and who will answer questions after handover. Use our <a href="../blog/how-to-choose-a-web-design-agency.html">agency selection questions</a> to compare the answers.</p>
+<p>Send a brief with your current address, location list, menu files, booking provider, photographs and the staff member responsible for updates. Add what must stay and what is failing today. The <a href="../blog/website-brief-template.html">website brief template</a> can help organise those inputs.</p>
+<p>For our <a href="../services/websites.html">website design and development service</a>, we would turn that brief into an agreed structure, design direction and build scope. Ask us to separate essentials from later additions. You should be able to explain what you are buying, who supplies each input and how you will know it is ready to launch.</p>
+"""),
+  ],
+  faq=[
+    ("What should a restaurant website include?", "We recommend an editable menu, accurate visit information and a clear reservation or ordering route. Add private dining and other sections when they support a real service your team can maintain."),
+    ("How much does restaurant website design cost?", "Request a written quote against your menu, locations, booking workflow and content requirements. Compare recurring provider fees and support separately from the design and build."),
+    ("Can we keep our existing reservation system?", "Ask the agency to scope a link, widget or integration with your current provider. Confirm the exact account capabilities with the provider before approving the work."),
+    ("Should we use a PDF menu?", "We recommend a readable text menu as the main version, with a PDF download as an extra. Do not rely on a photograph as the only way to understand the menu."),
+    ("Do different restaurant locations need separate pages?", "We recommend separate location pages when menus, hours, directions or booking routes differ. Ask for shared templates so each venue can publish accurate details without rebuilding the layout."),
+    ("Can restaurant staff update the website?", "Make a staff editing demonstration an acceptance requirement. Ask the agency to show a menu change and an hours update using the permissions your team will actually receive."),
+    ("Will a redesign guarantee more reservations?", "Do not treat a booking increase as a guaranteed outcome. Define the guest journeys you want to improve, agree the checks and evaluate results using your actual booking data."),
+    ("What should we send an agency for a quote?", "Send your current website, menus, locations, booking provider and available content, together with the problems you need to solve. Identify who approves content and who will manage updates."),
   ],
 ),
 ]
