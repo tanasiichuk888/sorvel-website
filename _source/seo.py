@@ -23,6 +23,22 @@ NOINDEX_CASES = True  # all case studies (work/*) kept out of Google: they ranke
 START, END = "<!-- seo -->", "<!-- /seo -->"
 GLASS_V = 5  # bump after editing css/glass.css or js/glass.js
 CASE_V = 17
+GA_ID = "G-GTWR6JZ7YT"
+GA_HEAD = ('  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}'
+           'var c=null;try{c=localStorage.getItem("sv-consent")}catch(e){}'
+           'gtag("consent","default",{ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",analytics_storage:c==="yes"?"granted":"denied"});'
+           'gtag("js",new Date());gtag("config","' + GA_ID + '");</script>\n'
+           '  <script async src="https://www.googletagmanager.com/gtag/js?id=' + GA_ID + '"></script>\n')
+# small cookie banner: shown until the visitor answers; choice kept in localStorage
+GA_BANNER = (
+    '  <div class="ck" id="ck" hidden role="dialog" aria-label="Cookie choice"><p>We use analytics cookies to see which pages help visitors. <a href="/privacy">Privacy</a></p>'
+    '<div class="ck__b"><button type="button" data-ck="no">Decline</button><button type="button" data-ck="yes" class="ck__ok">Accept</button></div></div>\n'
+    '  <style>.ck{position:fixed;left:16px;bottom:16px;z-index:60;max-width:360px;padding:14px 16px;border-radius:16px;background:rgba(20,21,26,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(242,239,234,.12);color:#F2EFEA;font:14px/1.45 Inter,system-ui,sans-serif;box-shadow:0 12px 40px rgba(0,0,0,.4)}'
+    '.ck p{margin:0 0 10px}.ck a{color:#A9BEFF}.ck__b{display:flex;gap:8px}.ck button{flex:1;padding:9px 12px;border-radius:999px;border:1px solid rgba(242,239,234,.2);background:transparent;color:#F2EFEA;font:inherit;font-weight:600;cursor:pointer}'
+    '.ck button.ck__ok{background:#3B6BFF;border-color:#3B6BFF}.ck button:hover{filter:brightness(1.12)}@media (max-width:760px){.ck{left:12px;right:84px;bottom:12px;max-width:none}}</style>\n'
+    '  <script>(function(){var b=document.getElementById("ck"),c=null;try{c=localStorage.getItem("sv-consent")}catch(e){}if(!b||c)return;b.hidden=false;'
+    'b.addEventListener("click",function(e){var v=e.target.getAttribute&&e.target.getAttribute("data-ck");if(!v)return;try{localStorage.setItem("sv-consent",v)}catch(e){}'
+    'if(v==="yes"&&window.gtag)gtag("consent","update",{analytics_storage:"granted"});b.remove();});})();</script>\n')
 WA_FAB = ('  <a class="wa-fab" href="https://wa.me/34643439737?text=Hi%20Mykola%2C%20I%27m%20interested%20in%20a%20website%20project." target="_blank" rel="noopener" aria-label="Chat on WhatsApp" data-track="WhatsApp">'
           '<svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.2-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.6-5.6C5.2 10 10 5.3 16 5.3S26.8 10 26.8 15.8 22 26.4 16 26.4zm5.9-7.8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.7c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5s.3-1.3.2-1.5c-.1-.1-.3-.2-.6-.4z"/></svg>'
           '<span class="wa-fab__tip">Chat on WhatsApp</span></a>')
@@ -33,7 +49,7 @@ APPLE, APPLE_V = True, 11  # Apple-style layer (css/apple.css); False = roll bac
 MOBILE_V = 5  # bump after editing css/mobile.css
 BRAND_V = 2  # bump after replacing logo / favicon files
 # other assets that change: bump the number after editing the file
-ASSET_V = {"css/style.css": 10, "js/main.js": 33, "css/xp.css": 6, "js/scenes.js": 22, "js/xp.js": 10, "js/dots.js": 3, "css/hero.css": 3, "js/case.js": 13, "js/fx.js": 19, "js/svc.js": 17, "css/svc.css": 6}
+ASSET_V = {"css/style.css": 10, "js/main.js": 34, "css/xp.css": 6, "js/scenes.js": 22, "js/xp.js": 10, "js/dots.js": 3, "css/hero.css": 3, "js/case.js": 13, "js/fx.js": 19, "js/svc.js": 17, "css/svc.css": 6}
 
 # Search titles (aim for under ~60 characters). Case studies are generated from the page.
 POPULAR = [("saas-website-design", "SaaS website design"), ("fintech-website-design", "Fintech website design"),
@@ -269,6 +285,8 @@ def process(path):
         s = s[:k] + f'  <link rel="stylesheet" href="{pre}css/apple.css?v={APPLE_V}" />\n' + s[k:]
     if 'class="amb"' not in s:
         s = re.sub(r"(<body[^>]*>)", r'\1\n  <div class="amb" aria-hidden="true"><i></i><i></i><i></i></div>', s, count=1)
+    if GA_ID not in s:   # Google Analytics with consent mode, and the cookie banner
+        s = s.replace("</head>", GA_HEAD + "</head>", 1).replace("</body>", GA_BANNER + "</body>", 1)
     if 'class="wa-fab"' not in s:   # floating WhatsApp button on every page
         s = s.replace("</body>", WA_FAB + "\n</body>", 1)
     if "js/glass.js" not in s:

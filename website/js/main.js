@@ -68,6 +68,12 @@
   })();
   const track = (t, k, v) => {
     if (ME) return;
+    // mirror the events that matter to Google Analytics (only sends after cookie consent)
+    if (window.gtag) {
+      if (t === "brief") gtag("event", "generate_lead", { form: "brief" });
+      else if (t === "brief_start") gtag("event", "form_start", { form: "brief" });
+      else if (t === "whatsapp" || t === "telegram" || t === "email") gtag("event", "contact_click", { method: t });
+    }
     try {
       const body = JSON.stringify({ t, p: location.pathname, s: SRC.s, l: SRC.l, i: SRC.id, k, v });
       if (!(navigator.sendBeacon && navigator.sendBeacon("/api/e", body))) fetch("/api/e", { method: "POST", body, keepalive: true }).catch(() => {});
