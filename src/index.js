@@ -328,7 +328,7 @@ async function stats(env, days) {
   if (env.DEV_MOCK === "1") return mock(r, days);
   const errors = [];
   const safe = (name, p) => p.catch((e) => { if (!/not connected/.test(e.message)) errors.push(name + ": " + String(e.message || e).slice(0, 300)); return null; });
-  const [rumCur, rumPrev, leadsCur, leadsPrev, behavior, behaviorPrev, gsc] = await Promise.all([
+  const [rumCur, rumPrev, leadsCur, leadsPrev, behavior, behaviorPrev, gsc, ga] = await Promise.all([
     safe("Web Analytics", rum(env, r.cur, true)),
     safe("Web Analytics (previous)", rum(env, r.prev, false)),
     safe("Leads", leadReport(env, r.cur, true)),
@@ -336,12 +336,13 @@ async function stats(env, days) {
     safe("Behaviour", env.LEADS ? leadStore(env).behavior(r.cur[0].getTime(), r.cur[1].getTime()) : Promise.reject(new Error("not connected"))),
     safe("Behaviour (previous)", env.LEADS ? leadStore(env).behavior(r.prev[0].getTime(), r.prev[1].getTime()).then((x) => ({ sessions: x.sessions, bounce: x.bounce, median: x.median, funnel: x.funnel })) : Promise.reject(new Error("not connected"))),
     env.GSC_KEY ? safe("Search Console", searchConsole(env, r)) : Promise.resolve(null),
+    env.GSC_KEY && env.GA_PROPERTY ? safe("Google Analytics", ga4(env, r)) : Promise.resolve(null),
   ]);
   return {
     days, list: r.days, start: day(r.cur[0]), end: day(new Date(r.cur[1] - 864e5)),
     rum: rumCur, rumPrev, leads: leadsCur && leadsCur.rows, leadsPrev: leadsPrev && leadsPrev.rows,
-    leadSrc: leadsCur && leadsCur.src, leadLand: leadsCur && leadsCur.land, gsc, behavior, behaviorPrev,
-    connected: { analytics: !!(env.CF_API_TOKEN && env.CF_ACCOUNT_ID), events: !!env.LEADS, gsc: !!env.GSC_KEY, telegram: !!(env.TG_BOT_TOKEN && env.TG_CHAT_ID) },
+    leadSrc: leadsCur && leadsCur.src, leadLand: leadsCur && leadsCur.land, gsc, ga, behavior, behaviorPrev,
+    connected: { analytics: !!(env.CF_API_TOKEN && env.CF_ACCOUNT_ID), events: !!env.LEADS, gsc: !!env.GSC_KEY, ga: !!(env.GSC_KEY && env.GA_PROPERTY), telegram: !!(env.TG_BOT_TOKEN && env.TG_CHAT_ID) },
     errors, at: new Date().toISOString(),
   };
 }
@@ -427,7 +428,7 @@ async function googleToken(env) {
   const sa = JSON.parse(env.GSC_KEY);
   const now = Math.floor(Date.now() / 1000);
   const enc = (o) => b64url(new TextEncoder().encode(JSON.stringify(o)));
-  const unsigned = enc({ alg: "RS256", typ: "JWT" }) + "." + enc({ iss: sa.client_email, scope: "https://www.googleapis.com/auth/webmasters.readonly", aud: "https://oauth2.googleapis.com/token", iat: now, exp: now + 3600 });
+  const unsigned = enc({ alg: "RS256", typ: "JWT" }) + "." + enc({ iss: sa.client_email, scope: "https://www.googleapis.com/auth/webmasters.readonly https://www.googleapis.com/auth/analytics.readonly", aud: "https://oauth2.googleapis.com/token", iat: now, exp: now + 3600 });
   const pem = sa.private_key.replace(/-----[^-]+-----/g, "").replace(/\s+/g, "");
   const key = await crypto.subtle.importKey("pkcs8", Uint8Array.from(atob(pem), (c) => c.charCodeAt(0)), { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" }, false, ["sign"]);
   const sig = await crypto.subtle.sign("RSASSA-PKCS1-v1_5", key, new TextEncoder().encode(unsigned));
@@ -437,6 +438,34 @@ async function googleToken(env) {
   if (!j.access_token) throw new Error(j.error_description || j.error || "Google sign-in failed");
   gToken = { tok: j.access_token, at: Date.now() + 3000e3 };
   return gToken.tok;
+}
+/* Google Analytics 4 (Data API) with the same service account; it needs Viewer access on the GA property */
+async function ga4(env, r) {
+  const tok = await googleToken(env);
+  const d = ([a, b]) => ({ startDate: day(a), endDate: day(new Date(b - 864e5)) });
+  const cur = d(r.cur), prev = d(r.prev);
+  const req = (o) => ({ dateRanges: [cur], keepEmptyRows: false, ...o });
+  const res = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${env.GA_PROPERTY}:batchRunReports`, {
+    method: "POST", headers: { authorization: "Bearer " + tok, "content-type": "application/json" },
+    body: JSON.stringify({ requests: [
+      { dateRanges: [cur, prev], metrics: ["activeUsers", "sessions", "screenPageViews", "engagementRate"].map((name) => ({ name })) },
+      req({ dimensions: [{ name: "sessionDefaultChannelGroup" }], metrics: [{ name: "sessions" }], limit: 10, orderBys: [{ metric: { metricName: "sessions" }, desc: true }] }),
+      req({ dimensions: [{ name: "pagePath" }], metrics: [{ name: "screenPageViews" }], limit: 10, orderBys: [{ metric: { metricName: "screenPageViews" }, desc: true }] }),
+      req({ dimensions: [{ name: "eventName" }], metrics: [{ name: "eventCount" }], dimensionFilter: { filter: { fieldName: "eventName", inListFilter: { values: ["generate_lead", "contact_click", "form_start"] } } } }),
+      req({ dimensions: [{ name: "sessionSource" }], metrics: [{ name: "sessions" }], limit: 10, orderBys: [{ metric: { metricName: "sessions" }, desc: true }] }),
+    ] }),
+  });
+  const j = await res.json();
+  if (!res.ok) throw new Error((j.error && j.error.message) || "Google Analytics request failed");
+  const [tot, ch, pg, ev, src] = j.reports || [];
+  const rows = (rep) => (rep && rep.rows) || [];
+  const totals = { cur: {}, prev: {} };
+  const names = ["users", "sessions", "views", "engagement"];
+  rows(tot).forEach((x) => { const which = x.dimensionValues && x.dimensionValues[0] && x.dimensionValues[0].value === "date_range_1" ? "prev" : "cur"; x.metricValues.forEach((m, i) => { totals[which][names[i]] = Number(m.value); }); });
+  if (rows(tot).length === 1 && !rows(tot)[0].dimensionValues) names.forEach((n, i) => { totals.cur[n] = Number(rows(tot)[0].metricValues[i].value); });
+  const kv = (rep) => rows(rep).map((x) => ({ k: x.dimensionValues[0].value, v: Number(x.metricValues[0].value) }));
+  const evs = Object.fromEntries(kv(ev).map((x) => [x.k, x.v]));
+  return { ...totals, channels: kv(ch), pages: kv(pg), sources: kv(src), leads: evs.generate_lead || 0, contacts: evs.contact_click || 0, formStarts: evs.form_start || 0 };
 }
 let gscSite = null;   // "sc-domain:sorvel.agency" (Domain property) or "https://sorvel.agency/" (URL-prefix property)
 async function searchConsole(env, r) {

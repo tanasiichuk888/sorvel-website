@@ -17,6 +17,8 @@
   "durable_objects": { "bindings": [{ "name": "LEADS", "class_name": "LeadStore" }] },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["LeadStore"] }],
   "observability": { "enabled": true },
+  // Google Analytics 4 property for the dashboard (not secret; the service account needs Viewer access)
+  "vars": { "GA_PROPERTY": "563104357" },
   // hourly Search Console check for new searches (dashboard "spotted … ago")
   "triggers": { "crons": ["23 * * * *"] }
 }

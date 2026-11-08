@@ -104,6 +104,7 @@ td { padding: 7px 8px; border-bottom: 1px solid var(--line); color: var(--text-2
 td.n, th.n { text-align: right; }
 .newb { margin-left: 8px; padding: 1px 7px; border-radius: 99px; font-size: 10.5px; font-weight: 600; letter-spacing: .02em; color: #3DDC84; background: rgba(61,220,132,.12); border: 1px solid rgba(61,220,132,.35); vertical-align: 1px; }
 .newb--old { color: var(--muted); background: rgba(242,239,234,.05); border-color: rgba(242,239,234,.12); font-weight: 500; }
+.gatiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.gat{padding:12px 14px;border:1px solid var(--line);border-radius:12px}.gat span{display:block;font-size:12px;color:var(--text-2)}.gat b{display:block;font-size:22px;font-weight:600;margin-top:4px}.gat em{font-style:normal;font-size:11.5px;color:var(--text-2)}
 tr.isnew td { background: rgba(61,220,132,.04); }
 .newsum { margin: -4px 0 10px; font-size: 12.5px; color: var(--muted); } .newsum b { color: #3DDC84; font-weight: 600; }
 tr.isbrand td:first-child::after { content: "brand"; margin-left: 8px; padding: 1px 6px; border-radius: 4px; font-size: 10.5px; color: var(--muted); background: rgba(242,239,234,.06); }
@@ -274,6 +275,11 @@ tr.isbrand td:first-child::after { content: "brand"; margin-left: 8px; padding: 
       <div id="gsc"></div>
     </section>
 
+    <section id="gaSec" class="panel">
+      <h2>Google Analytics</h2><p class="sub">Only visitors who accepted cookies. Google updates these numbers with a delay of a few hours.</p>
+      <div id="ga"></div>
+    </section>
+
     <section id="pages" class="panel">
       <h2>Pages</h2><p class="sub">Most viewed pages in this period.</p>
       <div class="grid2"><div class="list" id="paths"></div><div class="list" id="gscPages"></div></div>
@@ -420,7 +426,7 @@ function render(D) {
   $("#upd").className = "badge"; $("#upd").textContent = "Updated " + new Date(D.at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
   $("#rangeTxt").textContent = fmtDay(D.start) + " – " + fmtDay(D.end);
   const days = D.list, R = D.rum, P = D.rumPrev, G = D.gsc;
-  $("#conn").innerHTML = `<span><i class="${D.connected.analytics ? "ok" : ""}"></i>Cloudflare analytics</span><span><i class="${D.connected.events ? "ok" : ""}"></i>Lead tracking</span><span><i class="${D.connected.gsc ? "ok" : ""}"></i>Search Console</span><span><i class="${D.connected.telegram ? "ok" : ""}"></i>Telegram alerts</span><a href="/cdn-cgi/access/logout">Sign out</a>`;
+  $("#conn").innerHTML = `<span><i class="${D.connected.analytics ? "ok" : ""}"></i>Cloudflare analytics</span><span><i class="${D.connected.events ? "ok" : ""}"></i>Lead tracking</span><span><i class="${D.connected.gsc ? "ok" : ""}"></i>Search Console</span><span><i class="${D.connected.ga ? "ok" : ""}"></i>Google Analytics</span><span><i class="${D.connected.telegram ? "ok" : ""}"></i>Telegram alerts</span><a href="/cdn-cgi/access/logout">Sign out</a>`;
 
   // leads per day
   const per = (rows, types) => days.map((d) => (rows || []).filter((r) => r.d === d && types.includes(r.t)).reduce((s, r) => s + r.n, 0));
@@ -478,6 +484,21 @@ function render(D) {
   } else {
     const m = notConnected("Add the Cloudflare API token and account ID.");
     ["#trafficChart", "#countries", "#paths", "#vit"].forEach((s) => $(s).innerHTML = m);
+  }
+
+  // google analytics
+  const A = D.ga;
+  if (A) {
+    const c = A.cur || {}, p = A.prev || {};
+    const tile = (t, v, pv, f = fmt) => `<div class="gat"><span>${t}</span><b>${v == null ? "–" : f(v)}</b>${pv != null && v != null ? `<em>${pv ? (v >= pv ? "+" : "") + Math.round((v - pv) / pv * 100) + "%" : ""} vs previous</em>` : ""}</div>`;
+    const pct = (x) => Math.round(x * 100) + "%";
+    $("#ga").innerHTML = `<div class="gatiles">${tile("Users", c.users, p.users)}${tile("Sessions", c.sessions, p.sessions)}${tile("Page views", c.views, p.views)}${tile("Engaged sessions", c.engagement, p.engagement, pct)}${tile("Leads (form sent)", A.leads, null)}${tile("WhatsApp / Telegram / email clicks", A.contacts, null)}</div>
+      <div class="grid2" style="margin-top:18px"><div class="list" id="gaCh"></div><div class="list" id="gaSrc"></div></div><div class="list" id="gaPg" style="margin-top:18px"></div>`;
+    list($("#gaCh"), "Channels (sessions)", A.channels, { empty: "No data yet" });
+    list($("#gaSrc"), "Sources (sessions)", A.sources, { empty: "No data yet" });
+    list($("#gaPg"), "Top pages (views)", A.pages, { empty: "No data yet", n: 10 });
+  } else {
+    $("#ga").innerHTML = notConnected(D.connected.ga ? "Google Analytics returned no data yet. Check the errors at the top of the page." : "Add GA_PROPERTY and give the service account Viewer access in Google Analytics.");
   }
 
   // search console
