@@ -1059,7 +1059,7 @@ dict(
 <p>Most people search for a lawyer on their phone, often in a stressful moment. A sticky call button, click-to-call numbers and a short contact form matter more than any animation. For a Houston criminal defense firm we designed a bilingual landing page with proof above the fold and a way to call from every single section, built in Webflow.</p>
 """),
 ("law-bilingual", "Bilingual and multilingual law firm sites", """
-<p>If you serve Spanish-speaking or other communities, a real second-language version, not an automatic translation widget, builds far more trust. Plan for a language switcher, translated practice pages and staff who answer in that language.</p>
+<p>If you serve Spanish-speaking or other communities, a real second-language version, not an automatic translation widget, builds far more trust. Plan for a language switcher, translated practice pages and staff who answer in that language. Medical and dental practices have similar needs; see our <a href="../blog/dental-website-design.html">dental website design guide</a>.</p>
 """),
 ("law-seo", "Local SEO for law firms", """
 <ul>
@@ -1981,6 +1981,127 @@ dict(
     ("Can restaurant staff update the website?", "Make a staff editing demonstration an acceptance requirement. Ask the agency to show a menu change and an hours update using the permissions your team will actually receive."),
     ("Will a redesign guarantee more reservations?", "Do not treat a booking increase as a guaranteed outcome. Define the guest journeys you want to improve, agree the checks and evaluate results using your actual booking data."),
     ("What should we send an agency for a quote?", "Send your current website, menus, locations, booking provider and available content, together with the problems you need to solve. Identify who approves content and who will manage updates."),
+  ],
+),
+dict(
+  slug="dental-website-design",
+  title="Dental Website Design 2026: Cost, Must-Haves and HIPAA | Sorvel",
+  h1="Dental website design in 2026: what it costs and what it needs",
+  card="What a dental practice website costs in 2026, the pages and features that bring in new patients, and how to handle forms and booking safely.",
+  desc="Dental website design in 2026: real price ranges, the pages that win new patients, online booking, HIPAA-safe forms, local SEO and how to choose a designer.",
+  cat="Healthcare", date="2026-11-08", svc=("websites", "website design and development"),
+  cover=("c-dental-website-design", "A bright modern dental clinic with glass treatment rooms"),
+  lead="A dental website has one job: turn a local search into a booked appointment. Here is what a good one costs in 2026, what it must include, and the mistakes that quietly cost practices new patients.",
+  sections=[
+("dw-short", "The short answer", """
+<p>A professional dental website usually costs <b>$2,000 to $8,000</b> on a template from a dental marketing company, and <b>$10,000 to $30,000</b> for a custom design for one location. Multi-location groups often spend more. Running costs for hosting, forms, booking and updates add a monthly fee on top.</p>
+<p>Whatever you spend, the site needs the same core: clear treatment pages, real photos of the practice and team, visible prices or insurance information, online booking, fast mobile pages, and forms that keep patient data safe.</p>
+<div class="post-note"><b>Key takeaways</b><p>Patients choose a dentist on their phone in a few minutes, so mobile speed and a visible "Book" button matter more than effects. Never collect health information through a standard website form. A custom site pays off when you compete for high-value treatments such as implants, Invisalign or cosmetic work.</p></div>
+"""),
+("dw-cost", "How much does a dental website cost?", """
+<div class="post-table" role="region" aria-label="Dental website cost by type" tabindex="0"><table>
+<thead><tr><th>Option</th><th>Upfront cost</th><th>Good for</th><th>Watch out for</th></tr></thead>
+<tbody>
+<tr><td><b>DIY builder</b></td><td>$0 to $500</td><td>A brand-new practice on a tight budget</td><td>Looks like every other DIY site; slow; no strategy</td></tr>
+<tr><td><b>Dental marketing company template</b></td><td>$2,000 to $8,000</td><td>Single practices that want something fast</td><td>Monthly contracts, and often you do not own the site</td></tr>
+<tr><td><b>Custom design, one location</b></td><td>$10,000 to $30,000</td><td>Practices growing implants, ortho or cosmetic work</td><td>Needs a clear brief and real photos</td></tr>
+<tr><td><b>Multi-location or group</b></td><td>$30,000 and up</td><td>DSOs and groups with several clinics</td><td>Location pages, booking per clinic, many editors</td></tr>
+</tbody></table></div>
+<p>These are typical market ranges in 2026. With Sorvel, a custom practice website starts from $6,900, and a single landing page for one treatment, for example implants, starts from $2,400. You get a written plan and a fixed price within 24 hours.</p>
+<p>Before you sign with a dental marketing company, ask one question: <b>who owns the website if we leave?</b> Many template packages are rented. When the contract ends, the site goes with it.</p>
+[[cta]]
+"""),
+("dw-pages", "The pages a dental website needs", """
+<ul>
+<li><b>Home</b>: who you are, where you are, what you treat, and a booking button in the first screen.</li>
+<li><b>One page per treatment</b>: cleaning and check-ups, whitening, implants, Invisalign or braces, veneers, emergency dentistry, children's dentistry. Separate pages rank for separate searches; one "Services" page with a list ranks for nothing.</li>
+<li><b>Team</b>: real photos of each dentist with qualifications. People book with a person, not a logo.</li>
+<li><b>Prices, insurance and finance</b>: even "from" prices or the insurers you accept remove the biggest doubt.</li>
+<li><b>New patients</b>: what the first visit looks like, how long it takes, what to bring.</li>
+<li><b>Location and contact</b>: map, parking, opening hours, phone number that can be tapped on mobile.</li>
+<li><b>Reviews</b>: real patient reviews, ideally pulled from Google so they stay current.</li>
+<li><b>Emergency page</b>: one of the most searched dental terms. Show same-day availability and a phone number.</li>
+</ul>
+"""),
+("dw-booking", "Online booking: the feature that pays for the site", """
+<p>Many patients look for a dentist in the evening, when the practice is closed. If the site only says "call us", a good share of them will book with the next practice that lets them pick a time online.</p>
+<ul>
+<li>Use the booking tool that connects to your practice management software, so the front desk does not retype appointments.</li>
+<li>Put a "Book online" button in the header on every page, and repeat it at the end of each treatment page.</li>
+<li>Let new patients choose the reason for the visit, so the right slot length is booked.</li>
+<li>Keep a phone number next to the button. Older patients and emergencies still call.</li>
+</ul>
+"""),
+("dw-hipaa", "Forms, patient data and HIPAA", """
+<p>This is where many dental websites get it wrong. In the US, health information sent through your website is protected under HIPAA, and every vendor that handles it on your behalf needs a Business Associate Agreement (BAA) with you. Similar rules apply in other countries, such as GDPR in the EU and UK.</p>
+<div class="post-table" role="region" aria-label="Which website forms are safe for patient data" tabindex="0"><table>
+<thead><tr><th>Form</th><th>Safe for health details?</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><b>Standard website form</b> (Webflow, Framer, basic WordPress plugins)</td><td>No</td><td>Use only for general questions; ask people not to share health details</td></tr>
+<tr><td><b>HIPAA-ready form tool with a signed BAA</b></td><td>Yes, if set up correctly</td><td>Embed or link it for new-patient forms and medical history</td></tr>
+<tr><td><b>Patient portal or booking system</b></td><td>Yes, if the vendor signs a BAA</td><td>Best place for records, documents and anything clinical</td></tr>
+</tbody></table></div>
+<p>Webflow's own terms say its platform should not be used for protected health information, so on a Webflow dental site we keep the marketing pages on Webflow and send intake forms and booking to a specialised tool. The same approach works on Framer and WordPress. Also check analytics and ad tracking scripts: they should not run on pages where patients enter health details.</p>
+<p>This is not legal advice. Ask your compliance adviser to confirm your setup.</p>
+"""),
+("dw-local", "Local SEO: how patients find you", """
+<p>Most dental searches are local: "dentist near me", "emergency dentist" plus a city, "Invisalign" plus a neighbourhood. To show up:</p>
+<ol>
+<li><b>Complete your Google Business Profile</b>: categories, hours, photos, booking link, and replies to every review.</li>
+<li><b>Use the same name, address and phone number</b> on the website, Google and directories.</li>
+<li><b>Write real treatment pages</b> that answer what patients ask: cost, pain, recovery time, how many visits.</li>
+<li><b>Add a page per location</b> if you have more than one clinic, with its own address, team and photos.</li>
+<li><b>Add structured data</b> for your practice (Dentist schema), opening hours and FAQs, so Google and AI assistants can read the key facts.</li>
+</ol>
+<p>Patients now also ask ChatGPT and Google's AI answers which dentist to choose. Clear, factual pages with prices, treatments and reviews are what those tools quote.</p>
+"""),
+("dw-design", "Design that builds trust", """
+<ul>
+<li><b>Real photography</b> of the clinic, team and equipment. Stock photos of perfect smiles make every practice look the same.</li>
+<li><b>Calm, clean layouts</b> with plenty of space. Many patients feel anxious about the dentist; the site should feel reassuring, not loud.</li>
+<li><b>Before and after galleries</b> for cosmetic treatments, with patient consent.</li>
+<li><b>Accessible design</b>: readable text sizes, good contrast, keyboard-friendly forms. Aim for WCAG 2.1 AA, which also helps older patients.</li>
+<li><b>Fast mobile pages</b>: compress photos and keep heavy video off the first screen.</li>
+</ul>
+"""),
+("dw-platform", "Which platform: WordPress, Webflow or Framer?", """
+<div class="post-table" role="region" aria-label="Platforms for dental websites" tabindex="0"><table>
+<thead><tr><th>Platform</th><th>Best for</th><th>Keep in mind</th></tr></thead>
+<tbody>
+<tr><td><b>Webflow</b></td><td>A polished custom site the team can edit easily</td><td>Use external tools for intake forms and booking</td></tr>
+<tr><td><b>WordPress</b></td><td>Large content sites and many plugins</td><td>Needs regular updates and security work</td></tr>
+<tr><td><b>Framer</b></td><td>A fast, design-led site for one practice</td><td>Simpler CMS; external tools for forms</td></tr>
+<tr><td><b>Dental marketing platforms</b></td><td>All-in-one packages</td><td>Usually rented, with long contracts</td></tr>
+</tbody></table></div>
+<p>More detail: <a href="../blog/webflow-vs-wordpress.html">Webflow vs WordPress</a> and <a href="../blog/webflow-pricing.html">Webflow pricing in 2026</a>.</p>
+"""),
+("dw-running", "Running costs after launch", """
+<p>Plan for a monthly budget as well as the build. The usual items are hosting (on Webflow, for example, $25 a month for a site with a CMS on yearly billing), a HIPAA-ready form or intake tool, the online booking tool, a review tool if you use one, and some design or content time for new treatments and offers. Template packages from dental marketing companies bundle these into one monthly fee, which is simpler but usually costs more over a few years.</p>
+<p>Ask every vendor for the full yearly cost, not only the monthly price, and check what happens to your site, domain and content if you cancel.</p>
+"""),
+("dw-mistakes", "Common mistakes on dental websites", """
+<ul>
+<li>One "Services" page instead of a page per treatment.</li>
+<li>No prices, no insurance information, no finance options.</li>
+<li>A booking button hidden at the bottom of the contact page.</li>
+<li>Collecting medical history through a normal contact form.</li>
+<li>Stock photos instead of the real team.</li>
+<li>A site rented from an agency, so the practice cannot move it or edit it.</li>
+</ul>
+"""),
+("dw-hire", "How to brief a designer for a dental website", """
+<p>Send a short brief with: the treatments that matter most to the business, your locations, the booking and practice software you use, the insurers you accept, three websites you like and why, and who will update the site. Our <a href="../blog/website-brief-template.html">website brief template</a> covers the rest. If your current site is the problem, read <a href="../blog/website-redesign-cost.html">what a website redesign costs</a>.</p>
+<p>Legal and medical practices share many of the same needs, so our <a href="../blog/law-firm-website-design.html">law firm website guide</a> is useful too.</p>
+"""),
+  ],
+  faq=[("How much does a dental website cost?", "Typically $2,000 to $8,000 for a template from a dental marketing company and $10,000 to $30,000 for a custom site for one location, plus monthly costs for hosting, booking and forms. With Sorvel, custom websites start from $6,900."),
+       ("What pages should a dental website have?", "Home, one page per treatment, team, prices or insurance, new patients, emergency dentistry, reviews, and location and contact."),
+       ("Can I use a normal contact form on a dental website?", "Only for general questions. Health details and medical history should go through a HIPAA-ready form or patient portal whose vendor signs a Business Associate Agreement."),
+       ("Is Webflow HIPAA compliant?", "Webflow's terms say it should not be used for protected health information. Use Webflow for the public pages and an external HIPAA-ready tool for intake forms and booking."),
+       ("Should a dental website show prices?", "Yes, at least starting prices or the insurers you accept. Price is one of the main questions patients have, and clear answers bring more bookings."),
+       ("How long does it take to build a dental website?", "Usually 3 to 6 weeks for a custom single-location site, depending on content, photos and the booking setup."),
+       ("Do I need online booking on my dental website?", "It is strongly recommended. Many patients search outside office hours and book with the first practice that lets them choose a time online."),
+       ("How do dental practices rank on Google?", "A complete Google Business Profile, consistent name, address and phone number, a page per treatment and location, reviews, and fast mobile pages."),
   ],
 ),
 ]
