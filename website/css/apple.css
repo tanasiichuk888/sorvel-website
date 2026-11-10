@@ -180,3 +180,6 @@
 @media (max-width: 760px) {
   main > .sec, .foot { content-visibility: auto; contain-intrinsic-size: auto 900px; }
 }
+
+/* the cursor dot grid is desktop only; on phones its script is not even loaded */
+@media (hover: none), (max-width: 760px) { .hero__dots { display: none; } }

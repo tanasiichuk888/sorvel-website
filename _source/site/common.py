@@ -166,7 +166,7 @@ def footer(p):
 '''
 
 def scripts(p, extra=("pages", "fx", "svc", "scenes")):
-    s = f'  <script src="{p}js/dots.js"></script>\n  <script src="{p}js/main.js?v=16"></script>\n  <script src="{p}js/case.js"></script>\n'
+    s = '  <script>matchMedia(\"(hover: hover) and (min-width: 761px)\").matches&&addEventListener(\"load\",function(){var s=document.createElement(\"script\");s.src=\"' + p + 'js/dots.js?v=4\";document.body.appendChild(s)})</script>\n' + f'  <script src="{p}js/main.js?v=16"></script>\n  <script src="{p}js/case.js"></script>\n'
     for e in extra: s += f'  <script src="{p}js/{e}.js?v=16"></script>\n'
     return s
 
