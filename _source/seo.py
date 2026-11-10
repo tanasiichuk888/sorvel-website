@@ -27,8 +27,11 @@ GA_ID = "G-GTWR6JZ7YT"
 GA_HEAD = ('  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}'
            'var c=null;try{c=localStorage.getItem("sv-consent")}catch(e){}'
            'gtag("consent","default",{ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",analytics_storage:c==="yes"?"granted":"denied"});'
-           'gtag("js",new Date());gtag("config","' + GA_ID + '");</script>\n'
-           '  <script async src="https://www.googletagmanager.com/gtag/js?id=' + GA_ID + '"></script>\n')
+           'gtag("js",new Date());gtag("config","' + GA_ID + '");'
+           # load gtag.js only after the first scroll, tap or key press (or 5 s after load), so it never slows the first paint
+           '(function(){var d=0;function l(){if(d)return;d=1;var s=document.createElement("script");s.async=1;s.src="https://www.googletagmanager.com/gtag/js?id=' + GA_ID + '";document.head.appendChild(s);}'
+           '["scroll","pointerdown","keydown","touchstart"].forEach(function(e){addEventListener(e,l,{once:true,passive:true})});'
+           'addEventListener("load",function(){setTimeout(l,5000)});})();</script>\n')
 # small cookie banner: shown until the visitor answers; choice kept in localStorage
 GA_BANNER = (
     '  <div class="ck" id="ck" hidden role="dialog" aria-label="Cookie choice"><p>We use analytics cookies to see which pages help visitors. <a href="/privacy">Privacy</a></p>'
@@ -285,8 +288,10 @@ def process(path):
         s = s[:k] + f'  <link rel="stylesheet" href="{pre}css/apple.css?v={APPLE_V}" />\n' + s[k:]
     if 'class="amb"' not in s:
         s = re.sub(r"(<body[^>]*>)", r'\1\n  <div class="amb" aria-hidden="true"><i></i><i></i><i></i></div>', s, count=1)
-    if GA_ID not in s:   # Google Analytics with consent mode, and the cookie banner
-        s = s.replace("</head>", GA_HEAD + "</head>", 1).replace("</body>", GA_BANNER + "</body>", 1)
+    # Google Analytics with consent mode, and the cookie banner (old copies removed first: index.html is edited in place)
+    s = re.sub(r'[ \t]*<script>window\.dataLayer=window\.dataLayer.*?</script>\n(?:[ \t]*<script async src="https://www\.googletagmanager\.com/gtag/js[^"]*"></script>\n)?', "", s, flags=re.S)
+    s = re.sub(r'[ \t]*<div class="ck" id="ck".*?</div></div>\n[ \t]*<style>\.ck\{.*?</style>\n[ \t]*<script>\(function\(\)\{var b=document\.getElementById\("ck"\).*?</script>\n', "", s, flags=re.S)
+    s = s.replace("</head>", GA_HEAD + "</head>", 1).replace("</body>", GA_BANNER + "</body>", 1)
     if 'class="wa-fab"' not in s:   # floating WhatsApp button on every page
         s = s.replace("</body>", WA_FAB + "\n</body>", 1)
     if "js/glass.js" not in s:
