@@ -28,6 +28,7 @@
 ## Guides
 
 - [B2B Website Design in 2026: How to Build a Site That Generates Leads](https://sorvel.agency/blog/b2b-website-design): B2B website design guide for 2026: how B2B buyers decide, the pages and proof every B2B site needs, messaging, lead capture that works, platform choice, costs and timelines.
+- [Construction Website Design: Cost, Pages & Hiring](https://sorvel.agency/blog/construction-website-design): Plan a construction company website that helps buyers assess your work and request a quote. Compare scope, costs, project pages and agency proposals.
 - [Dental Website Design 2026: Cost, Must-Haves and HIPAA](https://sorvel.agency/blog/dental-website-design): Dental website design in 2026: real price ranges, the pages that win new patients, online booking, HIPAA-safe forms, local SEO and how to choose a designer.
 - [Framer vs WordPress in 2026: Which Is Right for Your Website?](https://sorvel.agency/blog/framer-vs-wordpress): Framer vs WordPress in 2026: SEO, security, speed, design, languages, plugins and cost compared, plus a quick test to pick the right platform for your site.
 - [How Much Does a Framer Website Cost in 2026? Full Price Guide](https://sorvel.agency/blog/framer-website-cost): How much a Framer website costs in 2026: template, freelancer and studio price ranges, a cost breakdown, Framer plan fees, timelines, hidden costs and when to choose Framer over Webflow.

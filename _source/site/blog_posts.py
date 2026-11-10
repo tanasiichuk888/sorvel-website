@@ -1661,6 +1661,8 @@ dict(
 ("short", "The short answer", """
 <p>Choose the agency that shows relevant live work, explains a clear process, gives you a written fixed scope and price, and tells you exactly who will do the work. Price matters, but unclear scope is what usually makes a website project expensive.</p>
 <div class="post-note"><b>Key takeaways</b><p>Shortlist two or three teams, send them the same brief, and compare written proposals line by line. Ask to see live sites, not only mockups. Make sure you own the domain, files and accounts.</p></div>
+
+<p>Hiring for a building company? Our <a href="../blog/construction-website-design.html">construction website design guide</a> explains project portfolios, quote forms and the scope to compare between agencies.</p>
 """),
 ("where", "Where to find good options", """
 <ul>
@@ -2102,6 +2104,115 @@ dict(
        ("How long does it take to build a dental website?", "Usually 3 to 6 weeks for a custom single-location site, depending on content, photos and the booking setup."),
        ("Do I need online booking on my dental website?", "It is strongly recommended. Many patients search outside office hours and book with the first practice that lets them choose a time online."),
        ("How do dental practices rank on Google?", "A complete Google Business Profile, consistent name, address and phone number, a page per treatment and location, reviews, and fast mobile pages."),
+  ],
+),
+
+dict(
+  slug="construction-website-design",
+  title="Construction Website Design: Cost, Pages & Hiring | Sorvel",
+  h1="Construction website design: cost, scope and choosing an agency",
+  card="What to commission for a construction company website: service pages, project proof, quote forms, costs and the checks to make before hiring an agency.",
+  desc="Plan a construction company website that helps buyers assess your work and request a quote. Compare scope, costs, project pages and agency proposals.",
+  cat="Construction", date="2026-11-10", svc=("websites", "website design and development"),
+  cover=("c-construction-website-design", "Two construction workers in hard hats reviewing plans at a worksite"),
+  cover_credit=("Anamul Rezwan / Pexels", "https://www.pexels.com/photo/two-man-holding-white-paper-1216589/"),
+  lead="A construction website should help the right client understand your work, check your experience and send a useful enquiry. Here is what to commission, what affects the price and how to assess an agency before signing.",
+  sections=[
+("cwd-short", "The short answer", """
+<p>Construction website design should connect your services, real project experience and service area to a clear enquiry route. At Sorvel, website design and build starts from <b>$6,900 USD as of November 2026</b>; your quote should define the pages, content, integrations and handover rather than promise a standard result for every contractor.</p>
+<div class="post-note"><b>Key takeaways</b><ul>
+<li>Brief the site around the projects you want, not every service you could deliver.</li>
+<li>Use factual project pages to show your role, scope and working process.</li>
+<li>Ask enquiry questions that help your team decide whether a project fits.</li>
+<li>Compare agencies against the same content, launch and ownership requirements.</li>
+</ul></div>
+"""),
+("cwd-buyers", "Who should your construction website help you win?", """
+<p>Before asking for a homepage design, describe the buyer you want to hear from. A homeowner planning an extension needs different information from a facilities manager reviewing a commercial fit-out contractor. Trying to give both the same sales journey can leave neither with a clear next step.</p>
+<p>For residential work, we would explain the work you take on, the areas you cover and what happens after an enquiry. Show relevant completed projects and describe how an initial conversation develops into an agreed scope. If you do not handle minor repairs, make that clear without sounding dismissive.</p>
+<p>For commercial work, we would organise experience by sector and project type. Give procurement teams an easy route to company information and approved capability documents. Publish credentials only when they are current and yours to use. Do not invent certifications, safety records or contract values to make the business look larger.</p>
+<p>Write a simple project filter for the brief: who the buyer is, what work fits, where it happens and what you need to learn before responding.</p>
+<p>For example, a renovation contractor could organise the site around extensions and whole-home refurbishments, then state which enquiries belong with another trade. A commercial specialist could lead with occupied-building experience and its approach to coordination. These are planning examples, not claims about your business: replace them with the capabilities your team can explain and support.</p>
+"""),
+("cwd-pages", "Which pages should a construction company website include?", """
+<p>Start with a structure you can support with accurate content. The table below is a suggested scope, not a mandatory page count. A focused contractor may combine sections; a company with distinct divisions may need separate journeys.</p>
+<div class="post-table" role="region" aria-label="Suggested construction website pages" tabindex="0"><table>
+<thead><tr><th>Page</th><th>Buyer question</th><th>Content to supply</th></tr></thead>
+<tbody>
+<tr><td>Home</td><td>Are you relevant to my project?</td><td>Specialism, coverage, selected work and the main contact route</td></tr>
+<tr><td>Services</td><td>Do you handle this kind of work?</td><td>Scope, exclusions, process and relevant project links</td></tr>
+<tr><td>Projects</td><td>Have you done comparable work?</td><td>Approved photographs, your role and factual project summaries</td></tr>
+<tr><td>About</td><td>Who will I be working with?</td><td>Real team information and verifiable company details</td></tr>
+<tr><td>Request a quote</td><td>What should I send?</td><td>Useful qualification questions and an honest next-step explanation</td></tr>
+</tbody></table></div>
+<p>Ask the agency to connect these pages. A service page should lead to related work; a project should lead to the relevant service and enquiry route. Do not leave visitors to assemble the connection from a gallery of unexplained photographs.</p>
+"""),
+("cwd-projects", "What makes a contractor project page convincing?", """
+<p>Write a project page around evidence you have permission to publish. Explain the type of building, the client's requirement, your responsibility and the work completed. Distinguish the main contractor's role from a specialist package or subcontract. A clear, modest description is more useful than an unsupported claim that you transformed everything.</p>
+<p>Choose photographs that explain the work: context, progress where appropriate, and the finished details. Get approval before showing private interiors, identifying a client or naming a location. Keep stock photographs out of your completed-project portfolio; the cover of an editorial article is a different use.</p>
+<p>Ask for a reusable project template and an editing demonstration. Your team should be able to publish another approved project without commissioning a fresh layout. Agree who prepares the text and image descriptions, and who checks the information before publication.</p>
+<p>A useful template can include the brief, your role, the agreed work, practical constraints and photographs of the result. Ask the agency to design it using your least polished approved project as well as your strongest one. That tests whether the system remains useful when the next job has fewer images or less material available.</p>
+[[cta]]
+"""),
+("cwd-budget", "How much does construction website design cost?", """
+<p>As of <b>November 2026</b>, Sorvel's website design and build starts from <b>$6,900 USD</b>, as published on our <a href="https://sorvel.agency/pricing">pricing page</a> and <a href="https://sorvel.agency/services/websites">website service page</a>. This is our starting price, not a construction-industry average or a promise that every requirement fits the base scope.</p>
+<p>Ask for a written proposal that separates design and development from photography, copywriting, hosting and ongoing work. Describe the project templates, service content and enquiry workflow before comparing totals. For broader planning, our <a href="../blog/website-redesign-cost.html">website redesign cost guide</a> explains the distinction between a refresh and a rebuild.</p>
+<div class="post-table" role="region" aria-label="Construction website cost and scope decisions" tabindex="0"><table>
+<thead><tr><th>Cost item</th><th>Budget decision</th><th>Confirm in the proposal</th></tr></thead>
+<tbody>
+<tr><td>Sorvel design and build</td><td>From $6,900 USD</td><td>Exact agreed layouts, content and launch scope</td></tr>
+<tr><td>Project portfolio</td><td>Reusable template or different layouts</td><td>Who writes and enters the initial projects</td></tr>
+<tr><td>Photography and copy</td><td>Existing assets or new content</td><td>Production, approvals and usage rights</td></tr>
+<tr><td>Enquiry workflow</td><td>Basic form or additional integration</td><td>Routing, testing and provider dependencies</td></tr>
+<tr><td>After launch</td><td>Staff updates or retained support</td><td>Hosting, maintenance and change arrangements</td></tr>
+</tbody></table></div>
+<p>Request optional items as separate decisions. A recruitment section or additional sector page may be useful, but it should not distract from the initial buying journey. Agree how a new requirement affects the quote before design begins.</p>
+<p>Compare the content-entry allowance carefully. Building a project template and preparing every historical project are different tasks. Decide which work will be ready for launch, who selects and captions the photographs, and what happens to unfinished material. Put that agreement beside the fee so missing content does not become an unexpected extra later.</p>
+"""),
+("cwd-form", "What should a request-a-quote form ask?", """
+<p>We would begin with contact details, project type, location, a short description and preferred timing. Add an indicative budget question when your team will use the answer to assess fit. Explain whether the visitor is requesting a conversation, a site visit or a detailed estimate. Do not label an automated acknowledgement as a quotation.</p>
+<p>Keep questions proportionate to that first step. If drawings or tender documents are needed, agree a suitable submission process rather than casually adding an upload field. Define where enquiries go, who monitors them and what the form should say when submission fails.</p>
+<p>Require visible labels and instructions for information users need to supply. The <a href="https://www.w3.org/WAI/tutorials/forms/" target="_blank" rel="noopener">W3C forms tutorial</a> and <a href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html" target="_blank" rel="noopener">WCAG guidance on labels and instructions</a> support this approach. Ask the agency to test errors and keyboard use as part of the real enquiry journey.</p>
+"""),
+("cwd-search", "How should you brief local SEO and AI search?", """
+<p>Write service pages that answer genuine buying questions: what you build, where you work, what is included and how a project starts. Put approved company details in readable text. If you have useful local project experience, describe it accurately; do not create near-identical pages that merely swap town names.</p>
+<p>Ask the agency to choose the appropriate business markup and keep it consistent with visible content. <a href="https://schema.org/GeneralContractor" target="_blank" rel="noopener">Schema.org defines GeneralContractor</a> within its local-business hierarchy; <a href="https://developers.google.com/search/docs/appearance/structured-data/local-business" target="_blank" rel="noopener">Google's Local Business documentation</a> recommends using the most specific applicable subtype. The correct choice depends on what your business actually does.</p>
+<p>Use short, direct answers for common buyer questions, followed by useful detail and supporting project links. Google's <a href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener">AI search guidance</a> stresses established SEO practices rather than special AI requirements. It and Google's <a href="https://developers.google.com/search/docs/appearance/structured-data/sd-policies" target="_blank" rel="noopener">structured data policies</a> make clear that search appearances are not guaranteed.</p>
+"""),
+("cwd-hire", "How do you choose a construction website design agency?", """
+<p>Ask the agency to explain how it would present your services and project evidence before evaluating visual style. A portfolio matters, but so does the ability to identify missing content and turn your team's knowledge into a useful structure. Ask who writes, designs, builds and checks the finished site.</p>
+<p>Request a practical walkthrough: add a project, change a service description and send an enquiry to the intended recipient. Discuss account ownership, access recovery and what you receive at handover. If subcontractors or paid tools are involved, ask what you will depend on after the project ends.</p>
+<p>Use the same brief with each candidate. Compare exclusions, content responsibilities, revisions, testing and support alongside the fee. Our <a href="../blog/how-to-choose-a-web-design-agency.html">agency selection guide</a> has questions you can bring to that discussion. Reject invented case studies and promised rankings, even when the proposal looks polished.</p>
+"""),
+("cwd-check", "What should you check before accepting the new site?", """
+<p>Include an acceptance checklist in the proposal. Use your own service names, real project content and normal staff permissions rather than a carefully prepared demonstration:</p>
+<ol>
+<li>Find a relevant service and completed project on a phone.</li>
+<li>Check coverage, company details and every published credential.</li>
+<li>Submit a test enquiry and confirm the correct recipient receives it.</li>
+<li>Test form labels, validation and keyboard navigation.</li>
+<li>Publish an approved project using the staff account.</li>
+<li>Check important old links and the agreed handling of changed URLs.</li>
+<li>Confirm account access, training notes and support responsibilities.</li>
+</ol>
+<p>Keep a shared issues list, assign owners and retest the affected journey after fixes. Review the site with the person who will handle enquiries, not only the person who approved the design. Decide how you will distinguish suitable project requests from spam or work you do not take on.</p>
+"""),
+("cwd-brief", "What should you send us for a fixed website quote?", """
+<p>Send your current site, the services and locations you want to promote, representative project material and the problems you want to solve. Identify who approves content and who will maintain it. Include any tender, CRM or recruitment workflow the new site must support.</p>
+<p>Tell us what a useful enquiry looks like for your team. You might need a project location and outline before arranging a call, or an initial brief before deciding whether to review tender documents. Agree that first decision with the person who handles new business, then make the website support it. Keep confidential project information out of the initial public brief.</p>
+<p>Use our <a href="../blog/website-brief-template.html">website brief template</a> if you need a starting document. A useful brief does not require finished copy or a complete design specification. It needs enough detail to separate launch essentials from later improvements.</p>
+<p>For our <a href="../services/websites.html">website design and development service</a>, we would use those inputs to agree the structure, design direction, build requirements and acceptance checks. Send the work you want to win and what currently blocks the enquiry. That gives us a concrete problem to design around.</p>
+"""),
+  ],
+  faq=[
+    ("How much does a construction company website cost?", "Sorvel's website design and build starts from $6,900 USD as of November 2026. Request an exact scope for your service pages, portfolio, content and enquiry workflow; this is a Sorvel starting price, not an industry average."),
+    ("What should a construction website include?", "We recommend clear service information, real project evidence, company details, coverage and a useful request-a-quote route. Add recruitment, sectors or tender resources when they serve an identified need."),
+    ("Do contractors need separate service pages?", "We recommend separate pages when buyers need materially different information to assess the work. Each page should explain its scope and link to relevant projects rather than repeat the same generic sales copy."),
+    ("Can a construction website help attract better enquiries?", "Design the content and form around the work you want, where you operate and what you need to assess fit. Evaluate the result using actual enquiry quality rather than treating higher traffic as proof of success."),
+    ("Should we publish project budgets and client names?", "Publish them only when the information is accurate and approved for public use. A project page can still explain your role, scope and working process without disclosing confidential details."),
+    ("Which platform is best for a contractor website?", "Ask the agency to demonstrate your portfolio editing and enquiry workflow on its proposed platform. Choose against staff needs, ownership and support requirements rather than a platform label alone."),
+    ("Does SEO or AI optimisation guarantee leads?", "No agency should promise guaranteed search appearances or orders. Commission useful content, sound technical implementation and measurable enquiry journeys, then review actual performance."),
+    ("What do you need to quote a construction website redesign?", "Send your current site, priority services, coverage, project content and required enquiry workflows. Identify who supplies and approves content, and which functions must work at launch."),
   ],
 ),
 ]
