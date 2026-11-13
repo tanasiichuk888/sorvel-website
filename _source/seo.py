@@ -247,7 +247,7 @@ def process(path):
         s = re.sub(r'(<li style="--i:6"><a class="mnav__link" href="[^"]*reviews\.html"[^>]*>.*?</li>)',
                    lambda m: m.group(1) + f'\n        <li style="--i:7"><a class="mnav__link" href="{pre}blog.html"><span class="mnav__n">07</span><span class="mnav__t">Blog</span></a></li>', s, count=1)
     # service pages: "From the blog" cards above the related links
-    GUIDES = {"services/migrations.html": [0, 1], "services/wordpress-to-webflow-migration.html": [1, 0], "services/webflow-agency.html": [19, 5],
+    GUIDES = {"services/migrations.html": [25, 0], "services/wordpress-to-webflow-migration.html": [1, 0], "services/webflow-agency.html": [19, 5],
               "services/saas-website-design.html": [2, 3], "services/websites.html": [8, 6], "pricing.html": [5, 8]}
     if rel in GUIDES and 'class="sec blog-rel"' not in s:
         def _img(b):

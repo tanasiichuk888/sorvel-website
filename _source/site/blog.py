@@ -2,7 +2,7 @@ import sys, re, datetime, html; sys.path.insert(0, "SOURCE_DIR/site")
 from common import *
 from blog_posts import POSTS
 
-PLAN = {"wordpress-to-webflow-migration": "migration", "saas-website-design": "website", "webflow-agency": "website", "websites": "website"}
+PLAN = {"wordpress-to-webflow-migration": "migration", "migrations": "migration", "saas-website-design": "website", "webflow-agency": "website", "websites": "website"}
 
 def nice_date(d):
     return datetime.date.fromisoformat(d).strftime("%-d %B %Y")

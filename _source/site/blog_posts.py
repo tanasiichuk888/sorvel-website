@@ -1114,6 +1114,7 @@ dict(
 <p>A travel or tourism website needs big, honest imagery, a quick way to find the right experience, ready-made itineraries or tours with dates and prices, and a short inquiry or booking form. Most visitors plan on a phone, so mobile comes first.</p>
 <p>A custom travel website usually costs <b>$5,000 to $20,000</b> with a professional team. With our studio it starts <b>from $6,900</b>.</p>
 <div class="post-note"><b>Key takeaways</b><p>Inspire, then help people plan. Show dates, duration and price on every tour. Keep the inquiry form short. Use real photos of the place, and design for phones first.</p></div>
+<p>Running holiday homes or villas? Our guide to <a href="../blog/vacation-rental-website-design.html">vacation rental websites with direct booking</a> covers booking engines and calendar sync.</p>
 """),
 ("tr-flow", "From inspiration to inquiry", """
 <ol>
@@ -1542,6 +1543,7 @@ dict(
 """),
 ('wx-takeaways', 'Summary', """
 <div class="post-note"><b>In one minute</b><p>Wix is the quicker start for a small site you build yourself. Webflow is the better base for a custom, professional site that has to grow, rank and be edited by a team. Most businesses outgrow Wix when content, SEO and brand start to matter.</p></div>
+<p>Already decided to switch? Read our step-by-step guide to <a href="../blog/wix-to-webflow-migration.html">Wix to Webflow migration</a>.</p>
 """),
 ('wx-cost', 'Cost over the first year', """
 <div class="post-table" role="region" aria-label="Webflow and Wix first-year cost" tabindex="0"><table>
@@ -1999,6 +2001,7 @@ dict(
 <p>A professional dental website usually costs <b>$2,000 to $8,000</b> on a template from a dental marketing company, and <b>$10,000 to $30,000</b> for a custom design for one location. Multi-location groups often spend more. Running costs for hosting, forms, booking and updates add a monthly fee on top.</p>
 <p>Whatever you spend, the site needs the same core: clear treatment pages, real photos of the practice and team, visible prices or insurance information, online booking, fast mobile pages, and forms that keep patient data safe.</p>
 <div class="post-note"><b>Key takeaways</b><p>Patients choose a dentist on their phone in a few minutes, so mobile speed and a visible "Book" button matter more than effects. Never collect health information through a standard website form. A custom site pays off when you compete for high-value treatments such as implants, Invisalign or cosmetic work.</p></div>
+<p>Running a therapy or counselling practice instead? See our guide to <a href="../blog/therapist-website-design.html">therapist website design</a>.</p>
 """),
 ("dw-cost", "How much does a dental website cost?", """
 <div class="post-table" role="region" aria-label="Dental website cost by type" tabindex="0"><table>
@@ -2213,6 +2216,364 @@ dict(
     ("Which platform is best for a contractor website?", "Ask the agency to demonstrate your portfolio editing and enquiry workflow on its proposed platform. Choose against staff needs, ownership and support requirements rather than a platform label alone."),
     ("Does SEO or AI optimisation guarantee leads?", "No agency should promise guaranteed search appearances or orders. Commission useful content, sound technical implementation and measurable enquiry journeys, then review actual performance."),
     ("What do you need to quote a construction website redesign?", "Send your current site, priority services, coverage, project content and required enquiry workflows. Identify who supplies and approves content, and which functions must work at launch."),
+  ],
+),
+dict(
+  slug="vacation-rental-website-design",
+  title="Vacation Rental Website With Direct Booking (2026) | Sorvel",
+  h1="Vacation rental website design: how to get direct bookings in 2026",
+  card="What a direct booking website for vacation rentals costs, which booking engine to use, and how to turn Airbnb guests into direct repeat guests.",
+  desc="How to build a vacation rental website that takes direct bookings in 2026: costs, booking engines, calendar sync, payments, SEO and what to avoid with Airbnb.",
+  cat="Hospitality", date="2026-11-13", svc=("websites", "website design and development"),
+  cover=("c-vacation-rental-website-design", "A turquoise swimming pool in a tropical garden at a holiday villa"),
+  lead="Every booking that comes through your own website skips the platform fee and gives you the guest's email. Here is what a direct booking site for vacation rentals costs, which tools run it, and how to get guests to actually use it.",
+  sections=[
+("vr-short", "The short answer", """
+<p>A vacation rental direct booking website has two parts: a <b>booking engine</b> that handles availability, prices and payments, and a <b>website</b> that makes guests trust you enough to book. The booking engine usually comes from your property management software (PMS) for a monthly fee. The website can be the PMS's built-in template, or a custom design that embeds the same booking engine.</p>
+<p>Built-in templates cost little and launch fast. A custom site costs more upfront but looks like a real brand, ranks better for local searches and converts more of the guests you already have.</p>
+<div class="post-note"><b>Key takeaways</b><p>Platforms charge hosts a large share of each booking (Airbnb has moved most hosts to a host-only fee of around 15%), so even a few direct bookings a month can pay for a site. Use a booking engine with two-way calendar sync so you never double-book. Your best source of direct bookings is past guests and people who search your property or area by name, so plan for repeat stays, not just Google traffic.</p></div>
+"""),
+("vr-why", "Why direct bookings matter more in 2026", """
+<p>Airbnb has been switching hosts to a single host-only service fee. For most hosts on that model the fee is about 15.5% of the booking, and the change rolled out region by region through 2025 and 2026. Guests now see one all-in price, and the host pays the whole platform fee.</p>
+<p>That makes the maths of a direct booking site simple. If your average stay is $1,200 and you pay around 15% to a platform, every booking that comes direct saves you about $180. Ten direct stays a year saves $1,800, which covers the running costs of most booking engines. A good site also gives you something a platform never will: the guest's email address and the freedom to invite them back.</p>
+<p>Direct bookings do not replace Airbnb, Vrbo or Booking.com. Those platforms still bring most first-time guests. The goal is to win the second stay, the referral and the guest who found you on Instagram or Google and wants to book with the owner.</p>
+"""),
+("vr-tools", "Which booking engine should you use?", """
+<p>Most hosts should not build a booking system from scratch. Use the one in your PMS, because it already knows your calendars, rates and cleaning rules. These are common options for small and mid-size hosts. Prices are as of November 2026 and change often, so check before you sign.</p>
+<div class="post-table" role="region" aria-label="Vacation rental booking engines compared" tabindex="0"><table>
+<thead><tr><th>Tool</th><th>Typical starting price</th><th>Direct booking fee</th><th>Good for</th></tr></thead>
+<tbody>
+<tr><td><b>Lodgify</b></td><td>From about $23/month on annual billing</td><td>0% booking fees, payments through Stripe</td><td>Hosts who want a website builder and channel manager in one</td></tr>
+<tr><td><b>OwnerRez</b></td><td>From about $40/month for one property, plus about $15/month for a hosted site</td><td>0% booking fees</td><td>Owners who want deep control of rates, rules and automation</td></tr>
+<tr><td><b>Hospitable</b></td><td>Professional plan from about $59/month with a direct site</td><td>Small percentage, depending on the direct booking plan</td><td>Hosts already using it for guest messaging</td></tr>
+<tr><td><b>Hostaway</b></td><td>Custom quote, usually per property</td><td>Depends on plan</td><td>Larger managers with many units</td></tr>
+</tbody></table></div>
+<p>What matters more than the logo: two-way sync with Airbnb, Vrbo and Booking.com (API connections are more reliable than basic iCal links), secure card payments with deposits and damage protection, automatic taxes, and a booking widget you can embed on any website. Several of these tools can also list your property on Google Vacation Rentals, which shows your direct price next to the platforms in Google search.</p>
+[[cta]]
+"""),
+("vr-template", "Built-in template or custom website?", """
+<p>Every PMS above offers a website template. It is the fastest way to get a booking page online. The trade-off is that it looks like thousands of other rental sites, you get limited control over pages and SEO, and you usually cannot move the design if you change PMS later.</p>
+<div class="post-table" role="region" aria-label="Template vs custom vacation rental website" tabindex="0"><table>
+<thead><tr><th>Option</th><th>Upfront cost</th><th>Launch time</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td><b>PMS template</b></td><td>Included or a small monthly fee</td><td>Days</td><td>One or two units, testing direct bookings</td></tr>
+<tr><td><b>Custom landing page with booking widget</b></td><td>From $2,400 with Sorvel</td><td>1 to 2 weeks</td><td>A single standout property or villa</td></tr>
+<tr><td><b>Custom brand website</b></td><td>From $6,900 with Sorvel</td><td>3 to 6 weeks</td><td>Several properties, a local brand, or a management company that also wins owners</td></tr>
+</tbody></table></div>
+<p>A custom site makes sense when your property is the product: a design villa, a cabin with a story, a portfolio of apartments in one city. It also makes sense for property managers, because the same website can win new owner clients, not just guests.</p>
+"""),
+("vr-pages", "What a vacation rental website needs", """
+<p>Guests decide fast and they decide on their phone. Each page should answer a question that would otherwise send them back to Airbnb to check.</p>
+<ul>
+<li><b>Home page with live availability.</b> Dates, guests and a clear "Check availability" button above the fold.</li>
+<li><b>One page per property.</b> Large photos, a short honest description, sleeping layout, amenities, house rules, cancellation policy and the booking widget.</li>
+<li><b>Real photos and a floor plan.</b> Light, wide shots of every room and the view guests will actually get. A floor plan answers the "who sleeps where" question.</li>
+<li><b>Location and area guide.</b> Distance to the beach, centre, airport and ski lift; parking; local tips. These pages also rank for searches like "villa with pool near [town]".</li>
+<li><b>Trust signals.</b> Your name and photo, how long you have hosted, a direct phone or WhatsApp, secure payment badges, and guest reviews you are allowed to show.</li>
+<li><b>Clear total price.</b> Show cleaning fees and taxes before checkout. Surprise fees kill direct bookings faster than anything else.</li>
+<li><b>Fast mobile pages.</b> Compress photos, use modern image formats and keep the booking widget light.</li>
+</ul>
+<p>For more on travel sites in general, see our guide to <a href="../blog/travel-website-design.html">travel and tourism website design</a>.</p>
+"""),
+("vr-rules", "How to get direct bookings without breaking platform rules", """
+<p>Airbnb's off-platform rules do not allow you to push guests who booked on Airbnb to pay outside it, and messages that share contact details or links can be blocked. Do not try to move a live Airbnb booking. Build a direct relationship the honest way:</p>
+<ol>
+<li><b>Make your brand easy to find.</b> Use a clear property name, a matching domain and the same name on Instagram and Google Business Profile, so guests who search for you after their stay find your site.</li>
+<li><b>Collect emails from direct and returning guests.</b> Offer a returning guest rate on your own site only.</li>
+<li><b>Show up in Google.</b> Write area pages, add structured data for your properties, and connect to Google Vacation Rentals through your PMS if it supports it.</li>
+<li><b>Use social and partners.</b> Local event organisers, wedding venues, remote work groups and corporate stays often prefer to book direct.</li>
+<li><b>Make booking feel safe.</b> HTTPS, card payments through Stripe or your PMS, a written cancellation policy and a real contact person.</li>
+</ol>
+"""),
+("vr-checklist", "Checklist before you launch", """
+<ul>
+<li>Two-way calendar sync tested with every channel, including a test booking and cancellation</li>
+<li>Rates, minimum stays, cleaning fees and taxes match your platform listings</li>
+<li>Deposit, damage protection and cancellation rules written on the site and in the confirmation email</li>
+<li>Booking flow works on a phone in under a minute</li>
+<li>Google Analytics or similar tracks booking starts and completed bookings</li>
+<li>Each property page has a unique title, description and photos with alt text</li>
+<li>Privacy policy and cookie consent in place for the countries you serve</li>
+</ul>
+<p>If you are also deciding on a platform for the site itself, our <a href="../blog/webflow-pricing.html">Webflow pricing guide</a> and <a href="../blog/webflow-vs-wix.html">Webflow vs Wix comparison</a> cover the trade-offs.</p>
+"""),
+("vr-seo", "How to rank a vacation rental website on Google and AI search", """
+<p>Your own site will not outrank Airbnb for "holiday rentals in Lisbon". It can win the searches that are closer to a booking: your property name, specific features and specific places.</p>
+<ul>
+<li><b>Target specific searches.</b> "Villa with heated pool near Lake Como", "dog-friendly cabin in the Catskills with hot tub" or "family apartment walking distance to the beach in Split" are realistic targets for a small site.</li>
+<li><b>Write one area guide per location.</b> Beaches, restaurants, transport, seasons and day trips, written by someone who knows the place. Guests read these, and AI assistants quote them.</li>
+<li><b>Add structured data.</b> Mark up each property with its name, address area, amenities, capacity and reviews you are allowed to show, so search engines understand what you rent.</li>
+<li><b>Keep facts consistent.</b> Same name, address area, capacity and amenities on your site, Google Business Profile and platform listings. AI tools trust facts they can confirm in several places.</li>
+<li><b>Answer real questions.</b> A short FAQ per property (parking, check-in, Wi-Fi speed, pets, accessibility) wins long-tail searches and cuts guest messages.</li>
+</ul>
+<p>Expect Google to take a few months to trust a new site. Returning guests and social traffic will bring bookings sooner.</p>
+"""),
+("vr-mistakes", "Common mistakes that kill direct bookings", """
+<ul>
+<li><b>Higher prices than on Airbnb.</b> Guests compare. Your direct price should be the same or better, because you save the platform fee.</li>
+<li><b>Hidden fees at checkout.</b> Show the full total, including cleaning and taxes, before the payment step.</li>
+<li><b>A booking form instead of real availability.</b> "Send us a request and we will get back to you" loses guests who want to book now.</li>
+<li><b>Tiny or dark photos.</b> Photos sell the stay. Shoot in daylight and show every room.</li>
+<li><b>No reason to trust you.</b> Add your face, your story, clear policies and secure payment. A stranger's website asking for a card number needs more trust than a platform does.</li>
+<li><b>Slow pages.</b> Heavy sliders and uncompressed photos make mobile guests give up before the calendar loads.</li>
+</ul>
+"""),
+("vr-hire", "When to hire a designer", """
+<p>Start with your PMS template if you have one unit and want to test demand. Hire a designer when your photos and story are strong but your site looks generic, when you manage several properties under one brand, or when you want the website to win owner clients as well as guests.</p>
+<p>At Sorvel we design the site in Figma, build it in Webflow or Framer, and embed your existing booking engine, so guests get a fast branded site and you keep the PMS you already know. You get a written plan and a fixed quote within 24 hours. <a href="../services/websites.html">See our website design service</a>.</p>
+"""),
+  ],
+  faq=[
+    ("How much does a vacation rental website cost?", "A website template from your property management software is often included or costs a small monthly fee. A custom design that embeds your booking engine usually costs a few thousand dollars upfront; Sorvel landing pages start at $2,400 and full websites at $6,900."),
+    ("Do I need a separate booking engine for my own website?", "Usually not. Use the direct booking engine in your property management software, because it already syncs your calendars, prices and payments with Airbnb, Vrbo and Booking.com."),
+    ("Can I move guests from Airbnb to my own website?", "Not for bookings made on Airbnb: its rules ban steering those guests to pay off-platform. Build direct bookings through your brand name, returning guest offers for direct guests, Google, social media and partners."),
+    ("How do I avoid double bookings with a direct booking site?", "Use a booking engine with two-way sync to every channel, ideally through API connections rather than basic iCal links, and test a booking and a cancellation before launch."),
+    ("Will a direct booking website rank on Google?", "It can rank for your property name and for local searches such as a villa with a pool near a town, if it has unique property pages, area guides, fast mobile pages and structured data. Rankings take months, so do not rely on Google alone."),
+    ("Is a website worth it if I only have one property?", "Often yes, if your average stay is high enough. At a platform fee of around 15%, a few direct stays a year can cover the running costs of a simple site."),
+    ("Which website builder is best for vacation rentals?", "Any builder that lets you embed your booking widget works. Webflow and Framer give you full design control and fast pages; your PMS template is the cheapest way to start."),
+  ],
+),
+dict(
+  slug="therapist-website-design",
+  title="Therapist Website Design 2026: Cost and Must-Haves | Sorvel",
+  h1="Therapist website design: what a private practice site needs in 2026",
+  card="What a therapist or psychologist website costs in 2026, the pages that turn searches into consultations, and how to handle booking and client data safely.",
+  desc="Therapist website design for private practice in 2026: cost ranges, pages that win clients, booking, HIPAA-safe intake forms, directories and local SEO.",
+  cat="Healthcare", date="2026-11-13", svc=("websites", "website design and development"),
+  cover=("c-therapist-website-design", "A calm room with a teal armchair and a green plant"),
+  lead="People looking for a therapist want to feel understood before they ever book. Here is what a private practice website costs in 2026, what it must say, and how to handle scheduling and intake without risking client privacy.",
+  sections=[
+("tw-short", "The short answer", """
+<p>A therapist website usually costs anywhere from a low monthly fee on a template platform to <b>$2,000 to $10,000</b> for a custom design, depending on the number of pages, specialties and locations. Most solo practices need five to eight pages, a clear way to book a free consultation, and a link to a secure client portal for intake and scheduling.</p>
+<p>Your website does not need to hold sensitive data itself. Let a practice management tool that signs a Business Associate Agreement (BAA) handle intake forms, records and payments, and use the website to build trust and explain how you work.</p>
+<div class="post-note"><b>Key takeaways</b><p>Speak to one kind of client per specialty page, in their words, not in clinical jargon. Show your face, fees, insurance and availability, because uncertainty stops people from booking. Never collect health information through a standard contact form; route it through a HIPAA-compliant portal instead.</p></div>
+"""),
+("tw-cost", "How much does a therapist website cost?", """
+<div class="post-table" role="region" aria-label="Therapist website cost by type" tabindex="0"><table>
+<thead><tr><th>Option</th><th>Upfront cost</th><th>Good for</th><th>Watch out for</th></tr></thead>
+<tbody>
+<tr><td><b>Directory profile only</b></td><td>Monthly fee (Psychology Today is $29.95/month)</td><td>New practices getting first referrals</td><td>You do not own the page; you sit next to competitors</td></tr>
+<tr><td><b>Template from a therapist website platform</b></td><td>$0 to $1,000 plus a monthly fee</td><td>Solo practices that need to launch fast</td><td>Looks like many other practices; limited SEO control</td></tr>
+<tr><td><b>Custom website, solo practice</b></td><td>$2,000 to $10,000</td><td>Therapists with a clear niche who want to stand out</td><td>Needs written content and real photos</td></tr>
+<tr><td><b>Group practice website</b></td><td>$6,900 and up with Sorvel</td><td>Practices with several clinicians or locations</td><td>Clinician profiles, matching, booking per therapist</td></tr>
+</tbody></table></div>
+<p>Running costs sit on top: domain and hosting, your practice management software, and any directory listings. Prices for directories and software are as of November 2026.</p>
+"""),
+("tw-pages", "The pages every private practice website needs", """
+<ul>
+<li><b>Home page.</b> Who you help, where (in person, online, which states or countries you are licensed in) and one clear action: "Book a free 15-minute consultation".</li>
+<li><b>About page.</b> Your photo, training, licence, approach and why you do this work. People choose a person, not a practice.</li>
+<li><b>Specialty pages.</b> One page per focus area, such as anxiety, couples therapy, trauma or teen therapy. Describe what clients feel and what working with you looks like. These pages also rank for searches like "anxiety therapist in [city]".</li>
+<li><b>Fees and insurance.</b> Session fee, sliding scale if you offer one, insurance you accept, superbills, and your cancellation policy. In the US, include the Good Faith Estimate notice if it applies to you.</li>
+<li><b>How it works.</b> What happens from the first call to the first session, how long sessions last, and what online therapy looks like.</li>
+<li><b>Contact and booking.</b> A link to your secure portal for booking, plus a simple contact option that asks for no clinical details.</li>
+<li><b>Crisis notice.</b> A short line that you do not offer emergency services, with the local emergency number and crisis line.</li>
+</ul>
+[[cta]]
+"""),
+("tw-privacy", "Booking, intake forms and privacy", """
+<p>In the US, HIPAA applies to most therapists who bill insurance electronically, and many others follow it as a standard. Any vendor that stores or handles client health information for you needs to sign a BAA. Most standard website form tools and email newsletters will not, so they are the wrong place for intake questions. Outside the US, rules such as GDPR treat health data as a special category with stricter requirements.</p>
+<p>The safe pattern is simple: the website explains and invites, the portal collects.</p>
+<div class="post-table" role="region" aria-label="Where therapist client data should live" tabindex="0"><table>
+<thead><tr><th>Task</th><th>Where it belongs</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td><b>Booking a consultation</b></td><td>Your practice software's booking widget</td><td>Real availability, reminders, no double booking</td></tr>
+<tr><td><b>Intake and consent forms</b></td><td>Secure client portal from a vendor that signs a BAA</td><td>Health information stays in a compliant system</td></tr>
+<tr><td><b>General questions</b></td><td>Simple website form or email</td><td>Ask for name, contact and preferred time only</td></tr>
+<tr><td><b>Payments</b></td><td>Practice software or a compliant payment tool</td><td>Ties payments to sessions and superbills</td></tr>
+</tbody></table></div>
+<p>Practice management tools built for therapists, such as SimplePractice (plans from about $49/month as of late 2026), include a client portal and online booking you can link to or embed. Confirm the BAA in writing with any vendor you use. We are not lawyers, so ask your professional association or a compliance adviser if you are unsure.</p>
+"""),
+("tw-design", "Design that feels calm and safe", """
+<p>A therapist site should lower anxiety, not add to it. In practice that means:</p>
+<ul>
+<li><b>Warm, real photos</b> of you and your office instead of generic stock images of people holding their heads.</li>
+<li><b>Plain language.</b> "Feeling stuck in the same arguments" lands better than "relational dysfunction".</li>
+<li><b>Calm colours and generous spacing</b>, with strong contrast so text stays readable.</li>
+<li><b>One action per page.</b> Do not make a nervous visitor choose between five buttons.</li>
+<li><b>Accessibility.</b> Readable font sizes, keyboard-friendly navigation and alt text for images.</li>
+<li><b>Fast mobile pages.</b> Many people search for help late at night on their phone.</li>
+</ul>
+<p>The same principles show up in our guide to <a href="../blog/dental-website-design.html">dental website design</a>, which covers healthcare booking and forms in more detail.</p>
+"""),
+("tw-found", "How clients find therapists online", """
+<p>Most private practices get clients from three places, and a website supports all of them.</p>
+<ol>
+<li><b>Directories.</b> Psychology Today, TherapyDen, GoodTherapy and local directories send referrals. Link each profile to your website so people can learn more before they book.</li>
+<li><b>Google search and Maps.</b> Claim your Google Business Profile, keep your name, address and phone the same everywhere, and write specialty pages for your city. If you only work online, focus on the states or regions where you are licensed.</li>
+<li><b>AI search.</b> People now ask ChatGPT, Claude and Google AI Overviews for therapist recommendations. Clear pages that say who you help, where, how much it costs and how to book are easier for these tools to understand and quote.</li>
+</ol>
+<p>Referrals from doctors, schools and other therapists also land on your website first, so it should confirm in seconds that you are the right fit.</p>
+"""),
+("tw-checklist", "Checklist before you launch", """
+<ul>
+<li>Licence, credentials and the regions you can practise in are stated clearly</li>
+<li>Fees, insurance and cancellation policy are on the site</li>
+<li>Booking and intake run through a portal from a vendor that has signed a BAA</li>
+<li>The contact form asks for no clinical details</li>
+<li>Crisis notice on the contact page and in the footer</li>
+<li>Each specialty page has a unique title, description and local wording</li>
+<li>Google Business Profile and directory profiles link to the website</li>
+<li>Pages load fast on a phone and pass basic accessibility checks</li>
+</ul>
+"""),
+("tw-copy", "How to write a therapist website that sounds like you", """
+<p>The words on your site matter more than the design. Someone reading at 11pm is asking one question: "Will this person understand me?" Write for that reader.</p>
+<ol>
+<li><b>Start with the client's experience.</b> Open each specialty page with what the reader is living through, in plain words. Then explain how you help, then how to start.</li>
+<li><b>Name who you work with.</b> "Adults with anxiety who look fine on the outside" is clearer than "individuals of all ages". A clear niche attracts the right clients and helps your pages rank.</li>
+<li><b>Explain your approach simply.</b> Mention CBT, EMDR or psychodynamic work if you use them, and say in one sentence what that means in a session.</li>
+<li><b>Show what the first session is like.</b> Fear of the unknown stops people from booking. Walk them through it.</li>
+<li><b>Keep sentences short.</b> Read the page out loud. If it sounds like a journal article, rewrite it.</li>
+</ol>
+<p>Avoid testimonials from clients. Many professional codes of ethics discourage or ban them, and they raise confidentiality concerns. Credentials, a clear approach and a warm photo do the same job.</p>
+"""),
+("tw-online", "Online therapy and licence rules on your website", """
+<p>If you offer online sessions, say where you can legally see clients. In the US that usually means the states where you hold a licence or where an interstate compact applies to you. In Europe and elsewhere, rules depend on your profession and country. Listing the regions clearly prevents enquiries you have to turn away and builds trust with the ones you can help.</p>
+<p>Create a short page or section for online therapy: the video platform you use, what clients need, privacy steps you take, and the regions you serve. It also gives search engines and AI assistants a clear answer to "online therapist for anxiety in [state]".</p>
+"""),
+("tw-mistakes", "Common mistakes on therapist websites", """
+<ul>
+<li><b>Writing for other therapists.</b> Jargon makes visitors feel like a case file, not a person.</li>
+<li><b>No photo of you.</b> Clients want to see who they will talk to.</li>
+<li><b>Hiding fees.</b> Uncertainty about cost is one of the biggest reasons people delay booking.</li>
+<li><b>Contact forms that ask for symptoms.</b> They create privacy risk and are rarely needed before a first call.</li>
+<li><b>Too many choices.</b> One clear "Book a consultation" action beats five competing buttons.</li>
+<li><b>An outdated site.</b> Old availability, closed offices or retired services make people doubt everything else on the page.</li>
+</ul>
+"""),
+("tw-hire", "Template or custom: how to choose", """
+<p>A template works when you are starting out and need to be bookable this month. Choose a custom site when you have a clear niche, run a group practice, want to rank for competitive local searches, or simply want a site that sounds and looks like you.</p>
+<p>Sorvel designs calm, fast websites in Figma and builds them in Webflow, Framer or WordPress, with your existing booking and client portal linked in. Landing pages start at $2,400 and full websites at $6,900, and you get a written plan and fixed quote within 24 hours. <a href="../services/websites.html">See our website design service</a>, or compare <a href="../blog/web-design-agency-vs-freelancer.html">agency vs freelancer</a> first.</p>
+"""),
+  ],
+  faq=[
+    ("How much does a therapist website cost?", "From a small monthly fee on a template platform to about $2,000 to $10,000 for a custom solo practice site. Group practices with several clinicians usually cost more; Sorvel websites start at $6,900."),
+    ("Does my therapy website need to be HIPAA compliant?", "The website itself should not collect health information. Use a practice management tool that signs a Business Associate Agreement for intake, records and payments, and keep the website form to name, contact and preferred time."),
+    ("Is a Psychology Today profile enough?", "It is a good source of referrals, at $29.95 a month as of late 2026, but you do not own the page and you appear next to competitors. A website gives you your own space, ranks for your specialties and supports every directory profile."),
+    ("What pages should a therapist website have?", "A home page, about page, one page per specialty, fees and insurance, how it works, and a contact or booking page with a crisis notice."),
+    ("Should I list my fees on my website?", "Yes, in most cases. Clear fees, insurance details and a sliding scale if you offer one remove a major reason people hesitate to book."),
+    ("Can I add online booking to my therapist website?", "Yes. Link to or embed the booking widget from your practice management software, so availability, reminders and intake stay in one secure system."),
+    ("How long does it take to build a therapist website?", "A template can be live in days. A custom Sorvel landing page takes 1 to 2 weeks and a full website usually 3 to 6 weeks, depending on content."),
+  ],
+),
+dict(
+  slug="wix-to-webflow-migration",
+  title="Wix to Webflow Migration: Steps, Cost and SEO (2026) | Sorvel",
+  h1="Wix to Webflow migration: how to move without losing traffic",
+  card="How to move a website from Wix to Webflow in 2026: what can and cannot be exported, the steps, the cost and how to keep your Google rankings.",
+  desc="Wix to Webflow migration in 2026: what exports and what must be rebuilt, step-by-step process, redirects, cost, timeline and how to protect your SEO.",
+  cat="Migrations", date="2026-11-13", svc=("migrations", "website migration"),
+  cover=("c-wix-to-webflow-migration", "Two laptops facing each other on a turquoise desk"),
+  lead="There is no button that converts a Wix site into Webflow. Here is what you can export, what has to be rebuilt, how long it takes, and the steps that keep your Google rankings intact.",
+  sections=[
+("wx-short", "The short answer", """
+<p>A Wix to Webflow migration is a <b>rebuild, not an export</b>. Wix does not let you export your design, code or interactions, so the pages are recreated in Webflow. Some content can be moved with files: Wix CMS collections and store products can be exported as CSV, while blog posts, images and forms need manual work or a script.</p>
+<p>Most small business sites take <b>2 to 6 weeks</b> to migrate. The step that decides whether you keep your Google traffic is the redirect map: every old URL must point to its new page before you switch the domain.</p>
+<div class="post-note"><b>Key takeaways</b><p>Plan the migration as a chance to fix the design, not copy it pixel by pixel. Export what Wix allows, move the rest with care, and keep URLs the same where you can. Add 301 redirects for every URL that changes, then watch Search Console for a few weeks after launch.</p></div>
+"""),
+("wx-why", "Why businesses move from Wix to Webflow", """
+<p>Wix is easy to start with. Businesses usually move when the site becomes important to sales and the limits start to show:</p>
+<ul>
+<li><b>Design control.</b> Webflow gives designers full control of layout, responsive breakpoints and animations.</li>
+<li><b>Speed and clean code.</b> Webflow outputs lean HTML and CSS, which helps Core Web Vitals.</li>
+<li><b>CMS and content.</b> Webflow's CMS handles structured content such as case studies, locations, team members and blog posts with custom fields.</li>
+<li><b>SEO control.</b> Per-page meta tags, structured data, clean URLs and redirects are all in your hands.</li>
+<li><b>Team editing.</b> Marketers can edit text and publish posts without breaking the layout.</li>
+</ul>
+<p>Not sure the move is right for you? Our <a href="../blog/webflow-vs-wix.html">Webflow vs Wix comparison</a> covers who should stay on Wix.</p>
+"""),
+("wx-export", "What you can export from Wix, and what you can't", """
+<p>This is the part most people underestimate. Based on Webflow's own migration guidance and Wix's export options as of November 2026:</p>
+<div class="post-table" role="region" aria-label="What exports from Wix to Webflow" tabindex="0"><table>
+<thead><tr><th>Item</th><th>Can it be exported?</th><th>How it moves to Webflow</th></tr></thead>
+<tbody>
+<tr><td><b>Design, layout, code</b></td><td>No</td><td>Rebuilt in Webflow (often redesigned)</td></tr>
+<tr><td><b>Animations and interactions</b></td><td>No</td><td>Recreated with Webflow Interactions</td></tr>
+<tr><td><b>CMS collections</b></td><td>Yes, as CSV</td><td>Imported into Webflow CMS collections</td></tr>
+<tr><td><b>Store products</b></td><td>Physical products yes, digital products no</td><td>CSV import into Webflow Ecommerce, or rebuilt</td></tr>
+<tr><td><b>Blog posts</b></td><td>No direct export</td><td>Copied manually or moved with a script into a Blog collection</td></tr>
+<tr><td><b>Images and media</b></td><td>Downloaded one by one or in batches</td><td>Uploaded to Webflow's asset manager, ideally as WebP</td></tr>
+<tr><td><b>Fonts</b></td><td>No (Wix font licences cover Wix only)</td><td>Re-licensed or replaced, then uploaded</td></tr>
+<tr><td><b>Forms and integrations</b></td><td>No</td><td>Rebuilt with Webflow forms or connected tools</td></tr>
+</tbody></table></div>
+<p>Your domain stays yours. If you bought it through Wix, you can keep it there and point the DNS records to Webflow, or transfer it to a registrar. Webflow itself is not a domain registrar.</p>
+[[cta]]
+"""),
+("wx-steps", "Step-by-step: moving from Wix to Webflow", """
+<ol>
+<li><b>Crawl the current site.</b> List every URL, page title, meta description and heading. Export your top pages and queries from Google Search Console so you know what must not break.</li>
+<li><b>Export what Wix allows.</b> CMS collections and products as CSV, plus every image and file you need.</li>
+<li><b>Plan the structure.</b> Decide the new sitemap, keep proven URLs where possible, and design CMS collections for repeated content such as blog posts, services or locations.</li>
+<li><b>Design in Figma.</b> Use the move to fix weak pages, simplify navigation and make calls to action clearer.</li>
+<li><b>Build in Webflow.</b> Build components and a style system, then pages and CMS templates. Import CSV data and move blog posts.</li>
+<li><b>Recreate SEO details.</b> Titles, meta descriptions, alt text, Open Graph images, canonical tags and structured data for every important page.</li>
+<li><b>Write the redirect map.</b> Add a 301 redirect in Webflow for every old URL that changes. Wix blog URLs such as /post/your-title often change, so check them closely.</li>
+<li><b>Test on staging.</b> Forms, mobile layouts, page speed, broken links and analytics events on the Webflow staging domain.</li>
+<li><b>Switch the domain.</b> Lower your DNS TTL a day or two before, connect the domain in Webflow, publish, then update the DNS records.</li>
+<li><b>Monitor after launch.</b> Submit the new sitemap in Search Console, watch for 404 errors and ranking changes for four to eight weeks, and fix any gaps quickly.</li>
+</ol>
+"""),
+("wx-seo", "How to keep your Google rankings", """
+<p>Rankings drop after a migration when Google cannot match old pages to new ones, or when the new pages say less than the old ones did. To avoid that:</p>
+<ul>
+<li><b>Redirect every changed URL</b> with a 301 to the closest matching page, not to the home page.</li>
+<li><b>Keep the content that ranks.</b> Improve it, but do not delete sections that answer the queries you rank for.</li>
+<li><b>Keep internal links working</b> and update them to the new URLs.</li>
+<li><b>Match or beat the old speed.</b> Compress images and avoid heavy scripts.</li>
+<li><b>Re-add tracking</b> so you can compare traffic before and after.</li>
+</ul>
+<p>A short, temporary wobble in rankings is normal for a few weeks. A lasting drop almost always points to missing redirects or missing content. The same rules apply to any platform move; our guide to <a href="../blog/migrate-wordpress-to-webflow-without-losing-seo.html">migrating WordPress to Webflow without losing SEO</a> goes deeper on redirects.</p>
+"""),
+("wx-cost", "How much does a Wix to Webflow migration cost?", """
+<p>The cost depends on the number of pages, CMS items and whether you redesign. As a guide:</p>
+<div class="post-table" role="region" aria-label="Wix to Webflow migration cost" tabindex="0"><table>
+<thead><tr><th>Site size</th><th>Typical scope</th><th>Timeline</th><th>Sorvel price</th></tr></thead>
+<tbody>
+<tr><td><b>Small site</b></td><td>Up to about 10 pages, few CMS items</td><td>2 to 3 weeks</td><td>From $2,900</td></tr>
+<tr><td><b>Business site with blog</b></td><td>10 to 30 pages, blog and CMS collections</td><td>3 to 5 weeks</td><td>Fixed quote after a site review</td></tr>
+<tr><td><b>Full redesign and migration</b></td><td>New design, structure and content</td><td>4 to 8 weeks</td><td>Websites from $6,900</td></tr>
+</tbody></table></div>
+<p>Remember Webflow's own plan costs after launch: a Site plan for hosting, and an Ecommerce plan if you sell online. Our <a href="../blog/webflow-pricing.html">Webflow pricing guide</a> breaks those down.</p>
+"""),
+("wx-prep", "Before you start: the migration audit", """
+<p>A one-hour audit before any design work saves days later. Collect these first:</p>
+<ul>
+<li><b>A full URL list</b> from a crawler or your Wix sitemap, including blog posts, product pages and hidden pages that still get traffic.</li>
+<li><b>Your top 20 pages</b> by clicks in Google Search Console and by visits in analytics. These need the most care.</li>
+<li><b>Every form and integration:</b> booking tools, email marketing, chat, payment and CRM connections, plus who receives each form.</li>
+<li><b>Apps you rely on.</b> Wix apps for events, bookings, members or reviews need a Webflow-friendly replacement before launch.</li>
+<li><b>Access details:</b> who controls the domain, DNS and Google accounts, so the cutover is not blocked on launch day.</li>
+</ul>
+<p>If your Wix site depends on Wix Bookings, members areas or a large Wix store, plan those replacements first. They usually take more time than the pages themselves.</p>
+"""),
+("wx-mistakes", "Common Wix to Webflow migration mistakes", """
+<ul>
+<li><b>Switching the domain before redirects are live.</b> Google finds broken URLs on day one and starts dropping them.</li>
+<li><b>Redirecting everything to the home page.</b> Google treats this like a missing page. Map each URL to its closest match.</li>
+<li><b>Forgetting image alt text and meta descriptions.</b> They do not move automatically and are easy to lose.</li>
+<li><b>Copying the old design one to one.</b> You pay for a rebuild anyway; fix what did not work.</li>
+<li><b>Using Wix fonts without a licence.</b> Fonts licensed for Wix cannot be uploaded to Webflow. Pick a replacement early so the design is built with it.</li>
+<li><b>Not testing forms.</b> A broken contact form after launch is the most expensive bug a small business site can have.</li>
+</ul>
+"""),
+("wx-after", "What changes for your team after the move", """
+<p>Day to day, your team edits text, images and CMS items in Webflow's Editor, and the layout stays protected from accidental changes. Blog posts, case studies or team members are added as CMS items with set fields, so every new page looks consistent. Larger layout changes go through a designer or someone trained in Webflow's Designer.</p>
+<p>Ask for a short handover: how to edit pages, add posts, update SEO fields and publish. A good handover means your team is not dependent on a developer for small edits.</p>
+"""),
+("wx-hire", "DIY or hire someone?", """
+<p>You can migrate a five-page site yourself if you are comfortable in Webflow and careful with redirects. Hire help when the site brings in leads or sales, has a blog with many posts, uses a store, or needs a redesign at the same time. The cost of a botched migration is lost traffic for months.</p>
+<p>Sorvel handles the full move: audit, redirect map, design in Figma, build in Webflow, content and SEO transfer, launch and post-launch checks. You get a written plan and a fixed quote within 24 hours. <a href="../services/migrations.html">See our website migration service</a>.</p>
+"""),
+  ],
+  faq=[
+    ("Can I export my Wix website to Webflow?", "Not directly. Wix does not export design, code or interactions, so the site is rebuilt in Webflow. CMS collections and physical store products can be exported as CSV and imported."),
+    ("How long does a Wix to Webflow migration take?", "Most small business sites take 2 to 6 weeks, depending on the number of pages, blog posts, CMS items and whether you redesign at the same time."),
+    ("Will I lose my SEO when moving from Wix to Webflow?", "Not if you keep ranking content, set up 301 redirects for every changed URL before switching the domain, and monitor Search Console after launch. A short wobble is normal; a lasting drop usually means missing redirects."),
+    ("How much does it cost to move from Wix to Webflow?", "Sorvel migrations start at $2,900 for small sites. Larger sites with blogs or a full redesign get a fixed quote after a review; full websites start at $6,900."),
+    ("Can I keep my domain if I bought it on Wix?", "Yes. You can keep it registered with Wix and point the DNS records to Webflow, or transfer it to another registrar. Webflow does not sell domains."),
+    ("How do I move my Wix blog posts to Webflow?", "Wix blog posts cannot be exported directly, so they are copied manually or moved with a script into a Webflow Blog collection, keeping titles, dates, images and URLs where possible."),
+    ("Is Webflow better than Wix?", "Webflow is better for design control, speed, structured content and SEO control. Wix is simpler for owners who want to drag and drop without a designer."),
   ],
 ),
 ]
