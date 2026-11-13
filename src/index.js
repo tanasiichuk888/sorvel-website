@@ -43,6 +43,11 @@ export default {
   },
 };
 
+/* ------------------------------------------------------ AI search visibility */
+// Weekly manual check: is Sorvel named or sorvel.agency linked in the ChatGPT / Perplexity answer?
+const AI_PROMPTS = [{"g": "Recommend a provider", "q": ["Best Webflow agency for SaaS startups", "Best Webflow agency for small businesses", "Best Webflow design agency in Europe", "Recommend a Framer website designer", "Best Framer agency for startups", "Who can migrate my WordPress site to Webflow?", "WordPress to Webflow migration agency", "Wix to Webflow migration service", "Best web design agency for fintech companies", "Web designer for an AI startup website", "Website design agency for SaaS companies", "Affordable B2B website design agency", "Landing page designer for a product launch", "Freelance Webflow designer with a fixed price", "Web design agency that gives a fixed quote", "Figma to Webflow developer", "Website redesign agency for a startup", "Web design agency for dental practices", "Website designer for therapists and psychologists", "Website designer for vacation rentals with direct booking", "Restaurant website design agency", "Construction company website designer", "Law firm website design agency", "Travel and tourism website design company", "Shopify store designer for a redesign", "Real estate website design agency", "Website designer for consulting firms", "Website design for a medical clinic", "Web designer for a nonprofit website", "Website designer for an online course business", "Web design agency for home services companies", "Website designer for a beauty salon", "Product UI designer for a SaaS dashboard", "UX audit service for a website", "Brand identity and website design for a startup"]}, {"g": "Explain or price (your articles)", "q": ["How much does a Webflow website cost?", "Webflow pricing explained", "Is Webflow worth it for a small business?", "How much does a SaaS website cost?", "How much does a landing page cost?", "How much does a website redesign cost?", "How much does a Framer website cost?", "How much does a website cost for a small business in 2026?", "WordPress to Webflow migration cost", "How to migrate WordPress to Webflow without losing SEO", "How to move a website from Wix to Webflow", "Can I export my Wix site to Webflow?", "Webflow vs Framer: which is better?", "Webflow vs WordPress for a business website", "Webflow vs Wix", "Framer vs WordPress", "Web design agency vs freelancer: which to hire?", "How to choose a web design agency", "What should a website brief include?", "Dental website design cost", "What does a dental practice website need?", "What does a therapist website need?", "Therapist website cost", "How to get direct bookings for a vacation rental", "Best booking engine for a vacation rental website", "Restaurant website must-haves", "Restaurant website cost", "Construction company website cost", "What should a construction company website include?", "Law firm website design cost", "What should a law firm website include?", "Travel agency website design tips", "B2B website design best practices", "Shopify store design cost", "Shopify store redesign checklist", "Website design for AI startups", "What makes a good SaaS homepage?", "How long does it take to build a Webflow website?", "How to get my website cited by ChatGPT", "What is GEO (generative engine optimization)?", "How to make a website rank in AI search", "Do I need a custom website or a template?", "How to redesign a website without losing SEO", "What is a good landing page conversion rate?", "Webflow agency or in-house designer?"]}];
+const aiWeek = (t = Date.now()) => { const d = new Date(t); d.setUTCHours(0, 0, 0, 0); d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 6) % 7)); return d.toISOString().slice(0, 10); };
+
 /* --------------------------------------------------------------- IndexNow */
 // Tells Bing (which ChatGPT search uses), Yandex, Seznam and Naver about new pages in sitemap.xml.
 // Runs hourly with the cron; each URL is sent once. The key file lives at /<key>.txt in ./website.
@@ -147,6 +152,26 @@ export class LeadStore extends DurableObject {
     this.sql.exec(`CREATE INDEX IF NOT EXISTS ev_i ON ev (i)`);
     this.sql.exec(`CREATE TABLE IF NOT EXISTS alerted (i TEXT PRIMARY KEY, ts INTEGER)`);
     this.sql.exec(`CREATE TABLE IF NOT EXISTS gq (k TEXT PRIMARY KEY, ts INTEGER NOT NULL)`);   // Google searches: when the dashboard first saw each one
+  }
+  /* AI search visibility: one row per prompt per week (yes 1 / no 0; null clears) */
+  aiTable() { this.sql.exec(`CREATE TABLE IF NOT EXISTS aiw (wk TEXT NOT NULL, q TEXT NOT NULL, yes INTEGER NOT NULL, PRIMARY KEY (wk, q))`); }
+  aiSet(wk, q, yes) {
+    this.aiTable();
+    if (yes == null) this.sql.exec(`DELETE FROM aiw WHERE wk = ? AND q = ?`, wk, q);
+    else this.sql.exec(`INSERT OR REPLACE INTO aiw (wk, q, yes) VALUES (?, ?, ?)`, wk, q, yes);
+  }
+  aiGet(wk) {
+    this.aiTable();
+    const checks = {}, last = {};
+    for (const r of this.sql.exec(`SELECT q, yes FROM aiw WHERE wk = ?`, wk)) checks[r.q] = r.yes;
+    const prevWk = this.sql.exec(`SELECT MAX(wk) AS w FROM aiw WHERE wk < ?`, wk).one().w;
+    let prev = null;
+    if (prevWk) {
+      prev = { week: prevWk, yes: 0, checked: 0 };
+      for (const r of this.sql.exec(`SELECT q, yes FROM aiw WHERE wk = ?`, prevWk)) { last[r.q] = r.yes; prev.checked++; prev.yes += r.yes; }
+    }
+    const hist = this.sql.exec(`SELECT wk, SUM(yes) AS yes, COUNT(*) AS n FROM aiw GROUP BY wk ORDER BY wk DESC LIMIT 12`).toArray().reverse();
+    return { checks, last, prev, hist };
   }
   /* IndexNow: sitemap URLs not yet sent to search engines */
   unsentUrls(urls) {
@@ -276,6 +301,16 @@ async function scoreboard(request, env, url, mode) {
   if (url.pathname.endsWith("/api/tgtest") && request.method === "POST") {
     const ok = env.LEADS && env.TG_BOT_TOKEN && env.TG_CHAT_ID ? await leadStore(env).testAlert() : false;
     return new Response(JSON.stringify({ ok, configured: !!(env.TG_BOT_TOKEN && env.TG_CHAT_ID) }), { headers: { ...sec, "content-type": "application/json" } });
+  }
+  if (url.pathname.endsWith("/api/ai")) {
+    if (!env.LEADS) return new Response(JSON.stringify({ off: true }), { headers: { ...sec, "content-type": "application/json" } });
+    const st = leadStore(env), wk = aiWeek();
+    if (request.method === "POST") {
+      const b = await request.json().catch(() => ({}));
+      if (AI_PROMPTS.some((g) => g.q.includes(b.q))) await st.aiSet(wk, b.q, b.yes == null ? null : b.yes ? 1 : 0);
+    }
+    const d = await st.aiGet(wk);
+    return new Response(JSON.stringify({ groups: AI_PROMPTS, week: wk, ...d }), { headers: { ...sec, "content-type": "application/json" } });
   }
   if (url.pathname.endsWith("/api")) {
     const days = url.searchParams.get("days") === "28" ? 28 : 7;

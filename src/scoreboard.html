@@ -110,6 +110,15 @@ tr.isnew td { background: rgba(61,220,132,.04); }
 .newsum { margin: -4px 0 10px; font-size: 12.5px; color: var(--muted); } .newsum b { color: #3DDC84; font-weight: 600; }
 tr.isbrand td:first-child::after { content: "brand"; margin-left: 8px; padding: 1px 6px; border-radius: 4px; font-size: 10.5px; color: var(--muted); background: rgba(242,239,234,.06); }
 /* ranked lists */
+.aig { margin-top: 18px; } .aig h4 { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--text-2); display: flex; gap: 8px; align-items: baseline; } .aig h4 span { color: var(--muted); font-weight: 400; }
+.air { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 10px; align-items: center; padding: 8px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.air .q { color: var(--text); } .air .q small { color: var(--faint); margin-left: 6px; font-size: 12px; }
+.air .lk a { color: var(--muted); font-size: 12px; margin-right: 10px; text-decoration: none; } .air .lk a:hover { color: var(--text); }
+.yn { display: inline-flex; border-radius: 8px; box-shadow: inset 0 0 0 1px var(--line); overflow: hidden; }
+.yn button { background: none; border: 0; color: var(--muted); font: inherit; font-size: 12px; padding: 6px 12px; cursor: pointer; }
+.yn button.y.on { background: rgba(79,209,139,.16); color: var(--good-ink); } .yn button.n.on { background: rgba(255,123,123,.12); color: var(--bad-ink); }
+.aiS { text-align: right; } .aiS b { font-size: 28px; font-weight: 600; } .aiS span { color: var(--muted); font-size: 13px; display: block; }
+@media (max-width: 560px) { .air { grid-template-columns: 1fr auto; } .air .lk { grid-column: 1 / -1; order: 3; } }
 .list h4 { margin: 0 0 10px; font-size: 12px; font-weight: 500; color: var(--text-2); }
 .row { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 10px; align-items: center; padding: 6px 0 9px; font-size: 12.5px; }
 .row .k { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
@@ -212,6 +221,7 @@ tr.isbrand td:first-child::after { content: "brand"; margin-left: 8px; padding: 
       <a href="#traffic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Traffic</a>
       <a href="#markets"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Buyer markets</a>
       <a href="#search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>Google search</a>
+      <a href="#aiSec"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>AI search</a>
       <a href="#pages"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg>Pages</a>
       <a href="#experience"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Site experience</a>
       <a href="#how"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>How to read it</a>
@@ -281,6 +291,11 @@ tr.isbrand td:first-child::after { content: "brand"; margin-left: 8px; padding: 
       <div id="ga"></div>
     </section>
 
+    <section id="aiSec" class="panel">
+      <div class="ph"><div><h2>AI search visibility</h2><p class="sub">Once a week, ask each question in ChatGPT (search on) and Perplexity, in a private window. Mark <b>Yes</b> when Sorvel is named or sorvel.agency is linked in the answer. The score resets every Monday; last week's answer shows as a hint.</p></div><div id="aiScore"></div></div>
+      <div id="ai"><p class="sub">Loading…</p></div>
+    </section>
+
     <section id="pages" class="panel">
       <h2>Pages</h2><p class="sub">Most viewed pages in this period.</p>
       <div class="grid2"><div class="list" id="paths"></div><div class="list" id="gscPages"></div></div>
@@ -322,7 +337,7 @@ const ICON = {
   brief: '<path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/>', click: '<path d="M9 4v10l3-3 2 5 2-1-2-5h4z"/>',
   visits: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>', views: '<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
   globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>', search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
-  eye: '<path d="M3 12h18M3 6h18M3 18h12"/>', bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+  ai: '<path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>', eye: '<path d="M3 12h18M3 6h18M3 18h12"/>', bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
 };
 let DAYS = 7;
 
@@ -423,7 +438,35 @@ function list(el, title, rows, opts = {}) {
 const notConnected = (what) => `<div class="empty"><b>Not connected yet</b>${what}</div>`;
 const srcLabel = (k) => ({ direct: "Direct", "": "Direct" }[k] || k.replace(/^www\./, ""));
 
+let LAST = null, AIS = null, AIRAW = null;
+function aiPaint() {
+  const A = AIRAW; if (!A || A.off) { $("#ai").innerHTML = '<p class="sub">Needs lead tracking (Durable Object) to save answers.</p>'; return; }
+  const all = A.groups.flatMap((g) => g.q), yes = all.filter((q) => A.checks[q] === 1).length, checked = all.filter((q) => A.checks[q] != null).length;
+  AIS = { yes, checked, total: all.length, prev: A.prev, hist: [...A.hist.filter((h) => h.wk !== A.week), { wk: A.week, yes }] };
+  $("#aiScore").innerHTML = `<div class="aiS"><b>${yes} of ${all.length}</b>${A.prev ? delta(yes, A.prev.yes) : ""}<span>Week of ${fmtDay(A.week)}${A.prev ? " · last check " + A.prev.yes + " of " + all.length : ""}</span></div>`;
+  $("#ai").innerHTML = A.groups.map((g) => `<div class="aig"><h4>${esc(g.g)}<span>${g.q.filter((q) => A.checks[q] === 1).length} yes · ${g.q.filter((q) => A.checks[q] != null).length}/${g.q.length} checked</span></h4>` + g.q.map((q) => {
+    const c = A.checks[q], l = A.last[q], e = encodeURIComponent(q);
+    return `<div class="air"><div class="q">${esc(q)}${l != null && c == null ? `<small>last week: ${l ? "yes" : "no"}</small>` : ""}</div>
+      <div class="lk"><a href="https://chatgpt.com/?hints=search&q=${e}" target="_blank" rel="noopener">ChatGPT ↗</a><a href="https://www.perplexity.ai/search?q=${e}" target="_blank" rel="noopener">Perplexity ↗</a></div>
+      <div class="yn" data-q="${esc(q)}"><button class="y${c === 1 ? " on" : ""}" data-v="1">Yes</button><button class="n${c === 0 ? " on" : ""}" data-v="0">No</button></div></div>`;
+  }).join("") + "</div>").join("");
+  if (LAST) try { render(LAST); } catch (e) {}
+}
+async function aiCall(body) {
+  try {
+    const r = await fetch(location.pathname.replace(/\/+$/, "") + "/api/ai", body ? { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" }, body: JSON.stringify(body) } : { credentials: "same-origin" });
+    if (r.ok) { AIRAW = await r.json(); aiPaint(); }
+  } catch (e) { $("#ai").innerHTML = `<p class="sub">Could not load: ${esc(e.message)}</p>`; }
+}
+document.addEventListener("click", (ev) => {
+  const b = ev.target.closest(".yn button"); if (!b || !AIRAW) return;
+  const q = b.parentElement.dataset.q, v = +b.dataset.v, cur = AIRAW.checks[q];
+  const yes = cur === v ? null : v;   // tap the active answer again to clear it
+  if (yes == null) delete AIRAW.checks[q]; else AIRAW.checks[q] = yes;
+  aiPaint(); aiCall({ q, yes });
+});
 function render(D) {
+  LAST = D;
   $("#upd").className = "badge"; $("#upd").textContent = "Updated " + new Date(D.at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
   $("#rangeTxt").textContent = fmtDay(D.start) + " – " + fmtDay(D.end);
   const days = D.list, R = D.rum, P = D.rumPrev, G = D.gsc;
@@ -444,14 +487,14 @@ function render(D) {
     { t: "Contact clicks", i: "click", v: D.leads ? L.click : null, p: LP && LP.click, s: clicks, c: "var(--s2)" },
     { t: "Visits", i: "visits", v: R ? R.visits : null, p: P && P.visits, s: byDay("visits") },
     { t: "From buyer markets", i: "globe", v: R ? R.targetShare : null, p: P && P.targetShare, pct: true, foot: R ? `<b>${fmt(R.target)}</b> of ${fmt(R.visits)} visits` : "" },
-    { t: "Page views", i: "views", v: R ? R.views : null, p: P && P.views, s: byDay("views") },
+    { t: "AI search visibility", i: "ai", v: AIS ? AIS.yes : null, p: AIS && AIS.prev ? AIS.prev.yes : null, of: AIS ? AIS.total : 0, s: AIS && AIS.hist.length > 1 ? AIS.hist.map((h) => h.yes) : null, foot: AIS ? `<b>${AIS.checked}</b> of ${AIS.total} checked this week` : "" },
     { t: "Non-brand Google clicks", i: "search", v: G ? G.nbClicks : null, p: G && G.prevNbClicks, s: null, foot: G ? `All clicks <b>${fmt(G.clicks)}</b>` : "", nc: !D.connected.gsc },
     { t: "Google impressions", i: "eye", v: G ? G.impressions : null, p: G && G.prevImpressions, s: gDay("impressions"), nc: !D.connected.gsc },
     { t: "Mobile LCP (p75)", i: "bolt", v: lcpM ? lcpM.p75 : null, p: lcpMP && lcpMP.p75, ms: true, low: true, foot: lcpM ? `${fmt(lcpM.n)} phone loads` : "" },
   ];
   $("#kpis").innerHTML = cards.map((c) => {
     const val = c.v == null ? `<b class="na">${c.nc ? "Connect Search Console" : "No data yet"}</b>` :
-      `<b>${c.pct ? (c.v * 100).toFixed(1) + "%" : c.ms ? fmt(c.v) + " ms" : fmt(c.v)}</b>${c.pct && c.p != null ? ptsDelta(c.v, c.p) : delta(c.v, c.p, c.low)}`;
+      `<b>${c.pct ? (c.v * 100).toFixed(1) + "%" : c.ms ? fmt(c.v) + " ms" : c.of ? fmt(c.v) + " of " + c.of : fmt(c.v)}</b>${c.pct && c.p != null ? ptsDelta(c.v, c.p) : delta(c.v, c.p, c.low)}`;
     const prev = c.p == null ? "" : `Previous <b>${c.pct ? (c.p * 100).toFixed(1) + "%" : c.ms ? fmt(c.p) + " ms" : fmt(c.p)}</b>`;
     return `<div class="kpi"><h3><svg viewBox="0 0 24 24">${ICON[c.i]}</svg>${c.t}</h3><div class="v">${val}</div>
       <div class="spark">${c.s && c.v != null ? spark(c.s, c.c) : ""}</div><div class="foot">${[prev, c.foot].filter(Boolean).join(" · ")}</div></div>`;
@@ -658,7 +701,7 @@ const links = [...document.querySelectorAll("#nav a")];
 const secIO = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) links.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id)); }), { rootMargin: "-40% 0px -55% 0px" });
 document.querySelectorAll("main section").forEach((s) => secIO.observe(s));
 try { localStorage.setItem("sv_me", "1"); } catch (e) {}  // this browser is the owner's: leave it out of the site stats
-load();
+load(); aiCall();
 })();
 </script>
 </body>
