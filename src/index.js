@@ -39,8 +39,28 @@ export default {
   // hourly: ask Search Console for new searches, so "spotted 3 h ago" is right even when nobody opens the dashboard
   async scheduled(event, env, ctx) {
     if (env.GSC_KEY && env.LEADS) ctx.waitUntil(searchConsole(env, ranges(7)).catch(() => {}));
+    if (env.LEADS) ctx.waitUntil(indexNow(env).catch(() => {}));
   },
 };
+
+/* --------------------------------------------------------------- IndexNow */
+// Tells Bing (which ChatGPT search uses), Yandex, Seznam and Naver about new pages in sitemap.xml.
+// Runs hourly with the cron; each URL is sent once. The key file lives at /<key>.txt in ./website.
+const INDEXNOW_KEY = "af80ac1f851802426b01270fe166be42";
+async function indexNow(env) {
+  const res = await env.ASSETS.fetch(new Request("https://sorvel.agency/sitemap.xml"));
+  if (!res.ok) return;
+  const urls = [...(await res.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim());
+  const store = leadStore(env);
+  const fresh = await store.unsentUrls(urls);
+  if (!fresh.length) return;
+  const r = await fetch("https://api.indexnow.org/indexnow", {
+    method: "POST",
+    headers: { "content-type": "application/json; charset=utf-8" },
+    body: JSON.stringify({ host: "sorvel.agency", key: INDEXNOW_KEY, keyLocation: `https://sorvel.agency/${INDEXNOW_KEY}.txt`, urlList: fresh.slice(0, 10000) }),
+  });
+  if (r.status === 200 || r.status === 202) await store.markUrlsSent(fresh);
+}
 
 /* ------------------------------------------------------------------ events */
 
@@ -127,6 +147,15 @@ export class LeadStore extends DurableObject {
     this.sql.exec(`CREATE INDEX IF NOT EXISTS ev_i ON ev (i)`);
     this.sql.exec(`CREATE TABLE IF NOT EXISTS alerted (i TEXT PRIMARY KEY, ts INTEGER)`);
     this.sql.exec(`CREATE TABLE IF NOT EXISTS gq (k TEXT PRIMARY KEY, ts INTEGER NOT NULL)`);   // Google searches: when the dashboard first saw each one
+  }
+  /* IndexNow: sitemap URLs not yet sent to search engines */
+  unsentUrls(urls) {
+    this.sql.exec(`CREATE TABLE IF NOT EXISTS ix (u TEXT PRIMARY KEY, ts INTEGER NOT NULL)`);
+    const sent = new Set(this.sql.exec(`SELECT u FROM ix`).toArray().map((r) => r.u));
+    return urls.filter((u) => !sent.has(u));
+  }
+  markUrlsSent(urls) {
+    for (const u of urls) this.sql.exec(`INSERT OR IGNORE INTO ix (u, ts) VALUES (?, ?)`, u, Date.now());
   }
   /* records the searches not seen before and returns {query: first-seen ms}; 0 = already there when tracking started */
   seenQueries(keys) {
