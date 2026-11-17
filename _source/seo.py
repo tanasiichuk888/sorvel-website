@@ -302,7 +302,7 @@ def process(path):
     # Google Analytics with consent mode, and the cookie banner (old copies removed first: index.html is edited in place)
     s = re.sub(r'[ \t]*<script>window\.dataLayer=window\.dataLayer.*?</script>\n(?:[ \t]*<script async src="https://www\.googletagmanager\.com/gtag/js[^"]*"></script>\n)?', "", s, flags=re.S)
     s = re.sub(r'[ \t]*<div class="ck" id="ck".*?</div></div>\n[ \t]*<style>\.ck\{.*?</style>\n[ \t]*<script>\(function\(\)\{var b=document\.getElementById\("ck"\).*?</script>\n', "", s, flags=re.S)
-    s = s.replace("</head>", GA_HEAD + "</head>", 1).replace("</body>", GA_BANNER + "</body>", 1)
+    s = s.replace("</head>", GA_HEAD + "</head>", 1)  # no banner: GA runs cookieless (consent denied) unless a visitor accepted earlier
     if 'class="wa-fab"' not in s:   # floating WhatsApp button on every page
         s = s.replace("</body>", WA_FAB + "\n</body>", 1)
     if "js/glass.js" not in s:
