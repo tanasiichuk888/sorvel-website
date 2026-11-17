@@ -8,7 +8,7 @@ When the domain is final, change SITE below and run build.py again.
 """
 import os, re, json, glob, html, datetime, sys
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "site"))
-from common import mnav as _mnav  # full-screen phone menu
+from common import mnav as _mnav, mega_menu as _mega, mnav_svc as _msvc  # menus
 from blog_posts import POSTS as BLOG
 BLOG_BY = {b["slug"]: b for b in BLOG}
 
@@ -191,6 +191,10 @@ def process(path):
         if is_service:
             graph.append({"@type": "Service", "@id": url + "#service", "name": h1, "serviceType": title.split("|")[0].strip(),
                           "description": desc, "provider": {"@id": SITE + "/#org"}, "areaServed": "Worldwide", "url": url})
+            pm = re.search(r'sprice__num">(<small>from</small>)?<b>\$([\d,]+)</b><span>([^<]*)</span>', s)
+            if pm:
+                graph[-1]["offers"] = {"@type": "Offer", "price": pm.group(2).replace(",", ""), "priceCurrency": "USD",
+                                       "description": ("From " if pm.group(1) else "") + "$" + pm.group(2) + (" " + pm.group(3) if pm.group(3) else ""), "url": url}
         if is_post and slug in BLOG_BY:
             b = BLOG_BY[slug]
             tags.insert(0, f'<meta property="article:published_time" content="{b["date"]}T09:00:00+01:00" />')
@@ -234,6 +238,11 @@ def process(path):
         act = "work" if rel.startswith("work/") else ""
         s = s.replace("  </header>\n", "  </header>\n" + _mnav(pre, act), 1)
 
+    # services mega menu + grouped phone menu on every page (hand-built pages included)
+    s = re.sub(r'<!--mega-->.*?<!--/mega-->|<div class="nav__menu">.*?</small></a></div>', lambda m: _mega(pre), s, count=1, flags=re.S)
+    s = s.replace('<div class="nav__dd"><a href', '<div class="nav__dd nav__dd--mega"><a href', 1)
+    s = re.sub(r'<!--mnav-->.*?<!--/mnav-->|<div class="mnav__svc">.*?</small></a></div>', lambda m: _msvc(pre), s, count=1, flags=re.S)
+
     # blog: link in the footer "Studio" column and in the phone menu on every page
     if f'Reviews</a><a href="{pre}blog.html">Blog</a>' not in s:
         s = s.replace(f'<a href="{pre}reviews.html">Reviews</a></div>', f'<a href="{pre}reviews.html">Reviews</a><a href="{pre}blog.html">Blog</a></div>', 1)
@@ -248,7 +257,9 @@ def process(path):
                    lambda m: m.group(1) + f'\n        <li style="--i:7"><a class="mnav__link" href="{pre}blog.html"><span class="mnav__n">07</span><span class="mnav__t">Blog</span></a></li>', s, count=1)
     # service pages: "From the blog" cards above the related links
     GUIDES = {"services/migrations.html": [25, 0], "services/wordpress-to-webflow-migration.html": [1, 0], "services/webflow-agency.html": [19, 5],
-              "services/saas-website-design.html": [2, 3], "services/websites.html": [8, 6], "pricing.html": [5, 8]}
+              "services/saas-website-design.html": [2, 3], "services/websites.html": [8, 6], "pricing.html": [5, 8],
+              "services/seo-aeo.html": [26, 9], "services/shopify-design.html": [15, 8], "services/framer-agency.html": [3, 14], "services/wordpress-development.html": [4, 7],
+              "services/cro.html": [13, 8], "services/ux-audit.html": [8, 13], "services/nextjs-development.html": [4, 2], "services/web-app-development.html": [2, 9]}
     if rel in GUIDES and 'class="sec blog-rel"' not in s:
         def _img(b):
             n, alt = b["cover"]

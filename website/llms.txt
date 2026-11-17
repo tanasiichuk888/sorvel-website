@@ -15,14 +15,26 @@
 
 ## Services
 
+- [AI MVP Cleanup](https://sorvel.agency/services/ai-mvp-cleanup): AI MVP cleanup: we fix, redesign and harden sites and apps built with Lovable, Bolt, v0 or Cursor, so they are fast, secure and ready for real users.
 - [Brand identity design](https://sorvel.agency/services/brand-identity): Brand identity for young companies: logo, colour, type, guidelines and templates that make you look established from day one.
+- [CRO Agency](https://sorvel.agency/services/cro): Conversion rate optimisation for websites, landing pages and Shopify stores: research, A/B tests and design changes that turn more visitors into leads and sales.
 - [Fintech Website Design](https://sorvel.agency/services/fintech-website-design): Website design for fintech, investment and financial services firms: clear products, visible trust signals and gated flows, designed in Figma and built in Webflow.
+- [Framer Agency](https://sorvel.agency/services/framer-agency): Framer website design and development: fast, motion-rich sites and landing pages built natively in Framer, with a CMS your team can edit. Fixed quote in 24 hours.
 - [Landing page design and CRO](https://sorvel.agency/services/landing-pages): High-converting landing pages for ads and launches, plus monthly conversion testing. Designed in Figma and built in Webflow, Framer or WordPress.
 - [Website migration services](https://sorvel.agency/services/migrations): Move your website from WordPress to Webflow or Framer, or the other way round, without losing rankings, links or content.
+- [Mobile App Design Agency](https://sorvel.agency/services/mobile-app-design): Mobile app UI/UX design for iOS and Android: user flows, Figma prototypes and a design system your developers can build from. Fixed quote in 24 hours.
+- [Mobile App Development Agency](https://sorvel.agency/services/mobile-app-development): Mobile app design and development for iOS and Android: cross-platform apps from first version to App Store and Google Play release. Fixed quote in 24 hours.
+- [Next.js and Astro Development Agency](https://sorvel.agency/services/nextjs-development): Custom website development in Next.js and Astro with a headless CMS: very fast pages, full control and room for complex features. Fixed quote in 24 hours.
+- [Pitch Deck Design Agency](https://sorvel.agency/services/pitch-deck-design): Pitch deck design for startups: investor and sales decks with a clear story, sharp visuals and editable files in Figma, Google Slides, Keynote or PowerPoint.
 - [SaaS product and UI/UX design](https://sorvel.agency/services/product-design): UI and UX design for SaaS products, dashboards, web apps and mobile apps, with design systems your developers can build from.
 - [SaaS Website Design Agency](https://sorvel.agency/services/saas-website-design): SaaS website design and development: clear messaging, real product visuals and a Webflow or Framer build your marketing team can edit. Fixed quote in 24 hours.
+- [SEO and AEO Agency](https://sorvel.agency/services/seo-aeo): SEO and AEO (GEO) for websites: technical SEO, content structure and AI search visibility so you rank in Google and get cited by ChatGPT and Perplexity.
+- [Shopify Design and Development Agency](https://sorvel.agency/services/shopify-design): Shopify store design and development: custom themes, product and collection pages built to convert, and a store your team can run. Fixed quote in 24 hours.
+- [UX Audit Service](https://sorvel.agency/services/ux-audit): A fixed-price UX audit of your website or app: a recorded walkthrough and a written list of issues ranked by impact, with clear fixes. $750, ready in days.
+- [Web App Development Agency](https://sorvel.agency/services/web-app-development): Web app design and development for SaaS products, dashboards and internal tools: UX, UI and a production-ready build. Fixed quote in 24 hours.
 - [Webflow Agency](https://sorvel.agency/services/webflow-agency): Webflow design and development for SaaS, fintech and B2B: custom Figma design, clean Webflow builds, a CMS your team can edit and technical SEO. Fixed quote in 24 hours.
 - [Website design and development](https://sorvel.agency/services/websites): Marketing websites designed in Figma and built in Webflow, Framer or WordPress for startups and growing businesses, from SaaS and fintech to e-commerce and services.
+- [WordPress Development Agency](https://sorvel.agency/services/wordpress-development): Custom WordPress design and development: fast, secure sites built without bloated page builders, with an editor your team can use. Fixed quote in 24 hours.
 - [WordPress to Webflow Migration](https://sorvel.agency/services/wordpress-to-webflow-migration): Move your site from WordPress to Webflow without losing rankings: content import, a 301 redirect map, meta and schema kept, and 30 days of Search Console checks.
 
 ## Guides

@@ -129,9 +129,12 @@ D = {
   related=["migrations", "websites", "webflow-agency"]),
 }
 
+from solutions_more import SOL2, D2
+D.update(D2)
+SOL_ALL = SOL + SOL2
 PRICE = {"website": ("$6,900", "3 to 6 weeks for a typical 5 to 10 page site"), "migration": ("$2,900", "1 to 3 weeks, depending on pages and CMS items")}
 SVC_NAME = {s: t for s, t, d, ic in SERVICES}
-SOL_NAME = dict(SOL)
+SOL_NAME = dict(SOL_ALL)
 
 def solution(slug):
     d = D[slug]; p = "../"
@@ -144,10 +147,11 @@ def solution(slug):
         ph += f'          <div class="cs-phase" style="--i:{i}"><p class="cs-phase__when">{when}</p><h3>{h}</h3><p>{x}</p><ul>{li}</ul></div>\n'
     plat = "\n".join(f'          <div data-reveal style="--d:{i*.05:.2f}s"><b>{a}</b><span>{b}</span></div>' for i, (a, b) in enumerate(d["plat"]))
     cs = [c for c in d["cases"] if c not in HIDDEN] or ["ci-isac", "vibz"]; cards = "\n".join(pcard(c, p, wide=(len(cs) % 2 == 1 and i == 0)) for i, c in enumerate(cs))
-    rel = [(s, SVC_NAME.get(s) or SOL_NAME.get(s)) for s in d["related"]] + [(s, t) for s, t in SOL if s != slug and s not in d["related"]]
+    rel = [(s, SVC_NAME.get(s) or SOL_NAME.get(s)) for s in d["related"]] + [(s, t) for s, t in SOL_ALL if s != slug and s not in d["related"]]
     other = "".join(f'<a class="cs-more__row" href="{s}.html" data-reveal style="--d:{i*.05:.2f}s"><span class="cs-more__name">{t.replace("&","&amp;")}</span><span class="cs-more__go" aria-hidden="true">{DIAG}</span></a>'
                     for i, (s, t) in enumerate(rel[:5]))
-    price, note = PRICE[d["need"]]
+    price, note = (d["price"], d["note"]) if "price" in d else PRICE[d["need"]]
+    unit = d.get("unit", "fixed price")
     quote = f"../contact.html?plan={d['need']}#brief"
     body = hero(f'<a href="../index.html#services">Services</a><span>/</span><span>{nm}</span>', d["eyebrow"], d["lines"], d["lead"],
                 btn_primary(quote, "Get a quote") + btn_ghost("../work.html", "See our work"), p=p, visual=scenes.svc(d["visual"]))
@@ -205,7 +209,7 @@ def solution(slug):
             <p class="sprice__note">{note}. Exact fixed quote in writing within 24 hours.</p>
           </div>
           <div class="sprice__side">
-            <div class="sprice__num"><small>from</small><b>{price}</b><span>fixed price</span></div>
+            <div class="sprice__num">{"" if unit == "one time" else "<small>from</small>"}<b>{price}</b><span>{unit}</span></div>
             <div class="sprice__btns">
               {btn_primary(quote, "Get an exact quote", lg=False)}
               {btn_ghost("../pricing.html", "Compare all prices", lg=False)}
@@ -227,4 +231,4 @@ def solution(slug):
     page(f"services/{slug}.html", d["title"], d["desc"], "services", body, p)
 
 if __name__ == "__main__":
-    for s, _ in SOL: solution(s)
+    for s, _ in SOL_ALL: solution(s)

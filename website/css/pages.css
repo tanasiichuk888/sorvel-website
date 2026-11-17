@@ -1185,3 +1185,45 @@ main > section.sec, main > section.cs-more, main > section.cs-numbers { isolatio
 }
 .legal__body a.btn--ghost:hover, .legal__body a.btn--ghost:focus-visible { color: #0B0C0F; border-color: var(--text); }
 .legal__body a.btn--primary:hover { color: #fff; }
+
+/* ---------- Services mega menu (Design / Development / Growth) ---------- */
+.nav__inner { position: relative; }
+.nav__dd--mega { position: static; }
+.nav__mega { left: 50%; top: calc(100% - 4px); width: min(1120px, calc(100vw - 40px)); padding: 0; border-radius: 18px; overflow: hidden; }
+.nav__mega::before { top: -22px; height: 22px; }
+.mega__cols { display: grid; grid-template-columns: 1fr 2fr 1fr; }
+.mega__col { padding: 18px 14px 16px; }
+.mega__col + .mega__col { border-left: 1px solid rgba(242,239,234,.08); }
+.mega__h { margin: 0 12px 10px; font-size: 11.5px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.mega__items { display: grid; gap: 2px; }
+.mega__col--development .mega__items { grid-template-columns: 1fr 1fr; }
+.nav__mega .mega__items a { padding: 9px 12px; }
+.nav__mega .mega__items a:hover i { background: rgba(59,107,255,.24); }
+.nav__mega .mega__items a:hover b { color: #fff; }
+.mega__foot { display: flex; flex-wrap: wrap; gap: 4px 6px; padding: 10px 14px; border-top: 1px solid rgba(242,239,234,.08); background: rgba(242,239,234,.025); }
+.mega__foot a { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 9px; font-size: 13.5px; color: #CFCCC7; transition: background .25s, color .25s; }
+.mega__foot a:hover { background: rgba(242,239,234,.06); color: var(--text); }
+.mega__foot a:first-child { color: var(--text); font-weight: 500; }
+.mega__foot svg { width: 15px; height: 15px; fill: none; stroke: var(--muted); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.nav__mega .mega__items a { opacity: 0; transform: translateY(6px); transition: background .25s, opacity .35s, transform .5s var(--ease); }
+.nav__dd--mega:hover .mega__items a, .nav__dd--mega:focus-within .mega__items a { opacity: 1; transform: none; }
+.nav__dd--mega:hover .mega__col--development a, .nav__dd--mega:focus-within .mega__col--development a { transition-delay: .03s; }
+.nav__dd--mega:hover .mega__col--growth a, .nav__dd--mega:focus-within .mega__col--growth a { transition-delay: .06s; }
+@media (max-width: 1100px) { .nav__mega small { display: none; } .nav__mega .mega__items a { grid-template-columns: 30px 1fr; } .nav__mega i { width: 30px; height: 30px; grid-row: auto; } }
+@media (prefers-reduced-motion: reduce) { .nav__mega .mega__items a { transition: background .25s; opacity: 1; transform: none; } }
+@media (max-width: 760px) {
+  .mnav__grp { margin: 14px 0 4px; font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .mnav__grp:first-child { margin-top: 2px; }
+  .mnav__svc .mnav__all { display: block; padding: 12px 0 4px; }
+  .mnav__svc .mnav__all b { font-size: 14px; color: var(--accent-2); }
+  .is-open .mnav__svc a { transition-delay: 0s !important; }
+}
+.mega__col--growth { display: flex; flex-direction: column; }
+.nav__mega a.mega__promo { display: block; margin: 14px 0 0; padding: 16px; border-radius: 12px; background: linear-gradient(160deg, rgba(59,107,255,.18), rgba(59,107,255,.04)); box-shadow: inset 0 0 0 1px rgba(59,107,255,.28); transition: box-shadow .3s, background .3s; }
+.nav__mega a.mega__promo:hover { box-shadow: inset 0 0 0 1px rgba(59,107,255,.55); }
+.mega__promo::after { display: none; }
+.mega__promo b { display: block; font-size: 14.5px; font-weight: 500; color: var(--text); }
+.mega__promo span { display: block; margin-top: 6px; font-size: 12.5px; line-height: 1.45; color: var(--muted); }
+.mega__promo em { display: inline-block; margin-top: 12px; font-style: normal; font-size: 13px; font-weight: 500; color: var(--accent-2); }
+@media (max-width: 1100px) { .mega__promo span { display: none; } }
+.nav__mega .mega__promo em span { display: inline; margin: 0; font-size: inherit; color: inherit; }

@@ -8,6 +8,10 @@ FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox=
 
 # simple line icons (24x24, stroke)
 ICON = {
+  "phone": '<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/>',
+  "deck": '<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4m-4 0h8M7 12l3-3 2 2 4-4"/>',
+  "bag": '<path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>',
+  "app": '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11"/>',
   "web": '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/>',
   "target": '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><path d="M12 12l6-6m0 0h-3m3 0v3"/>',
   "layout": '<rect x="3" y="3" width="7" height="18" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="14" width="8" height="7" rx="1.5"/>',
@@ -45,6 +49,44 @@ SERVICES = [
   ("brand-identity", "Brand identity", "Logo, system, guidelines", "brand"),
   ("migrations", "Website migrations", "Move without losing SEO", "move"),
 ]
+
+# Services mega menu: three columns like a full-service agency (Design / Development / Growth)
+MEGA = [
+  ("Design", [("websites", "Website design", "Marketing sites that sell", "web"),
+              ("product-design", "Product design", "SaaS, dashboards, web apps", "layout"),
+              ("mobile-app-design", "Mobile app design", "iOS and Android UI/UX", "phone"),
+              ("landing-pages", "Landing pages", "One page, one goal", "target"),
+              ("brand-identity", "Brand identity", "Logo, system, guidelines", "brand"),
+              ("pitch-deck-design", "Pitch decks", "Investor and sales decks", "deck")]),
+  ("Development", [("webflow-agency", "Webflow", "Design + CMS build", "web"),
+                   ("framer-agency", "Framer", "Fast, motion-rich sites", "bolt"),
+                   ("wordpress-development", "WordPress", "Custom themes, no bloat", "doc"),
+                   ("shopify-design", "Shopify", "Stores that sell", "bag"),
+                   ("nextjs-development", "Custom Next.js &amp; Astro", "Headless and very fast", "code"),
+                   ("web-app-development", "Web apps", "SaaS, portals, tools", "app"),
+                   ("mobile-app-development", "Mobile apps", "iOS and Android builds", "phone"),
+                   ("ai-mvp-cleanup", "AI MVP cleanup", "Fix Lovable, Bolt, v0 apps", "spark"),
+                   ("migrations", "Website migrations", "Move without losing SEO", "move")]),
+  ("Growth", [("seo-aeo", "SEO and AEO", "Google and AI search", "search"),
+              ("cro", "CRO", "More leads from your traffic", "chart"),
+              ("ux-audit", "UX audit", "Fixed-price review", "eye")]),
+]
+MEGA_FOOT = [("index.html#services", "All services", "grid"), ("pricing.html", "Pricing", "chart"), ("services/saas-website-design.html", "For SaaS", "layout"),
+             ("services/fintech-website-design.html", "For fintech", "shield"), ("blog.html", "Guides and comparisons", "doc"), ("glossary.html", "Glossary", "search")]
+
+def _mi(p, s, t, d, ic):
+    return f'<a href="{p}services/{s}.html"><i><svg viewBox="0 0 24 24">{ICON[ic]}</svg></i><b>{t}</b><small>{d}</small></a>'
+
+def mega_menu(p):
+    promo = (f'<a class="mega__promo" href="{p}contact.html"><b>Not sure what you need?</b><span>Send a short brief. You get a written plan and a fixed price within 24 hours.</span>'
+             f'<em>Start a project <span aria-hidden="true">→</span></em></a>')
+    cols = "".join(f'<div class="mega__col mega__col--{g.lower()}"><p class="mega__h">{g}</p><div class="mega__items">{"".join(_mi(p, *it) for it in items)}</div>{promo if g == "Growth" else ""}</div>' for g, items in MEGA)
+    foot = "".join(f'<a href="{p}{h}"><svg viewBox="0 0 24 24">{ICON[ic]}</svg>{t}</a>' for h, t, ic in MEGA_FOOT)
+    return f'<!--mega--><div class="nav__menu nav__mega"><div class="mega__cols">{cols}</div><div class="mega__foot">{foot}</div></div><!--/mega-->'
+
+def mnav_svc(p):
+    out = "".join(f'<p class="mnav__grp">{g}</p>' + "".join(_mi(p, *it) for it in items) for g, items in MEGA)
+    return f'<!--mnav--><div class="mnav__svc">{out}<a class="mnav__all" href="{p}pricing.html"><b>All prices</b></a></div><!--/mnav-->'
 
 CASES = {
   "valhalla-capital": dict(name="Valhalla Capital", tag="Private credit · Figma + Webflow", img="valhalla/hero.webp", kind=["websites"], chips=["Fintech", "Webflow", "Design system"]),
@@ -108,7 +150,7 @@ def mnav(p, active=""):
     <div class="mnav__in">
       <ul class="mnav__list">
         <li style="--i:1"><button class="mnav__link mnav__acc" type="button" aria-expanded="false" aria-controls="mnav-svc"><span class="mnav__n">01</span><span class="mnav__t">Services</span><span class="mnav__pm" aria-hidden="true"></span></button>
-          <div class="mnav__sub" id="mnav-svc"><div><div class="mnav__svc">{svc}</div></div></div></li>
+          <div class="mnav__sub" id="mnav-svc"><div>{mnav_svc(p)}</div></div></li>
         {rows}
       </ul>
       <div class="mnav__foot" style="--i:8">
@@ -129,7 +171,7 @@ def nav(p, active=""):
         <img src="{p}img/brand/logo.svg" alt="Sorvel" width="296" height="94">
       </a>
       <nav class="nav__links" aria-label="Main">
-        <div class="nav__dd"><a href="{p}index.html#services"{cur("services")}>Services <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a><div class="nav__menu">{menu}</div></div>
+        <div class="nav__dd nav__dd--mega"><a href="{p}index.html#services"{cur("services")}>Services <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>{mega_menu(p)}</div>
         <a href="{p}work.html"{cur("work")}>Work</a>
         <a href="{p}pricing.html"{cur("pricing")}>Pricing</a>
         <a href="{p}process.html"{cur("process")}>Process</a>
