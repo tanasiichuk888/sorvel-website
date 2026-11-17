@@ -114,3 +114,32 @@
   const h = location.hash.replace("#", ""), alias = { plans: "plan-full", monthly: "plan-full" };
   if (h && select(alias[h] || h)) setTimeout(() => go(small.matches ? document.getElementById("pxr-" + cur) : px), 300); else place();
 })();
+
+// Pricing detail card: when the card is taller than the screen, scrolling the page first scrolls the
+// card's "What you get" list, then the page moves on. Scroll-linked (wheel, touchpad, keys, scrollbar).
+(function () {
+  const px = document.querySelector(".px"), stage = px && px.querySelector(".px__stage"); if (!stage) return;
+  const wide = matchMedia("(min-width: 961px)"), TOP = 96;
+  let sc = null, extra = 0, raf = 0;
+  const measure = () => {
+    const pn = stage.querySelector(".px__panel:not([hidden])");
+    sc = wide.matches && pn ? pn.querySelector(".px__scroll") : null;
+    if (sc) sc.scrollTop = 0;
+    extra = sc ? Math.max(0, sc.scrollHeight - sc.clientHeight) : 0;
+    px.style.minHeight = "";
+    px.classList.toggle("px--linked", extra > 0);
+    if (extra) px.style.minHeight = (px.offsetHeight + extra) + "px";
+    sync();
+  };
+  const sync = () => {
+    raf = 0; if (!sc || !extra) return;
+    const y = Math.min(extra, Math.max(0, TOP - stage.getBoundingClientRect().top));
+    sc.scrollTop = y;
+    sc.classList.toggle("is-end", y >= extra - 2);
+  };
+  addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(sync); }, { passive: true });
+  addEventListener("resize", measure);
+  new MutationObserver(() => requestAnimationFrame(measure)).observe(stage, { childList: true, subtree: true, attributes: true, attributeFilter: ["hidden"] });
+  wide.addEventListener ? wide.addEventListener("change", measure) : wide.addListener(measure);
+  if (document.readyState === "complete") measure(); else addEventListener("load", measure);
+})();

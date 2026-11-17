@@ -1339,3 +1339,11 @@ main > section.sec, main > section.cs-more, main > section.cs-numbers { isolatio
 .post-table td:first-child { color: var(--text); }
 .post-table td:first-child b { font-weight: 600; }
 .post-table td:first-child::before { content: ""; display: inline-block; width: 6px; height: 6px; margin: 0 10px 2px 0; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(59,107,255,.8); vertical-align: middle; }
+/* pricing card: list scrolls with the page (see pages.js) */
+@media (min-width: 961px) {
+  .px--linked .px__stage { position: static; align-self: stretch; }
+  .px--linked .px__menu { position: sticky; top: 96px; }
+  .px--linked .px__panel { position: sticky; top: 96px; }
+  .px--linked .px__scroll { overflow: hidden; -webkit-mask-image: linear-gradient(#000 calc(100% - 56px), transparent); mask-image: linear-gradient(#000 calc(100% - 56px), transparent); }
+  .px--linked .px__scroll.is-end { -webkit-mask-image: none; mask-image: none; }
+}
