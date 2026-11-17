@@ -13,8 +13,8 @@ dict(
   lead="Most quotes for moving a WordPress site to Webflow land somewhere between a few hundred and tens of thousands of dollars. Here is what sits behind those numbers, so you can tell a fair quote from a risky one.",
   sections=[
 ("short", "The short answer", """
-<p>For a typical company site of 10 to 30 pages with a blog, a careful migration to Webflow costs <b>from $2,900</b> and takes <b>1 to 3 weeks</b>. That covers the content audit, the CMS setup, the content import, the template rebuild, a full 301 redirect map and checks after launch.</p>
-<p>A migration combined with a redesign is a website project, not a migration, and usually starts around <b>$6,900</b>. Content-heavy sites with hundreds or thousands of posts are priced after an audit, because the work depends on how clean the content is, not only on how much there is.</p>
+<p>For a typical company site of 10 to 30 pages with a blog, a careful migration to Webflow costs <b>from $4,900</b> and takes <b>1 to 3 weeks</b>. That covers the content audit, the CMS setup, the content import, the template rebuild, a full 301 redirect map and checks after launch.</p>
+<p>A migration combined with a redesign is a website project, not a migration, and usually starts around <b>$10,500</b>. Content-heavy sites with hundreds or thousands of posts are priced after an audit, because the work depends on how clean the content is, not only on how much there is.</p>
 <div class="post-note"><b>Rule of thumb</b><p>You pay for the number of different page layouts and the state of your content, not for the number of pages. Fifty blog posts on one template cost far less to move than ten pages that are each built differently.</p></div>
 """),
 ("what", "What you are actually paying for", """
@@ -233,7 +233,7 @@ dict(
   lead="A SaaS website can cost almost nothing or more than your first engineer. The difference is rarely the number of pages. It is how much thinking goes into what the site says, and how well it shows the product.",
   sections=[
 ("short", "The short answer", """
-<p>For a custom-designed SaaS marketing site of 5 to 10 pages, built in Webflow or Framer so your team can edit it, expect to pay <b>from about $6,900</b> with a senior studio, delivered in <b>3 to 6 weeks</b>. Templates cost less but look like everyone else. Large agencies cost many times more and take months.</p>
+<p>For a custom-designed SaaS marketing site of 5 to 10 pages, built in Webflow or Framer so your team can edit it, expect to pay <b>from about $10,500</b> with a senior studio, delivered in <b>3 to 6 weeks</b>. Templates cost less but look like everyone else. Large agencies cost many times more and take months.</p>
 <p>The rough ranges below come from the market as it looks in 2026. Your own quote depends on the factors further down.</p>
 """),
 ("options", "Four ways to get a SaaS website", """
@@ -242,7 +242,7 @@ dict(
 <tbody>
 <tr><td><b>Template, built in-house</b></td><td>Under $2,000 plus your team's time</td><td>1 to 4 weeks</td><td>Pre-launch, testing an idea</td></tr>
 <tr><td><b>Freelancer</b></td><td>About $3,000 to $15,000</td><td>3 to 8 weeks</td><td>Small sites with a clear brief</td></tr>
-<tr><td><b>Senior studio</b></td><td>From $6,900</td><td>3 to 6 weeks</td><td>Seed to Series B, redesign after a raise</td></tr>
+<tr><td><b>Senior studio</b></td><td>From $10,500</td><td>3 to 6 weeks</td><td>Seed to Series B, redesign after a raise</td></tr>
 <tr><td><b>Large agency</b></td><td>$40,000 and up</td><td>3 to 6 months</td><td>Big rebrands with research and many stakeholders</td></tr>
 </tbody></table></div>
 <p>The jump in price between options is mostly about who does the thinking. With a template, you write the story and make every decision. With a studio or agency, someone experienced shapes the messaging, the page structure and the product visuals with you.</p>
@@ -346,7 +346,7 @@ dict(
 [[cta]]
 """),
 ("cost", "What each one costs", """
-<p>Both platforms charge a monthly site plan, and prices change, so check their current pricing pages. The bigger cost is the design and build. With our studio a website starts <b>from $6,900</b> and a single landing page <b>from $2,400</b>, on either platform. A Framer build is usually slightly cheaper for the same design; a Webflow build pays back when the site grows through content.</p>
+<p>Both platforms charge a monthly site plan, and prices change, so check their current pricing pages. The bigger cost is the design and build. With our studio a website starts <b>from $10,500</b> and a single landing page <b>from $3,500</b>, on either platform. A Framer build is usually slightly cheaper for the same design; a Webflow build pays back when the site grows through content.</p>
 """),
 ("switch", "Can you switch later?", """
 <p>Yes, but it is a rebuild, not an export. Pages have to be recreated and the CMS content moved with redirects in place. Picking the right platform first is cheaper than switching a year later, which is why we ask how your team will publish before we recommend one.</p>
@@ -430,7 +430,7 @@ dict(
 <p>We also build on WordPress, so if your project needs it, that is what we recommend.</p>
 """),
 ("cost", "Total cost of ownership", """
-<p>WordPress looks cheaper because hosting can cost a few dollars a month. The real cost is maintenance: updates, plugin licences, security, fixes after updates and developer time for small changes. Webflow costs more per month but usually less per year once that time is counted. Moving an existing site from WordPress to Webflow with us starts <b>from $2,900</b>; see <a href="../blog/wordpress-to-webflow-migration-cost.html">what a migration costs</a>.</p>
+<p>WordPress looks cheaper because hosting can cost a few dollars a month. The real cost is maintenance: updates, plugin licences, security, fixes after updates and developer time for small changes. Webflow costs more per month but usually less per year once that time is counted. Moving an existing site from WordPress to Webflow with us starts <b>from $4,900</b>; see <a href="../blog/wordpress-to-webflow-migration-cost.html">what a migration costs</a>.</p>
 """),
 ('ww-takeaways', 'Summary', """
 <div class="post-note"><b>In one minute</b><p>For a marketing website your team edits itself, Webflow usually costs less to run and stays faster and more consistent. WordPress is still the right tool for complex functionality, large stores and teams with a developer on hand.</p></div>
@@ -478,7 +478,7 @@ dict(
   lead="A Webflow website can cost a few hundred dollars or well over $30,000. The difference comes down to a handful of things you can see in advance, so here they are.",
   sections=[
 ("short", "The short answer", """
-<p>A custom-designed Webflow website for a startup or growing business usually costs <b>$5,000 to $20,000</b> with a professional team and takes <b>3 to 6 weeks</b>. With our studio a website starts <b>from $6,900</b>, a single landing page <b>from $2,400</b>, and moving an existing site to Webflow <b>from $2,900</b>.</p>
+<p>A custom-designed Webflow website for a startup or growing business usually costs <b>$5,000 to $20,000</b> with a professional team and takes <b>3 to 6 weeks</b>. With our studio a website starts <b>from $10,500</b>, a single landing page <b>from $3,500</b>, and moving an existing site to Webflow <b>from $4,900</b>.</p>
 <div class="post-note"><b>Rule of thumb</b><p>Price follows the number of unique page layouts, the CMS structure and how much custom motion you need. The number of pages matters much less.</p></div>
 """),
 ("table", "Typical price ranges", """
@@ -529,10 +529,10 @@ dict(
 <div class="post-table" role="region" aria-label="Webflow website example scopes" tabindex="0"><table>
 <thead><tr><th>Scope</th><th>Typical studio price</th><th>Time</th></tr></thead>
 <tbody>
-<tr><td>Single landing page</td><td>From $2,400</td><td>1 to 2 weeks</td></tr>
-<tr><td>5 to 8 page startup site with blog</td><td>From $6,900</td><td>3 to 5 weeks</td></tr>
+<tr><td>Single landing page</td><td>From $3,500</td><td>1 to 2 weeks</td></tr>
+<tr><td>5 to 8 page startup site with blog</td><td>From $10,500</td><td>3 to 5 weeks</td></tr>
 <tr><td>10 to 20 pages, several CMS collections</td><td>$10,000 to $20,000</td><td>5 to 8 weeks</td></tr>
-<tr><td>WordPress to Webflow move, same design</td><td>From $2,900</td><td>1 to 3 weeks</td></tr>
+<tr><td>WordPress to Webflow move, same design</td><td>From $4,900</td><td>1 to 3 weeks</td></tr>
 </tbody></table></div>
 """),
 ('wc-process', 'How a Webflow project runs', """
@@ -774,7 +774,7 @@ dict(
   lead="A redesign is a chance to fix what is not working, not just to change colours. What it costs depends on how much has to change underneath.",
   sections=[
 ("short", "The short answer", """
-<p>A professional redesign of a small to mid-size business website usually costs <b>$5,000 to $20,000</b> and takes <b>3 to 8 weeks</b>. With our studio a full redesign and rebuild starts <b>from $6,900</b>. If only the look needs updating, a lighter refresh or a monthly design plan can cost much less.</p>
+<p>A professional redesign of a small to mid-size business website usually costs <b>$5,000 to $20,000</b> and takes <b>3 to 8 weeks</b>. With our studio a full redesign and rebuild starts <b>from $10,500</b>. If only the look needs updating, a lighter refresh or a monthly design plan can cost much less.</p>
 
 <p>Planning a hospitality project? Our <a href="../blog/restaurant-website-design.html">restaurant website design guide</a> covers menu editing, reservations and the scope to agree before hiring.</p>
 """),
@@ -858,7 +858,7 @@ dict(
   sections=[
 ("ai-short", "The short answer", """
 <p>A strong AI startup website does three things: it names the job your product does in plain words, it shows the product doing that job with real screens or a short demo, and it answers questions about data, accuracy and security on the page.</p>
-<p>With our studio an AI startup website starts <b>from $6,900</b> and takes <b>3 to 6 weeks</b>. A single launch or waitlist page starts <b>from $2,400</b> and takes 1 to 2 weeks.</p>
+<p>With our studio an AI startup website starts <b>from $10,500</b> and takes <b>3 to 6 weeks</b>. A single launch or waitlist page starts <b>from $3,500</b> and takes 1 to 2 weeks.</p>
 <div class="post-note"><b>Key takeaways</b><p>Lead with the outcome, not the model. Show a real input becoming a real output. Give security and data handling their own section. Pick Framer for a fast launch and Webflow when you will publish a lot.</p></div>
 <p>Want AI assistants to recommend you? Read <a href="../blog/get-cited-by-chatgpt.html">how to get your website cited by ChatGPT</a>.</p>
 """),
@@ -926,7 +926,7 @@ dict(
 """),
   ],
   faq=[("How long does an AI startup website take?", "Usually 3 to 6 weeks for 5 to 10 pages, or 1 to 2 weeks for a single launch page."),
-       ("How much does an AI startup website cost?", "With a professional team usually $5,000 to $20,000; with our studio from $6,900, or from $2,400 for one page."),
+       ("How much does an AI startup website cost?", "With a professional team usually $5,000 to $20,000; with our studio from $10,500, or from $3,500 for one page."),
        ("Should an AI startup use a template?", "Before product-market fit a template can be enough. Once you raise or sell to larger companies, a custom site that shows your real product usually converts better."),
        ("How do we show the product before it is finished?", "With designed product scenes based on your real flows. They can be updated as the product changes."),
        ("Do you design product UI as well?", "Yes. We design the product interface in Figma, so the website and the app look like one product."),
@@ -945,7 +945,7 @@ dict(
   sections=[
 ("b2b-short", "The short answer", """
 <p>A B2B website that generates leads makes clear who you help and with what, proves it with case studies and named clients, and gives every type of visitor a next step, from a guide to download to a quote request.</p>
-<p>A professional B2B website usually costs <b>$5,000 to $20,000</b> and takes <b>4 to 8 weeks</b>. With our studio it starts <b>from $6,900</b>.</p>
+<p>A professional B2B website usually costs <b>$5,000 to $20,000</b> and takes <b>4 to 8 weeks</b>. With our studio it starts <b>from $10,500</b>.</p>
 <div class="post-note"><b>Key takeaways</b><p>Write for the buying committee, not one person. Make proof specific. Offer two kinds of action: one for buyers who are ready and one for those still researching. Connect every form to your CRM.</p></div>
 """),
 ("b2b-buyers", "How B2B buyers actually decide", """
@@ -1013,7 +1013,7 @@ dict(
 """),
   ],
   faq=[("How many pages does a B2B website need?", "Most start with 6 to 12 pages and grow through case studies, industry pages and articles."),
-       ("How much does a B2B website cost?", "Usually $5,000 to $20,000 with a professional team; with our studio from $6,900."),
+       ("How much does a B2B website cost?", "Usually $5,000 to $20,000 with a professional team; with our studio from $10,500."),
        ("Which platform is best for a B2B website?", "Webflow is a strong default for marketing teams; WordPress fits complex functionality."),
        ("How long does a B2B website take?", "Usually 4 to 8 weeks, depending on the number of layouts and content readiness."),
        ("Should we show prices on a B2B website?", "Starting prices or ranges help qualify leads and build trust, even if final pricing is custom."),
@@ -1032,7 +1032,7 @@ dict(
   sections=[
 ("law-short", "The short answer", """
 <p>A law firm website that brings in consultations shows who you help and where, proves experience early, and puts a way to call or book on every screen, especially on mobile. Practice area pages and local SEO bring most of the search traffic.</p>
-<p>A custom law firm website usually costs <b>$5,000 to $20,000</b>. With our studio it starts <b>from $6,900</b>, and a single call-first landing page for ads starts <b>from $2,400</b>.</p>
+<p>A custom law firm website usually costs <b>$5,000 to $20,000</b>. With our studio it starts <b>from $10,500</b>, and a single call-first landing page for ads starts <b>from $3,500</b>.</p>
 <div class="post-note"><b>Key takeaways</b><p>Calm the visitor, then make calling easy. Give every practice area its own page. Show real attorneys and real credentials. Design for phones first, because that is where most legal searches happen.</p></div>
 """),
 ("law-trust", "Trust signals clients look for", """
@@ -1093,7 +1093,7 @@ dict(
 </ul>
 """),
   ],
-  faq=[("How much does a law firm website cost?", "A custom site with a professional team usually costs $5,000 to $20,000; with our studio from $6,900, or from $2,400 for one landing page."),
+  faq=[("How much does a law firm website cost?", "A custom site with a professional team usually costs $5,000 to $20,000; with our studio from $10,500, or from $3,500 for one landing page."),
        ("Which platform is best for a law firm?", "Webflow or WordPress. Both handle practice area pages, blogs and local SEO well."),
        ("How long does a law firm website take?", "Usually 4 to 6 weeks, depending on the number of practice areas and content."),
        ("Can the site be bilingual?", "Yes. We design and build sites in two or more languages."),
@@ -1113,7 +1113,7 @@ dict(
   sections=[
 ("tr-short", "The short answer", """
 <p>A travel or tourism website needs big, honest imagery, a quick way to find the right experience, ready-made itineraries or tours with dates and prices, and a short inquiry or booking form. Most visitors plan on a phone, so mobile comes first.</p>
-<p>A custom travel website usually costs <b>$5,000 to $20,000</b> with a professional team. With our studio it starts <b>from $6,900</b>.</p>
+<p>A custom travel website usually costs <b>$5,000 to $20,000</b> with a professional team. With our studio it starts <b>from $10,500</b>.</p>
 <div class="post-note"><b>Key takeaways</b><p>Inspire, then help people plan. Show dates, duration and price on every tour. Keep the inquiry form short. Use real photos of the place, and design for phones first.</p></div>
 <p>Running holiday homes or villas? Our guide to <a href="../blog/vacation-rental-website-design.html">vacation rental websites with direct booking</a> covers booking engines and calendar sync.</p>
 """),
@@ -1173,7 +1173,7 @@ dict(
 </ul>
 """),
   ],
-  faq=[("How much does a travel website cost?", "A custom design and build usually costs $5,000 to $20,000 with a professional team; with our studio from $6,900."),
+  faq=[("How much does a travel website cost?", "A custom design and build usually costs $5,000 to $20,000 with a professional team; with our studio from $10,500."),
        ("How long does a travel website take?", "Usually 4 to 8 weeks, depending on the number of tours, pages and integrations."),
        ("Can you add online booking?", "Yes, through booking integrations or a simple inquiry flow, depending on how you sell trips."),
        ("Should a tour operator show prices?", "Yes. Starting prices help visitors self-qualify and increase inquiries from the right travellers."),
@@ -1193,7 +1193,7 @@ dict(
   sections=[
 ("short", "The short answer", """
 <p>A professionally designed and built landing page usually costs <b>$1,500 to $6,000</b> in 2026. A template you set up yourself can cost almost nothing, and a page from a conversion agency with ongoing testing can cost <b>$5,000 or more every month</b>.</p>
-<p>With our studio a landing page starts <b>from $2,400</b>, each extra page on the same design <b>from $600</b>, and it is usually live in <b>1 to 2 weeks</b>.</p>
+<p>With our studio a landing page starts <b>from $3,500</b>, each extra page on the same design <b>from $900</b>, and it is usually live in <b>1 to 2 weeks</b>.</p>
 <div class="post-note"><b>Key takeaways</b><p>You pay for strategy and conversion work, not for the number of sections. A cheap page that does not convert is the most expensive option once you add up ad spend. Always ask what is included: copy, integrations, tracking and revisions.</p></div>
 """),
 ("table", "Landing page price ranges in 2026", """
@@ -1317,9 +1317,9 @@ dict(
   ],
   faq=[("What are typical landing page setup rates?", "Freelancers usually charge $20 to $120 an hour and studios $90 to $200. A landing page takes 15 to 60 hours, which is why many teams prefer a fixed price agreed upfront."),
        ("What is included in a landing page setup?", "Domain and SSL, hosting, a connected form, analytics and conversion tracking, SEO basics, a cookie banner where needed, and speed and mobile checks before launch."),
-       ("How much does a landing page cost?", "Usually $1,500 to $6,000 with a professional team in 2026. With our studio from $2,400, extra pages on the same design from $600."),
+       ("How much does a landing page cost?", "Usually $1,500 to $6,000 with a professional team in 2026. With our studio from $3,500, extra pages on the same design from $600."),
        ("How long does a landing page take?", "Usually 1 to 2 weeks from brief to launch, depending on copy and integrations."),
-       ("Is a landing page cheaper than a website?", "Yes, usually. A full website with several layouts and a CMS starts around $6,900 with our studio."),
+       ("Is a landing page cheaper than a website?", "Yes, usually. A full website with several layouts and a CMS starts around $10,500 with our studio."),
        ("Which platform is best for a landing page?", "Framer or Webflow for speed and easy edits; WordPress if the rest of your site already runs on it."),
        ("Do you write the copy?", "We shape the structure and messaging. Full copywriting can be added to the scope."),
        ("Can you connect the form to our CRM?", "Yes. HubSpot, Salesforce, Pipedrive, email tools and booking tools are all common."),
@@ -1338,7 +1338,7 @@ dict(
   sections=[
 ("short", "The short answer", """
 <p>A custom Framer website built by a professional team usually costs <b>$3,000 to $15,000</b> in 2026 and takes <b>2 to 5 weeks</b>. A single Framer landing page usually costs <b>$1,500 to $5,000</b>.</p>
-<p>With our studio a Framer website starts <b>from $6,900</b> and a Framer landing page <b>from $2,400</b>. On top of that, Framer charges a monthly site plan; check Framer's pricing page for current fees.</p>
+<p>With our studio a Framer website starts <b>from $10,500</b> and a Framer landing page <b>from $3,500</b>. On top of that, Framer charges a monthly site plan; check Framer's pricing page for current fees.</p>
 <div class="post-note"><b>Key takeaways</b><p>Framer is usually a little faster and cheaper to build than Webflow for the same design. The price follows the number of unique layouts and the amount of custom motion, not the number of pages.</p></div>
 """),
 ("table", "Framer website price ranges", """
@@ -1411,7 +1411,7 @@ dict(
 </ul>
 """),
   ],
-  faq=[("How much does a Framer website cost?", "Usually $3,000 to $15,000 with a professional team. With our studio from $6,900, or from $2,400 for a single landing page."),
+  faq=[("How much does a Framer website cost?", "Usually $3,000 to $15,000 with a professional team. With our studio from $10,500, or from $3,500 for a single landing page."),
        ("Is Framer cheaper than Webflow?", "A Framer build is often a little cheaper and faster for the same design. Plan fees are in a similar range."),
        ("How long does a Framer site take?", "Usually 2 to 5 weeks for a custom multi-page site, 1 to 2 weeks for a landing page."),
        ("Can my team edit a Framer site?", "Yes. Text, images and CMS items can be edited without a designer."),
@@ -1833,9 +1833,9 @@ dict(
 ("wfp-build", "Webflow plan price vs the cost of building the site", """
 <p>The plan is the small part. The design and build is the main investment, and it is a one-off cost:</p>
 <ul>
-<li><b>Landing page</b>: usually $1,500 to $6,000 with a professional team. With us from $2,400.</li>
-<li><b>Company website</b> of 5 to 10 pages with a CMS: with us from $6,900.</li>
-<li><b>WordPress to Webflow migration</b>: with us from $2,900.</li>
+<li><b>Landing page</b>: usually $1,500 to $6,000 with a professional team. With us from $3,500.</li>
+<li><b>Company website</b> of 5 to 10 pages with a CMS: with us from $10,500.</li>
+<li><b>WordPress to Webflow migration</b>: with us from $4,900.</li>
 </ul>
 <p>For full ranges and what drives them, read <a href="../blog/webflow-website-cost.html">how much a Webflow website costs</a>.</p>
 """),
@@ -1878,7 +1878,7 @@ dict(
        ("What is a Webflow seat?", "A paid place for one person in the workspace. A Full seat ($39 a month yearly) can design and publish; a Limited seat ($15) can edit content; a Free seat can only comment."),
        ("Does Webflow charge transaction fees?", "Only on the Standard ecommerce plan, at 2%. Plus and Advanced have no Webflow fee. Card processing fees from Stripe or PayPal apply on every plan."),
        ("Is Webflow more expensive than WordPress?", "Per month, usually yes. Per year, often not, because hosting, security and maintenance are included."),
-       ("How much does it cost to build a Webflow website?", "A landing page usually costs $1,500 to $6,000 with a professional team, and a 5 to 10 page company site more. With Sorvel, websites start from $6,900 and landing pages from $2,400."),
+       ("How much does it cost to build a Webflow website?", "A landing page usually costs $1,500 to $6,000 with a professional team, and a 5 to 10 page company site more. With Sorvel, websites start from $10,500 and landing pages from $3,500."),
   ],
 ),
 
@@ -2014,7 +2014,7 @@ dict(
 <tr><td><b>Custom design, one location</b></td><td>$10,000 to $30,000</td><td>Practices growing implants, ortho or cosmetic work</td><td>Needs a clear brief and real photos</td></tr>
 <tr><td><b>Multi-location or group</b></td><td>$30,000 and up</td><td>DSOs and groups with several clinics</td><td>Location pages, booking per clinic, many editors</td></tr>
 </tbody></table></div>
-<p>These are typical market ranges in 2026. With Sorvel, a custom practice website starts from $6,900, and a single landing page for one treatment, for example implants, starts from $2,400. You get a written plan and a fixed price within 24 hours.</p>
+<p>These are typical market ranges in 2026. With Sorvel, a custom practice website starts from $10,500, and a single landing page for one treatment, for example implants, starts from $3,500. You get a written plan and a fixed price within 24 hours.</p>
 <p>Before you sign with a dental marketing company, ask one question: <b>who owns the website if we leave?</b> Many template packages are rented. When the contract ends, the site goes with it.</p>
 [[cta]]
 """),
@@ -2101,7 +2101,7 @@ dict(
 <p>Legal and medical practices share many of the same needs, so our <a href="../blog/law-firm-website-design.html">law firm website guide</a> is useful too.</p>
 """),
   ],
-  faq=[("How much does a dental website cost?", "Typically $2,000 to $8,000 for a template from a dental marketing company and $10,000 to $30,000 for a custom site for one location, plus monthly costs for hosting, booking and forms. With Sorvel, custom websites start from $6,900."),
+  faq=[("How much does a dental website cost?", "Typically $2,000 to $8,000 for a template from a dental marketing company and $10,000 to $30,000 for a custom site for one location, plus monthly costs for hosting, booking and forms. With Sorvel, custom websites start from $10,500."),
        ("What pages should a dental website have?", "Home, one page per treatment, team, prices or insurance, new patients, emergency dentistry, reviews, and location and contact."),
        ("Can I use a normal contact form on a dental website?", "Only for general questions. Health details and medical history should go through a HIPAA-ready form or patient portal whose vendor signs a Business Associate Agreement."),
        ("Is Webflow HIPAA compliant?", "Webflow's terms say it should not be used for protected health information. Use Webflow for the public pages and an external HIPAA-ready tool for intake forms and booking."),
@@ -2124,7 +2124,7 @@ dict(
   lead="A construction website should help the right client understand your work, check your experience and send a useful enquiry. Here is what to commission, what affects the price and how to assess an agency before signing.",
   sections=[
 ("cwd-short", "The short answer", """
-<p>Construction website design should connect your services, real project experience and service area to a clear enquiry route. At Sorvel, website design and build starts from <b>$6,900 USD as of November 2026</b>; your quote should define the pages, content, integrations and handover rather than promise a standard result for every contractor.</p>
+<p>Construction website design should connect your services, real project experience and service area to a clear enquiry route. At Sorvel, website design and build starts from <b>$10,500 USD as of November 2026</b>; your quote should define the pages, content, integrations and handover rather than promise a standard result for every contractor.</p>
 <div class="post-note"><b>Key takeaways</b><ul>
 <li>Brief the site around the projects you want, not every service you could deliver.</li>
 <li>Use factual project pages to show your role, scope and working process.</li>
@@ -2160,12 +2160,12 @@ dict(
 [[cta]]
 """),
 ("cwd-budget", "How much does construction website design cost?", """
-<p>As of <b>November 2026</b>, Sorvel's website design and build starts from <b>$6,900 USD</b>, as published on our <a href="https://sorvel.agency/pricing">pricing page</a> and <a href="https://sorvel.agency/services/websites">website service page</a>. This is our starting price, not a construction-industry average or a promise that every requirement fits the base scope.</p>
+<p>As of <b>November 2026</b>, Sorvel's website design and build starts from <b>$10,500 USD</b>, as published on our <a href="https://sorvel.agency/pricing">pricing page</a> and <a href="https://sorvel.agency/services/websites">website service page</a>. This is our starting price, not a construction-industry average or a promise that every requirement fits the base scope.</p>
 <p>Ask for a written proposal that separates design and development from photography, copywriting, hosting and ongoing work. Describe the project templates, service content and enquiry workflow before comparing totals. For broader planning, our <a href="../blog/website-redesign-cost.html">website redesign cost guide</a> explains the distinction between a refresh and a rebuild.</p>
 <div class="post-table" role="region" aria-label="Construction website cost and scope decisions" tabindex="0"><table>
 <thead><tr><th>Cost item</th><th>Budget decision</th><th>Confirm in the proposal</th></tr></thead>
 <tbody>
-<tr><td>Sorvel design and build</td><td>From $6,900 USD</td><td>Exact agreed layouts, content and launch scope</td></tr>
+<tr><td>Sorvel design and build</td><td>From $10,500 USD</td><td>Exact agreed layouts, content and launch scope</td></tr>
 <tr><td>Project portfolio</td><td>Reusable template or different layouts</td><td>Who writes and enters the initial projects</td></tr>
 <tr><td>Photography and copy</td><td>Existing assets or new content</td><td>Production, approvals and usage rights</td></tr>
 <tr><td>Enquiry workflow</td><td>Basic form or additional integration</td><td>Routing, testing and provider dependencies</td></tr>
@@ -2210,7 +2210,7 @@ dict(
 """),
   ],
   faq=[
-    ("How much does a construction company website cost?", "Sorvel's website design and build starts from $6,900 USD as of November 2026. Request an exact scope for your service pages, portfolio, content and enquiry workflow; this is a Sorvel starting price, not an industry average."),
+    ("How much does a construction company website cost?", "Sorvel's website design and build starts from $10,500 USD as of November 2026. Request an exact scope for your service pages, portfolio, content and enquiry workflow; this is a Sorvel starting price, not an industry average."),
     ("What should a construction website include?", "We recommend clear service information, real project evidence, company details, coverage and a useful request-a-quote route. Add recruitment, sectors or tender resources when they serve an identified need."),
     ("Do contractors need separate service pages?", "We recommend separate pages when buyers need materially different information to assess the work. Each page should explain its scope and link to relevant projects rather than repeat the same generic sales copy."),
     ("Can a construction website help attract better enquiries?", "Design the content and form around the work you want, where you operate and what you need to assess fit. Evaluate the result using actual enquiry quality rather than treating higher traffic as proof of success."),
@@ -2260,8 +2260,8 @@ dict(
 <thead><tr><th>Option</th><th>Upfront cost</th><th>Launch time</th><th>Best for</th></tr></thead>
 <tbody>
 <tr><td><b>PMS template</b></td><td>Included or a small monthly fee</td><td>Days</td><td>One or two units, testing direct bookings</td></tr>
-<tr><td><b>Custom landing page with booking widget</b></td><td>From $2,400 with Sorvel</td><td>1 to 2 weeks</td><td>A single standout property or villa</td></tr>
-<tr><td><b>Custom brand website</b></td><td>From $6,900 with Sorvel</td><td>3 to 6 weeks</td><td>Several properties, a local brand, or a management company that also wins owners</td></tr>
+<tr><td><b>Custom landing page with booking widget</b></td><td>From $3,500 with Sorvel</td><td>1 to 2 weeks</td><td>A single standout property or villa</td></tr>
+<tr><td><b>Custom brand website</b></td><td>From $10,500 with Sorvel</td><td>3 to 6 weeks</td><td>Several properties, a local brand, or a management company that also wins owners</td></tr>
 </tbody></table></div>
 <p>A custom site makes sense when your property is the product: a design villa, a cabin with a story, a portfolio of apartments in one city. It also makes sense for property managers, because the same website can win new owner clients, not just guests.</p>
 """),
@@ -2327,7 +2327,7 @@ dict(
 """),
   ],
   faq=[
-    ("How much does a vacation rental website cost?", "A website template from your property management software is often included or costs a small monthly fee. A custom design that embeds your booking engine usually costs a few thousand dollars upfront; Sorvel landing pages start at $2,400 and full websites at $6,900."),
+    ("How much does a vacation rental website cost?", "A website template from your property management software is often included or costs a small monthly fee. A custom design that embeds your booking engine usually costs a few thousand dollars upfront; Sorvel landing pages start at $3,500 and full websites at $10,500."),
     ("Do I need a separate booking engine for my own website?", "Usually not. Use the direct booking engine in your property management software, because it already syncs your calendars, prices and payments with Airbnb, Vrbo and Booking.com."),
     ("Can I move guests from Airbnb to my own website?", "Not for bookings made on Airbnb: its rules ban steering those guests to pay off-platform. Build direct bookings through your brand name, returning guest offers for direct guests, Google, social media and partners."),
     ("How do I avoid double bookings with a direct booking site?", "Use a booking engine with two-way sync to every channel, ideally through API connections rather than basic iCal links, and test a booking and a cancellation before launch."),
@@ -2358,7 +2358,7 @@ dict(
 <tr><td><b>Directory profile only</b></td><td>Monthly fee (Psychology Today is $29.95/month)</td><td>New practices getting first referrals</td><td>You do not own the page; you sit next to competitors</td></tr>
 <tr><td><b>Template from a therapist website platform</b></td><td>$0 to $1,000 plus a monthly fee</td><td>Solo practices that need to launch fast</td><td>Looks like many other practices; limited SEO control</td></tr>
 <tr><td><b>Custom website, solo practice</b></td><td>$2,000 to $10,000</td><td>Therapists with a clear niche who want to stand out</td><td>Needs written content and real photos</td></tr>
-<tr><td><b>Group practice website</b></td><td>$6,900 and up with Sorvel</td><td>Practices with several clinicians or locations</td><td>Clinician profiles, matching, booking per therapist</td></tr>
+<tr><td><b>Group practice website</b></td><td>$10,500 and up with Sorvel</td><td>Practices with several clinicians or locations</td><td>Clinician profiles, matching, booking per therapist</td></tr>
 </tbody></table></div>
 <p>Running costs sit on top: domain and hosting, your practice management software, and any directory listings. Prices for directories and software are as of November 2026.</p>
 """),
@@ -2447,11 +2447,11 @@ dict(
 """),
 ("tw-hire", "Template or custom: how to choose", """
 <p>A template works when you are starting out and need to be bookable this month. Choose a custom site when you have a clear niche, run a group practice, want to rank for competitive local searches, or simply want a site that sounds and looks like you.</p>
-<p>Sorvel designs calm, fast websites in Figma and builds them in Webflow, Framer or WordPress, with your existing booking and client portal linked in. Landing pages start at $2,400 and full websites at $6,900, and you get a written plan and fixed quote within 24 hours. <a href="../services/websites.html">See our website design service</a>, or compare <a href="../blog/web-design-agency-vs-freelancer.html">agency vs freelancer</a> first.</p>
+<p>Sorvel designs calm, fast websites in Figma and builds them in Webflow, Framer or WordPress, with your existing booking and client portal linked in. Landing pages start at $3,500 and full websites at $10,500, and you get a written plan and fixed quote within 24 hours. <a href="../services/websites.html">See our website design service</a>, or compare <a href="../blog/web-design-agency-vs-freelancer.html">agency vs freelancer</a> first.</p>
 """),
   ],
   faq=[
-    ("How much does a therapist website cost?", "From a small monthly fee on a template platform to about $2,000 to $10,000 for a custom solo practice site. Group practices with several clinicians usually cost more; Sorvel websites start at $6,900."),
+    ("How much does a therapist website cost?", "From a small monthly fee on a template platform to about $2,000 to $10,000 for a custom solo practice site. Group practices with several clinicians usually cost more; Sorvel websites start at $10,500."),
     ("Does my therapy website need to be HIPAA compliant?", "The website itself should not collect health information. Use a practice management tool that signs a Business Associate Agreement for intake, records and payments, and keep the website form to name, contact and preferred time."),
     ("Is a Psychology Today profile enough?", "It is a good source of referrals, at $29.95 a month as of late 2026, but you do not own the page and you appear next to competitors. A website gives you your own space, ranks for your specialties and supports every directory profile."),
     ("What pages should a therapist website have?", "A home page, about page, one page per specialty, fees and insurance, how it works, and a contact or booking page with a crisis notice."),
@@ -2533,9 +2533,9 @@ dict(
 <div class="post-table" role="region" aria-label="Wix to Webflow migration cost" tabindex="0"><table>
 <thead><tr><th>Site size</th><th>Typical scope</th><th>Timeline</th><th>Sorvel price</th></tr></thead>
 <tbody>
-<tr><td><b>Small site</b></td><td>Up to about 10 pages, few CMS items</td><td>2 to 3 weeks</td><td>From $2,900</td></tr>
+<tr><td><b>Small site</b></td><td>Up to about 10 pages, few CMS items</td><td>2 to 3 weeks</td><td>From $4,900</td></tr>
 <tr><td><b>Business site with blog</b></td><td>10 to 30 pages, blog and CMS collections</td><td>3 to 5 weeks</td><td>Fixed quote after a site review</td></tr>
-<tr><td><b>Full redesign and migration</b></td><td>New design, structure and content</td><td>4 to 8 weeks</td><td>Websites from $6,900</td></tr>
+<tr><td><b>Full redesign and migration</b></td><td>New design, structure and content</td><td>4 to 8 weeks</td><td>Websites from $10,500</td></tr>
 </tbody></table></div>
 <p>Remember Webflow's own plan costs after launch: a Site plan for hosting, and an Ecommerce plan if you sell online. Our <a href="../blog/webflow-pricing.html">Webflow pricing guide</a> breaks those down.</p>
 """),
@@ -2573,7 +2573,7 @@ dict(
     ("Can I export my Wix website to Webflow?", "Not directly. Wix does not export design, code or interactions, so the site is rebuilt in Webflow. CMS collections and physical store products can be exported as CSV and imported."),
     ("How long does a Wix to Webflow migration take?", "Most small business sites take 2 to 6 weeks, depending on the number of pages, blog posts, CMS items and whether you redesign at the same time."),
     ("Will I lose my SEO when moving from Wix to Webflow?", "Not if you keep ranking content, set up 301 redirects for every changed URL before switching the domain, and monitor Search Console after launch. A short wobble is normal; a lasting drop usually means missing redirects."),
-    ("How much does it cost to move from Wix to Webflow?", "Sorvel migrations start at $2,900 for small sites. Larger sites with blogs or a full redesign get a fixed quote after a review; full websites start at $6,900."),
+    ("How much does it cost to move from Wix to Webflow?", "Sorvel migrations start at $4,900 for small sites. Larger sites with blogs or a full redesign get a fixed quote after a review; full websites start at $10,500."),
     ("Can I keep my domain if I bought it on Wix?", "Yes. You can keep it registered with Wix and point the DNS records to Webflow, or transfer it to another registrar. Webflow does not sell domains."),
     ("How do I move my Wix blog posts to Webflow?", "Wix blog posts cannot be exported directly, so they are copied manually or moved with a script into a Webflow Blog collection, keeping titles, dates, images and URLs where possible."),
     ("Is Webflow better than Wix?", "Webflow is better for design control, speed, structured content and SEO control. Wix is simpler for owners who want to drag and drop without a designer."),
@@ -2764,7 +2764,7 @@ dict(
 <tr><td><b>Transaction fees</b></td><td>Depend on the ecommerce plan</td><td>Basic plan charges 2% on physical sales; Core and above 0% (digital products have separate fees)</td></tr>
 <tr><td><b>Extra editors</b></td><td>Paid seats</td><td>Contributors included, with limits</td></tr>
 </tbody></table></div>
-<p>The bigger cost is usually the design and build, not the plan. A DIY Squarespace site can cost only the plan. A professionally designed Webflow site is a one-off project; Sorvel websites start at $6,900 and landing pages at $2,400. For a full breakdown, see our <a href="../blog/webflow-pricing.html">Webflow pricing guide</a>.</p>
+<p>The bigger cost is usually the design and build, not the plan. A DIY Squarespace site can cost only the plan. A professionally designed Webflow site is a one-off project; Sorvel websites start at $10,500 and landing pages at $3,500. For a full breakdown, see our <a href="../blog/webflow-pricing.html">Webflow pricing guide</a>.</p>
 """),
 ("wsq-ecom", "Ecommerce: which is better for selling online?", """
 <p>For a small shop that one person runs, Squarespace is simpler: products, inventory, payments and shipping are built into its commerce plans and easy to manage. Webflow ecommerce suits brands that want a fully custom shopping experience with a small catalogue, or a content-heavy site with a few products.</p>
@@ -2805,7 +2805,7 @@ dict(
 <li>Set 301 redirects for every URL that changes, especially blog URLs.</li>
 <li>Connect your domain, submit the sitemap, and watch Search Console for a few weeks.</li>
 </ol>
-<p>Sorvel handles migrations from Squarespace, Wix and WordPress to Webflow from $2,900, with a written plan and fixed quote within 24 hours. <a href="../services/webflow-agency.html">See our Webflow service</a>.</p>
+<p>Sorvel handles migrations from Squarespace, Wix and WordPress to Webflow from $4,900, with a written plan and fixed quote within 24 hours. <a href="../services/webflow-agency.html">See our Webflow service</a>.</p>
 """),
   ],
   faq=[
@@ -2838,8 +2838,8 @@ dict(
 <thead><tr><th>Option</th><th>Upfront</th><th>Monthly</th><th>Good for</th></tr></thead>
 <tbody>
 <tr><td><b>Agent template platform</b></td><td>$0 to $1,000</td><td>Often $50 to $300+</td><td>New agents who need listings online fast</td></tr>
-<tr><td><b>Custom landing page + IDX search</b></td><td>From $2,400 with Sorvel</td><td>IDX fee plus hosting</td><td>Solo agents focused on one area or niche</td></tr>
-<tr><td><b>Custom agent or team website</b></td><td>From $6,900 with Sorvel</td><td>IDX fee plus hosting</td><td>Established agents and teams building a brand</td></tr>
+<tr><td><b>Custom landing page + IDX search</b></td><td>From $3,500 with Sorvel</td><td>IDX fee plus hosting</td><td>Solo agents focused on one area or niche</td></tr>
+<tr><td><b>Custom agent or team website</b></td><td>From $10,500 with Sorvel</td><td>IDX fee plus hosting</td><td>Established agents and teams building a brand</td></tr>
 <tr><td><b>Brokerage website</b></td><td>$15,000 and up</td><td>Multiple feeds, agent pages, CRM</td><td>Brokerages with many agents and offices</td></tr>
 </tbody></table></div>
 <p>Industry guides for 2026 put IDX setup at roughly $200 to $2,000 one-off and $50 to $200 a month, depending on the provider and your MLS. IDX Broker, a common option in the US, lists a plan at about $55 a month. Your MLS may also charge its own data feed fees. Prices are as of November 2026.</p>
@@ -2928,11 +2928,11 @@ dict(
 """),
 ("re-hire", "Template or custom website?", """
 <p>A template platform makes sense for a new agent who needs listings online this week. A custom site makes sense when you want to stand out in a crowded market, win more seller leads, build a team brand, or rank for your area.</p>
-<p>Sorvel designs real estate websites in Figma and builds them in Webflow, Framer or WordPress, with your IDX provider and CRM connected. Landing pages start at $2,400 and full websites at $6,900, with a written plan and fixed quote within 24 hours. <a href="../services/websites.html">See our website design service</a>.</p>
+<p>Sorvel designs real estate websites in Figma and builds them in Webflow, Framer or WordPress, with your IDX provider and CRM connected. Landing pages start at $3,500 and full websites at $10,500, with a written plan and fixed quote within 24 hours. <a href="../services/websites.html">See our website design service</a>.</p>
 """),
   ],
   faq=[
-    ("How much does a real estate website cost?", "A template platform costs little upfront but $50 to $300 or more per month. A custom agent website usually costs $2,000 to $15,000 upfront plus IDX and hosting fees; Sorvel websites start at $6,900."),
+    ("How much does a real estate website cost?", "A template platform costs little upfront but $50 to $300 or more per month. A custom agent website usually costs $2,000 to $15,000 upfront plus IDX and hosting fees; Sorvel websites start at $10,500."),
     ("What is IDX on a real estate website?", "IDX is the system that lets MLS members show MLS listings on their own websites through an approved provider, with search, listing pages and required disclaimers."),
     ("How much does IDX cost per month?", "Commonly $50 to $200 a month, plus a possible setup fee and MLS data fees. IDX Broker lists a plan at about $55 a month as of November 2026."),
     ("Can I add IDX to a Webflow or Framer website?", "Yes, usually through the IDX provider's embedded search widgets or a styled subdomain. Plugin-based IDX on WordPress can keep listing pages on your own domain."),

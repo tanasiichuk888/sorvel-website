@@ -422,7 +422,7 @@ open(W + "/llms.txt", "w").write(f"""# Sorvel
 - Platforms: Webflow, Framer, WordPress (design and build); Shopify (design); Figma for all design work
 - Specialities: company websites for any industry, SaaS and fintech websites, e-commerce and Shopify design, real estate, healthcare, legal and travel websites, WordPress to Webflow migrations, landing pages, product UI and design systems, brand identity
 - Every project gets a written plan with scope, timeline and a fixed price within 24 hours; no call required
-- Prices (USD): website design and build from $6,900; landing page from $2,400; product UI design from $4,800; brand identity from $3,900; website migration from $2,900; UX audit $750; monthly design and development from $4,500/month; 25-hour pack $2,250
+- Prices (USD): website design and build from $10,500; landing page from $3,500; product and mobile app design from $8,400; brand identity from $7,000; website migration from $4,900; UX audit $1,750; SEO and AEO from $2,100/month; conversion optimisation from $2,100/month; web app development from $17,500; mobile app development from $24,500; pitch decks from $2,900; monthly design or development plan $4,200/month, both $7,000/month; 25-hour pack $2,250
 - Contact: {SITE}/contact (brief form), Telegram https://t.me/tanasiychuk8
 
 ## Services

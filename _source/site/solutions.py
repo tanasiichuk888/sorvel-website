@@ -1,6 +1,6 @@
 import sys; sys.path.insert(0, "SOURCE_DIR/site")
 from common import *
-import scenes
+import scenes, re
 
 # Niche landing pages for search. They live next to the service pages (services/<slug>.html)
 # but are not in the main menu; the footer "Popular" row and related pages link to them.
@@ -125,16 +125,35 @@ D = {
        ("How many posts can you move?", "From a 10 page site to thousands of posts. Larger content sets are imported automatically, not by hand."),
        ("Will the site be down during the move?", "No. We build in Webflow in parallel and switch the domain only when everything is checked."),
        ("What happens to forms and integrations?", "We list them all in the audit and reconnect each one in Webflow, or suggest a simpler option where a plugin did the job."),
-       ("How much does a migration cost?", "From $2,900 for a typical company site. Big blogs or a redesign on top are quoted after the audit, in writing, within 24 hours.")],
+       ("How much does a migration cost?", "From $4,900 for a typical company site. Big blogs or a redesign on top are quoted after the audit, in writing, within 24 hours.")],
   related=["migrations", "websites", "webflow-agency"]),
 }
 
-from solutions_more import SOL2, D2
+from solutions_more import SOL2, D2, G
+from illus import illus
 D.update(D2)
 SOL_ALL = SOL + SOL2
-PRICE = {"website": ("$6,900", "3 to 6 weeks for a typical 5 to 10 page site"), "migration": ("$2,900", "1 to 3 weeks, depending on pages and CMS items")}
+PRICE = {"website": ("$10,500", "3 to 6 weeks for a typical 5 to 10 page site"), "migration": ("$4,900", "1 to 3 weeks, depending on pages and CMS items")}
 SVC_NAME = {s: t for s, t, d, ic in SERVICES}
 SOL_NAME = dict(SOL_ALL)
+
+def extra_tables(g):
+    if not g: return ""
+    tiers = "".join(f"<tr><td><b>{a}</b></td><td>{b}</td><td>{c}</td></tr>" for a, b, c in g["tiers"])
+    t, ca, cb, rows = g["cmp"]
+    cmp = "".join(f"<tr><td><b>{a}</b></td><td>{b}</td><td>{c}</td></tr>" for a, b, c in rows)
+    return f'''
+    <section class="sec" data-chapter="Cost">
+      <div class="wrap">
+{sec_head("Cost and timeline", 'What it costs, <span class="dim">by scope.</span>', "Typical starting points in US dollars. Your exact price is fixed in writing before work starts.")}
+        <div class="svc-tables">
+          <div class="post-table" role="region" aria-label="Cost and timeline by scope" tabindex="0" data-reveal><table><thead><tr><th>Scope</th><th>Price</th><th>Timeline</th></tr></thead><tbody>{tiers}</tbody></table></div>
+          <div class="svc-cmp" data-reveal style="--d:.08s"><h3 class="svc-cmp__t">{t}</h3>
+            <div class="post-table" role="region" aria-label="{t}" tabindex="0"><table><thead><tr><th></th><th>{ca}</th><th>{cb}</th></tr></thead><tbody>{cmp}</tbody></table></div></div>
+        </div>
+      </div>
+    </section>
+'''
 
 def solution(slug):
     d = D[slug]; p = "../"
@@ -155,6 +174,24 @@ def solution(slug):
     quote = f"../contact.html?plan={d['need']}#brief"
     body = hero(f'<a href="../index.html#services">Services</a><span>/</span><span>{nm}</span>', d["eyebrow"], d["lines"], d["lead"],
                 btn_primary(quote, "Get a quote") + btn_ghost("../work.html", "See our work"), p=p, visual=scenes.svc(d["visual"]))
+    g = G.get(slug)
+    if g:
+        facts = "".join(f'<div class="glance__fact"><small>{a}</small><b>{b}</b></div>' for a, b in g["facts"])
+        art = illus(g["illus"], **({"tool": g["tool"]} if "tool" in g else {}))
+        body += f'''
+    <section class="sec glance" data-chapter="Short answer">
+      <div class="wrap glance__grid">
+        <div class="glance__text" data-reveal>
+          <p class="eyebrow">The short answer</p>
+          <h2 class="h2 glance__q">{g["q"]}</h2>
+          <p class="glance__a">{g["a"]}</p>
+          <div class="glance__facts">{facts}</div>
+          <div class="glance__btns">{btn_primary(quote, "Get a fixed quote", lg=False)}<span class="glance__note"><span class="status__dot" aria-hidden="true"></span> Replies in about 10 minutes</span></div>
+        </div>
+        <figure class="glance__art" data-reveal style="--d:.1s">{art}</figure>
+      </div>
+    </section>
+'''
     body += f'''
     <section class="sec cs-brief" data-chapter="Who it's for">
       <div class="wrap">
@@ -191,6 +228,7 @@ def solution(slug):
       </div>
     </section>
 
+{extra_tables(g)}
     <section class="sec" data-chapter="Fit">
       <div class="wrap">
 {sec_head("Where it fits", 'Made for <span class="dim">your situation.</span>')}
@@ -219,7 +257,7 @@ def solution(slug):
       </div>
     </section>
 '''
-    body += faq(d["faq"])
+    body += faq(([(g["q"], re.sub(r"<[^>]+>", "", g["a"]))] if g else []) + d["faq"])
     body += f'''    <section class="cs-more">
       <div class="wrap">
         <header class="cs-more__head" data-reveal><p class="eyebrow">Related</p><a class="cs-more__all" href="../pricing.html">All prices <span aria-hidden="true">→</span></a></header>
