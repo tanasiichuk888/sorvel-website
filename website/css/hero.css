@@ -223,3 +223,35 @@
   .hero__inner:has(.bld) .hero__title { font-size: clamp(40px, 4.9vw, 76px); }
 }
 @media (min-width: 1360px) { .bld__stage { width: calc(100% + 56px); } }
+
+/* ---------- Home hero: tilted wall of recent designs ---------- */
+.hero__inner:has(.hwall) { grid-template-columns: minmax(0, 1fr) minmax(0, min(620px, 48%)); gap: 40px; }
+.hero__inner:has(.hwall) .hero__title { font-size: clamp(40px, 4.9vw, 76px); }
+.hwall { position: relative; margin: -60px calc(-1 * clamp(16px, 5vw, 110px)) -60px 0; height: clamp(520px, 50vw, 760px); perspective: 1800px; overflow: hidden; overflow: clip;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent), linear-gradient(to right, transparent, #000 14%, #000 92%, transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent), linear-gradient(to right, transparent, #000 14%, #000 92%, transparent); mask-composite: intersect; }
+.hwall::before { content: ""; position: absolute; inset: 20% 14%; background: radial-gradient(50% 50% at 50% 50%, rgba(59,107,255,.38), transparent 70%); filter: blur(46px); }
+.hw-plane { position: absolute; inset: -34% -16% -34% -4%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; transform: rotateX(22deg) rotateZ(-13deg) scale(1.02); transform-style: preserve-3d; }
+.hw-col { min-width: 0; }
+.hw-track { display: flex; flex-direction: column; gap: 16px; animation: hwUp 58s linear infinite; will-change: transform; }
+.hw-col:nth-child(2) .hw-track { animation-name: hwDown; animation-duration: 66s; }
+.hw-col:nth-child(3) .hw-track { animation-duration: 52s; }
+@keyframes hwUp { to { transform: translateY(calc(-50% - 8px)); } }
+@keyframes hwDown { from { transform: translateY(calc(-50% - 8px)); } to { transform: translateY(0); } }
+.hwall:hover .hw-track { animation-play-state: paused; }
+.hw-tile { position: relative; border-radius: 14px; overflow: hidden; background: #0E0F13; box-shadow: 0 0 0 1px rgba(242,239,234,.12), 0 30px 60px -30px rgba(0,0,0,.9); transition: transform .6s var(--ease), box-shadow .5s; }
+.hw-tile img { display: block; width: 100%; height: auto; filter: saturate(.95) brightness(.92); transition: filter .5s, opacity .7s; }
+.hw-tile img[data-src] { opacity: 0; }
+.hw-tile span { position: absolute; left: 8px; bottom: 8px; display: grid; gap: 1px; padding: 6px 10px; border-radius: 8px; font-size: 11px; color: #A9A7A3; background: rgba(14,15,19,.86);
+  box-shadow: inset 0 0 0 1px rgba(242,239,234,.14); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); opacity: 0; transform: translateY(4px); transition: opacity .35s, transform .45s var(--ease); }
+.hw-tile span b { font-size: 12.5px; font-weight: 600; color: #F2EFEA; }
+.hw-tile:hover { transform: translateZ(40px) scale(1.04); box-shadow: 0 0 0 1px rgba(59,107,255,.7), 0 40px 70px -24px rgba(59,107,255,.5); z-index: 2; }
+.hw-tile:hover img { filter: none; }
+.hw-tile:hover span { opacity: 1; transform: none; }
+.hw-cta { position: absolute; right: clamp(16px, 5vw, 110px); bottom: 70px; z-index: 3; display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 99px; font-size: 14px; font-weight: 500; color: var(--text);
+  background: rgba(14,15,19,.72); box-shadow: inset 0 0 0 1px rgba(242,239,234,.16); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); transition: background .3s, box-shadow .3s; }
+.hw-cta::after { display: none; }
+.hw-cta:hover { background: rgba(59,107,255,.9); box-shadow: none; }
+.hw-cta span { transition: transform .4s var(--ease); } .hw-cta:hover span { transform: translateX(4px); }
+@media (max-width: 1000px) { .hero__inner:has(.hwall) { grid-template-columns: 1fr; } .hwall { margin: 0 calc(-1 * clamp(16px, 5vw, 110px)); height: 460px; } .hw-cta { right: 24px; bottom: 28px; } }
+@media (max-width: 760px) { .hwall { height: 380px; } .hw-plane { inset: -45% -24%; gap: 10px; } .hw-track { gap: 10px; } .hw-tile { border-radius: 10px; } }
+@media (prefers-reduced-motion: reduce) { .hw-track { animation: none; } }
