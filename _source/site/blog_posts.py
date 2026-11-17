@@ -860,6 +860,7 @@ dict(
 <p>A strong AI startup website does three things: it names the job your product does in plain words, it shows the product doing that job with real screens or a short demo, and it answers questions about data, accuracy and security on the page.</p>
 <p>With our studio an AI startup website starts <b>from $6,900</b> and takes <b>3 to 6 weeks</b>. A single launch or waitlist page starts <b>from $2,400</b> and takes 1 to 2 weeks.</p>
 <div class="post-note"><b>Key takeaways</b><p>Lead with the outcome, not the model. Show a real input becoming a real output. Give security and data handling their own section. Pick Framer for a fast launch and Webflow when you will publish a lot.</p></div>
+<p>Want AI assistants to recommend you? Read <a href="../blog/get-cited-by-chatgpt.html">how to get your website cited by ChatGPT</a>.</p>
 """),
 ("ai-message", "Lead with the job, not the technology", """
 <p>Visitors decide in a few seconds whether a site is for them. "AI-powered platform" tells them nothing. A headline that names the job and the audience does:</p>
@@ -1543,6 +1544,7 @@ dict(
 """),
 ('wx-takeaways', 'Summary', """
 <div class="post-note"><b>In one minute</b><p>Wix is the quicker start for a small site you build yourself. Webflow is the better base for a custom, professional site that has to grow, rank and be edited by a team. Most businesses outgrow Wix when content, SEO and brand start to matter.</p></div>
+<p>Also weighing Squarespace? Read <a href="../blog/webflow-vs-squarespace.html">Webflow vs Squarespace</a>.</p>
 <p>Already decided to switch? Read our step-by-step guide to <a href="../blog/wix-to-webflow-migration.html">Wix to Webflow migration</a>.</p>
 """),
 ('wx-cost', 'Cost over the first year', """
@@ -2232,6 +2234,7 @@ dict(
 <p>A vacation rental direct booking website has two parts: a <b>booking engine</b> that handles availability, prices and payments, and a <b>website</b> that makes guests trust you enough to book. The booking engine usually comes from your property management software (PMS) for a monthly fee. The website can be the PMS's built-in template, or a custom design that embeds the same booking engine.</p>
 <p>Built-in templates cost little and launch fast. A custom site costs more upfront but looks like a real brand, ranks better for local searches and converts more of the guests you already have.</p>
 <div class="post-note"><b>Key takeaways</b><p>Platforms charge hosts a large share of each booking (Airbnb has moved most hosts to a host-only fee of around 15%), so even a few direct bookings a month can pay for a site. Use a booking engine with two-way calendar sync so you never double-book. Your best source of direct bookings is past guests and people who search your property or area by name, so plan for repeat stays, not just Google traffic.</p></div>
+<p>Selling or managing homes as well? See our guide to <a href="../blog/real-estate-website-design.html">real estate website design</a>.</p>
 """),
 ("vr-why", "Why direct bookings matter more in 2026", """
 <p>Airbnb has been switching hosts to a single host-only service fee. For most hosts on that model the fee is about 15.5% of the booking, and the change rolled out region by region through 2025 and 2026. Guests now see one all-in price, and the host pays the whole platform fee.</p>
@@ -2574,6 +2577,368 @@ dict(
     ("Can I keep my domain if I bought it on Wix?", "Yes. You can keep it registered with Wix and point the DNS records to Webflow, or transfer it to another registrar. Webflow does not sell domains."),
     ("How do I move my Wix blog posts to Webflow?", "Wix blog posts cannot be exported directly, so they are copied manually or moved with a script into a Webflow Blog collection, keeping titles, dates, images and URLs where possible."),
     ("Is Webflow better than Wix?", "Webflow is better for design control, speed, structured content and SEO control. Wix is simpler for owners who want to drag and drop without a designer."),
+  ],
+),
+dict(
+  slug="get-cited-by-chatgpt",
+  title="How to Get Your Website Cited by ChatGPT (GEO Guide 2026) | Sorvel",
+  h1="How to get your website cited by ChatGPT and AI search in 2026",
+  card="A practical GEO guide: how ChatGPT, Perplexity, Claude and Google AI find sources, what to fix on your site, and how to measure AI search traffic.",
+  desc="How to get cited by ChatGPT, Perplexity and Google AI Overviews in 2026: crawler access, Bing indexing, page structure, schema and how to measure it.",
+  cat="AI search", date="2026-11-17", svc=("websites", "website design and development"),
+  cover=("c-get-cited-by-chatgpt", "A laptop showing an AI chat assistant answer on screen"),
+  lead="More buyers now ask ChatGPT or Perplexity which agency, tool or clinic to choose before they ever open Google. Here is how AI search picks its sources, and the concrete steps that make your website one of them.",
+  sections=[
+("geo-short", "The short answer", """
+<p>AI assistants cite pages they can <b>crawl</b>, find in a <b>search index</b>, and <b>understand quickly</b>. To get cited, let the AI search crawlers in, make sure Google and Bing have indexed your pages, and write pages that answer one clear question with facts, prices and plain structure. Then make your business easy to confirm elsewhere on the web.</p>
+<p>This work is often called GEO (generative engine optimisation) or AEO (answer engine optimisation). It is mostly good SEO done carefully, with a few extra steps that are specific to AI tools.</p>
+<div class="post-note"><b>Key takeaways</b><p>Allow OAI-SearchBot, PerplexityBot and similar search crawlers in robots.txt. Get indexed in Bing as well as Google, because several AI tools lean on Bing's index. Open every page with a direct answer, use tables and FAQ, keep facts consistent across the web, and track AI referrals in Google Analytics.</p></div>
+"""),
+("geo-how", "How AI assistants choose which sites to cite", """
+<p>When someone asks ChatGPT with search turned on, Perplexity, Claude or Google's AI Overviews a question that needs current information, the tool runs one or more web searches, reads a handful of pages and writes an answer with links. Your page can only be cited if three things are true:</p>
+<ol>
+<li><b>The crawler is allowed to read it.</b> Each AI company runs its own bots, and robots.txt rules decide what they can fetch.</li>
+<li><b>The page is in an index the tool uses.</b> Google AI Overviews use Google's index. ChatGPT search and Microsoft Copilot rely heavily on Bing results alongside their own crawling. Perplexity runs its own index plus partners.</li>
+<li><b>The page is easy to quote.</b> The tool favours pages that answer the question directly, early and specifically, from a source that looks trustworthy.</li>
+</ol>
+<p>Most sites fail on the second point without knowing it: they are in Google but barely in Bing, so they never show up in ChatGPT answers.</p>
+"""),
+("geo-crawlers", "Step 1: Let the right AI crawlers in", """
+<p>Check your robots.txt. Many sites block AI bots by accident, through a security plugin, a CDN setting or a copied template. These are the bots that matter for being cited, as documented by each company as of November 2026:</p>
+<div class="post-table" role="region" aria-label="AI crawlers and what they do" tabindex="0"><table>
+<thead><tr><th>Bot</th><th>Company</th><th>What it does</th><th>Block it?</th></tr></thead>
+<tbody>
+<tr><td><b>OAI-SearchBot</b></td><td>OpenAI</td><td>Finds pages to show and link in ChatGPT search</td><td>No, if you want ChatGPT citations</td></tr>
+<tr><td><b>ChatGPT-User</b></td><td>OpenAI</td><td>Opens a page when a user asks ChatGPT about it</td><td>No</td></tr>
+<tr><td><b>GPTBot</b></td><td>OpenAI</td><td>Collects content that may train OpenAI models</td><td>Your choice; it does not affect ChatGPT search</td></tr>
+<tr><td><b>PerplexityBot</b></td><td>Perplexity</td><td>Indexes pages for Perplexity answers</td><td>No</td></tr>
+<tr><td><b>Bingbot</b></td><td>Microsoft</td><td>Bing index, used by Copilot and others</td><td>Never</td></tr>
+<tr><td><b>Googlebot</b></td><td>Google</td><td>Google Search and AI Overviews</td><td>Never</td></tr>
+</tbody></table></div>
+<p>OpenAI states that the search and training bots are controlled separately, so you can opt out of training and still appear in ChatGPT search. Also check your firewall or bot protection: some CDN settings block AI crawlers even when robots.txt allows them.</p>
+[[cta]]
+"""),
+("geo-index", "Step 2: Get indexed in Bing as well as Google", """
+<p>Add your site to <b>Bing Webmaster Tools</b>. If you already use Google Search Console, Bing can import your site from it in a few minutes, with no separate verification. Then submit your sitemap and the most important pages.</p>
+<p>Next, set up <b>IndexNow</b>. It is a free protocol supported by Bing, Yandex, Seznam and Naver: your site pings it whenever a page is added or changed, so new content is picked up in hours instead of weeks. Many hosts and plugins support it, or it can be added with a few lines of code.</p>
+<p>Keep the basics clean too: one canonical URL per page, a current sitemap, no accidental noindex tags, and fast pages. AI tools fetch pages in a hurry; slow or script-heavy pages can be skipped or read only in part.</p>
+"""),
+("geo-content", "Step 3: Write pages AI tools can quote", """
+<p>AI answers are built from short passages. Pages that answer the question in the first lines and then back it up with specifics get quoted far more often than long introductions.</p>
+<ul>
+<li><b>Start with the answer.</b> Put a two or three sentence answer under the first heading, then explain. A short "key takeaways" box works well.</li>
+<li><b>Use question headings.</b> Match the way people ask: "How much does a dental website cost?", not "Our pricing philosophy".</li>
+<li><b>Give concrete numbers with dates.</b> Prices, timelines, limits and ranges, marked "as of" a month and year. Vague pages give the AI nothing to cite.</li>
+<li><b>Use tables and lists.</b> Comparisons and costs in a real HTML table are easy to extract.</li>
+<li><b>Add a FAQ</b> with answers that stand alone in one or two sentences.</li>
+<li><b>Write one page per intent.</b> A page that tries to rank for everything is rarely the best answer to anything.</li>
+<li><b>Show who is behind it.</b> Author or company, experience, contact details and an updated date build trust with readers and with the tools.</li>
+</ul>
+"""),
+("geo-schema", "Step 4: Add structured data and machine-readable signals", """
+<p>Structured data (schema.org markup in JSON-LD) tells search engines exactly what a page is. It does not guarantee citations, but it removes guesswork.</p>
+<div class="post-table" role="region" aria-label="Structured data to add" tabindex="0"><table>
+<thead><tr><th>Markup</th><th>Where</th><th>Why it helps</th></tr></thead>
+<tbody>
+<tr><td><b>Organization</b> or <b>LocalBusiness</b></td><td>Home page</td><td>Name, logo, contact, social profiles in one place</td></tr>
+<tr><td><b>Service</b> and <b>Offer</b></td><td>Service pages</td><td>What you sell and starting prices</td></tr>
+<tr><td><b>Article</b></td><td>Blog posts</td><td>Author, publish and update dates</td></tr>
+<tr><td><b>FAQPage</b></td><td>Pages with a FAQ</td><td>Clear question and answer pairs</td></tr>
+<tr><td><b>BreadcrumbList</b></td><td>All pages</td><td>Site structure and topic context</td></tr>
+</tbody></table></div>
+<p>Some sites also publish an <b>llms.txt</b> file: a plain-text summary of the site and its key pages for language models. It is a community proposal, not an official standard, and no major AI company has confirmed it uses it. It takes ten minutes, so it is a reasonable extra, not a priority.</p>
+"""),
+("geo-offsite", "Step 5: Make your business easy to confirm elsewhere", """
+<p>AI tools are cautious about recommending a business they can find in only one place. They look for the same facts repeated on sources they already trust.</p>
+<ul>
+<li><b>Claim your profiles.</b> Google Business Profile, Bing Places, LinkedIn, and the directories of your industry (for agencies: Clutch, Webflow and Framer partner directories; for clinics and therapists: professional directories).</li>
+<li><b>Claim your business in ChatGPT.</b> In November 2026 OpenAI launched "Businesses in ChatGPT", a free way to verify a business, edit what ChatGPT shows about it and see how often it is mentioned. It is in beta and some business types are not supported yet, but it is worth checking.</li>
+<li><b>Keep facts identical</b> everywhere: name, services, location or service area, prices you publish.</li>
+<li><b>Earn mentions.</b> Guest articles, podcast appearances, partner pages and genuine reviews give AI tools independent sources to confirm you.</li>
+</ul>
+"""),
+("geo-mistakes", "Common mistakes that keep sites out of AI answers", """
+<ul>
+<li><b>Blocking every AI bot "to be safe".</b> Blocking OAI-SearchBot or PerplexityBot removes you from those answers entirely. Decide per bot.</li>
+<li><b>Content hidden behind scripts.</b> Text that only appears after JavaScript runs, inside tabs that load later, or in images can be missed by crawlers that do not render pages fully.</li>
+<li><b>No prices or specifics.</b> "Contact us for a quote" gives an AI nothing to say about you. Even a starting price or a range makes you quotable.</li>
+<li><b>Thin service pages.</b> One paragraph per service rarely answers the buyer's question. Explain who it is for, what is included, timeline, price range and next step.</li>
+<li><b>Different facts in different places.</b> A different company name on LinkedIn, an old address on a directory, or outdated prices make AI tools less confident about you.</li>
+<li><b>Ignoring Bing.</b> Still the most common gap for small businesses.</li>
+<li><b>Chasing tricks.</b> Hidden text for bots, fake reviews or keyword stuffing can get a site ignored by search engines, and with them by AI tools.</li>
+</ul>
+"""),
+("geo-measure", "Step 6: Measure AI search traffic", """
+<p>You cannot see AI rankings the way you see Google positions, but you can measure the results:</p>
+<ul>
+<li><b>Google Analytics:</b> ChatGPT adds <code>utm_source=chatgpt.com</code> to many of its links. Also watch referrals from perplexity.ai, copilot.microsoft.com and gemini.google.com.</li>
+<li><b>Bing Webmaster Tools:</b> indexed pages, crawl errors and IndexNow submissions.</li>
+<li><b>A prompt list:</b> write 30 to 80 questions your buyers would ask, check them once a week in ChatGPT and Perplexity in a private window, and count how many answers name or link you.</li>
+<li><b>Leads:</b> add "How did you find us?" to your contact form, with ChatGPT or AI search as an option.</li>
+</ul>
+<p>Expect weeks for indexing and months for steady citations. Niche, specific questions start sending traffic first; broad ones like "best web design agency" take the longest.</p>
+"""),
+("geo-checklist", "GEO checklist", """
+<ul>
+<li>robots.txt allows OAI-SearchBot, ChatGPT-User, PerplexityBot, Bingbot and Googlebot</li>
+<li>CDN or firewall does not block AI crawlers</li>
+<li>Site verified in Google Search Console and Bing Webmaster Tools, sitemap submitted</li>
+<li>IndexNow set up for new and updated pages</li>
+<li>Each key page opens with a direct answer and has tables, FAQ and dated facts</li>
+<li>Organization, Service, Article and FAQPage schema in place</li>
+<li>Business profiles claimed and facts consistent across the web</li>
+<li>AI referrals tracked in analytics, prompt list checked weekly</li>
+</ul>
+<p>If your site also needs a redesign to get there, see our guides to <a href="../blog/website-redesign-cost.html">website redesign cost</a> and <a href="../blog/how-to-choose-a-web-design-agency.html">choosing a web design agency</a>.</p>
+"""),
+("geo-hire", "Do it yourself or get help", """
+<p>Crawler access, Bing and analytics are an afternoon of work for most sites. The harder part is the content and structure: pages that answer real buyer questions, in the right format, on a fast site.</p>
+<p>Sorvel designs and builds websites in Webflow, Framer and WordPress with SEO and GEO built in from the start: page structure, schema, crawler access, Bing indexing and AI traffic tracking. You get a written plan and a fixed quote within 24 hours. <a href="../services/websites.html">See our website design service</a>.</p>
+"""),
+  ],
+  faq=[
+    ("How do I get my website to show up in ChatGPT?", "Allow OAI-SearchBot in robots.txt, get your pages indexed in Bing and Google, and write pages that answer specific questions directly with facts, tables and FAQ. Citations usually start within weeks to a few months."),
+    ("Does blocking GPTBot stop my site appearing in ChatGPT search?", "No. OpenAI controls search and training separately: OAI-SearchBot decides search visibility, GPTBot decides training use. You can block GPTBot and still be cited."),
+    ("What is GEO?", "Generative engine optimisation is the work of making a website easy for AI assistants such as ChatGPT, Perplexity and Google AI Overviews to find, understand and cite. It builds on SEO with extra attention to crawler access, answer-first content and consistent facts."),
+    ("Why does Bing matter for ChatGPT?", "ChatGPT search and Microsoft Copilot lean heavily on Bing's index alongside their own crawling, so a site that is missing from Bing is often missing from their answers too."),
+    ("Does llms.txt help AI search?", "It is an optional community proposal, and no major AI company has confirmed using it. It is cheap to add but far less important than crawler access, indexing and good content."),
+    ("How can I track traffic from ChatGPT?", "In Google Analytics, look for the source chatgpt.com, which ChatGPT adds to many links, plus referrals from perplexity.ai, copilot.microsoft.com and gemini.google.com."),
+    ("How long does it take to get cited by AI tools?", "Indexing takes days to weeks; regular citations usually take one to three months for specific, niche questions and longer for broad, competitive ones."),
+    ("Can I claim my business in ChatGPT?", "Yes. OpenAI launched Businesses in ChatGPT in November 2026, a free beta to verify a business and manage what ChatGPT shows about it. Some business types are not supported yet."),
+  ],
+),
+dict(
+  slug="webflow-vs-squarespace",
+  title="Webflow vs Squarespace (2026): Which Is Better? | Sorvel",
+  h1="Webflow vs Squarespace: which website builder is right for your business?",
+  card="Webflow vs Squarespace compared on design control, CMS, SEO, ecommerce, pricing and ease of use, with a clear answer for who should pick which.",
+  desc="Webflow vs Squarespace in 2026: design freedom, CMS, SEO, ecommerce, pricing and ease of use compared, plus who should choose which and when to switch.",
+  cat="Comparisons", date="2026-11-17", svc=("webflow-agency", "Webflow design and development"),
+  cover=("c-webflow-vs-squarespace", "A designer's desk with a laptop showing a page layout wireframe"),
+  lead="Squarespace is the easiest way to get a good-looking site online. Webflow is the tool you pick when the website has to grow, rank and convert. Here is how they compare in 2026, and how to choose.",
+  sections=[
+("wsq-short", "The short answer", """
+<p>Choose <b>Squarespace</b> if you want to build and run a simple, attractive site yourself, quickly, from a template: a portfolio, a small local business, a personal brand or a small shop. Choose <b>Webflow</b> if the website is a growth channel for the business and needs custom design, a structured CMS, strong SEO control and a team that publishes often.</p>
+<p>In price they are close for a basic site. The real difference is control: Squarespace limits what you can change, and Webflow lets a designer build almost anything.</p>
+<div class="post-note"><b>Key takeaways</b><p>Squarespace wins on ease and all-in-one simplicity. Webflow wins on design freedom, CMS, SEO control, speed tuning and scaling. If you plan to hire a designer or run content marketing, Webflow is usually the better long-term home. If you will build the site yourself in a weekend, Squarespace is hard to beat.</p></div>
+"""),
+("wsq-table", "Webflow vs Squarespace at a glance", """
+<div class="post-table" role="region" aria-label="Webflow vs Squarespace comparison" tabindex="0"><table>
+<thead><tr><th>Feature</th><th>Webflow</th><th>Squarespace</th></tr></thead>
+<tbody>
+<tr><td><b>Ease of use</b></td><td>Steeper learning curve; easy Editor for content once built</td><td>Very easy drag-and-drop with templates</td></tr>
+<tr><td><b>Design freedom</b></td><td>Near full control of layout, breakpoints and animations</td><td>Limited to template sections and blocks</td></tr>
+<tr><td><b>CMS</b></td><td>Custom collections with your own fields</td><td>Blog, portfolio, events and products; limited custom structure</td></tr>
+<tr><td><b>SEO control</b></td><td>Per-page meta, schema, redirects, clean code</td><td>Good basics; less control over code and structure</td></tr>
+<tr><td><b>Speed</b></td><td>Lean output, tunable by a designer</td><td>Fine for most sites; less room to optimise</td></tr>
+<tr><td><b>Ecommerce</b></td><td>Good for small catalogues and custom-designed stores</td><td>Built in on most plans; simple to run</td></tr>
+<tr><td><b>Team editing</b></td><td>Roles, Editor, staging and publishing control</td><td>Contributor roles; simpler workflow</td></tr>
+<tr><td><b>Best for</b></td><td>Startups, B2B, SaaS, agencies, content-led growth</td><td>Portfolios, small local businesses, creators</td></tr>
+</tbody></table></div>
+"""),
+("wsq-design", "Design and flexibility", """
+<p>Squarespace gives you polished templates made of sections you can rearrange and restyle. That keeps sites looking good, but it also means your site looks like a Squarespace site, and some layouts are simply not possible without code workarounds.</p>
+<p>Webflow works like a visual front-end tool. A designer controls every element, spacing, breakpoint and interaction, so a custom Figma design can be built as designed. That freedom is why agencies and in-house teams use Webflow, and also why it takes longer to learn.</p>
+[[cta]]
+"""),
+("wsq-cms", "CMS, blogging and SEO", """
+<p>For a simple blog, both work. The gap opens when content becomes structured: case studies with filters, locations, team members, job listings, resources or multi-author blogs. Webflow's CMS lets you define collections with your own fields and design templates for each, so a new case study or location page is consistent and quick to publish.</p>
+<p>On SEO, Squarespace covers the basics well: titles, descriptions, clean URLs, sitemaps and SSL. Webflow adds finer control: custom schema markup, per-collection SEO fields, 301 redirect management, canonical tags, clean semantic HTML and code embeds where needed. If organic search or AI search is a key channel, that control matters. Our <a href="../blog/get-cited-by-chatgpt.html">GEO guide</a> explains what AI search needs from a site.</p>
+"""),
+("wsq-team", "Editing, teams and day-to-day work", """
+<p>In Squarespace, the person who builds the site usually also edits it, in the same simple editor. That is ideal for a business owner running their own site, but there is little protection against breaking a layout, and no real staging step for bigger changes.</p>
+<p>Webflow separates the two jobs. Designers work in the Designer, where layout and styles live. Marketers and content editors work in the Editor, where they can change text, images and CMS items but cannot accidentally break the design. Larger changes can be prepared and published when ready, and roles and permissions control who can publish. For teams that publish weekly, this saves a lot of back-and-forth.</p>
+"""),
+("wsq-speed", "Speed, reliability and AI search", """
+<p>Both platforms host your site on a fast global network with SSL included, so uptime and security are handled for you. The difference is how much you can tune. In Webflow a designer controls exactly what loads on each page: image sizes and formats, fonts, scripts and animations. That makes it easier to hit good Core Web Vitals on mobile, which matters for Google rankings and for conversions.</p>
+<p>AI search tools favour pages with clean structure, clear headings, tables and FAQ. Both platforms can produce that, but Webflow's custom code and schema options make it easier to add the structured data and page structure AI tools read best.</p>
+"""),
+("wsq-price", "Pricing compared (as of November 2026)", """
+<p>Both charge a monthly plan for hosting. Prices are in US dollars on annual billing; monthly billing costs more on both. Squarespace raised and renamed its plans in 2026, so prices vary by region and signup date.</p>
+<div class="post-table" role="region" aria-label="Webflow and Squarespace pricing" tabindex="0"><table>
+<thead><tr><th>Need</th><th>Webflow</th><th>Squarespace</th></tr></thead>
+<tbody>
+<tr><td><b>Simple site, no blog</b></td><td>Basic: $15/mo</td><td>Basic: about $16 to $19/mo</td></tr>
+<tr><td><b>Site with blog or CMS</b></td><td>Premium: $25/mo</td><td>Core: about $23 to $29/mo</td></tr>
+<tr><td><b>Online store</b></td><td>Ecommerce plans, priced separately</td><td>Plus: about $39 to $49/mo; Advanced: $99/mo</td></tr>
+<tr><td><b>Transaction fees</b></td><td>Depend on the ecommerce plan</td><td>Basic plan charges 2% on physical sales; Core and above 0% (digital products have separate fees)</td></tr>
+<tr><td><b>Extra editors</b></td><td>Paid seats</td><td>Contributors included, with limits</td></tr>
+</tbody></table></div>
+<p>The bigger cost is usually the design and build, not the plan. A DIY Squarespace site can cost only the plan. A professionally designed Webflow site is a one-off project; Sorvel websites start at $6,900 and landing pages at $2,400. For a full breakdown, see our <a href="../blog/webflow-pricing.html">Webflow pricing guide</a>.</p>
+"""),
+("wsq-ecom", "Ecommerce: which is better for selling online?", """
+<p>For a small shop that one person runs, Squarespace is simpler: products, inventory, payments and shipping are built into its commerce plans and easy to manage. Webflow ecommerce suits brands that want a fully custom shopping experience with a small catalogue, or a content-heavy site with a few products.</p>
+<p>If selling online is the core of the business and the catalogue is large, neither is usually the best choice. Shopify is built for that; see our guide to <a href="../blog/shopify-store-design.html">Shopify store design</a>.</p>
+"""),
+("wsq-choose", "Who should choose which", """
+<p><b>Pick Squarespace if:</b></p>
+<ul>
+<li>You will build and update the site yourself without a designer</li>
+<li>The site is a portfolio, local business site or personal brand with a few pages</li>
+<li>You want everything (domain, email campaigns, scheduling, shop) in one simple dashboard</li>
+<li>Budget for design is close to zero</li>
+</ul>
+<p><b>Pick Webflow if:</b></p>
+<ul>
+<li>The website brings in leads or sales and needs to convert</li>
+<li>You want a custom design that does not look like a template</li>
+<li>You publish content often or need structured CMS pages</li>
+<li>SEO, AI search visibility and page speed are priorities</li>
+<li>A marketing team needs to edit safely without breaking the design</li>
+</ul>
+<p>Comparing other options too? See <a href="../blog/webflow-vs-wix.html">Webflow vs Wix</a>, <a href="../blog/webflow-vs-framer.html">Webflow vs Framer</a> and <a href="../blog/webflow-vs-wordpress.html">Webflow vs WordPress</a>.</p>
+"""),
+("wsq-mistakes", "Mistakes to avoid when choosing", """
+<ul>
+<li><b>Choosing on the monthly plan price alone.</b> A few dollars a month matters far less than whether the site brings in customers.</li>
+<li><b>Picking Webflow and then building it yourself in a rush.</b> Webflow rewards good structure. A messy first build is hard to maintain.</li>
+<li><b>Picking Squarespace for a site you know will grow fast.</b> If you plan dozens of landing pages, a resource library or several languages, you may outgrow it within a year.</li>
+<li><b>Forgetting the content.</b> On either platform, clear copy, real photos and a strong offer matter more than the builder.</li>
+</ul>
+"""),
+("wsq-switch", "Moving from Squarespace to Webflow", """
+<p>Squarespace does not export a complete site. Blog posts and some content can be exported, but design, layout and most page content are rebuilt in Webflow. The process looks like this:</p>
+<ol>
+<li>List every URL and your top pages in Google Search Console.</li>
+<li>Export what Squarespace allows and download your images.</li>
+<li>Design the new site in Figma and build it in Webflow, with blog posts moved into a CMS collection.</li>
+<li>Set 301 redirects for every URL that changes, especially blog URLs.</li>
+<li>Connect your domain, submit the sitemap, and watch Search Console for a few weeks.</li>
+</ol>
+<p>Sorvel handles migrations from Squarespace, Wix and WordPress to Webflow from $2,900, with a written plan and fixed quote within 24 hours. <a href="../services/webflow-agency.html">See our Webflow service</a>.</p>
+"""),
+  ],
+  faq=[
+    ("Is Webflow better than Squarespace?", "Webflow is better for custom design, structured content, SEO control and growing businesses. Squarespace is better for people who want to build a simple, attractive site themselves without a designer."),
+    ("Is Webflow harder to use than Squarespace?", "Yes, building in Webflow takes longer to learn. Once a designer has built the site, editing text, images and blog posts in Webflow's Editor is about as easy as in Squarespace."),
+    ("Which is cheaper, Webflow or Squarespace?", "Plans are similar: as of November 2026 Webflow starts at $15 a month on annual billing and Squarespace's Basic plan at about $16 to $19. The bigger cost difference is usually design and build."),
+    ("Which is better for SEO, Webflow or Squarespace?", "Both cover the basics. Webflow offers more control over schema, redirects, CMS SEO fields and clean code, which helps competitive search and AI search."),
+    ("Can I move my Squarespace site to Webflow?", "Yes, but the design is rebuilt rather than exported. Blog content can be moved into Webflow's CMS, and 301 redirects protect your rankings."),
+    ("Is Squarespace good for ecommerce?", "It is good for small shops run by one person. For large catalogues Shopify is usually a better fit, and Webflow suits small, design-led stores."),
+    ("Should a startup use Webflow or Squarespace?", "Most startups that plan to grow through content, SEO and paid campaigns are better served by Webflow, because the site can scale without a rebuild."),
+  ],
+),
+dict(
+  slug="real-estate-website-design",
+  title="Real Estate Website Design 2026: Cost, IDX and Must-Haves | Sorvel",
+  h1="Real estate website design: what it costs and what it needs in 2026",
+  card="What a real estate agent or brokerage website costs in 2026, how IDX listings work, and the pages that turn buyers and sellers into leads.",
+  desc="Real estate website design in 2026: costs for agents and brokerages, IDX and MLS listings, must-have pages, lead capture, local SEO and AI search tips.",
+  cat="Real estate", date="2026-11-17", svc=("websites", "website design and development"),
+  cover=("c-real-estate-website-design", "A modern two-storey family house under a blue sky"),
+  lead="Portals own the listing traffic, so an agent's website has a different job: win sellers, capture buyers who already know your name, and prove you know the area. Here is what that costs and what to build.",
+  sections=[
+("re-short", "The short answer", """
+<p>A real estate website for an agent or small brokerage usually costs <b>$2,000 to $15,000</b> upfront for a custom design, plus monthly fees for IDX listings ($50 to $200 per month is a common range) and hosting. Template platforms built for agents cost less upfront but more over time, and look like many other agent sites.</p>
+<p>The best-performing sites focus on what portals cannot do: your local expertise, seller leads, area guides and a personal brand people trust.</p>
+<div class="post-note"><b>Key takeaways</b><p>Use IDX for listings, but do not expect listing pages alone to rank against big portals. Invest in neighbourhood pages, a strong seller page with a home valuation request, and clear contact options. Make the site fast on mobile and consistent with your Google Business Profile.</p></div>
+"""),
+("re-cost", "How much does a real estate website cost?", """
+<div class="post-table" role="region" aria-label="Real estate website cost by option" tabindex="0"><table>
+<thead><tr><th>Option</th><th>Upfront</th><th>Monthly</th><th>Good for</th></tr></thead>
+<tbody>
+<tr><td><b>Agent template platform</b></td><td>$0 to $1,000</td><td>Often $50 to $300+</td><td>New agents who need listings online fast</td></tr>
+<tr><td><b>Custom landing page + IDX search</b></td><td>From $2,400 with Sorvel</td><td>IDX fee plus hosting</td><td>Solo agents focused on one area or niche</td></tr>
+<tr><td><b>Custom agent or team website</b></td><td>From $6,900 with Sorvel</td><td>IDX fee plus hosting</td><td>Established agents and teams building a brand</td></tr>
+<tr><td><b>Brokerage website</b></td><td>$15,000 and up</td><td>Multiple feeds, agent pages, CRM</td><td>Brokerages with many agents and offices</td></tr>
+</tbody></table></div>
+<p>Industry guides for 2026 put IDX setup at roughly $200 to $2,000 one-off and $50 to $200 a month, depending on the provider and your MLS. IDX Broker, a common option in the US, lists a plan at about $55 a month. Your MLS may also charge its own data feed fees. Prices are as of November 2026.</p>
+"""),
+("re-idx", "IDX and MLS listings: how they work", """
+<p>IDX (Internet Data Exchange) lets you show MLS listings on your own website. You need to be a member of the MLS, get approval for a data feed, and use an approved IDX provider that handles the feed, search and compliance rules such as required disclaimers and update frequency.</p>
+<p>There are three common ways to add IDX to a site:</p>
+<ul>
+<li><b>Embedded search widgets</b> from the IDX provider on your pages. Easy, works with Webflow, Framer and WordPress, but listing pages often live on the provider's domain or inside a frame, so they add little SEO value to your site.</li>
+<li><b>Subdomain listings</b> such as search.yourdomain.com, hosted by the provider and styled to match.</li>
+<li><b>Plugin-based IDX</b> on WordPress, which can put listing pages on your own domain for more SEO value, at the cost of more maintenance.</li>
+</ul>
+<p>Our advice: pick the IDX provider your MLS supports best, then design the rest of the site to win the searches portals do not own.</p>
+[[cta]]
+"""),
+("re-pages", "Pages every real estate website needs", """
+<ul>
+<li><b>Home page.</b> Who you are, which areas you serve, a property search bar and two clear paths: "Buying" and "Selling".</li>
+<li><b>Seller page.</b> Your marketing plan for a listing, recent results you can show, and a "What is my home worth?" request form. Seller leads are the most valuable leads on the site.</li>
+<li><b>Buyer page.</b> How you work with buyers, the process, financing basics and a search link.</li>
+<li><b>Neighbourhood and area guides.</b> One page per area you serve: schools, transport, prices you can confirm, lifestyle, photos and local tips. These pages rank and get quoted by AI tools.</li>
+<li><b>Featured listings and sold properties.</b> Your own listings with great photos, plus past sales you are allowed to show.</li>
+<li><b>About and team.</b> Real photos, experience, licence details and a short story.</li>
+<li><b>Reviews.</b> Genuine client reviews, ideally linked to your Google or Zillow profiles.</li>
+<li><b>Contact.</b> Phone, WhatsApp or text, email and a short form, all easy to tap on mobile.</li>
+</ul>
+<p>In the US, include fair housing and equal housing opportunity statements and keep property and area descriptions free of language that could discriminate. Check your MLS and brokerage rules for required disclaimers.</p>
+"""),
+("re-leads", "How real estate websites capture leads", """
+<div class="post-table" role="region" aria-label="Lead capture tools for real estate sites" tabindex="0"><table>
+<thead><tr><th>Tool</th><th>Lead type</th><th>Tip</th></tr></thead>
+<tbody>
+<tr><td><b>Home valuation form</b></td><td>Sellers</td><td>Ask only for the address and contact first; follow up personally</td></tr>
+<tr><td><b>Saved searches and alerts</b></td><td>Buyers</td><td>Ask for an email after a few searches, not on the first click</td></tr>
+<tr><td><b>Area guide downloads</b></td><td>Relocating buyers</td><td>Offer a PDF guide in exchange for an email</td></tr>
+<tr><td><b>Click-to-call and messaging</b></td><td>Ready buyers and sellers</td><td>Keep a sticky contact button on mobile</td></tr>
+<tr><td><b>Open house sign-up</b></td><td>Local buyers</td><td>One simple form per listing</td></tr>
+</tbody></table></div>
+<p>Connect every form to your CRM so leads get a reply within minutes. Speed of response matters more than the number of forms.</p>
+"""),
+("re-seo", "Local SEO and AI search for agents", """
+<p>You will not outrank the big portals for "homes for sale in [city]". You can rank, and get cited by ChatGPT and Google AI Overviews, for questions about your area and your services:</p>
+<ul>
+<li>"Best neighbourhoods in [city] for families"</li>
+<li>"Cost of living in [suburb]"</li>
+<li>"How to sell a house fast in [city]"</li>
+<li>"[city] real estate agent for first-time buyers"</li>
+</ul>
+<p>Write one strong page per topic, keep your Google Business Profile complete and active, collect reviews, and use the same name, address and phone everywhere. Add local business and agent schema markup. Our <a href="../blog/get-cited-by-chatgpt.html">guide to getting cited by ChatGPT</a> covers the AI side in detail.</p>
+"""),
+("re-design", "Design tips that work for real estate", """
+<ul>
+<li><b>Photography first.</b> Large, bright photos and video tours sell homes and areas. Plan layouts around full-width images and compress them for fast mobile loading.</li>
+<li><b>Maps that help.</b> Show listings and area guides on a map, with schools, transport and amenities nearby.</li>
+<li><b>Search that is easy on a phone.</b> Location, price, bedrooms and property type are enough for the first step; filters can come later.</li>
+<li><b>A personal brand.</b> People hire agents, not websites. Use your real photo, a clear tagline about who you help and where, and a consistent colour and type style.</li>
+<li><b>Proof everywhere.</b> Recent sales, review snippets and years of experience near every call to action.</li>
+<li><b>Accessible design.</b> Readable text, strong contrast, alt text on photos and forms that work with a keyboard.</li>
+</ul>
+"""),
+("re-platform", "Which platform: Webflow, WordPress or Framer?", """
+<p><b>WordPress</b> has the widest choice of IDX plugins and can keep listing pages on your own domain, which helps SEO. It needs regular updates and security care. <b>Webflow</b> gives the best design control and a clean CMS for area guides, agents and sold properties, with IDX added through the provider's widgets or a subdomain. <b>Framer</b> suits a fast, visual single-agent site or a landing page for one development, again with embedded IDX search.</p>
+<p>For most solo agents and teams who want a strong brand and area content, Webflow plus a good IDX provider is a balanced choice. For brokerages that need listing pages on their own domain at scale, WordPress with an IDX plugin is often more practical. Our <a href="../blog/webflow-vs-wordpress.html">Webflow vs WordPress comparison</a> goes deeper.</p>
+"""),
+("re-mistakes", "Common mistakes on agent websites", """
+<ul>
+<li><b>Only listings, no local content.</b> A site that is just an IDX feed looks like every portal and ranks for nothing.</li>
+<li><b>Forcing sign-up before search.</b> Visitors leave. Let people browse first and ask for details when they want alerts.</li>
+<li><b>No seller path.</b> Many agent sites speak only to buyers, even though seller leads are worth more.</li>
+<li><b>Slow pages.</b> Heavy sliders and uncompressed photos kill mobile visits.</li>
+<li><b>Outdated listings and sold data.</b> Old content makes visitors doubt everything else.</li>
+</ul>
+"""),
+("re-checklist", "Checklist before you launch", """
+<ul>
+<li>IDX approved by your MLS, with required disclaimers and update rules in place</li>
+<li>Buyer and seller paths visible on the home page</li>
+<li>Home valuation form tested and connected to your CRM</li>
+<li>A page for each main area you serve</li>
+<li>Licence, brokerage and fair housing details where required</li>
+<li>Fast mobile pages with compressed photos</li>
+<li>Google Business Profile linked and consistent</li>
+<li>Analytics tracking calls, forms and valuation requests</li>
+</ul>
+<p>Working in related fields? See our guides to <a href="../blog/construction-website-design.html">construction website design</a> and <a href="../blog/vacation-rental-website-design.html">vacation rental websites with direct booking</a>.</p>
+"""),
+("re-hire", "Template or custom website?", """
+<p>A template platform makes sense for a new agent who needs listings online this week. A custom site makes sense when you want to stand out in a crowded market, win more seller leads, build a team brand, or rank for your area.</p>
+<p>Sorvel designs real estate websites in Figma and builds them in Webflow, Framer or WordPress, with your IDX provider and CRM connected. Landing pages start at $2,400 and full websites at $6,900, with a written plan and fixed quote within 24 hours. <a href="../services/websites.html">See our website design service</a>.</p>
+"""),
+  ],
+  faq=[
+    ("How much does a real estate website cost?", "A template platform costs little upfront but $50 to $300 or more per month. A custom agent website usually costs $2,000 to $15,000 upfront plus IDX and hosting fees; Sorvel websites start at $6,900."),
+    ("What is IDX on a real estate website?", "IDX is the system that lets MLS members show MLS listings on their own websites through an approved provider, with search, listing pages and required disclaimers."),
+    ("How much does IDX cost per month?", "Commonly $50 to $200 a month, plus a possible setup fee and MLS data fees. IDX Broker lists a plan at about $55 a month as of November 2026."),
+    ("Can I add IDX to a Webflow or Framer website?", "Yes, usually through the IDX provider's embedded search widgets or a styled subdomain. Plugin-based IDX on WordPress can keep listing pages on your own domain."),
+    ("Will my real estate website rank above Zillow?", "Rarely for broad listing searches. Agent sites rank and get cited for local questions, neighbourhood guides, seller topics and their own name."),
+    ("What pages should a real estate agent website have?", "A home page, seller page with a home valuation form, buyer page, area guides, featured and sold listings, about and team, reviews and contact."),
+    ("How do real estate websites get leads?", "Through home valuation requests, saved search alerts, area guide downloads, open house sign-ups and easy click-to-call and messaging on mobile."),
   ],
 ),
 ]
