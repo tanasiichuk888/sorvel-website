@@ -137,19 +137,28 @@ PRICE = {"website": ("$10,500", "3 to 6 weeks for a typical 5 to 10 page site"),
 SVC_NAME = {s: t for s, t, d, ic in SERVICES}
 SOL_NAME = dict(SOL_ALL)
 
-def extra_tables(g):
+def extra_tables(g, quote="../contact.html#brief"):
     if not g: return ""
-    tiers = "".join(f"<tr><td><b>{a}</b></td><td>{b}</td><td>{c}</td></tr>" for a, b, c in g["tiers"])
+    CLOCK = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>'
+    tiers = "".join(
+        f'''<article class="tier{" tier--hot" if k == 1 else ""}" data-reveal style="--d:{k*.06:.2f}s">{'<span class="tier__badge">Recommended</span>' if k == 1 else ""}
+            <p class="tier__n">0{k + 1}</p><h3 class="tier__name">{a}</h3>
+            <p class="tier__price">{b.replace("from ", "<small>from</small> ") if b.startswith("from ") else ("<small>Price</small> " + b[0].upper() + b[1:])}</p>
+            <p class="tier__time">{CLOCK}{c}</p>
+            <a class="tier__cta" href="{quote}">Get a fixed quote <span aria-hidden="true">→</span></a></article>'''
+        for k, (a, b, c) in enumerate(g["tiers"]))
     t, ca, cb, rows = g["cmp"]
-    cmp = "".join(f"<tr><td><b>{a}</b></td><td>{b}</td><td>{c}</td></tr>" for a, b, c in rows)
+    cmp = "".join(f'<tr><th scope="row">{a}</th><td data-l="{ca}">{b}</td><td data-l="{cb}">{c}</td></tr>' for a, b, c in rows)
     return f'''
     <section class="sec" data-chapter="Cost">
       <div class="wrap">
 {sec_head("Cost and timeline", 'What it costs, <span class="dim">by scope.</span>', "Typical starting points in US dollars. Your exact price is fixed in writing before work starts.")}
-        <div class="svc-tables">
-          <div class="post-table" role="region" aria-label="Cost and timeline by scope" tabindex="0" data-reveal><table><thead><tr><th>Scope</th><th>Price</th><th>Timeline</th></tr></thead><tbody>{tiers}</tbody></table></div>
-          <div class="svc-cmp" data-reveal style="--d:.08s"><h3 class="svc-cmp__t">{t}</h3>
-            <div class="post-table" role="region" aria-label="{t}" tabindex="0"><table><thead><tr><th></th><th>{ca}</th><th>{cb}</th></tr></thead><tbody>{cmp}</tbody></table></div></div>
+        <div class="tiers" role="list">{tiers}</div>
+        <div class="cmpx" data-reveal>
+          <div class="cmpx__head"><p class="eyebrow">Compare</p><h3 class="cmpx__t">{t}</h3></div>
+          <div class="cmpx__scroll" role="region" aria-label="{t}" tabindex="0"><table class="cmpx__table">
+            <thead><tr><td></td><th scope="col"><span class="cmpx__pill cmpx__pill--a">{ca}</span></th><th scope="col"><span class="cmpx__pill">{cb}</span></th></tr></thead>
+            <tbody>{cmp}</tbody></table></div>
         </div>
       </div>
     </section>
@@ -228,7 +237,7 @@ def solution(slug):
       </div>
     </section>
 
-{extra_tables(g)}
+{extra_tables(g, quote)}
     <section class="sec" data-chapter="Fit">
       <div class="wrap">
 {sec_head("Where it fits", 'Made for <span class="dim">your situation.</span>')}
