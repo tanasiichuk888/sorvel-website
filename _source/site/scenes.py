@@ -21,7 +21,7 @@ def flow():
     <div class="fl-card fl-msg"><span class="fl-ava">J</span><div><b>Jane · Acme</b><p class="fl-type" data-text="Hi! We need a new site for our SaaS. Launch is in May.">&nbsp;</p></div><span class="fl-time">09:12</span></div></div>
   <div class="fl-step fl-2"><span class="fl-when">Within 24h</span>
     <div class="fl-card fl-doc"><div class="fl-doc__ic"></div><div class="fl-doc__body"><b>Project plan.pdf</b><i></i><i></i><i></i>
-      <div class="fl-doc__meta"><span>Fixed price <b>$10,500</b></span><span>Timeline <b>4 weeks</b></span></div></div></div></div>
+      <div class="fl-doc__meta"><span>Fixed price <b>$7,900</b></span><span>Timeline <b>4 weeks</b></span></div></div></div></div>
   <div class="fl-step fl-3"><span class="fl-when">Weeks 1–3</span>
     <div class="fl-card fl-fig"><div class="fl-fig__frame"><b></b><i></i><i></i><u></u><s></s>
       <span class="fl-pin p1">1</span><span class="fl-pin p2">2</span></div>
@@ -39,7 +39,7 @@ def inbox():
       <div class="ib-msg ib-me"><p class="ib-type" data-text="Hi! We're a fintech startup and need a new marketing site in Webflow. Can you help?">&nbsp;</p><span class="ib-tick">Delivered ✓✓</span></div>
       <div class="ib-typing"><i></i><i></i><i></i></div>
       <div class="ib-msg ib-them"><p>Absolutely. Here's a written plan, timeline and fixed price for your review.</p>
-        <div class="ib-files"><span><i class="f1"></i>Plan.pdf</span><span><i class="f2"></i>Timeline</span><span><i class="f3"></i>$10,500 fixed</span></div></div>
+        <div class="ib-files"><span><i class="f1"></i>Plan.pdf</span><span><i class="f2"></i>Timeline</span><span><i class="f3"></i>$7,900 fixed</span></div></div>
     </div>
     <div class="ib-input"><span>Write a message…</span><b></b></div>
   </div>

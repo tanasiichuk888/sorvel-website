@@ -22,10 +22,11 @@ def it(t, d): return (t, d)
 
 # id, icon, name, list price, unit (list), from?, big price, big unit, desc, note, how[], get[], roles[], cta label, need, foot, badge
 PROJECTS = [
- dict(id="website", ic="cursor", name="Website design &amp; build", frm=True, price="$10,500", unit="project",
+ dict(id="website", ic="cursor", name="Website design &amp; build", frm=True, price="$4,900", unit="project",
   desc="A marketing site designed in Figma and built in Webflow, Framer or WordPress by one team, with a CMS your people can edit.",
   note="Fixed scope and price, agreed in writing before anything starts.", badge="Most booked",
-  how=[it("Typical timeline: 3 to 6 weeks", "For 5 to 10 pages, from brief to launch, depending on content and feedback speed."),
+  how=[it("Three sizes, one team", "Starter, up to 5 pages: from $4,900. Growth, 5 to 10 pages with CMS: from $7,900. Custom sites and large builds: from $10,500."),
+       it("Typical timeline: 2 to 6 weeks", "From brief to launch, depending on pages, content and feedback speed."),
        it("Paid in two milestones", "The first when we start, the second before launch."),
        it("Progress every 24 to 48 hours", "Written updates and live previews. Nothing ships until you approve it.")],
   get=[it("Sitemap and messaging", "What each page says, in which order, before anything is drawn."),
@@ -37,7 +38,7 @@ PROJECTS = [
        it("Launch and handover", "Domain, QA and a short video guide for your team.")],
   roles=["LD", "WD", "WF"], cta="Get a website quote", need="Website",
   foot="Bigger sites and web apps are quoted from your brief."),
- dict(id="landing", ic="target", name="Landing page", frm=True, price="$3,500", unit="page",
+ dict(id="landing", ic="target", name="Landing page", frm=True, price="$2,400", unit="page",
   desc="One page with one job: demos, sign-ups or sales. Designed and built for paid traffic, launches and lead generation.",
   note="Fixed price per page, agreed in writing before we start.",
   how=[it("Typical timeline: 1 to 2 weeks", "From brief to a live, tracked page."),
@@ -49,8 +50,8 @@ PROJECTS = [
        it("Build and integrations", "Forms wired to your CRM, email tool or webhook."),
        it("Analytics events", "Every button and form tracked, so you see what works.")],
   roles=["LD", "WD", "FR"], cta="Get a landing page quote", need="Landing page",
-  foot="Each extra page in the same set from $900."),
- dict(id="product", ic="layout", name="Product UI design", frm=True, price="$8,400", unit="project",
+  foot="Each extra page in the same set from $600."),
+ dict(id="product", ic="layout", name="Product UI design", frm=True, price="$4,800", unit="project",
   desc="Dashboards, web apps and mobile apps people understand on the first try, with a design system your engineers can build from.",
   note="Priced by the number of flows and screens, agreed before we start.",
   how=[it("Typical timeline: 3 to 6 weeks", "Depending on the number of flows and screens."),
@@ -64,7 +65,7 @@ PROJECTS = [
        it("Dev-ready handoff", "States, edge cases and specs, organised for engineers.")],
   roles=["LD", "PD"], cta="Get a product design quote", need="Product design",
   foot="Ongoing product work usually runs best on the monthly Design plan."),
- dict(id="brand", ic="brand", name="Brand identity", frm=True, price="$7,000", unit="project",
+ dict(id="brand", ic="brand", name="Brand identity", frm=True, price="$3,900", unit="project",
   desc="An identity that makes a young company look established: logo, colour, type and the rules that keep everything consistent.",
   note="Fixed scope and price, agreed in writing before we start.",
   how=[it("Typical timeline: 2 to 4 weeks", "From direction to a full brand kit."),
@@ -77,7 +78,7 @@ PROJECTS = [
        it("Templates", "Pitch deck, social posts and documents, ready to use.")],
   roles=["LD", "BD"], cta="Get a brand quote", need="Brand identity",
   foot="Pair it with a website and the two are designed together."),
- dict(id="migration", ic="move", name="Website migration", frm=True, price="$4,900", unit="project",
+ dict(id="migration", ic="move", name="Website migration", frm=True, price="$2,900", unit="project",
   desc="Move from WordPress to Webflow or Framer, or back, without losing rankings, links or content on the way.",
   note="Priced by pages and CMS items, agreed before we start.",
   how=[it("Typical timeline: 1 to 3 weeks", "Built in parallel, so your current site stays live the whole time."),
@@ -90,7 +91,7 @@ PROJECTS = [
        it("Launch checks", "Broken links, speed and indexing, before and after.")],
   roles=["WF", "WP", "SE"], cta="Get a migration quote", need="Migration",
   foot="Redesign and migrate at once? We quote both together."),
- dict(id="audit", ic="eye", name="UX audit", frm=False, price="$1,750", unit="one time",
+ dict(id="audit", ic="eye", name="UX audit", frm=False, price="$750", unit="one time",
   desc="An expert review of your site or product before you commit to anything bigger. Clear, ranked and ready to act on.",
   note="The full fee is credited if you continue with a project.", badge="Start here",
   how=[it("Delivered in 3 to 5 days", "As a written report you can share with your team."),
@@ -145,7 +146,7 @@ PLANS = [
    foot="Your platform decides who's on the plan."),
  ]),
  ("Grow", [
-  dict(id="cro", ic="chart", name="Conversion optimisation", frm=True, price="$2,100", unit="mo", bunit="month",
+  dict(id="cro", ic="chart", name="Conversion optimisation", frm=True, price="$1,500", unit="mo", bunit="month",
    desc="One tested improvement a month on the page that matters most. Works on its own or alongside any plan.",
    note="Billed monthly. Cancel anytime.",
    how=[it("One test a month", "Most tests need 2 to 4 weeks of traffic to read clearly."),
@@ -213,7 +214,7 @@ def promo(kind):
     if kind == "projects":
         return f'''          <a class="px__promo" href="#audit" data-pick="audit">
             <span class="px__promo-tag">Not ready to commit?</span>
-            <b>Start with a $1,750 UX audit.</b>
+            <b>Start with a $750 UX audit.</b>
             <span>Ranked issues and one redesigned section in 3 to 5 days. The full fee is credited if you continue.</span>
             <span class="px__promo-go">See the audit <span aria-hidden="true">→</span></span>
           </a>
@@ -314,7 +315,7 @@ def pricing():
       ("Project or monthly plan?", "Choose a project when you know exactly what you need, like a new website. Choose a plan when work keeps coming: new pages, features, tests and fixes every month."),
       ("Can I pause or cancel a monthly plan?", "Yes. Pause for a month or cancel anytime, with no notice period and no fee."),
       ("What if the scope changes halfway?", "On a project, we write up the change and its price, and you decide. On a monthly plan, it simply goes into the backlog."),
-      ("Can we start small?", "Yes. The $1,750 UX audit is the easiest way to see how we work, and the full fee is credited if you continue."),
+      ("Can we start small?", "Yes. The $750 UX audit is the easiest way to see how we work, and the full fee is credited if you continue."),
     ])
     body += cta(p, "Ready when you are", "Get an exact quote <br>in 24 hours.")
     page("pricing.html", "Pricing | Sorvel Studio", "Clear pricing for websites, landing pages, product UI, brand and migrations, as fixed-price projects or monthly plans.", "pricing", body, p, dock=False)

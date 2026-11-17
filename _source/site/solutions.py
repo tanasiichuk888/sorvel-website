@@ -125,7 +125,7 @@ D = {
        ("How many posts can you move?", "From a 10 page site to thousands of posts. Larger content sets are imported automatically, not by hand."),
        ("Will the site be down during the move?", "No. We build in Webflow in parallel and switch the domain only when everything is checked."),
        ("What happens to forms and integrations?", "We list them all in the audit and reconnect each one in Webflow, or suggest a simpler option where a plugin did the job."),
-       ("How much does a migration cost?", "From $4,900 for a typical company site. Big blogs or a redesign on top are quoted after the audit, in writing, within 24 hours.")],
+       ("How much does a migration cost?", "From $2,900 for a typical company site. Big blogs or a redesign on top are quoted after the audit, in writing, within 24 hours.")],
   related=["migrations", "websites", "webflow-agency"]),
 }
 
@@ -133,7 +133,7 @@ from solutions_more import SOL2, D2, G
 from illus import illus
 D.update(D2)
 SOL_ALL = SOL + SOL2
-PRICE = {"website": ("$10,500", "3 to 6 weeks for a typical 5 to 10 page site"), "migration": ("$4,900", "1 to 3 weeks, depending on pages and CMS items")}
+PRICE = {"website": ("$4,900", "2 to 3 weeks for up to 5 pages, 5 to 10 page sites from $7,900"), "migration": ("$2,900", "1 to 3 weeks, depending on pages and CMS items")}
 SVC_NAME = {s: t for s, t, d, ic in SERVICES}
 SOL_NAME = dict(SOL_ALL)
 
