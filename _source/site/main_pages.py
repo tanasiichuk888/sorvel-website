@@ -14,10 +14,7 @@ WALL = [
 
 REEL_W = ["valhalla/webinar.webp","arlowe-baxter/services.webp","salinas/about.webp","awswrap/work.webp","college-classics/colours.webp","waveads/who.webp","valhalla/fund.webp","arlowe-baxter/dashboard.webp","salinas/why.webp","awswrap/calculator.webp","college-classics/why.webp"]
 REEL_H = ["skyli","vyra","glitz","fitness-app","dlx-site","mutmachbuch","forma-app","helix","pace-app","visit-pemba","dolphin-pay","bitee-app","vibz","dlx-dashboard","myinstantai","franchise-octopus"]
-REEL = []
-for _i in range(max(len(REEL_W), len(REEL_H))):
-    if _i < len(REEL_H): REEL.append((f"home/{REEL_H[_i]}.webp", 720, 450))
-    if _i < len(REEL_W): REEL.append((f"work/{REEL_W[_i]}", 1600, 1000))
+REEL = [(f"home/{x}.webp", 720, 450) for x in REEL_H]
 
 def work():
     p = ""
