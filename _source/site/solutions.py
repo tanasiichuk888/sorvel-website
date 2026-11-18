@@ -202,14 +202,9 @@ def solution(slug):
     </section>
 '''
     body += f'''
-    <section class="sec cs-brief" data-chapter="Who it's for">
-      <div class="wrap">
-{sec_head("Sound familiar?", 'Who this is <span class="dim">built for.</span>')}
-        <div class="cs-problems" style="margin-top:0">
-{probs}
-        </div>
-      </div>
-    </section>
+'''
+    body += fit_section(d["who"], quote)
+    body += f'''
 
     <section class="sec" data-chapter="Included">
       <div class="wrap">

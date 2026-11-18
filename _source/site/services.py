@@ -153,14 +153,9 @@ def service(slug):
     body = hero(f'<a href="../index.html#services">Services</a><span>/</span><span>{nm}</span>', d["eyebrow"], d["lines"], d["lead"],
                 btn_primary(f"../contact.html?plan={PLAN_ID[d['need']]}#brief", "Get a quote") + btn_ghost("../pricing.html", "See pricing"), p=p, visual=scenes.svc(slug))
     body += f'''
-    <section class="sec cs-brief" data-chapter="Who it's for">
-      <div class="wrap">
-{sec_head("Sound familiar?", 'Who this is <span class="dim">built for.</span>')}
-        <div class="cs-problems" style="margin-top:0">
-{probs}
-        </div>
-      </div>
-    </section>
+'''
+    body += fit_section(d["who"], f"../contact.html?plan={PLAN_ID[d['need']]}#brief")
+    body += f'''
 
     <section class="sec" data-chapter="Included">
       <div class="wrap">

@@ -332,3 +332,25 @@ def page(path, title, desc, active, body, p, extra_js=("pages", "fx", "svc", "sc
     os.makedirs(os.path.dirname(full), exist_ok=True)
     open(full, "w").write(out)
     print("wrote", path, len(out))
+
+def fit_section(who, quote):
+    """'Who this is built for' block: intro + CTA on the left, numbered match list on the right."""
+    ok = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>'
+    rows = "\n".join(
+        f'          <li class="fit__row" data-reveal style="--d:{i*.07:.2f}s"><span class="fit__n">{i+1:02d}</span>'
+        f'<div class="fit__txt"><h3>{t}</h3><p>{x}</p></div><span class="fit__ok">{ok}</span></li>'
+        for i, (t, x) in enumerate(who))
+    return f'''    <section class="sec fit" data-chapter="Who it's for">
+      <div class="wrap fit__grid">
+        <div class="fit__intro" data-reveal>
+          <p class="eyebrow">Sound familiar?</p>
+          <h2 class="h2">Who this is <span class="dim">built for.</span></h2>
+          <p class="fit__lead">If one of these sounds like you, you're in the right place. Tell me where you are and I'll come back with a fixed quote.</p>
+          <div class="fit__cta">{btn_primary(quote, "Get a fixed quote", lg=False)}<span class="fit__note"><span class="status__dot" aria-hidden="true"></span> Replies in about 10 minutes</span></div>
+        </div>
+        <ol class="fit__list">
+{rows}
+        </ol>
+      </div>
+    </section>
+'''
